@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { ModeToggle } from "@/components/handicraft/mode-toggle";
 import { ButtonDemo } from './loginBtn';
 import { ButtonGhost } from './registerBtn';
 import  Link  from 'next/link';
