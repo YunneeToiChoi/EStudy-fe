@@ -237,7 +237,6 @@ body{
     color: var(--tag-text-color);
     background-color: var(--tag-bg-color);
     display: inline-block;
-    margin: 14px 0px;
 }
 
 .course__price{
@@ -296,6 +295,10 @@ body{
 .exam__link{
     text-decoration: none;
     color: black;
+}
+
+.exam__text{
+    font-size: 0.8rem;
 }
 
 .exam__box-title{

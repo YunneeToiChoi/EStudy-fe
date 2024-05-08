@@ -15,7 +15,10 @@
     --input-focus-color: #7c93d2;
     --tag-search-text-color: #e7eaf3;
     --tag-search-bg-color: #e8f2ff;
+    --tag-search-transition-color: #8c98a4;
     --exam-bg-color:#f8f9fa;
+    --pagination-bg-color-hover: #f8fafd;
+
 }
 
 @keyframes fadeIn{
