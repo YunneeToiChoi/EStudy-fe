@@ -1,13 +1,11 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -34,6 +32,9 @@ export default function RegisterPage() {
   function onSubmit(values: RegisterBodyType) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    console.log(typeof values.email);
+    console.log(typeof values.password);
+    console.log(typeof values.name);
     console.log(values);
   }
 

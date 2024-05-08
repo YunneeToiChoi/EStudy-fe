@@ -40,11 +40,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 # REACT
 * https://vi.legacy.reactjs.org/
 * https://react.dev/
+# REACT HOOK FORM
+* https://react-hook-form.com/
 # TAILWINDCSS
 * https://tailwindui.com/
 # SHADCN UI COMPONENT LIBRARY
 * https://ui.shadcn.com/
+https://www.youtube.com/watch?v=jdLsQEZ_H4o&list=PL8HkCX2C5h0VGhZnfbwf2hq7yD7nXMbJJ&index=1
 # ZOD
 * https://zod.dev/
 # Convert css -> Tailwind tool
 * https://lembdadev.com/tools/tailwind/css-to-tailwind-converter
+
+https://www.youtube.com/watch?v=ucX2zXAZ1I0&t=1218s
+https://www.youtube.com/watch?v=27hMNWcsa-Y
+https://www.youtube.com/watch?v=ucdjfU_XKpw&list=PLFfVmM19UNqn1ZIWvxn1artfz-C6dgAFb
