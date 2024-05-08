@@ -1,0 +1,32 @@
+:root{
+    --nav-text-color: #71869d;
+    --nav-hover-text-color: #35509a;
+    --login-hover-box-color: #2b417e;
+    --copyright-text-color: #677788;
+    --swiper-color: #007aff;
+    --star-color: #ffad3b;
+    --tag-text-color: #35509a;
+    --tag-bg-color: #f0f8ff;
+    --price-color: #3cb46e;
+    --course-border-color: #e0e0e0;
+    --exam-text-color: #677788;
+    --group-details-text-color: #1a1a1a;
+    --input-color:#bdc5d1;
+    --input-focus-color: #7c93d2;
+    --tag-search-text-color: #e7eaf3;
+    --tag-search-bg-color: #e8f2ff;
+    --exam-bg-color:#f8f9fa;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.have--bg-color{
+    background-color: var(--exam-bg-color);
+}

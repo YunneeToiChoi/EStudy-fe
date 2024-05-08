@@ -1,0 +1,39 @@
+/* > PC low resolution */
+@media (min-width: 1024px) {
+    .hide{
+        display: none;
+    }
+}
+
+
+/* Tablet */
+
+@media (min-width: 740px) and (max-width: 1023px) {
+.hide-on-tablet{
+    display: none !important;
+}
+
+.course-register__container{
+    top: 10% ;
+    left: 10%;
+    right: 10%;
+}
+
+
+}
+
+/* Mobile */
+
+
+@media (max-width: 739px){
+
+.hide-on-mobile{
+    display: none !important;
+}
+.course-register__container{
+    top: 10% ;
+    left: 10%;
+    right: 10%;
+}
+
+}
