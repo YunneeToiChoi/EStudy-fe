@@ -46,3 +46,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 * https://ui.shadcn.com/
 # ZOD
 * https://zod.dev/
+# Convert css -> Tailwind tool
+* https://lembdadev.com/tools/tailwind/css-to-tailwind-converter
