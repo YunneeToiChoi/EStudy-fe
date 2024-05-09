@@ -18,7 +18,10 @@
     --tag-search-transition-color: #8c98a4;
     --exam-bg-color:#f8f9fa;
     --pagination-bg-color-hover: #f8fafd;
-
+    --fb-text-color:#3b5998;
+    --gg-text-color:#db4a39;
+    --user-public-text-bg-color: #d1e2ff;
+    --process-active-bg-color: 	#32CD32;
 }
 
 @keyframes fadeIn{
@@ -32,4 +35,8 @@
 
 .have--bg-color{
     background-color: var(--exam-bg-color);
+}
+
+.mgl-10px{
+    margin-left: 10px;
 }
