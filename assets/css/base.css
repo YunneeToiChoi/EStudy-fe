@@ -22,6 +22,8 @@
     --gg-text-color:#db4a39;
     --user-public-text-bg-color: #d1e2ff;
     --process-active-bg-color: 	#32CD32;
+    --alert-text-color: #1f5e39;
+    --alert-flashcard-color: #d8f0e2;
 }
 
 @keyframes fadeIn{
