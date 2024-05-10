@@ -24,6 +24,7 @@
     --process-active-bg-color: 	#32CD32;
     --alert-text-color: #1f5e39;
     --alert-flashcard-color: #d8f0e2;
+    --economy-price-text-color: #e43a45;
 }
 
 @keyframes fadeIn{
@@ -41,4 +42,9 @@
 
 .mgl-10px{
     margin-left: 10px;
+}
+
+.flex__container{
+    display: flex;
+    align-items: center;
 }

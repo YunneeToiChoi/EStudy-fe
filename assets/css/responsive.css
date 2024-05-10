@@ -1,7 +1,20 @@
-/* > PC low resolution */
+/* PC */
+
 @media (min-width: 1024px) {
     .hide{
         display: none;
+    }
+}
+
+/* PC low resolution */
+
+@media (min-width: 1024px) and (max-width: 1350px){
+    .hide{
+        display: none;
+    }
+    .details__box-fixed{
+        max-width: 300px;
+        right: 0;
     }
 }
 
@@ -19,6 +32,12 @@
     right: 10%;
 }
 
+.details__box-fixed{
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
 
 }
 
@@ -34,6 +53,13 @@
     top: 10% ;
     left: 10%;
     right: 10%;
+}
+
+.details__box-fixed{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 40px 0px;
 }
 
 }
