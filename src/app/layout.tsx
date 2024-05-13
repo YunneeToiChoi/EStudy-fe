@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
-import Header from "@/components/handicraft/header";
+import { Roboto } from "next/font/google";
+// import "./globals.css";
+import "./handicraftCSS/base.css";
+import "./handicraftCSS/responsive.css";
+import "./handicraftCSS/grid.css";
+import "./handicraftCSS/header.css";
+import "./handicraftCSS/footer.css";
+import "./handicraftCSS/iconFontA.css";
+// import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/handicraft/partialView/header";
+import Footer from "@/components/handicraft/partialView/footer";
 
-const inter = Inter({ subsets: ["vietnamese"]});
+const roboto = Roboto({ subsets: ["vietnamese"],weight: ['100','300','400','500','700','900']});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,16 +25,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
+      <body className={roboto.className}>
+        {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-        >
+        > */}
           <Header></Header>
-            {children}
-        </ThemeProvider>
+          <div className="content">
+          {children}
+          </div>
+          <Footer></Footer>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
