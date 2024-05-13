@@ -4,6 +4,9 @@
     .hide{
         display: none;
     }
+    .details__box-fixed{
+        position: fixed;
+    }
 }
 
 /* PC low resolution */
@@ -60,6 +63,10 @@
     top: 0;
     left: 0;
     margin: 40px 0px;
+}
+
+.container__details{
+    flex-direction: column-reverse;
 }
 
 }
