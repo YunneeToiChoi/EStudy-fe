@@ -312,8 +312,8 @@ export default function Home() {
                 type="text"
                 placeholder="Khu vực học (thành phố/tỉnh)*"
               />
-              <select name="" id="" className="course-register__input">
-                <option value="" selected>Môn học bạn quan tâm</option>
+             <select defaultValue="default" name="" id="" className="course-register__input">
+                <option value="default">Môn học bạn quan tâm</option>
                 <option value="1">IELTS</option>
                 <option value="2">TOEIC</option>
                 <option value="3">IELTS Writing and Speaking</option>
