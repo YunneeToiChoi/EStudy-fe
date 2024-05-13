@@ -23,25 +23,22 @@ export default function Header() {
           <div className="nav_right">
             <ul className="nav__list hide-on-tablet hide-on-mobile">
               <li className="nav__item">
-                <a href="/View/courseOnline.html" className="nav__link"
-                  >Khóa học online</a
-                >
+                <Link href="/courseOnline" className="nav__link"
+                  >Khóa học online</Link>
               </li>
               <li className="nav__item">
-                <a href="/View/examOnline.html" className="nav__link"
-                  >Đề thi online</a
-                >
+                <Link href="/examOnline" className="nav__link"
+                  >Đề thi online</Link>
               </li>
               <li className="nav__item">
-                <a href="/View/flashCard.html" className="nav__link">Flashcards</a>
+                <Link href="/flashCard" className="nav__link">Flashcards</Link>
               </li>
               <li className="nav__item">
                 <a href="" className="nav__link">Blog</a>
               </li>
               <li className="nav__item">
-                <a href="/View/activeCourse.html" className="nav__link"
-                  >Kích hoạt khóa học</a
-                >
+                <Link href="/activeCourse" className="nav__link"
+                  >Kích hoạt khóa học</Link>
               </li>
               <li className="nav__item nav__item-login">
                 <Link href="/login" className="nav__link-login">Đăng nhập</Link>
@@ -56,27 +53,23 @@ export default function Header() {
             <div className="nav__mobile hide">
               <ul className="nav__list-mobile">
                 <li className="nav__item-mobile">
-                  <a href="/View/courseOnline.html" className="nav__link-mobile"
-                    >Khóa học online</a
-                  >
+                  <Link href="/courseOnline" className="nav__link-mobile"
+                    >Khóa học online</Link>
                 </li>
                 <li className="nav__item-mobile">
-                  <a href="/View/examOnline.html" className="nav__link-mobile"
-                    >Đề thi online</a
-                  >
+                  <Link href="/examOnline" className="nav__link-mobile"
+                    >Đề thi online</Link>
                 </li>
                 <li className="nav__item-mobile">
-                  <a href="/View/flashCard.html" className="nav__link-mobile"
-                    >Flashcards</a
-                  >
+                  <Link href="/flashCard" className="nav__link-mobile"
+                    >Flashcards</Link>
                 </li>
                 <li className="nav__item-mobile">
                   <a href="" className="nav__link-mobile">Blog</a>
                 </li>
                 <li className="nav__item-mobile">
-                  <a href="/View/activeCourse.html" className="nav__link-mobile"
-                    >Kích hoạt khóa học</a
-                  >
+                  <Link href="/activeCourse" className="nav__link-mobile"
+                    >Kích hoạt khóa học</Link>
                 </li>
                 <li
                   className="nav__item-mobile nav__item-login nav__item-login-mobile"

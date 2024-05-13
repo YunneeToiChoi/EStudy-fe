@@ -1,5 +1,3 @@
-import "./handicraftCSS/home.css"
-
 export default function Home() {
   return (
     <div>

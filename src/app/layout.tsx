@@ -6,6 +6,7 @@ import "./handicraftCSS/responsive.css";
 import "./handicraftCSS/grid.css";
 import "./handicraftCSS/header.css";
 import "./handicraftCSS/footer.css";
+import "./handicraftCSS/home.css";
 import "./handicraftCSS/iconFontA.css";
 // import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/handicraft/partialView/header";
