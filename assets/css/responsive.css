@@ -40,8 +40,17 @@
     top: 0;
     right: 0;
 }
+.content-right{
+    margin-left: 0px;
+}
 
+.content-right__container{
+    margin-left: 0px;
+}
 
+.content__input:checked ~ .content-right{
+    margin-left: 0px;
+}
 }
 
 /* Mobile */
@@ -67,6 +76,17 @@
 
 .container__details{
     flex-direction: column-reverse;
+}
+
+.content-right{
+    margin-left: 0px;
+}
+
+.content-right__container{
+    margin-left: 0px;
+}
+.content__input:checked ~ .content-right{
+    margin-left: 0px;
 }
 
 }
