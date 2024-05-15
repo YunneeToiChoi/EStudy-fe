@@ -169,6 +169,7 @@
     padding: 10px 14px;
     border-radius: 4px;
     text-decoration: none;
+    display: inline-block;
 }
 
 .nav__mobile-course{
@@ -185,4 +186,218 @@
 
 .nav-mobile-course__input:checked ~ .nav__mobile-course{
     display: block;
+}
+
+.content__box-course__icon-done{
+    color: green;
+}
+
+.flashcard__train{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    border: 1px solid var(--nav-hover-text-color);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--tag-search-bg-color);
+    font-weight: 600;
+}
+
+.flashcard__train:hover{
+    color: white;
+    background-color: var(--flashcard-train-btn-color);
+    transition: 0.2s;
+}
+
+.train__flex-container{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flashcard__train-link{
+    font-size: 1rem;
+    text-decoration: none;
+
+}
+
+.flashcard__train-link--random{
+    color: var(--nav-hover-text-color);
+}
+
+.flashcard__train-link--random:hover{
+    color: black;
+    transition: 0.2s;
+}
+
+.flashcard__train-link--stop{
+    color: red;
+}
+
+.vocabulary__total-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.vocabulary__total-text{
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.vocabulary__total-text-red{
+    color: red;
+}
+
+.vocabulary__total-description{
+    color: var(--nav-text-color);
+}
+
+.vocabulary__description{
+    font-size: 1.1rem;
+}
+
+.vocabulary__flex-header{
+    display: flex;
+    align-items: center;
+}
+
+.vocabulary__content-icon{
+    margin: 0px 6px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: var(--tag-search-bg-color);
+    color: var(--vocabulary-icon-color);
+}
+
+.vocabulary__study-list{
+    padding-left: 30px;
+}
+
+.vocabulary__study-item{
+    margin: 10px 0px;
+}
+
+.content__box-course--chosen{
+    border-left: 4px solid var(--nav-hover-text-color) !important;
+}
+
+.content__box-course-in-list{
+    font-size: 0.9rem;
+    border-left: 4px solid transparent;
+}
+
+.content__box-course-in-list:hover{
+    border-left: 4px solid var(--nav-hover-text-color);
+
+}
+
+.content__box-description-in-list{
+    font-size: 0.9rem;
+}
+
+.multichoice__header{
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.multichoice__hint{
+    text-align: center;
+    font-weight: 300;
+}
+
+.multichoice__box{
+    margin-top: 30px;
+}
+
+.multichoice__option{
+    margin-bottom: 25px;
+}
+
+.multichoice__link{
+    display: block;
+    padding: 20px 10px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid var(--answer-btn-color);
+    margin: 18px 0px;
+    font-size: 1.2rem;
+}
+
+.multichoice__link:hover{
+    border: 1px solid var(--answer-btn-hover-color);
+    transition: 0.2s;
+}
+
+.multichoice__option-link{
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px;
+    color: var(--nav-hover-text-color);
+    background-color: var(--tag-search-bg-color);
+    border-radius: 10px;
+}
+
+.multichoice__option{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.multichoice__auto-container{
+    display: flex;
+    align-items: center;
+}
+
+.multichoice__auto{
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.multichoice__list-box{
+    display: flex;
+    margin-top: 10px;
+}
+
+.multichoice__list-number{
+    padding: 6px 10px;
+    border: 1px solid;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: black;
+}
+
+.multichoice__list-number:hover{
+    color: white;
+    background-color: var(--nav-hover-text-color);
+    transition: 0.1s;
+}
+
+.multichoice__list-number--chosen{
+    color: white;
+    background-color: var(--nav-hover-text-color);
+}
+
+.paircard__box{
+    border: 2px solid transparent;
+    padding: 60px;
+    text-decoration: none;
+    color: var(--nav-hover-text-color);
+    display: flex;
+    align-items: center;
+}
+
+.paircard__box:hover{
+    border: 2px solid var(--nav-hover-text-color);
+}
+
+.paircard__box-volcabulary{
+    font-size: 1.6rem;
+    color: var(--paircard-volcabulary-text-color);
 }
