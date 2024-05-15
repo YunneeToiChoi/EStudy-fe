@@ -401,3 +401,156 @@
     font-size: 1.6rem;
     color: var(--paircard-volcabulary-text-color);
 }
+
+.spell__box{
+    padding: 60px;
+    text-decoration: none;
+    color: black;
+}
+
+.spell__box:hover{
+    background-color: var(--spell-listen-bg-color);
+    transition: 0.2s;
+}
+
+.spell__text{
+    text-align: center;
+}
+
+.spell__audio{
+    width: 100%;
+}
+
+.translate__header{
+    text-align: center;
+    font-size: 1.6rem;
+    padding-top: 30px;
+}
+
+.translate__hint{
+    text-align: center;
+    font-weight: 300;
+    font-style: italic;
+    padding: 30px 0px;
+}
+
+.translate__input-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.translate__input{
+    padding: 26px 10px;
+    font-size: 1.8rem;
+}
+
+.listenSpell-left{
+    padding: 20px 10px;
+    background-color: var(--spell-alert-bg-color);
+}
+
+.listenSpell__list{
+    padding-left: 20px;
+    font-size: 0.9rem;
+    color: var(--spell-alert-text-color);
+}
+
+.listenSpell__select-container{
+    display: flex;
+    align-items: center;
+
+}
+
+.listenSpell__select-text{
+    font-size: 1rem;
+}
+
+.listenSpell__select{
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
+    color: var(--nav-hover-text-color);
+    font-size: 1rem;
+}
+
+.listenSpell__link-option{
+    margin-top: 10px;
+}
+
+.listenSpell__link{
+    display: block;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-style: italic;
+    color: var(--nav-hover-text-color);
+    margin: 6px 0px;
+}
+
+.listenSpell__dictation{
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-style: italic;
+    color: var(--nav-hover-text-color);
+}
+
+.listenSpell__input{
+    margin: 20px 0px;
+    width: 80%;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    color: #f0f;
+    padding: 20px;
+    font-size: 2rem;
+    outline: none;
+}
+
+.listenSpell__answer-container{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listenSpell__icon{
+    margin-right: 6px;
+}
+
+.listenSpell__answer{
+    font-size: 1rem;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--nav-hover-text-color);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
+    cursor: pointer;
+    background-color: white;
+    outline: none;
+    border: none;
+}
+
+.listenSpell__answer:hover{
+    color: var(--star-color);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .2), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    transform: translateY(-2px);
+    transition: all .4s;
+}
+
+.listenSpell__option{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listenSpell_continue{
+    text-decoration: none;
+    color: var(--nav-hover-text-color);
+}
+
+.listenSpell_continue:hover{
+    color: black;
+    transition: 0.2s;
+}

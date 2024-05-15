@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/grid.css" />
+    <link rel="stylesheet" href="../assets/css/courseLearn.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>STUDY4</title>
+  </head>
+  <body>
+    <!-- Navbar : Should be in Layout -->
+    <nav class="navbar">
+      <div class="grid wide">
+        <div class="nav__container">
+          <a href="/View/home.html">
+            <img
+              class="nav__img"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EOw8FBT_Sn6rQqg_NQGLLkHQKEQjA1h_c6ujo5_A&s"
+              alt="Logo"
+              class="nav_logo"
+              width="150px"
+              height="55px"
+            />
+          </a>
+          <div class="nav_right">
+            <ul class="nav__list hide-on-tablet hide-on-mobile">
+              <li class="nav__item">
+                <a href="/View/courseOnline.html" class="nav__link"
+                  >Khóa học online</a
+                >
+              </li>
+              <li class="nav__item">
+                <a href="/View/examOnline.html" class="nav__link"
+                  >Đề thi online</a
+                >
+              </li>
+              <li class="nav__item">
+                <a href="/View/flashCard.html" class="nav__link">Flashcards</a>
+              </li>
+              <li class="nav__item">
+                <a href="" class="nav__link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="/View/activeCourse.html" class="nav__link"
+                  >Kích hoạt khóa học</a
+                >
+              </li>
+              <li class="nav__item nav__item-login">
+                <a href="/View/login.html" class="nav__link-login">Đăng nhập</a>
+              </li>
+            </ul>
+
+            <label for="nav-mobile-input" class="menubar__icon hide">
+              <i class="fa-solid fa-bars nav__icon"></i>
+            </label>
+            <input type="checkbox" id="nav-mobile-input" class="nav__input" />
+            <label for="nav-mobile-input" class="nav__overlay"></label>
+            <div class="nav__mobile hide">
+              <ul class="nav__list-mobile">
+                <li class="nav__item-mobile">
+                  <a href="/View/courseOnline.html" class="nav__link-mobile"
+                    >Khóa học online</a
+                  >
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="/View/examOnline.html" class="nav__link-mobile"
+                    >Đề thi online</a
+                  >
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="/View/flashCard.html" class="nav__link-mobile"
+                    >Flashcards</a
+                  >
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="" class="nav__link-mobile">Blog</a>
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="/View/activeCourse.html" class="nav__link-mobile"
+                    >Kích hoạt khóa học</a
+                  >
+                </li>
+                <li
+                  class="nav__item-mobile nav__item-login nav__item-login-mobile"
+                >
+                  <a
+                    href="/View/login.html"
+                    class="nav__link-login nav__link-login-mobile"
+                    >Đăng nhập</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- End NavBar -->
+    <!-- Body -->
+    <div class="content">
+      <div class="content__container">
+        <input type="checkbox" id="content__checkbox" class="content__input" />
+        <div class="content-left hide-on-mobile hide-on-tablet">
+          <div class="flex__container header__container">
+            <a href="courseLearn.html" class="content-left__header">List 1</a>
+            <a href="" class="content-left__dropleft">
+              <label for="content__checkbox"
+                ><i class="content-left__icon fa-solid fa-angle-left"></i
+              ></label>
+            </a>
+          </div>
+          <div class="course-learn__container">
+            <ul class="course-learn__list">
+              <li class="course-learn__item">
+                <a
+                  href="vocabularyFlashCard.html"
+                  class="content__box-course content__box-course--done content__box-course--chosen content__box-course-in-list"
+                >
+                  <i
+                    class="fa-solid fa-circle-check content__box-course__icon-done"
+                  ></i>
+                  <h3 class="content__box-course-category">Từ vựng:</h3>
+                  <span
+                    class="content__box-description content__box-description-in-list"
+                  >
+                    FlashCard</span
+                  >
+                </a>
+              </li>
+              <li class="course-learn__item">
+                <a
+                  href="multichoiceLearn.html"
+                  class="content__box-course content__box-course--done content__box-course-in-list"
+                >
+                  <i
+                    class="fa-solid fa-circle-check content__box-course__icon-done"
+                  ></i>
+                  <h3 class="content__box-course-category">Luyện tập:</h3>
+                  <span
+                    class="content__box-description content__box-description-in-list"
+                  >
+                    Trắc nghiệm từ vựng</span
+                  >
+                </a>
+              </li>
+              <li class="course-learn__item">
+                <a
+                  href="findPairLearn.html"
+                  class="content__box-course content__box-course--done content__box-course-in-list"
+                >
+                  <i
+                    class="fa-solid fa-circle-check content__box-course__icon-done"
+                  ></i>
+                  <h3 class="content__box-course-category">Luyện tập:</h3>
+                  <span
+                    class="content__box-description content__box-description-in-list"
+                  >
+                    Tìm cặp</span
+                  >
+                </a>
+              </li>
+              <li class="course-learn__item">
+                <a
+                  href="listenLearn.html"
+                  class="content__box-course content__box-course--done content__box-course-in-list"
+                >
+                  <i
+                    class="fa-solid fa-circle-check content__box-course__icon-done"
+                  ></i>
+                  <h3 class="content__box-course-category">Luyện tập:</h3>
+                  <span
+                    class="content__box-description content__box-description-in-list"
+                  >
+                    Nghe từ vựng</span
+                  >
+                </a>
+              </li>
+              <li class="course-learn__item">
+                <a
+                  href="translateLearn.html"
+                  class="content__box-course content__box-course--done content__box-course-in-list"
+                >
+                  <i
+                    class="fa-solid fa-circle-check content__box-course__icon-done"
+                  ></i>
+                  <h3 class="content__box-course-category">Luyện tập:</h3>
+                  <span
+                    class="content__box-description content__box-description-in-list"
+                  >
+                    Dịch nghĩa / Điền từ</span
+                  >
+                </a>
+              </li>
+              <li class="course-learn__item">
+                <a
+                  href="listenSpell.html"
+                  class="content__box-course content__box-course--done content__box-course-in-list"
+                >
+                  <i
+                    class="fa-solid fa-circle-check content__box-course__icon-done"
+                  ></i>
+                  <h3 class="content__box-course-category">Luyện tập:</h3>
+                  <span
+                    class="content__box-description content__box-description-in-list"
+                  >
+                    Nghe chính tả</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="content-right">
+          <nav class="nav__content-right">
+            <div
+              class="nav__content-header-right hide-on-mobile hide-on-tablet"
+            >
+              <a href="" class="nav__content-link-right"
+                >IELTS General Reading
+              </a>
+              <i class="nav__content-right__icon fa-solid fa-chevron-right"></i>
+              <span class="nav__content-transition-right">Từ vựng TOEIC</span>
+            </div>
+            <label class="hide" for="nav-mobile-course-checkbox"
+              ><i class="fa-solid fa-bars nav__icon"></i
+            ></label>
+          </nav>
+          <input
+            type="checkbox"
+            id="nav-mobile-course-checkbox"
+            class="nav-mobile-course__input"
+          />
+          <div class="nav__mobile-course hide">
+            <div class="flex__container header__container">
+              <a href="" class="content-left__header">IELTS General Reading</a>
+              <a href="" class="content-left__dropleft">
+                <label for="nav-mobile-course-checkbox"
+                  ><i class="content-left__icon fa-solid fa-angle-left"></i
+                ></label>
+              </a>
+            </div>
+            <div class="course-learn__container">
+              <ul class="course-learn__list">
+                <li class="course-learn__item">
+                  <a
+                    href=""
+                    class="course-learn__link course-learn__link--chosen"
+                    >Từ vựng TOEIC</a
+                  >
+                </li>
+                <li class="course-learn__item">
+                  <a href="" class="course-learn__link">
+                    Phương pháp làm các dạng câu hỏi trong IELTS General Reading
+                  </a>
+                </li>
+                <li class="course-learn__item">
+                  <a href="" class="course-learn__link">
+                    Video chữa đề chi tiết
+                  </a>
+                </li>
+                <li class="course-learn__item">
+                  <a href="" class="course-learn__link"> PRACTICE ZONE </a>
+                </li>
+                <li class="course-learn__item">
+                  <a href="" class="course-learn__link">
+                    GT Practice Set 7 Test 1: Luyện tập từ vựng
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content-right__container">
+            <div class="grid wide grid-wide-course-learn">
+              <div class="content__box">
+                <h3 class="translate__header">Sự xem trước, sự duyệt trước</h3>
+                <p class="translate__hint">
+                  Hint: = a chance to see something before it becomes generally
+                  available
+                </p>
+                <div class="translate__input-container">
+                  <input type="text" class="translate__input" />
+                </div>
+              </div>
+              <div class="multichoice__option">
+                <a href="" class="multichoice__option-link"
+                  ><i class="fa-solid fa-angle-left"></i> Câu trước</a
+                >
+                <div class="multichoice__auto-container">
+                  <input type="checkbox" id="multichoice__checkbox" />
+                  <label for="multichoice__checkbox" class="multichoice__auto"
+                    >Tự động chuyển câu</label
+                  >
+                </div>
+                <a href="" class="multichoice__option-link"
+                  >Câu sau <i class="fa-solid fa-angle-right"></i
+                ></a>
+              </div>
+              <div class="content__box">
+                <h3 class="multichoice__list-text">Danh sách bài tập:</h3>
+                <div class="multichoice__list-box">
+                  <a
+                    href=""
+                    class="multichoice__list-number multichoice__list-number--chosen"
+                    >1</a
+                  >
+                  <a href="" class="multichoice__list-number">2</a>
+                  <a href="" class="multichoice__list-number">3</a>
+                  <a href="" class="multichoice__list-number">4</a>
+                  <a href="" class="multichoice__list-number">5</a>
+                  <a href="" class="multichoice__list-number">6</a>
+                  <a href="" class="multichoice__list-number">7</a>
+                  <a href="" class="multichoice__list-number">8</a>
+                  <a href="" class="multichoice__list-number">9</a>
+                  <a href="" class="multichoice__list-number">10</a>
+                  <a href="" class="multichoice__list-number">11</a>
+                  <a href="" class="multichoice__list-number">12</a>
+                  <a href="" class="multichoice__list-number">13</a>
+                  <a href="" class="multichoice__list-number">14</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Body -->
+  </body>
+</html>
