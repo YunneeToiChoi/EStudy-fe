@@ -9,8 +9,7 @@ import "./handicraftCSS/footer.css";
 import "./handicraftCSS/home.css";
 import "./handicraftCSS/iconFontA.css";
 // import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/components/handicraft/partialView/header";
-import Footer from "@/components/handicraft/partialView/footer";
+import ReduxProvider from "@/redux/provider";
 
 const roboto = Roboto({ subsets: ["vietnamese"],weight: ['100','300','400','500','700','900']});
 
@@ -21,25 +20,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{children: React.ReactNode;}>){
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={roboto.className}>
-        {/* <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-        > */}
-          <Header></Header>
-          <div className="content">
-          {children}
-          </div>
-          <Footer></Footer>
-        {/* </ThemeProvider> */}
-      </body>
-    </html>
+      <html lang="en" suppressHydrationWarning>
+        <body className={roboto.className}>
+          {/* <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+          > */}
+              <ReduxProvider>
+                  {children}
+              </ReduxProvider>
+          {/* </ThemeProvider> */}
+        </body>
+      </html>
   );
 }

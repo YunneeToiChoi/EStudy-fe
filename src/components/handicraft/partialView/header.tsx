@@ -1,4 +1,10 @@
-import React from 'react'
+"use client"
+import React,{useState} from 'react'
+import {useNavigate } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import { logOut } from "../../../redux/features/apiRequest";
+import { createAxios } from "../../../createInstance";
+import { logOutSuccess } from "../../../redux/features/authSlices";
 import { ModeToggle } from "@/components/handicraft/mode-toggle";
 import { ButtonDemo } from '../loginBtn';
 import { ButtonGhost } from '../registerBtn';
@@ -6,6 +12,16 @@ import  Link  from 'next/link';
 import Image from "next/image";
 
 export default function Header() {
+  const user = useSelector((state:any)=> state.auth.login.currentUser);
+  const accessToken = user?.accessToken;
+  const id = user?._id;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  let axiosJWT = createAxios(user,dispatch,logOutSuccess);
+
+  const handleLogout = () =>{
+    logOut(dispatch,id,navigate, accessToken,axiosJWT);
+  }
   return (
    <div>
      <nav className="navbar">
@@ -41,7 +57,14 @@ export default function Header() {
                   >Kích hoạt khóa học</Link>
               </li>
               <li className="nav__item nav__item-login">
-                <Link href="/login" className="nav__link-login">Đăng nhập</Link>
+                {user?(
+                    <>
+                    <p>Hi <span>{user.username}</span></p>
+                    <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
+                    </>
+                    ):(
+                      <Link href="/login" className="nav__link-login">Đăng nhập</Link>
+                    )}
               </li>
             </ul>
 
@@ -71,10 +94,15 @@ export default function Header() {
                   <Link href="/activeCourse" className="nav__link-mobile"
                     >Kích hoạt khóa học</Link>
                 </li>
-                <li
-                  className="nav__item-mobile nav__item-login nav__item-login-mobile"
-                >
-                  <Link href="/login" className="nav__link-login nav__link-login-mobile">Đăng nhập</Link>
+                <li className="nav__item-mobile nav__item-login nav__item-login-mobile">
+                {user?(
+                  <>
+                  <p>Hi <span>{user.username}</span></p>
+                  <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
+                  </>
+                  ):(
+                    <Link href="/login" className="nav__link-login">Đăng nhập</Link>
+                  )}
                 </li>
               </ul>
             </div>
