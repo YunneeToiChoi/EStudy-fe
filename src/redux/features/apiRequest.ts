@@ -20,11 +20,11 @@ import {
 } from "./userSlice";
 //npm install axios
 
-export const loginUser = async (user:any, dispatch:any, navigate:any) => {
+export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
   dispatch(loginStart());
   try {
     const res = await axios.post("http://localhost:8000/v1/auth/login", user);
-    dispatch(loginSuccess(res.data));
+    dispatch(loginSuccess(res.data));//nhan du lieu tu backend
     navigate("/");
   } catch (err) {
     dispatch(loginFailed());
@@ -62,6 +62,7 @@ export const deleteUser = async (accessToken:any, dispatch:any, id:any, axiosJWT
     });
     dispatch(deleteUsersSuccess(res.data));
   } catch (err:any) {
+    console.log(err.response.data);
     dispatch(deleteUserFailed(err.response.data));
   }
 };

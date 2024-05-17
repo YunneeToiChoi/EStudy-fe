@@ -1,13 +1,13 @@
 "use client"
 import React,{useState} from 'react'
-import {useNavigate } from "react-router-dom";
+import { useRouter } from 'next/navigation';
 import {useDispatch, useSelector} from "react-redux";
-import { logOut } from "../../../redux/features/apiRequest";
-import { createAxios } from "../../../createInstance";
-import { logOutSuccess } from "../../../redux/features/authSlices";
+import { logOut } from "../../redux/features/apiRequest";
+import { createAxios } from "../../createInstance";
+import { logOutSuccess } from "../../redux/features/authSlices";
 import { ModeToggle } from "@/components/handicraft/mode-toggle";
-import { ButtonDemo } from '../loginBtn';
-import { ButtonGhost } from '../registerBtn';
+import { ButtonDemo } from '../handicraft/loginBtn';
+import { ButtonGhost } from '../handicraft/registerBtn';
 import  Link  from 'next/link';
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ export default function Header() {
   const accessToken = user?.accessToken;
   const id = user?._id;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useRouter();
   let axiosJWT = createAxios(user,dispatch,logOutSuccess);
 
   const handleLogout = () =>{
@@ -50,7 +50,7 @@ export default function Header() {
                 <Link href="/flashCard" className="nav__link">Flashcards</Link>
               </li>
               <li className="nav__item">
-                <a href="" className="nav__link">Blog</a>
+                <Link href="/dashBoard/getAllUser" className="nav__link">Blog</Link>
               </li>
               <li className="nav__item">
                 <Link href="/activeCourse" className="nav__link"
@@ -88,7 +88,7 @@ export default function Header() {
                     >Flashcards</Link>
                 </li>
                 <li className="nav__item-mobile">
-                  <a href="" className="nav__link-mobile">Blog</a>
+                  <Link href="/dashBoard/getAllUser" className="nav__link-mobile">Blog</Link>
                 </li>
                 <li className="nav__item-mobile">
                   <Link href="/activeCourse" className="nav__link-mobile"

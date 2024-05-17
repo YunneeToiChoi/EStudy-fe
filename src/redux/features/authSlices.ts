@@ -20,7 +20,7 @@ const authSlice = createSlice({
         },
         loginSuccess: (state,action) => {
             state.login.isFetching = false;
-            state.login.currentUser = action.payload;
+            state.login.currentUser = action.payload;//nhan du lieu dc truyen vao apirequest
             state.login.error = false;
         },
         loginFailed: (state) =>{

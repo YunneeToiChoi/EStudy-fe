@@ -5,20 +5,21 @@ import "./login.css"
 import { loginUser } from "../../redux/features/apiRequest";
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const navigate = useRouter();
 
     const handleLogin = (e:any) => {
-        e.preventDefault();
+        e.preventDefault();//khong reload trang  khi submit
         const newUser = {
           username: username,
           password: password,
         };
-        loginUser(newUser, dispatch, navigate);
+        loginUser(newUser, dispatch, navigate.push);
       };
     return (
         // <div className="content__container">

@@ -1,7 +1,7 @@
 "use client"
 import  Link  from 'next/link';
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { registerUser } from "../../redux/features/apiRequest";
 import "../handicraftCSS/loginAndRegisterAndActive.css"
@@ -11,7 +11,7 @@ export default function Register(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const navigate = useRouter();
 
     const handleRegister= (e:any)=>{
         e.preventDefault();
@@ -20,7 +20,7 @@ export default function Register(){
           password:password,
           username:username
         };
-        registerUser(newUser,dispatch,navigate);
+        registerUser(newUser,dispatch,navigate.push);
       }
     return(
       // <div>
