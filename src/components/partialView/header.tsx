@@ -20,7 +20,7 @@ export default function Header() {
   let axiosJWT = createAxios(user,dispatch,logOutSuccess);
 
   const handleLogout = () =>{
-    logOut(dispatch,id,navigate, accessToken,axiosJWT);
+    logOut(dispatch,id,navigate.push, accessToken,axiosJWT);
   }
   return (
    <div>
