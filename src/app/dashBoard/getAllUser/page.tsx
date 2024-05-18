@@ -8,15 +8,15 @@ import "./getAllUser.css";
 import { loginSuccess } from "../../../redux/features/authSlices";
 
 const HomePage = () => {
-  const user = useSelector((state:any) => state.auth.login?.currentUser);//lay data user trong state redux
-  const userList = useSelector((state:any) => state.users.users?.allUsers);
-  const msg = useSelector((state:any) => state.users?.msg);
+  const user = useSelector((state: any) => state.auth.login?.currentUser); // Get user data from redux state
+  const userList = useSelector((state: any) => state.users.users?.allUsers);
+  const msg = useSelector((state: any) => state.users?.msg);
   const dispatch = useDispatch();
   const navigate = useRouter();
   let axiosJWT = createAxios(user, dispatch, loginSuccess);
   console.log(user);
 
-  const handleDelete = (id:any) => {
+  const handleDelete = (id: any) => {
     deleteUser(user?.accessToken, dispatch, id, axiosJWT);
   };
 
@@ -29,6 +29,16 @@ const HomePage = () => {
     }
   }, []);
 
+  const renderMsg = (msg: any) => {
+    if (typeof msg === 'string') {
+      return msg;
+    }
+    if (typeof msg === 'object' && msg !== null) {
+      return JSON.stringify(msg); // Convert object to string for display
+    }
+    return null;
+  };
+
   return (
     <main className="home-container">
       <div className="home-title">User List</div>
@@ -36,7 +46,7 @@ const HomePage = () => {
         {`Your role: ${user?.admin ? `Admin` : `User`}`}
       </div>
       <div className="home-userlist">
-        {userList?.map((user:any) => {
+        {userList?.map((user: any) => {
           return (
             <div key={user._id} className="user-container">
               <div className="home-user">{user.username}</div>
@@ -51,7 +61,7 @@ const HomePage = () => {
           );
         })}
       </div>
-      <div className="errorMsg">{msg}</div>
+      <div className="errorMsg">{renderMsg(msg)}</div> {/* Render msg properly */}
     </main>
   );
 };

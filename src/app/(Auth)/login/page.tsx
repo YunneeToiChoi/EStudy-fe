@@ -1,4 +1,5 @@
 "use client"
+
 import  Link  from 'next/link';
 import "../../../../public/handicraftCSS/loginAndRegisterAndActive.css"
 import "./login.css"
@@ -6,60 +7,81 @@ import { loginUser } from "../../../redux/features/apiRequest";
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { Button } from '@/components/ui/button'
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+  } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { LoginBody, LoginBodyType } from '@/schemaValidate/auth.schema'
+
 export default function Login() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const form = useForm<LoginBodyType>({
+        resolver: zodResolver(LoginBody),
+        defaultValues: {
+            username: '',
+            password: ''
+        }
+      })
 
     const dispatch = useDispatch();
     const navigate = useRouter();
 
-    const handleLogin = (e:any) => {
-        e.preventDefault();//khong reload trang  khi submit
+    const handleLogin = async (values: LoginBodyType) => {
+        console.log("aaaaa");
+        const { username, password } = values; // Lấy giá trị từ form
         const newUser = {
           username: username,
           password: password,
         };
-        loginUser(newUser, dispatch, navigate.push);
+        await loginUser(newUser, dispatch, navigate.push); // Gọi API login
       };
+
     return (
-        // <div className="content__container">
-        //   <div className="login__container">
-        //     <p className="login__details">
-        //       Đăng nhập ngay để bắt đầu trải nghiệm học tiếng Anh và luyện thi
-        //       TOEIC/IELTS hiệu quả cùng hàng trăm ngàn học viên mỗi ngày.
-        //     </p>
-        //     <a href="/View/profile.html" className="login__btn login__btn--fb"
-        //       >Đăng nhập với Facebook</a
-        //     >
-        //     <br />
-        //     <a href="/View/profile.html" className="login__btn login__btn--gg"
-        //       >Đăng nhập với Google</a
-        //     >
-        //     <br />
-        //     <Link href="/register" className="login__link-to-register">Bạn chưa là một thành viên? Đăng ký ngay!</Link>
-        //   </div>
-        // </div>
-        <section className="login-container">
-            <div className="login-title"> Log in</div>
-            <form onSubmit={handleLogin}>
-                <label>USERNAME</label>
-                <input
-                type="text"
-                placeholder="Enter your username"
-                onChange={(e) => setUsername(e.target.value)}
-                />
-                <label>PASSWORD</label>
-                <input
-                type="password"
-                placeholder="Enter your password"
-                onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit"> Continue </button>
-            </form>
-            <div className="login-register"> Don't have an account yet? </div>
-            <Link className="login-register-link" href="/register">
-                Register one for free
-            </Link>
-        </section>
+
+        <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(handleLogin)}
+          className='space-y-2 max-w-[600px] flex-shrink-0 w-full'
+          noValidate
+        >
+          <FormField
+            control={form.control}
+            name='username'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder='shadcn'{...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='password'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Mật khẩu</FormLabel>
+                <FormControl>
+                  <Input placeholder='shadcn' type='password' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+  
+          <Button type='submit' className='!mt-8 w-full'>
+            Đăng nhập
+          </Button>
+        </form>
+      </Form>
     )
 }

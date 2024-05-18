@@ -52,6 +52,10 @@ https://www.youtube.com/watch?v=jdLsQEZ_H4o&list=PL8HkCX2C5h0VGhZnfbwf2hq7yD7nXM
 # Convert css -> Tailwind tool
 * https://lembdadev.com/tools/tailwind/css-to-tailwind-converter
 
+# Request Api by Axios
+
+# Redux ToolKits-storage-state
+
 https://www.youtube.com/watch?v=ucX2zXAZ1I0&t=1218s
 https://www.youtube.com/watch?v=27hMNWcsa-Y
 https://www.youtube.com/watch?v=ucdjfU_XKpw&list=PLFfVmM19UNqn1ZIWvxn1artfz-C6dgAFb
