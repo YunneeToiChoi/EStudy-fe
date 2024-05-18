@@ -25,7 +25,7 @@ export default function Login() {
     const form = useForm<LoginBodyType>({
         resolver: zodResolver(LoginBody),
         defaultValues: {
-            username: '',
+            email: '',
             password: ''
         }
       })
@@ -35,9 +35,9 @@ export default function Login() {
 
     const handleLogin = async (values: LoginBodyType) => {
         console.log("aaaaa");
-        const { username, password } = values; // Lấy giá trị từ form
+        const { email, password } = values; // Lấy giá trị từ form
         const newUser = {
-          username: username,
+          email: email,
           password: password,
         };
         await loginUser(newUser, dispatch, navigate.push); // Gọi API login
@@ -53,7 +53,7 @@ export default function Login() {
         >
           <FormField
             control={form.control}
-            name='username'
+            name='email'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
