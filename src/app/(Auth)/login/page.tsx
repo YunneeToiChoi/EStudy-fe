@@ -34,7 +34,6 @@ export default function Login() {
     const navigate = useRouter();
 
     const handleLogin = async (values: LoginBodyType) => {
-        console.log("aaaaa");
         const { email, password } = values; // Lấy giá trị từ form
         const newUser = {
           email: email,
