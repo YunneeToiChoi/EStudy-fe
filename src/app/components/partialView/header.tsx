@@ -2,12 +2,12 @@
 import React,{useState} from 'react'
 import { useRouter } from 'next/navigation';
 import {useDispatch, useSelector} from "react-redux";
-import { logOut } from "../../redux/features/apiRequest";
-import { createAxios } from "../../createInstance";
-import { logOutSuccess } from "../../redux/features/authSlices";
+import { logOut } from "../../../redux/features/apiRequest";
+import { createAxios } from "../../../redux/createInstance";
+import { logOutSuccess } from "../../../redux/features/authSlices";
 import { ModeToggle } from "@/components/handicraft/mode-toggle";
-import { ButtonDemo } from '../handicraft/loginBtn';
-import { ButtonGhost } from '../handicraft/registerBtn';
+import { ButtonDemo } from '../../../components/handicraft/loginBtn';
+import { ButtonGhost } from '../../../components/handicraft/registerBtn';
 import  Link  from 'next/link';
 import Image from "next/image";
 

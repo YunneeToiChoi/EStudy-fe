@@ -3,8 +3,8 @@ import  Link  from 'next/link';
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { registerUser } from "../../redux/features/apiRequest";
-import "../handicraftCSS/loginAndRegisterAndActive.css"
+import { registerUser } from "../../../redux/features/apiRequest";
+import "../../../../public/handicraftCSS/loginAndRegisterAndActive.css"
 import "./register.css"
 export default function Register(){
     const [email,setEmail] = useState("");

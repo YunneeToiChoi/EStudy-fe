@@ -1,8 +1,8 @@
 "use client"
 import  Link  from 'next/link';
-import "../handicraftCSS/loginAndRegisterAndActive.css"
+import "../../../../public/handicraftCSS/loginAndRegisterAndActive.css"
 import "./login.css"
-import { loginUser } from "../../redux/features/apiRequest";
+import { loginUser } from "../../../redux/features/apiRequest";
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';

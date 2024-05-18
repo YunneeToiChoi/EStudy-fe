@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { deleteUser, getAllUsers } from "../../../redux/features/apiRequest";
-import { createAxios } from "../../../createInstance";
+import { createAxios } from "../../../redux/createInstance";
 import "./getAllUser.css";
 import { loginSuccess } from "../../../redux/features/authSlices";
 

@@ -1,4 +1,4 @@
-import "../handicraftCSS/loginAndRegisterAndActive.css";
+import "../../../public/handicraftCSS/loginAndRegisterAndActive.css"
 export default function ActiveCourse()
 {
     return(

@@ -11,6 +11,9 @@ import "./handicraftCSS/iconFontA.css";
 // import { ThemeProvider } from "@/components/theme-provider";
 import ReduxProvider from "@/redux/provider";
 
+import Header from "./components/partialView/header";
+import Footer from "./components/partialView/footer";
+
 const roboto = Roboto({ subsets: ["vietnamese"],weight: ['100','300','400','500','700','900']});
 
 export const metadata: Metadata = {
@@ -31,7 +34,11 @@ export default function RootLayout({
               disableTransitionOnChange
           > */}
               <ReduxProvider>
-                  {children}
+                <Header />
+                <div className="content">
+                    {children}
+                </div>
+                <Footer />
               </ReduxProvider>
           {/* </ThemeProvider> */}
         </body>
