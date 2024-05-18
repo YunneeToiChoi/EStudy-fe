@@ -55,3 +55,13 @@ https://www.youtube.com/watch?v=jdLsQEZ_H4o&list=PL8HkCX2C5h0VGhZnfbwf2hq7yD7nXM
 https://www.youtube.com/watch?v=ucX2zXAZ1I0&t=1218s
 https://www.youtube.com/watch?v=27hMNWcsa-Y
 https://www.youtube.com/watch?v=ucdjfU_XKpw&list=PLFfVmM19UNqn1ZIWvxn1artfz-C6dgAFb
+
+
+# Route Groups: Sử dụng khi bạn muốn tổ chức file mà không ảnh hưởng đến URL.
+![alt text](image.png)
+# Dynamic Routes: Sử dụng khi bạn cần route với tham số động.
+![alt text](image-1.png)
+# Parallel Routes: Sử dụng khi bạn cần tải nhiều phần giao diện cùng lúc.
+![alt text](image-2.png)
+# Intercepting Routes: Sử dụng khi bạn cần chặn và xử lý trước khi vào route chính.
+![alt text](image-3.png)
