@@ -58,10 +58,10 @@ https://www.youtube.com/watch?v=ucdjfU_XKpw&list=PLFfVmM19UNqn1ZIWvxn1artfz-C6dg
 
 
 # Route Groups: Sử dụng khi bạn muốn tổ chức file mà không ảnh hưởng đến URL.
-![alt text](image.png)
+![alt text](./public/img/image.png)
 # Dynamic Routes: Sử dụng khi bạn cần route với tham số động.
-![alt text](image-1.png)
+![alt text](./public/img/image-1.png)
 # Parallel Routes: Sử dụng khi bạn cần tải nhiều phần giao diện cùng lúc.
-![alt text](image-2.png)
+![alt text](./public/img/image-2.png)
 # Intercepting Routes: Sử dụng khi bạn cần chặn và xử lý trước khi vào route chính.
-![alt text](image-3.png)
+![alt text](./public/img/image-3.png)
