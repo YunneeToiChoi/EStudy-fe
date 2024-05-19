@@ -1,14 +1,14 @@
 import React from 'react'
-
+import Image from "next/image";
 export default function Footer() {
     return(
         <footer className="footer">
         <div className="grid wide">
           <div className="footer__container row">
             <div className="footer__box col l-2">
-              <img
-                width="100px"
-                height="30px"
+              <Image
+                width={100}
+                height={30}
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EOw8FBT_Sn6rQqg_NQGLLkHQKEQjA1h_c6ujo5_A&s"
                 alt=""
               />

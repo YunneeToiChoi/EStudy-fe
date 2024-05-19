@@ -1,4 +1,5 @@
 import "../courseLearn/courseLearn.css"
+import Image from "next/image";
  export default function vocabularyFlashCard(){
     return(
         <div className="content__container">
@@ -221,7 +222,7 @@ import "../courseLearn/courseLearn.css"
                   <div className="col l-8">
                     <div className="vocabulary__flex-header">
                       <h2 className="vocabulary__content-header">
-                        accountant (n) /ə'kaʊntənt/
+                        accountant (n) /ə&apos;kaʊntənt/
                       </h2>
                       <a href="#" className="vocabulary__speaker">
                         <i
@@ -264,8 +265,8 @@ import "../courseLearn/courseLearn.css"
                     </div>
                   </div>
                   <div className="col l-4">
-                    <img
-                      width="100%"
+                    <Image
+                      width={100}
                       src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
                       alt=""
                     />
@@ -277,7 +278,7 @@ import "../courseLearn/courseLearn.css"
                   <div className="col l-8">
                     <div className="vocabulary__flex-header">
                       <h2 className="vocabulary__content-header">
-                        accountant (n) /ə'kaʊntənt/
+                        accountant (n) /ə&apos;kaʊntənt/
                       </h2>
                       <a href="#" className="vocabulary__speaker">
                         <i
@@ -320,8 +321,8 @@ import "../courseLearn/courseLearn.css"
                     </div>
                   </div>
                   <div className="col l-4">
-                    <img
-                      width="100%"
+                    <Image
+                      width={100}
                       src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
                       alt=""
                     />
@@ -333,7 +334,7 @@ import "../courseLearn/courseLearn.css"
                   <div className="col l-8">
                     <div className="vocabulary__flex-header">
                       <h2 className="vocabulary__content-header">
-                        accountant (n) /ə'kaʊntənt/
+                        accountant (n) /ə&apos;kaʊntənt/
                       </h2>
                       <a href="#" className="vocabulary__speaker">
                         <i
@@ -376,8 +377,8 @@ import "../courseLearn/courseLearn.css"
                     </div>
                   </div>
                   <div className="col l-4">
-                    <img
-                      width="100%"
+                    <Image
+                      width={100}
                       src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
                       alt=""
                     />

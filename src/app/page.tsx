@@ -1,9 +1,11 @@
+import Image from 'next/image';
 export default function Home() {
   return (
     <div>
       <div className="slider">
-        <img
-          width="100%"
+        <Image
+          width={100}
+          height={100}
           src="https://study4.com/media/home/HomeBanner/1/files/233968478_140026628280769_6886569768763456198_n.jpg"
           alt=""
           className="slider__img"
@@ -26,8 +28,9 @@ export default function Home() {
               className="course__link col l-4 m-6 c-12"
             >
               <div className="course__box">
-                <img
-                  width="100%"
+                <Image
+                  width={100}
+                  height={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -60,8 +63,9 @@ export default function Home() {
               className="course__link col l-4 m-6 c-12"
             >
               <div className="course__box">
-                <img
-                  width="100%"
+                <Image
+                  width={100}
+                  height={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -94,8 +98,9 @@ export default function Home() {
               className="course__link col l-4 m-6 c-12"
             >
               <div className="course__box">
-                <img
-                  width="100%"
+                <Image
+                  width={100}
+                  height={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -125,8 +130,9 @@ export default function Home() {
             </a>
           </div>
           <div className="slider slider-middle">
-            <img
-              width="100%"
+            <Image
+              width={100}
+              height={100}
               src="https://study4.com/media/home/HomeBanner/2/files/Webp.net-resizeimage_69.jpg"
               alt=""
               className="slider__img"
@@ -244,9 +250,9 @@ export default function Home() {
             </p>
             <div className="group__container row">
               <div className="group__img col l-3 m-4 c-4">
-                <img
-                  width="100%"
-                  height="100%"
+                <Image
+                  width={100}
+                  height={100}
                   src="https://i.pinimg.com/564x/09/16/d5/0916d56858374ce99472a476b000028b.jpg"
                   alt=""
                 />
@@ -286,10 +292,10 @@ export default function Home() {
         </div>
       </div>
       <div className="course-register">
-        <img
+        <Image
           src="https://images.pexels.com/photos/207756/pexels-photo-207756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          width="100%"
-          height="800px"
+          width={100}
+          height={800}
           alt=""
           className="course-register__img"
         />

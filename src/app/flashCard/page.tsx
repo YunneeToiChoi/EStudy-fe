@@ -1,4 +1,5 @@
 import "./flashCard.css"
+import Image from "next/image";
 export default function FlashCard(){
     return(
        <div>
@@ -21,9 +22,9 @@ export default function FlashCard(){
               bài thi. <a href="" className="alert__link">Xem hướng dẫn</a>.
             </p>
             <div className="slider">
-              <img
-                width="100%"
-                height="150px"
+              <Image
+                width={100}
+                height={150}
                 src="https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?cs=srgb&dl=pexels-pixabay-220067.jpg&fm=jpg"
                 alt=""
                 className="slider__img"
@@ -44,9 +45,9 @@ export default function FlashCard(){
                         <span className="exam__text">297723</span>
                       </div>
                       <div className="flashcard__create-by">
-                        <img
-                          width="30px"
-                          height="30px"
+                        <Image
+                          width={30}
+                          height={30}
                           src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/440441668_2839137929569944_3273543100897021092_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gNG57XRNeaEQ7kNvgEYn11P&_nc_ht=scontent.fsgn5-15.fna&oh=00_AYCiNe02zy_zkmP8ShYIJk3FLW4FqV_s8DdjIw5aXoOi8A&oe=66437E75"
                           alt=""
                           className="flashcard__img"
@@ -67,9 +68,9 @@ export default function FlashCard(){
                         <span className="exam__text">297723</span>
                       </div>
                       <div className="flashcard__create-by">
-                        <img
-                          width="30px"
-                          height="30px"
+                        <Image
+                          width={30}
+                          height={30}
                           src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/440441668_2839137929569944_3273543100897021092_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gNG57XRNeaEQ7kNvgEYn11P&_nc_ht=scontent.fsgn5-15.fna&oh=00_AYCiNe02zy_zkmP8ShYIJk3FLW4FqV_s8DdjIw5aXoOi8A&oe=66437E75"
                           alt=""
                           className="flashcard__img"
@@ -90,9 +91,9 @@ export default function FlashCard(){
                         <span className="exam__text">297723</span>
                       </div>
                       <div className="flashcard__create-by">
-                        <img
-                          width="30px"
-                          height="30px"
+                        <Image
+                          width={30}
+                          height={30}
                           src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/440441668_2839137929569944_3273543100897021092_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gNG57XRNeaEQ7kNvgEYn11P&_nc_ht=scontent.fsgn5-15.fna&oh=00_AYCiNe02zy_zkmP8ShYIJk3FLW4FqV_s8DdjIw5aXoOi8A&oe=66437E75"
                           alt=""
                           className="flashcard__img"
@@ -113,9 +114,9 @@ export default function FlashCard(){
                         <span className="exam__text">297723</span>
                       </div>
                       <div className="flashcard__create-by">
-                        <img
-                          width="30px"
-                          height="30px"
+                        <Image
+                          width={30}
+                          height={30}
                           src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/440441668_2839137929569944_3273543100897021092_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gNG57XRNeaEQ7kNvgEYn11P&_nc_ht=scontent.fsgn5-15.fna&oh=00_AYCiNe02zy_zkmP8ShYIJk3FLW4FqV_s8DdjIw5aXoOi8A&oe=66437E75"
                           alt=""
                           className="flashcard__img"
@@ -136,9 +137,9 @@ export default function FlashCard(){
                         <span className="exam__text">297723</span>
                       </div>
                       <div className="flashcard__create-by">
-                        <img
-                          width="30px"
-                          height="30px"
+                        <Image
+                          width={30}
+                          height={30}
                           src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/440441668_2839137929569944_3273543100897021092_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gNG57XRNeaEQ7kNvgEYn11P&_nc_ht=scontent.fsgn5-15.fna&oh=00_AYCiNe02zy_zkmP8ShYIJk3FLW4FqV_s8DdjIw5aXoOi8A&oe=66437E75"
                           alt=""
                           className="flashcard__img"
@@ -151,16 +152,16 @@ export default function FlashCard(){
               </div>
               <div className="content__right col l-4 m-4 c-12">
                 <a href="" className="content__link">
-                  <img
-                    width="100%"
+                  <Image
+                    width={100}
                     src="https://study4.com/media/home/HomeBanner/files/2023/03/31/Learning_English_with_1.png"
                     alt=""
                     className="content__img"
                   />
                 </a>
                 <a href="" className="content__link">
-                  <img
-                    width="100%"
+                  <Image
+                    width={100}
                     src="https://study4.com/media/home/HomeBanner/files/2022/07/06/Learning_English_with.jpg"
                     alt=""
                     className="content__img"

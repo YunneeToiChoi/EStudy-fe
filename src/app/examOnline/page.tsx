@@ -1,4 +1,5 @@
 import "./examOnline.css"
+import Image from "next/image";
 export default function ExamOnline()
 {
     return(
@@ -214,16 +215,16 @@ export default function ExamOnline()
           </div>
           <div className="content__right col l-4 m-4 c-12">
             <a href="" className="content__link">
-              <img
-                width="100%"
+              <Image
+                width={100}
                 src="https://study4.com/media/home/HomeBanner/files/2023/03/31/Learning_English_with_1.png"
                 alt=""
                 className="content__img"
               />
             </a>
             <a href="" className="content__link">
-              <img
-                width="100%"
+              <Image
+                width={100}
                 src="https://study4.com/media/home/HomeBanner/files/2022/07/06/Learning_English_with.jpg"
                 alt=""
                 className="content__img"
@@ -255,9 +256,9 @@ export default function ExamOnline()
         </div>
         <div className="examOnline-slider">
           <a href="" className="slider__link">
-            <img
-              width="100%"
-              height="160px"
+            <Image
+              width={100}
+              height={160}
               src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg"
               alt=""
               className="slider__img"

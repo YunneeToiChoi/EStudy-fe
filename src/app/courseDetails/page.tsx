@@ -1,5 +1,6 @@
 import "./courseDetails.css"
 import "../examOnline/examOnline.css"
+import Image from "next/image";
 export default function CourseDetail()
 {
     return(
@@ -55,9 +56,9 @@ export default function CourseDetail()
         <div className="details-under have--bg-color">
           <div className="grid wide">
             <div className="details__box-fixed hide-on-tablet">
-              <img
-                width="100%"
-                height="150px"
+              <Image
+                width={100}
+                height={150}
                 src="https://study4.com/media/courses/CourseSeries/files/2023/10/11/combo_intensive.webp"
                 alt=""
                 className="details__img"
@@ -205,9 +206,9 @@ export default function CourseDetail()
                 className="details__content-right col l-4 m-6 c-12 hide-on-mobile hide"
               >
                 <div className="details__box-fixed">
-                  <img
-                    width="100%"
-                    height="150px"
+                  <Image
+                    width={100}
+                    height={150}
                     src="https://study4.com/media/courses/CourseSeries/files/2023/10/11/combo_intensive.webp"
                     alt=""
                     className="details__img"

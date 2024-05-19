@@ -28,12 +28,12 @@ export default function Header() {
       <div className="grid wide">
         <div className="nav__container">
           <Link href="/">
-            <img
+            <Image
               className="nav__img"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EOw8FBT_Sn6rQqg_NQGLLkHQKEQjA1h_c6ujo5_A&s"
               alt="Logo"
-              width="150px"
-              height="55px"
+              width={150}
+              height={55}
             />
           </Link>
           <div className="nav_right">

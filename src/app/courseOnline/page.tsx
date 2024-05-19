@@ -1,5 +1,6 @@
 
 import "./courseOnline.css"
+import Image from "next/image";
 
 export default function CourseOOnline()
 {
@@ -7,9 +8,9 @@ export default function CourseOOnline()
         <div>
       <div className="grid wide">
         <a href="" className="content__link">
-          <img
-            width="100%"
-            height="100px"
+          <Image
+            width={100}
+            height={100}
             src="https://img.freepik.com/free-vector/white-gray-abstract-background_1108-591.jpg?t=st=1715010324~exp=1715010924~hmac=da387e64ab7fc4690eccaf37e29a8ba79ca1aa613fed3c1e2e0c6c16d38d6030"
             alt=""
             className="content__img"
@@ -32,8 +33,8 @@ export default function CourseOOnline()
               className="course__link col l-4 m-6 c-12"
             >
               <div className="course__box">
-                <img
-                  width="100%"
+                <Image
+                  width={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -66,8 +67,8 @@ export default function CourseOOnline()
               className="course__link col l-4 m-6 c-12"
             >
               <div className="course__box">
-                <img
-                  width="100%"
+                <Image
+                  width={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -100,8 +101,8 @@ export default function CourseOOnline()
               className="course__link col l-4 m-6 c-12"
             >
               <div className="course__box">
-                <img
-                  width="100%"
+                <Image
+                  width={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -138,8 +139,8 @@ export default function CourseOOnline()
                 className="course__link col l-4 m-6 c-12"
               >
                 <div className="course__box">
-                  <img
-                    width="100%"
+                  <Image
+                    width={100}
                     src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                     alt=""
                     className="course__img"
@@ -172,8 +173,8 @@ export default function CourseOOnline()
                 className="course__link col l-4 m-6 c-12"
               >
                 <div className="course__box">
-                  <img
-                    width="100%"
+                  <Image
+                    width={100}
                     src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                     alt=""
                     className="course__img"
@@ -206,8 +207,8 @@ export default function CourseOOnline()
                 className="course__link col l-4 m-6 c-12"
               >
                 <div className="course__box">
-                  <img
-                    width="100%"
+                  <Image
+                    width={100}
                     src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                     alt=""
                     className="course__img"
