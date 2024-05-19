@@ -25,6 +25,14 @@
     --alert-text-color: #1f5e39;
     --alert-flashcard-color: #d8f0e2;
     --economy-price-text-color: #e43a45;
+    --flashcard-train-btn-color: #2e4687;
+    --vocabulary-icon-color: #0c6ff9;
+    --answer-btn-color: #dfe6e9;
+    --answer-btn-hover-color: #b2bec3;
+    --paircard-volcabulary-text-color: #e67e22;
+    --spell-listen-bg-color: #ecf0f1;
+    --spell-alert-bg-color: #ffefd8;
+    --spell-alert-text-color: #855a1f;
 }
 
 @keyframes fadeIn{
