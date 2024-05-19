@@ -1,6 +1,7 @@
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
+import "@/../public/handicraftCSS/loginAndRegisterAndActive.css"
 import {
   Controller,
   ControllerProps,
@@ -155,7 +156,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-[0.8rem] font-medium text-destructive", className)}
+      className="Error_messages"
       {...props}
     >
       {body}

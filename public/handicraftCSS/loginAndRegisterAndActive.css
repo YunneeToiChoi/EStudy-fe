@@ -69,6 +69,7 @@
 
 .active__course-label{
     font-size: 1rem;
+    font-weight: 500;
     margin: 10px 0px;
 }
 
@@ -109,4 +110,13 @@
 
 .active__course-connect{
     font-size: 1rem;
+}
+
+.Error_messages{
+    color: rgb(217, 30, 30);
+    font-size: 0.7rem;
+    font-style: italic;
+    padding-left: 10px;
+    font-family: 'Arial', sans-serif;
+    margin-top: 5px;
 }
