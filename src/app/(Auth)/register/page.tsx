@@ -31,17 +31,19 @@ export default function Register(){
       defaultValues: {
         email: '',
         username: '',
+        phone:'',
         password: '',
         confirmPassword: ''
       }
     })
 
     const handleRegister = async (values:RegisterBodyType)=>{
-        const { email, password, username } = values;
+        const { email, password, username,phone } = values;
         const newUser = {
           email: email,
           password:password,
-          username:username
+          username:username,
+          phone:phone
         };
         registerUser(newUser,dispatch,navigate.push);
       }
@@ -69,11 +71,19 @@ export default function Register(){
                   </FormItem>
                 )}
               />
-              <p className="active__course-label">Phone numbers</p>
-              <input
-                type="tel"
-                className="active__course-input"
-                placeholder="Nhập số điện thoại"/>
+                <FormField
+                control={form.control}
+                name='phone'
+                render={({ field }) => (
+                  <FormItem>
+                    <p className="active__course-label">Your phone numbers</p>
+                    <FormControl>
+                      <Input placeholder='Nhập số điện thoại'{...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name='username'

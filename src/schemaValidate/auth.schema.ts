@@ -40,6 +40,11 @@ export const RegisterBody = z
     .min(1,{message:"Input cannot be empty"})
     .email({message:"Invalid email format"})
     .max(50, { message: "Invalid email format. Email is too long" }),
+    phone: z.string()
+    .min(1,{message:"Input cannot be empty"})
+    .min(9, { message: "Phone number is invalid" })
+    .max(12, { message: "Phone number is invalid" })
+    .regex(/^\d+$/, { message: "Phone number must contain only digits" }), 
     password: z
     .string()
     .min(1,{message:"Input cannot be empty"})

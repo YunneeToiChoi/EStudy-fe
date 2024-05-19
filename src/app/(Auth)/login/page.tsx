@@ -62,7 +62,7 @@ export default function Login() {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input placeholder='shadcn'{...field} />
+                          <Input placeholder='Nhập email'{...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -75,7 +75,7 @@ export default function Login() {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input placeholder='shadcn' type='password' {...field} />
+                          <Input placeholder='Nhập mật khẩu' type='password' {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
