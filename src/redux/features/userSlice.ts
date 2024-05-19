@@ -34,7 +34,13 @@ const userSlice = createSlice({
             state.users.isFetching = false;
             state.users.error = true;
             state.msg = action.payload;
-        } 
+        },
+        resetMsg: (state)=>{
+            state.users.allUsers=null,
+            state.users.isFetching=false,
+            state.users.error=false,
+            state.msg = ""
+        }
     }
 })
 
@@ -44,7 +50,8 @@ export const {
     getUsersFailed,
     deleteUserStart,
     deleteUsersSuccess,
-    deleteUserFailed
+    deleteUserFailed,
+    resetMsg
 } = userSlice.actions;
 
 export default userSlice.reducer;
