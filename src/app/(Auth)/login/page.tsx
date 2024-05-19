@@ -43,44 +43,58 @@ export default function Login() {
       };
 
     return (
-
-        <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleLogin)}
-          className='space-y-2 max-w-[600px] flex-shrink-0 w-full'
-          noValidate
-        >
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder='shadcn'{...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='password'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Mật khẩu</FormLabel>
-                <FormControl>
-                  <Input placeholder='shadcn' type='password' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-  
-          <Button type='submit' className='!mt-8 w-full'>
-            Đăng nhập
-          </Button>
-        </form>
-      </Form>
+      <div className="content__container">
+        <div className="login__container">
+          <p className="login__details">
+            Đăng nhập ngay để bắt đầu trải nghiệm học tiếng Anh và luyện thi
+            TOEIC/IELTS hiệu quả cùng hàng trăm ngàn học viên mỗi ngày.
+          </p>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleLogin)}
+              className='space-y-2 max-w-[600px] flex-shrink-0 w-full'
+              noValidate
+            >
+                    <p className="active__course-label">Email</p>
+                    <FormField
+                    control={form.control}
+                    name='email'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder='shadcn'{...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+              <p className="active__course-label">Mật khẩu</p>
+              <FormField
+                    control={form.control}
+                    name='password'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder='shadcn' type='password' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type='submit' className="active__course-link">
+                    Đăng nhập
+                  </Button>
+            </form>
+          </Form>
+          <Link href="" className="login__btn login__btn--fb"
+                >Đăng nhập với Facebook</Link>
+              <br />
+              <Link href="" className="login__btn login__btn--gg"
+                >Đăng nhập với Google</Link>
+          <br />
+          <Link href="/register" className="login__link-to-register"
+            >Bạn chưa là một thành viên? Đăng ký ngay!</Link>
+        </div>
+      </div>
     )
 }

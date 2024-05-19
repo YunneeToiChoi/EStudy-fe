@@ -118,9 +118,9 @@ export default function Register(){
               </Button>
             </form>
             </Form>
-            <a href="" className="login__btn login__btn--fb">Đăng ký với Facebook</a>
+            <Link href="" className="login__btn login__btn--fb">Đăng ký với Facebook</Link>
             <br />
-            <a href="" className="login__btn login__btn--gg">Đăng ký với Google</a>
+            <Link href="" className="login__btn login__btn--gg">Đăng ký với Google</Link>
             <br />
             <p className="register__privacy">
               Bằng cách đăng ký, bạn đồng ý với
