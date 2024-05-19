@@ -1,20 +1,20 @@
 import "./profile.css"
+import Image from 'next/image';
 export default function Profile()
 {
     return(
         <div className="grid wide">
         <div className="img__container">
           <div className="avatar__container">
-            <img
+            <Image
               src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg"
-              width="100%"
-              height="120px"
+              width={100}
+              height={120}
               alt=""
-              className="backgroud__avt"
-            />
-            <img
-              width="100px"
-              height="100px"
+              className="backgroud__avt"/>
+            <Image
+              width={100}
+              height={100}
               src="https://static.vecteezy.com/system/resources/previews/030/504/836/non_2x/avatar-account-flat-isolated-on-transparent-background-for-graphic-and-web-design-default-social-media-profile-photo-symbol-profile-and-people-silhouette-user-icon-vector.jpg"
               alt=""
               className="avt__user"
