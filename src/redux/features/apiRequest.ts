@@ -26,8 +26,8 @@ export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truy
     const res = await axios.post("http://localhost:8000/v1/auth/login", user,{withCredentials:true});
     dispatch(loginSuccess(res.data));//nhan du lieu tu backend
     navigate("/");
-  } catch (err) {
-    dispatch(loginFailed());
+  } catch (err:any) {
+    dispatch(loginFailed(err.response.data));
   }
 };
 
@@ -37,8 +37,8 @@ export const registerUser = async (user:any, dispatch:any, navigate:any) => {
     await axios.post("http://localhost:8000/v1/auth/register", user);
     dispatch(registerSuccess());
     navigate("/login");
-  } catch (err) {
-    dispatch(registerFailed());
+  } catch (err:any) {
+    dispatch(registerFailed(err.response.data));
   }
 };
 
@@ -49,8 +49,8 @@ export const getAllUsers = async (accessToken:any, dispatch:any, axiosJWT:any) =
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(getUsersSuccess(res.data));
-  } catch (err) {
-    dispatch(getUsersFailed());
+  } catch (err:any) {
+    dispatch(getUsersFailed(err.response.data));
   }
 };
 
@@ -74,7 +74,7 @@ export const logOut = async (dispatch:any, id:any, navigate:any, accessToken:any
     });
     dispatch(logOutSuccess());
     navigate("/login");
-  } catch (err) {
-    dispatch(logOutFailed());
+  } catch (err:any) {
+    dispatch(logOutFailed(err.response.data));
   }
 };

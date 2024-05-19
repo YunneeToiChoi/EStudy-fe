@@ -6,14 +6,13 @@ export const LoginBody = z
   .object({
     email: z
       .string()
-      .min(1, { message: "không để trống" })  // Đảm bảo trường không để trống
-      .min(10,{ message: "email không hợp lệ"})
-      .max(50, { message: "email không hợp lệ" })
-      .email({ message: "email không hợp lệ" }),
+      .min(1, { message: "Input cannot be empty !" })  // Đảm bảo trường không để trống
+      .email({ message: "Invalid email format!" })
+      .max(50, { message: "Invalid email format. Email is too long!" }),
     password: z
       .string()
-      .min(1, { message: "không để trống" })  // Đảm bảo trường không để trống
-      .min(8, { message: "Mật khẩu phải có ít nhất 8 ký tự" })
+      .min(1, { message: "Input cannot be empty !" })  // Đảm bảo trường không để trống
+      .min(8, { message: "Password must be at least 8 characters long!" })
   })
   .superRefine(({ password }, ctx) => {
     if (!passwordPattern.test(password)) {
@@ -30,17 +29,31 @@ export type LoginBodyType = z.TypeOf<typeof LoginBody>;
 
 export const RegisterBody = z
   .object({
-    username: z.string().trim().min(2).max(256),
-    email: z.string().email(),
-    password: z.string().min(6).max(100),
-    confirmPassword: z.string().min(6).max(100)
+    username: z
+    .string()
+    .trim()
+    .min(1,{message:"Input cannot be empty!"})
+    .min(6,{message:"Username is invalid!"})
+    .max(20,{message:"Username is invalid. username is too long!"}),
+    email: z
+    .string()
+    .min(1,{message:"Input cannot be empty!"})
+    .email({message:"Invalid email format!"})
+    .max(50, { message: "Invalid email format. Email is too long!" }),
+    password: z
+    .string()
+    .min(1,{message:"Input cannot be empty!"})
+    .min(8,{message:"Password must be at least 8 characters long!"}),
+    confirmPassword: z
+    .string()
+    .min(1,{message:"Input cannot be empty!"})
   })
   .strict()
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: 'custom',
-        message: 'Mật khẩu không khớp',
+        message: 'Confirm Password do not match!',
         path: ['confirmPassword']
       })
     }

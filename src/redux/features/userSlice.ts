@@ -18,9 +18,10 @@ const userSlice = createSlice({
             state.users.isFetching = false;
             state.users.allUsers = action.payload;
         },
-        getUsersFailed: (state) => {
+        getUsersFailed: (state,action) => {
             state.users.isFetching = false;
             state.users.error = true;
+            state.msg = action.payload;
         },
         deleteUserStart: (state)=>{
             state.users.isFetching = true;
