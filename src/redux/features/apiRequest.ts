@@ -26,7 +26,7 @@ const URL_ENDPOINT=process.env.NEXT_PUBLIC_API_ENDPOINT;
 export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
   dispatch(loginStart());
   try {
-    const res = await axios.post(`${URL_ENDPOINT}/v1/auth/login`, user,{withCredentials:true});
+    const res = await axios.post(`${URL_ENDPOINT}/Auth/Login`, user,{withCredentials:true});
     dispatch(loginSuccess(res.data));//nhan du lieu tu backend
     navigate("/");
   } catch (err:any) {
@@ -37,7 +37,7 @@ export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truy
 export const registerUser = async (user:any, dispatch:any, navigate:any) => {
   dispatch(registerStart());
   try {
-    await axios.post(`${URL_ENDPOINT}/v1/auth/register`, user);
+    await axios.post(`${URL_ENDPOINT}/Auth/Register`, user);
     dispatch(registerSuccess());
     navigate("/login");
   } catch (err:any) {
