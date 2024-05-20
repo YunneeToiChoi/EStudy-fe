@@ -158,21 +158,6 @@ export default function Home() {
             </div>
           </div>
           <div className="slider slider-middle">
-            <Image
-              width={100}
-              height={100}
-              src="https://study4.com/media/home/HomeBanner/2/files/Webp.net-resizeimage_69.jpg"
-              alt=""
-              className="slider__img"
-            />
-            <div className="arrow__container">
-              <a href="" className="slider__link"
-                ><i className="fa-solid fa-chevron-left slider__icon"></i
-              ></a>
-              <a href="" className="slider__link">
-                <i className="fa-solid fa-chevron-right slider__icon"></i>
-              </a>
-            </div>
           </div>
           <div className="exam">
             <h2 className="exam__header">Đề thi mới nhất</h2>

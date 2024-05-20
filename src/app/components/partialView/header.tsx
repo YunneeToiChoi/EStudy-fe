@@ -24,8 +24,8 @@ export default function Header() {
      <nav className=" fixed top-0 z-20 h-28 w-full pt-7">
       <div className="w-full block max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
-          <div className=' flex gap-2 items-center'>
-            <Link href="/">
+          <div >
+            <Link className=' flex gap-2 items-center' href="/">
               <Image
                 className="nav__img"
                 src="/img/.svg/logo.svg"
@@ -34,11 +34,11 @@ export default function Header() {
                 height={80}
                 quality={100}
               />
-            </Link>
-            <h1 className=' text-2xl font-semibold tracking-wide'>
+               <h1 className=' text-2xl font-semibold tracking-wide'>
               E-
               <span className='text-primary-bg-color'>Study</span>
             </h1>
+            </Link>
           </div>
           <div className=''>
             <ul className=" list-none flex items-center max-lg:hidden gap-6">
