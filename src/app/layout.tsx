@@ -30,7 +30,7 @@ export default function RootLayout({
           <div className=" absolute left-0 right-0 z-10 backdrop-blur-xl bg-white/90 ">
             <ReduxProvider>
               <Header />
-              <div className="content">
+              <div className=" pt-28">
                   {children}
               </div>
               <Footer />

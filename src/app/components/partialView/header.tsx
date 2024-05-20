@@ -62,8 +62,11 @@ export default function Header() {
                 </li>
             </ul>
           </div>
-          <div className="nav_right">
-          <div>
+          <div className="">
+          <div className=' flex gap-4'>
+            <div className={`${user?'hidden':'block'} cursor-pointer hover:scale-110 px-[20px] py-[8px] border-w=[2px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-700 shadow-md ease-in-out`}>
+            <Link href="/login" className=" text-base no-underline font-medium text-primary-bg-color tracking-wide">Sign in</Link>
+            </div>
             <div className=" cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-700 shadow-md ease-in-out">
                   {user?(
                       <>
@@ -71,7 +74,7 @@ export default function Header() {
                       <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
                       </>
                       ):(
-                        <Link href="/login" className=" text-base no-underline font-medium text-white tracking-wide">Sign in</Link>
+                        <Link href="/register" className=" text-base no-underline font-medium text-white tracking-wide">Get Started</Link>
                       )}
             </div>
           </div>

@@ -2,13 +2,14 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div>
-      <div className="slider">
+      <div className="flex gap-5">
+        <div className='w-3/6'></div>
         <Image
           width={100}
           height={100}
-          src="https://study4.com/media/home/HomeBanner/1/files/233968478_140026628280769_6886569768763456198_n.jpg"
+          src="/img/.svg/Certification.svg"
           alt=""
-          className="slider__img"
+          className=" w-3/6 "
         />
         <div className="arrow__container">
           <a href="" className="slider__link"
