@@ -21,8 +21,8 @@ export default function Header() {
   }
   return (
    <div>
-     <nav className=" fixed z-20 h-28 w-full pt-7">
-      <div className="w-full block max-w-[1200px] mx-auto">
+     <nav className=" fixed top-0 z-20 h-28 w-full pt-7">
+      <div className="w-full block max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <div className=' flex gap-2 items-center'>
             <Link href="/">
@@ -64,10 +64,10 @@ export default function Header() {
           </div>
           <div className="">
           <div className=' flex gap-4'>
-            <div className={`${user?'hidden':'block'} cursor-pointer hover:scale-110 px-[20px] py-[8px] border-w=[2px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-700 shadow-md ease-in-out`}>
+            <div className={`${user?'hidden':'block'} cursor-pointer hover:scale-110 px-[20px] py-[8px] border-[1px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-500 shadow-md ease-in-out`}>
             <Link href="/login" className=" text-base no-underline font-medium text-primary-bg-color tracking-wide">Sign in</Link>
             </div>
-            <div className=" cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-700 shadow-md ease-in-out">
+            <div className=" cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
                   {user?(
                       <>
                       <p>Hi <span>{user.username}</span></p>

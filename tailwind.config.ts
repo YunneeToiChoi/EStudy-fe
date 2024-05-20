@@ -52,6 +52,7 @@ const config = {
         'economy-price-text-color': '#e43a45',
         'primary-bg-color': '#4540E1',
         'primary-bg-color-hover':'#3E3AD4',
+        'primary-bg-orange-color': '#ed7c40',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
