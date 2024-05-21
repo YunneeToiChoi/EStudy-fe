@@ -40,7 +40,7 @@ export default function Register(){
     const handleRegister = async (values:RegisterBodyType)=>{
         const { email, password, username,phone } = values;
         const newUser = {
-          Email: email,
+          UsersEmail: email,
           UsersPassword:password,
           UsersName:username,
         };

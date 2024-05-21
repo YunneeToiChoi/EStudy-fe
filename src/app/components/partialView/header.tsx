@@ -70,7 +70,7 @@ export default function Header() {
             <div className=" cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
                   {user?(
                       <>
-                      <p>Hi <span>{user.username}</span></p>
+                      <p>Hi <span>{user.usersName}</span></p>
                       <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
                       </>
                       ):(
@@ -107,7 +107,7 @@ export default function Header() {
                 <li className="nav__item-mobile nav__item-login nav__item-login-mobile">
                 {user?(
                   <>
-                  <p>Hi <span>{user.username}</span></p>
+                  <p>Hi <span>{user.usersName}</span></p>
                   <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
                   </>
                   ):(

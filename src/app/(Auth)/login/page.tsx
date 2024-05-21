@@ -36,7 +36,7 @@ export default function Login() {
     const handleLogin = async (values: LoginBodyType) => {
         const { email, password } = values; // Lấy giá trị từ form
         const newUser = {
-          Email: email,
+          UsersEmail: email,
           UsersPassword: password,
         };
         await loginUser(newUser, dispatch, navigate.push); // Gọi API login
