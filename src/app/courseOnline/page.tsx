@@ -35,6 +35,7 @@ export default function CourseOOnline()
               <div className="course__box">
                 <Image
                   width={100}
+                  height={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -69,6 +70,7 @@ export default function CourseOOnline()
               <div className="course__box">
                 <Image
                   width={100}
+                  height={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -103,6 +105,7 @@ export default function CourseOOnline()
               <div className="course__box">
                 <Image
                   width={100}
+                  height={100}
                   src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                   alt=""
                   className="course__img"
@@ -141,6 +144,7 @@ export default function CourseOOnline()
                 <div className="course__box">
                   <Image
                     width={100}
+                    height={100}
                     src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                     alt=""
                     className="course__img"
@@ -175,6 +179,7 @@ export default function CourseOOnline()
                 <div className="course__box">
                   <Image
                     width={100}
+                    height={100}
                     src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                     alt=""
                     className="course__img"
@@ -209,6 +214,7 @@ export default function CourseOOnline()
                 <div className="course__box">
                   <Image
                     width={100}
+                    height={100}
                     src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
                     alt=""
                     className="course__img"

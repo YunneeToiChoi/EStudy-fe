@@ -154,6 +154,7 @@ export default function FlashCard(){
                 <a href="" className="content__link">
                   <Image
                     width={100}
+                    height={100}
                     src="https://study4.com/media/home/HomeBanner/files/2023/03/31/Learning_English_with_1.png"
                     alt=""
                     className="content__img"
@@ -162,6 +163,7 @@ export default function FlashCard(){
                 <a href="" className="content__link">
                   <Image
                     width={100}
+                    height={100}
                     src="https://study4.com/media/home/HomeBanner/files/2022/07/06/Learning_English_with.jpg"
                     alt=""
                     className="content__img"

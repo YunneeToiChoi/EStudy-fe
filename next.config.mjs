@@ -32,6 +32,18 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'scontent.fsgn5-15.fna.fbcdn.net',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'img.freepik.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
 };
