@@ -33,6 +33,7 @@
     --spell-listen-bg-color: #ecf0f1;
     --spell-alert-bg-color: #ffefd8;
     --spell-alert-text-color: #855a1f;
+    --grammar-btn-color: #dfdfe1;
 }
 
 @keyframes fadeIn{
