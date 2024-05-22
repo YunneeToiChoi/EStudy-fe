@@ -64,19 +64,19 @@ export default function Header() {
           </div>
           <div className="">
           <div className=' flex gap-4'>
-            <div className={`${user?'hidden':'block'} cursor-pointer hover:scale-110 px-[20px] py-[8px] border-[1px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-500 shadow-md ease-in-out`}>
-            <Link href="/login" className=" text-base no-underline font-medium text-primary-bg-color tracking-wide">Sign in</Link>
-            </div>
-            <div className=" cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
+            <Link href="/login" className={`${user?'hidden':'block'} cursor-pointer hover:scale-110 px-[20px] py-[8px] border-[1px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-500 shadow-md ease-in-out`}>
+            <span className=" text-base no-underline font-medium text-primary-bg-color tracking-wide">Sign in</span>
+            </Link>
+            <Link  href={`${user?'/':'/register'}`} className=" cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
                   {user?(
                       <>
                       <p>Hi <span>{user.usersName}</span></p>
-                      <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
+                      <span  className="navbar-logout" onClick={handleLogout}> Log out</span>
                       </>
                       ):(
-                        <Link href="/register" className=" text-base no-underline font-medium text-white tracking-wide">Get Started</Link>
+                        <span  className=" text-base no-underline font-medium text-white tracking-wide">Get Started</span>
                       )}
-            </div>
+            </Link>
           </div>
             <label htmlFor="nav-mobile-input" className="menubar__icon hide">
               <i className="fa-solid fa-bars nav__icon"></i>

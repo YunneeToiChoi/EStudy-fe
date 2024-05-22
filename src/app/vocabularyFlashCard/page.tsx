@@ -267,6 +267,7 @@ import Image from "next/image";
                   <div className="col l-4">
                     <Image
                       width={100}
+                      height={100}
                       src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
                       alt=""
                     />
@@ -323,6 +324,7 @@ import Image from "next/image";
                   <div className="col l-4">
                     <Image
                       width={100}
+                      height={100}
                       src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
                       alt=""
                     />
@@ -379,6 +381,7 @@ import Image from "next/image";
                   <div className="col l-4">
                     <Image
                       width={100}
+                      height={100}
                       src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
                       alt=""
                     />
