@@ -9,7 +9,7 @@ kế theo chương trình tiếng Anh chuẩn CEFR (A1-C2) của đại học
 Cambridge và Oxford (Anh) với hệ thống bài giảng, bài tập phong phú
 đa dạng. Bạn có thể học thử miễn phí trước khi đặt mua sản phẩm.`;
 
-export default function CourseOOnline()
+export default function CourseOnline()
 {
     return(
         <div>
