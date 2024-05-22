@@ -1,5 +1,4 @@
 import * as React from "react"
-import "@/../public/handicraftCSS/loginAndRegisterAndActive.css"
 
 import { cn } from "@/lib/utils"
 
@@ -11,7 +10,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
-        className="active__course-input"
+        className=" text-base w-full p-3 rounded-sm border-[2px] border-input-color outline-none focus:outline-none focus:border-primary-bg-color"
         ref={ref}
         {...props}
       />

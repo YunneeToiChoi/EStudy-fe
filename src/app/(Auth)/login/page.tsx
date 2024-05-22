@@ -43,8 +43,8 @@ export default function Login() {
       };
 
     return (
-      <div className="content__container">
-        <div className="login__container">
+      <div className=" mx-10 flex items-center justify-center">
+        <div className=" w-[600px] px-[60px] py-[30px] rounded-lg shadow-xl">
           <p className="login__details">
             Đăng nhập ngay để bắt đầu trải nghiệm học tiếng Anh và luyện thi
             TOEIC/IELTS hiệu quả cùng hàng trăm ngàn học viên mỗi ngày.
