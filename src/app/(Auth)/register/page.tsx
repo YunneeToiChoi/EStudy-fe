@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { registerUser } from "../../../redux/features/apiRequest";
-import "./register.css"
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
@@ -48,7 +46,7 @@ export default function Register(){
     return(
         <div className="mx-10 flex items-center justify-center">
           <div className=" w-[600px] px-[60px] py-[30px] rounded-lg shadow-xl">
-            <p className=" text-lg">
+            <p className=" text-base font-medium">
               Đăng ký ngay để bắt đầu trải nghiệm học tiếng Anh và luyện thi
               TOEIC/IELTS hiệu quả cùng hàng trăm ngàn học viên mỗi ngày.
             </p>

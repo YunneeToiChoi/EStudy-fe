@@ -1,8 +1,6 @@
 "use client"
 
 import  Link  from 'next/link';
-import "../../../../public/handicraftCSS/loginAndRegisterAndActive.css"
-import "./login.css"
 import { loginUser } from "../../../redux/features/apiRequest";
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
@@ -45,17 +43,17 @@ export default function Login() {
     return (
       <div className=" mx-10 flex items-center justify-center">
         <div className=" w-[600px] px-[60px] py-[30px] rounded-lg shadow-xl">
-          <p className="login__details">
+          <p className=" text-base font-medium">
             Đăng nhập ngay để bắt đầu trải nghiệm học tiếng Anh và luyện thi
             TOEIC/IELTS hiệu quả cùng hàng trăm ngàn học viên mỗi ngày.
           </p>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(handleLogin)}
-              className='space-y-2 max-w-[600px] flex-shrink-0 w-full'
+              className='flex flex-col'
               noValidate
             >
-                    <p className="active__course-label">Email</p>
+                    <p className="text-base font-medium mt-5 mb-1">Email</p>
                     <FormField
                     control={form.control}
                     name='email'
@@ -68,7 +66,7 @@ export default function Login() {
                       </FormItem>
                     )}
                   />
-              <p className="active__course-label">Mật khẩu</p>
+              <p className="text-base font-medium mt-5 mb-1">Mật khẩu</p>
               <FormField
                     control={form.control}
                     name='password'
@@ -81,18 +79,18 @@ export default function Login() {
                       </FormItem>
                     )}
                   />
-                  <Button type='submit' className="active__course-link">
+                  <button type='submit' className="w-40 m-auto bg-primary-bg-color text-white  text-lg font-medium my-6 hover:bg-primary-bg-color-hover transition duration-150 ease-in-out text-center  no-underline py-2 rounded-[6px] border-none">
                     Đăng nhập
-                  </Button>
+                  </button>
             </form>
           </Form>
-          <Link href="" className="login__btn login__btn--fb"
+          <Link href="" className=" text-primary-bg-color hover:bg-slate-100 hover:text-slate-400 transition duration-150 ease-in-out mt-3 block px-3 py-2 border-[1px] border-primary-bg-color rounded no-underline text-base font-medium text-center"
                 >Đăng nhập với Facebook</Link>
               <br />
-              <Link href="" className="login__btn login__btn--gg"
+              <Link href="" className=" text-white hover:bg-red-700 transition duration-150 ease-in-out mt-3 block px-3 py-2 bg-red-500 rounded no-underline text-base font-medium text-center"
                 >Đăng nhập với Google</Link>
           <br />
-          <Link href="/register" className="login__link-to-register"
+          <Link href="/register" className="block mt-[20px] no-underline text-black text-base transition duration-500 ease-in-out hover:text-primary-bg-color"
             >Bạn chưa là một thành viên? Đăng ký ngay!</Link>
         </div>
       </div>
