@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { FlipWords } from "@/components/ui/flip-words";
+
+const wordss = ["trực tuyến", "chất lượng", "chuẩn CEFR", "miễn phí"];
 
 const words = ` Những khoá học tiếng Anh online chất lượng cao của E-STUDY được thiết
 kế theo chương trình tiếng Anh chuẩn CEFR (A1-C2) của đại học
@@ -11,8 +14,8 @@ export default function CourseOOnline()
     return(
         <div>
       <div className="">
-        <div className="content__details">
-          <h1 className="content__header">Khóa học <span className=" text-primary-bg-color">online</span></h1>
+        <div className="">
+          <h1 className=" text-4xl font-semibold">Khóa học<span className=" text-primary-bg-color"><FlipWords className="text-primary-bg-color" words={wordss} /></span></h1>
           <p className="content__text">
           <TextGenerateEffect words={words} />
           </p>
