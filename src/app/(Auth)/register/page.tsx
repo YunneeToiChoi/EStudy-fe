@@ -61,7 +61,7 @@ export default function Register(){
       }
     return(
         <div className="mx-10 flex items-center justify-center">
-          <div className=" w-[600px] px-[60px] py-[30px] rounded-lg shadow-xl">
+          <div className="bg-white/35 w-[600px] px-[60px] py-[30px] rounded-lg shadow-xl">
             <TypewriterEffectSmooth words={words} />
             <Form {...form}>
               <form
