@@ -9,36 +9,36 @@ export default function ExamOnline()
         <div className=" mt-[30px] p-2">
           <ul className=" m-w-[790px] list-none flex flex-wrap">
             <li className=" mx-2 my-4">
-              <a href="" className="tag-search__link tag-search__link--chosen"
+              <a href="" className=" transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-medium text-primary-bg-color-hover bg-[#E6F4FF]"
                 >Tất cả</a
               >
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">IELTS Academic</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">IELTS Academic</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">IELTS General</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">IELTS General</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">TOEIC</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">TOEIC</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 1</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 1</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 2</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 2</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 3</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 3</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 4</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 4</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 5</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 5</a>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 6</a>
+              <a href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 6</a>
             </li>
           </ul>
         </div>
@@ -49,7 +49,7 @@ export default function ExamOnline()
             placeholder="Nhập từ khóa bạn muốn tìm kiếm: tên sách, dạng câu hỏi ..."
           />
           <i
-            className="fa-solid fa-magnifying-glass text-lg font-black bg-primary-bg-color text-white px-7 cursor-pointer hover:bg-primary-bg-color-hover transition duration-300 ease-in-out py-2 rounded-lg"
+            className="fa-solid fa-magnifying-glass text-lg font-black bg-primary-bg-color text-white px-7 cursor-pointer hover:bg-white hover:text-primary-bg-color border-[2px] border-transparent hover:border-primary-bg-color transition duration-100 ease-in-out py-2 rounded-lg"
           ></i>
         </div>
         <ul className=" ml-[10px] mt-[20px] max-w-5xl list-none flex flex-wrap w-full relative">
