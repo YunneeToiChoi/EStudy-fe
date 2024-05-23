@@ -2,8 +2,8 @@ import Image from "next/image";
 export default function ExamOnline()
 {
     return(
-        <div>
-             <div className=" pt-[60px] bg-exam-bg-color rounded-2xl">
+    <div>
+      <div className=" pt-[60px] bg-exam-bg-color shadow-md rounded-2xl">
       <div className=" flex flex-col items-center">
         <h1 className="px-[16px] text-3xl font-semibold">Thư viện đề thi</h1>
         <div className=" mt-[30px] p-2">
@@ -56,14 +56,14 @@ export default function ExamOnline()
           <li className=" flex whitespace-nowrap">
             <a
               href=""
-              className=" text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
+              className=" font-medium text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
               >Tất cả</a
             >
           </li>
           <li className=" flex whitespace-nowrap">
             <a
               href=""
-              className=" text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
+              className=" font-medium text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
               >Đề rút gọn</a
             >
           </li>
