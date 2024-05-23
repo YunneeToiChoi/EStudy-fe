@@ -1,39 +1,4 @@
-:root{
-    --nav-text-color: #71869d;
-    --nav-hover-text-color: #35509a;
-    --login-hover-box-color: #2b417e;
-    --copyright-text-color: #677788;
-    --swiper-color: #007aff;
-    --star-color: #ffad3b;
-    --tag-text-color: #35509a;
-    --tag-bg-color: #f0f8ff;
-    --price-color: #3cb46e;
-    --course-border-color: #e0e0e0;
-    --exam-text-color: #677788;
-    --group-details-text-color: #1a1a1a;
-    --input-color:#bdc5d1;
-    --input-focus-color: #7c93d2;
-    --tag-search-text-color: #e7eaf3;
-    --tag-search-bg-color: #e8f2ff;
-    --tag-search-transition-color: #8c98a4;
-    --exam-bg-color:#f8f9fa;
-    --pagination-bg-color-hover: #f8fafd;
-    --fb-text-color:#3b5998;
-    --gg-text-color:#db4a39;
-    --user-public-text-bg-color: #d1e2ff;
-    --process-active-bg-color: 	#32CD32;
-    --alert-text-color: #1f5e39;
-    --alert-flashcard-color: #d8f0e2;
-    --economy-price-text-color: #e43a45;
-    --flashcard-train-btn-color: #2e4687;
-    --vocabulary-icon-color: #0c6ff9;
-    --answer-btn-color: #dfe6e9;
-    --answer-btn-hover-color: #b2bec3;
-    --paircard-volcabulary-text-color: #e67e22;
-    --spell-listen-bg-color: #ecf0f1;
-    --spell-alert-bg-color: #ffefd8;
-    --spell-alert-text-color: #855a1f;
-}
+
 
 @keyframes fadeIn{
     from{

@@ -1,241 +1,554 @@
+import Image from "next/image";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { FlipWords } from "@/components/ui/flip-words";
 
-import "./courseOnline.css"
+const wordss = ["trực tuyến", "chất lượng", "chuẩn CEFR", "miễn phí"];
 
-export default function CourseOOnline()
+const words = ` Những khoá học tiếng Anh online chất lượng cao của E-STUDY được thiết
+kế theo chương trình tiếng Anh chuẩn CEFR (A1-C2) của đại học
+Cambridge và Oxford (Anh) với hệ thống bài giảng, bài tập phong phú
+đa dạng. Bạn có thể học thử miễn phí trước khi đặt mua sản phẩm.`;
+
+export default function CourseOnline()
 {
     return(
         <div>
-      <div className="grid wide">
-        <a href="" className="content__link">
-          <img
-            width="100%"
-            height="100px"
-            src="https://img.freepik.com/free-vector/white-gray-abstract-background_1108-591.jpg?t=st=1715010324~exp=1715010924~hmac=da387e64ab7fc4690eccaf37e29a8ba79ca1aa613fed3c1e2e0c6c16d38d6030"
-            alt=""
-            className="content__img"
-          />
-        </a>
-        <div className="content__details">
-          <h1 className="content__header">Khóa học online</h1>
+      <div className="">
+        <div className="">
+          <h1 className=" text-4xl font-semibold">Khóa học<span className=" text-primary-bg-color"><FlipWords className="text-primary-bg-color" words={wordss} /></span></h1>
           <p className="content__text">
-            Những khoá học tiếng Anh online chất lượng cao của STUDY4 được thiết
-            kế theo chương trình tiếng Anh chuẩn CEFR (A1-C2) của đại học
-            Cambridge và Oxford (Anh) với hệ thống bài giảng, bài tập phong phú
-            đa dạng. Bạn có thể học thử miễn phí trước khi đặt mua sản phẩm.
+          <TextGenerateEffect words={words} />
           </p>
         </div>
-        <div className="course">
-          <h2 className="course__header">Combo khoá học đặc biệt:</h2>
-          <div className="course__container row">
-            <a
-              href="/View/courseDetails.html"
-              className="course__link col l-4 m-6 c-12"
-            >
-              <div className="course__box">
-                <img
-                  width="100%"
-                  src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
-                  alt=""
-                  className="course__img"
-                />
-                <h3 className="course__title">
-                  [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
-                  Lược Làm Bài - Chữa đề chi tiết
-                </h3>
-                <div className="course__rate">
-                  <div className="course__star">
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                  </div>
-                  <span className="course__amount">(64)</span>
-                  <span className="course__student">698 Học Viên</span>
+        <div className="relative p-16">
+            <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học đặc biệt :</h2>
+            <div className=" mt-16 grid grid-cols-3 gap-14">
+              <a href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/E-balck.jpg">
+                  </Image>
                 </div>
-                <div className="course__tag">#Khóa học online</div>
-                <div className="course__price">
-                  <span className="price__sale">699.000đ</span>
-                  <span className="price__old">899.000đ</span>
-                  <span className="price__percent">-22%</span>
-                </div>
-              </div>
-            </a>
-            <a
-              href="/View/courseDetails.html"
-              className="course__link col l-4 m-6 c-12"
-            >
-              <div className="course__box">
-                <img
-                  width="100%"
-                  src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
-                  alt=""
-                  className="course__img"
-                />
-                <h3 className="course__title">
-                  [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
-                  Lược Làm Bài - Chữa đề chi tiết
-                </h3>
-                <div className="course__rate">
-                  <div className="course__star">
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                  </div>
-                  <span className="course__amount">(64)</span>
-                  <span className="course__student">698 Học Viên</span>
-                </div>
-                <div className="course__tag">#Khóa học online</div>
-                <div className="course__price">
-                  <span className="price__sale">699.000đ</span>
-                  <span className="price__old">899.000đ</span>
-                  <span className="price__percent">-22%</span>
-                </div>
-              </div>
-            </a>
-            <a
-              href="/View/courseDetails.html"
-              className="course__link col l-4 m-6 c-12"
-            >
-              <div className="course__box">
-                <img
-                  width="100%"
-                  src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
-                  alt=""
-                  className="course__img"
-                />
-                <h3 className="course__title">
-                  [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
-                  Lược Làm Bài - Chữa đề chi tiết
-                </h3>
-                <div className="course__rate">
-                  <div className="course__star">
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                    <i className="fa-solid fa-star course__icon-star"></i>
-                  </div>
-                  <span className="course__amount">(64)</span>
-                  <span className="course__student">698 Học Viên</span>
-                </div>
-                <div className="course__tag">#Khóa học online</div>
-                <div className="course__price">
-                  <span className="price__sale">699.000đ</span>
-                  <span className="price__old">899.000đ</span>
-                  <span className="price__percent">-22%</span>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="course">
-            <h2 className="course__header">Combo khoá học đặc biệt:</h2>
-            <div className="course__container row">
-              <a
-                href="/View/courseDetails.html"
-                className="course__link col l-4 m-6 c-12"
-              >
-                <div className="course__box">
-                  <img
-                    width="100%"
-                    src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
-                    alt=""
-                    className="course__img"
-                  />
-                  <h3 className="course__title">
-                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
-                    Lược Làm Bài - Chữa đề chi tiết
-                  </h3>
-                  <div className="course__rate">
-                    <div className="course__star">
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
+                  <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                    IELTS Simulation Listening test 1
+                  </h4>
+                  <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                    <div className='w-full flex items-center justify-between'>
+                      <div className=' flex gap-2 items-center'>
+                        <i className="fa-regular fa-clock"></i>
+                        <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-solid fa-user-pen"></i>
+                        <span className="text-sm text-slate-700 font-semibold">297723</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-regular fa-comment"></i>
+                        <span className="text-sm text-slate-700 font-semibold">993</span>
+                      </div>
                     </div>
-                    <span className="course__amount">(64)</span>
-                    <span className="course__student">698 Học Viên</span>
+                    <div>
+                    </div>
                   </div>
-                  <div className="course__tag">#Khóa học online</div>
-                  <div className="course__price">
-                    <span className="price__sale">699.000đ</span>
-                    <span className="price__old">899.000đ</span>
-                    <span className="price__percent">-22%</span>
+                  <div className=" flex gap-6">
+                    <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                    <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                  </div>
+                  <div className=' group mt-4'>
+                    <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                    <i className="fa-solid fa-arrow-right"></i>
+                    </button>
                   </div>
                 </div>
               </a>
-              <a
-                href="/View/courseDetails.html"
-                className="course__link col l-4 m-6 c-12"
-              >
-                <div className="course__box">
-                  <img
-                    width="100%"
-                    src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
-                    alt=""
-                    className="course__img"
-                  />
-                  <h3 className="course__title">
-                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
-                    Lược Làm Bài - Chữa đề chi tiết
-                  </h3>
-                  <div className="course__rate">
-                    <div className="course__star">
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
+              <a href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/bg_pro-E.jpg">
+                  </Image>
+                </div>
+                  <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                    IELTS Simulation Listening test 1
+                  </h4>
+                  <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                    <div className='w-full flex items-center justify-between'>
+                      <div className=' flex gap-2 items-center'>
+                        <i className="fa-regular fa-clock"></i>
+                        <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-solid fa-user-pen"></i>
+                        <span className="text-sm text-slate-700 font-semibold">297723</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-regular fa-comment"></i>
+                        <span className="text-sm text-slate-700 font-semibold">993</span>
+                      </div>
                     </div>
-                    <span className="course__amount">(64)</span>
-                    <span className="course__student">698 Học Viên</span>
+                    <div>
+                    </div>
                   </div>
-                  <div className="course__tag">#Khóa học online</div>
-                  <div className="course__price">
-                    <span className="price__sale">699.000đ</span>
-                    <span className="price__old">899.000đ</span>
-                    <span className="price__percent">-22%</span>
+                  <div className=" flex gap-6">
+                    <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                    <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                  </div>
+                  <div className=' group mt-4'>
+                    <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                    <i className="fa-solid fa-arrow-right"></i>
+                    </button>
                   </div>
                 </div>
               </a>
-              <a
-                href="/View/courseDetails.html"
-                className="course__link col l-4 m-6 c-12"
-              >
-                <div className="course__box">
-                  <img
-                    width="100%"
-                    src="https://study4.com/media/courses/Course/files/2023/12/12/gt_reading-min.webp"
-                    alt=""
-                    className="course__img"
-                  />
-                  <h3 className="course__title">
-                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
-                    Lược Làm Bài - Chữa đề chi tiết
-                  </h3>
-                  <div className="course__rate">
-                    <div className="course__star">
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
-                      <i className="fa-solid fa-star course__icon-star"></i>
+              <a href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/Speak_E.jpg">
+                  </Image>
+                </div>
+                  <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                    IELTS Simulation Listening test 1
+                  </h4>
+                  <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                    <div className='w-full flex items-center justify-between'>
+                      <div className=' flex gap-2 items-center'>
+                        <i className="fa-regular fa-clock"></i>
+                        <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-solid fa-user-pen"></i>
+                        <span className="text-sm text-slate-700 font-semibold">297723</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-regular fa-comment"></i>
+                        <span className="text-sm text-slate-700 font-semibold">993</span>
+                      </div>
                     </div>
-                    <span className="course__amount">(64)</span>
-                    <span className="course__student">698 Học Viên</span>
+                    <div>
+                    </div>
                   </div>
-                  <div className="course__tag">#Khóa học online</div>
-                  <div className="course__price">
-                    <span className="price__sale">699.000đ</span>
-                    <span className="price__old">899.000đ</span>
-                    <span className="price__percent">-22%</span>
+                  <div className=" flex gap-6">
+                    <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                    <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                  </div>
+                  <div className=' group mt-4'>
+                    <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                    <i className="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </a>
+              <a href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/E-learn.jpg">
+                  </Image>
+                </div>
+                  <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                    IELTS Simulation Listening test 1
+                  </h4>
+                  <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                    <div className='w-full flex items-center justify-between'>
+                      <div className=' flex gap-2 items-center'>
+                        <i className="fa-regular fa-clock"></i>
+                        <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-solid fa-user-pen"></i>
+                        <span className="text-sm text-slate-700 font-semibold">297723</span>
+                      </div>
+                      <div className='flex gap-2 items-center'>
+                        <i className="fa-regular fa-comment"></i>
+                        <span className="text-sm text-slate-700 font-semibold">993</span>
+                      </div>
+                    </div>
+                    <div>
+                    </div>
+                  </div>
+                  <div className=" flex gap-6">
+                    <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                    <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                  </div>
+                  <div className=' group mt-4'>
+                    <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                    <i className="fa-solid fa-arrow-right"></i>
+                    </button>
                   </div>
                 </div>
               </a>
             </div>
+        </div>
+        <div className="relative p-16">
+          <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học đặc biệt :</h2>
+          <div className=" mt-16 grid grid-cols-3 gap-14">
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/E-balck.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/bg_pro-E.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/Speak_E.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/E-learn.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div className="relative p-16">
+          <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học đặc biệt :</h2>
+          <div className=" mt-16 grid grid-cols-3 gap-14">
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/E-balck.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/bg_pro-E.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/Speak_E.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="#" className=" group">
+              <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+              <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                width={1000} 
+                height={1000} 
+                quality={100}
+                alt='image' 
+                src="/img/E-learn.jpg">
+                </Image>
+              </div>
+                <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+                  IELTS Simulation Listening test 1
+                </h4>
+                <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+                  <div className='w-full flex items-center justify-between'>
+                    <div className=' flex gap-2 items-center'>
+                      <i className="fa-regular fa-clock"></i>
+                      <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-solid fa-user-pen"></i>
+                      <span className="text-sm text-slate-700 font-semibold">297723</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                      <i className="fa-regular fa-comment"></i>
+                      <span className="text-sm text-slate-700 font-semibold">993</span>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div className=" flex gap-6">
+                  <div className=" rounded-md bg-[#F4EEFA] text-sm p-2 text-[#A482D6] inline-block">#IELTS Academic</div>
+                  <div className=" rounded-md bg-[#E6F4FF] text-sm p-2 text-[#1A9BFC] inline-block">#Listening</div>
+                </div>
+                <div className=' group mt-4'>
+                  <button className=" hover:bg-slate-100 px-5 py-2 cursor-pointer bg-transparent rounded-full border-[2px] border-[#C0E3EB] text-lg flex items-center gap-4">Chi tiết
+                  <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>

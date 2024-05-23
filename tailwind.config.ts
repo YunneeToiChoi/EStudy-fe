@@ -29,7 +29,7 @@ const config = {
         'login-hover-box-color': '#2b417e',
         'copyright-text-color': '#677788',
         'swiper-color': '#007aff',
-        'star-color': '#ffad3b',
+        'star-color': '#F8C62A',
         'tag-text-color': '#35509a',
         'tag-bg-color': '#f0f8ff',
         'price-color': '#3cb46e',
@@ -50,6 +50,9 @@ const config = {
         'alert-text-color': '#1f5e39',
         'alert-flashcard-color': '#d8f0e2',
         'economy-price-text-color': '#e43a45',
+        'primary-bg-color': '#4540E1',
+        'primary-bg-color-hover':'#3E3AD4',
+        'primary-bg-orange-color': '#F96041',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

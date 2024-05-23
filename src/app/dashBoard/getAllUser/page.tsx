@@ -27,7 +27,7 @@ const HomePage = () => {
     if (user?.accessToken) {
       getAllUsers(user?.accessToken, dispatch, axiosJWT);
     }
-  }, []);
+  }, [user, navigate, dispatch, axiosJWT]);
 
   const renderMsg = (msg: any) => {
     if (typeof msg === 'string') {
@@ -43,7 +43,7 @@ const HomePage = () => {
     <main className="home-container">
       <div className="home-title">User List</div>
       <div className="home-role">
-        {`Your role: ${user?.admin ? `Admin` : `User`}`}
+        {`Your role: ${user?.admin ? 'Admin' : 'User'}`}
       </div>
       <div className="home-userlist">
         {userList?.map((user: any) => {
