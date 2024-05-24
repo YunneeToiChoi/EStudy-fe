@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { FlipWords } from "@/components/ui/flip-words";
+import  Link  from 'next/link';
 
 const wordss = ["trực tuyến", "chất lượng", "chuẩn CEFR", "miễn phí"];
 
@@ -23,7 +24,7 @@ export default function CourseOnline()
         <div className="relative p-16">
             <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học đặc biệt :</h2>
             <div className=" mt-16 grid grid-cols-3 gap-14">
-              <a href="#" className=" group">
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -65,8 +66,8 @@ export default function CourseOnline()
                     </button>
                   </div>
                 </div>
-              </a>
-              <a href="#" className=" group">
+              </Link>
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -108,8 +109,8 @@ export default function CourseOnline()
                     </button>
                   </div>
                 </div>
-              </a>
-              <a href="#" className=" group">
+              </Link>
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -151,8 +152,8 @@ export default function CourseOnline()
                     </button>
                   </div>
                 </div>
-              </a>
-              <a href="#" className=" group">
+              </Link>
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -194,13 +195,13 @@ export default function CourseOnline()
                     </button>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
         </div>
         <div className="relative p-16">
           <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học đặc biệt :</h2>
           <div className=" mt-16 grid grid-cols-3 gap-14">
-            <a href="#" className=" group">
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -242,8 +243,8 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
-            <a href="#" className=" group">
+            </Link>
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -285,8 +286,8 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
-            <a href="#" className=" group">
+            </Link>
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -328,8 +329,8 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
-            <a href="#" className=" group">
+            </Link>
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -371,13 +372,13 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="relative p-16">
           <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học đặc biệt :</h2>
           <div className=" mt-16 grid grid-cols-3 gap-14">
-            <a href="#" className=" group">
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -419,8 +420,8 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
-            <a href="#" className=" group">
+            </Link>
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -462,8 +463,8 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
-            <a href="#" className=" group">
+            </Link>
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -505,8 +506,8 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
-            <a href="#" className=" group">
+            </Link>
+            <Link href="#" className=" group">
               <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
               <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                 <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -548,7 +549,7 @@ export default function CourseOnline()
                   </button>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

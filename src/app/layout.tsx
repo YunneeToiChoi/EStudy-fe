@@ -27,10 +27,10 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body className={roboto.className}>
           <div className="bg-primary-bg-color fixed top-[-500px] bottom-0 left-[-200px] rounded-br-full w-7/12"></div>
-          <div className=" absolute left-0 right-0 z-10 backdrop-blur-xl bg-white/90">
+          <div className="backdrop-blur-xl bg-white/90">
             <ReduxProvider>
               <Header />
-              <div className=" mt-40 max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
+              <div className=" pt-20 max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
                   {children}
               </div>
               <Footer />

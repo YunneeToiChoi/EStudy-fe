@@ -1,32 +1,28 @@
-import "../../../public/handicraftCSS/loginAndRegisterAndActive.css"
+import  Link  from 'next/link';
 export default function ActiveCourse()
 {
     return(
         <div >
-      <div className="content__container">
-        <div className="login__container">
-          <h3 className="active__course-header">Kích hoạt khoá học</h3>
-          <p className="active__course-label">Mã kích hoạt</p>
+      <div className=" flex mx-[40px] items-center justify-center">
+        <div className=" w-[600px] px-[60px] py-[30px] border-[1px] border-course-border-color rounded-xl shadow-md">
+          <h3 className="text-4xl font-medium">Kích hoạt khoá học</h3>
+          <p className=" text-base font-medium my-[10px]">Mã kích hoạt</p>
           <input
             type="text"
-            className="active__course-input"
+            className=" text-base w-full p-3 border-[1px] border-input-color rounded-md"
             placeholder="Nhập mã kích hoạt"
           />
-          <p className="active__course-label">Số điện thoại mua hàng</p>
+          <p className=" text-base font-medium my-[10px]">Số điện thoại mua hàng</p>
           <input
-            type="tel"
-            className="active__course-input"
+            type="text"
+            className=" text-base w-full p-3 border-[1px] border-input-color rounded-md"
             placeholder="Nhập số điện thoại trong phiếu kích hoạt"
           />
-          <a href="" className="active__course-link">Kích hoạt</a>
-          <p className="active__course-connect">
-            Liên hệ hotline 096-369-5525 nếu bạn gặp vấn đề về kích hoạt khóa
-            học.
-          </p>
-          <a href="" className="login__link-to-register">Hướng dẫn mua hàng</a>
-          <a href="" className="login__link-to-register"
-            >Kiểm tra tài khoản đã kích hoạt khóa học</a
-          >
+          <Link href="#" className=' w-full block text-center group cursor-pointer my-5 py-[10px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
+            <span  className=" group-hover:text-primary-bg-color text-lg font-medium no-underline text-white tracking-wide">Kích hoạt</span>
+          </Link>
+          <Link href="" className=" block mt-5 underline text-black text-base transition duration-300 ease-in-out hover:text-primary-bg-color"
+            >Kiểm tra tài khoản đã kích hoạt khóa học</Link>
         </div>
       </div>
     </div>

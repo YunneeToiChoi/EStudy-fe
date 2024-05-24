@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'courseDetails': "url('https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

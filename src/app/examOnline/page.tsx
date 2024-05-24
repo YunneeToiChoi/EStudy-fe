@@ -1,44 +1,44 @@
 import Image from "next/image";
+import  Link  from 'next/link';
 export default function ExamOnline()
 {
     return(
-        <div>
-             <div className=" pt-[60px] bg-exam-bg-color rounded-2xl">
+    <div>
+      <div className=" pt-[60px] bg-exam-bg-color shadow-md rounded-2xl">
       <div className=" flex flex-col items-center">
         <h1 className="px-[16px] text-3xl font-semibold">Thư viện đề thi</h1>
         <div className=" mt-[30px] p-2">
           <ul className=" m-w-[790px] list-none flex flex-wrap">
             <li className=" mx-2 my-4">
-              <a href="" className="tag-search__link tag-search__link--chosen"
-                >Tất cả</a
-              >
+              <Link href="" className=" transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-medium text-primary-bg-color-hover bg-[#E6F4FF]"
+                >Tất cả</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">IELTS Academic</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">IELTS Academic</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">IELTS General</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">IELTS General</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">TOEIC</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">TOEIC</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 1</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 1</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 2</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 2</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 3</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 3</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 4</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 4</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 5</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 5</Link>
             </li>
             <li className="mx-2 my-4">
-              <a href="" className="tag-search__link">HSK 6</a>
+              <Link href="" className="transition duration-500 ease-in-out py-[8px] px-[16px] rounded-[30px] text-base no-underline font-normal  text-black hover:bg-[#E6F4FF]">HSK 6</Link>
             </li>
           </ul>
         </div>
@@ -49,30 +49,28 @@ export default function ExamOnline()
             placeholder="Nhập từ khóa bạn muốn tìm kiếm: tên sách, dạng câu hỏi ..."
           />
           <i
-            className="fa-solid fa-magnifying-glass text-lg font-black bg-primary-bg-color text-white px-7 cursor-pointer hover:bg-primary-bg-color-hover transition duration-300 ease-in-out py-2 rounded-lg"
+            className="fa-solid fa-magnifying-glass text-lg font-black bg-primary-bg-color text-white px-7 cursor-pointer hover:bg-white hover:text-primary-bg-color border-[2px] border-transparent hover:border-primary-bg-color transition duration-100 ease-in-out py-2 rounded-lg"
           ></i>
         </div>
         <ul className=" ml-[10px] mt-[20px] max-w-5xl list-none flex flex-wrap w-full relative">
           <li className=" flex whitespace-nowrap">
-            <a
+            <Link
               href=""
-              className=" text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
-              >Tất cả</a
-            >
+              className=" font-medium text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
+              >Tất cả</Link>
           </li>
           <li className=" flex whitespace-nowrap">
-            <a
+            <Link
               href=""
-              className=" text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
-              >Đề rút gọn</a
-            >
+              className=" font-medium text-black duration-300 ease-in-out delay-100 no-underline text-xl p-[16px] border-b-[2px] border-b-transparent transition-[0.2s] hover:border-b-primary-bg-color-hover hover:text-primary-bg-color-hover"
+              >Đề rút gọn</Link>
           </li>
         </ul>
       </div>
     </div>
     <div className="relative p-16">
       <div className=" mt-8 grid grid-cols-3 gap-14">
-        <a href="#" className=" group">
+        <Link href="#" className=" group">
           <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
           <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
             <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -114,8 +112,8 @@ export default function ExamOnline()
               </button>
             </div>
           </div>
-        </a>
-        <a href="#" className=" group">
+        </Link>
+        <Link href="#" className=" group">
           <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
           <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
             <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -157,8 +155,8 @@ export default function ExamOnline()
               </button>
             </div>
           </div>
-        </a>
-        <a href="#" className=" group">
+        </Link>
+        <Link href="#" className=" group">
           <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
           <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
             <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -200,8 +198,8 @@ export default function ExamOnline()
               </button>
             </div>
           </div>
-        </a>
-        <a href="#" className=" group">
+        </Link>
+        <Link href="#" className=" group">
           <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
           <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
             <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -243,7 +241,7 @@ export default function ExamOnline()
               </button>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   </div>
