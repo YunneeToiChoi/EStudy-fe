@@ -58,19 +58,19 @@ export default function CourseDetail()
               <li className=" flex whitespace-nowrap">
                 <Link
                   href=""
-                  className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color"
+                  className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-primary-bg-color duration-300 ease-in-out hover:border-b-primary-bg-color"
                   >Mục tiêu khóa học</Link>
               </li>
               <li className="flex whitespace-nowrap">
-                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color"
+                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-primary-bg-color duration-300 ease-in-out hover:border-b-primary-bg-color"
                   >Thông tin khóa học</Link>
               </li>
               <li className="flex whitespace-nowrap">
-                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color"
+                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-primary-bg-color duration-300 ease-in-out hover:border-b-primary-bg-color"
                   >Chương trình học</Link>
               </li>
               <li className="flex whitespace-nowrap">
-                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color">Đánh giá (630)</Link>
+                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-primary-bg-color duration-300 ease-in-out hover:border-b-primary-bg-color">Đánh giá (630)</Link>
               </li>
             </ul>
             <div className="flex">
@@ -187,7 +187,7 @@ export default function CourseDetail()
               <Image
                 width={1000}
                 height={1000}
-                src="https://study4.com/media/courses/CourseSeries/files/2023/10/11/combo_intensive.webp"
+                src="/img/English Doodle Icon Set Vector Download.jpg"
                 alt=""
                 className=" text-transparent rounded-[10px] w-full"
               />
@@ -201,30 +201,30 @@ export default function CourseDetail()
                     <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
                   </div>
                 </div>
-                <Link href="" className=" bg-nav-hover-text-color text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+                <Link href="" className=" bg-primary-bg-color text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
                   >ĐĂNG KÝ HỌC NGAY</Link>
-                <Link href="" className=" text-nav-text-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+                <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
                   >Học thử miễn phí</Link>
               </div>
               <div className="p-4 border-b-[1px] border-b-course-border-color">
                 <div className="details__ads">
-                  <p className=" flex items-center text-sm my-[10px]">
+                  <p className=" gap-3 flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-users details__icon-under"></i> 38,171
                     học viên đã đăng ký
                   </p>
-                  <p className="flex items-center text-sm my-[10px]">
+                  <p className=" gap-3 flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-book-open details__icon-under"></i>
                     86 chủ đề, 809 bài học
                   </p>
-                  <p className="flex items-center text-sm my-[10px]">
+                  <p className=" gap-3 flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-pencil details__icon-under"></i>
                     1,970 bài tập thực hành
                   </p>
-                  <p className="flex items-center text-sm my-[10px]">
+                  <p className="  gap-3 flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-user-clock details__icon-under"></i>
                     Combo 4 khoá học có giá trị 12 tháng
                   </p>
-                  <p className="flex items-center text-sm my-[10px]">
+                  <p className=" gap-3 flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-house-laptop details__icon-under"></i>
   
                     Có thể học trên điện thoại và máy tính
@@ -235,7 +235,7 @@ export default function CourseDetail()
                 <p className=" text-sm">
                   Chưa chắc chắn khoá học này dành cho bạn?
                 </p>
-                <Link href="" className=" text-sm text-nav-hover-text-color"
+                <Link href="" className=" text-sm text-primary-bg-color"
                   >Liên hệ để nhận tư vấn miễn phí!</Link>
               </div>
             </div>
