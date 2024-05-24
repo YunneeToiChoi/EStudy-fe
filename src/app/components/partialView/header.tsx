@@ -21,7 +21,7 @@ export default function Header() {
   }
   return (
    <div>
-     <nav className=" fixed top-0 z-20 h-28 w-full pt-7">
+     <nav className="h-28 w-full pt-7">
       <div className="w-full block max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <div >

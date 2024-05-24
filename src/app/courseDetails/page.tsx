@@ -1,276 +1,244 @@
-import "./courseDetails.css"
-import "../examOnline/examOnline.css"
+import  Link  from 'next/link';
 import Image from "next/image";
 export default function CourseDetail()
 {
     return(
         <div>
-        <div className="flex__container flex__container-details">
-          <div className="details__about">
-            <div className="grid wide">
-              <h2 className="details__header">
+        <div className=" items-center justify-center flex">
+          <div className=" w-full py-[60px] bg-cover bg-courseDetails rounded-xl">
+            <div className=" max-w-[1200px] m-auto grid">
+              <h2 className=" text-3xl text-white">
                 Combo khoá học IELTS Intensive [Tặng khoá TED Talks]
               </h2>
-              <a href="" className="details__tag">#Khóa học online</a>
-              <div className="flex__container">
-                <div className="details__rate">
-                  <span className="rate">5</span>
+              <Link href="" className=" my-[10px] text-sm py-[6px] px-[10px] bg-tag-bg-color w-fit text-nav-hover-text-color inline-block rounded-[30px] font-medium no-underline">#Khóa học online</Link>
+              <div className=" flex items-center">
+                <div className=" flex text-sm text-star-color items-center">
+                  <span className="mr-2">5</span>
                   <i className="fa-solid fa-star"></i>
                   <i className="fa-solid fa-star"></i>
                   <i className="fa-solid fa-star"></i>
                   <i className="fa-solid fa-star"></i>
                   <i className="fa-solid fa-star"></i>
                 </div>
-                <span className="details__text">(630 đánh giá)</span>
-                <span className="details__text">38,171 học viên</span>
+                <span className=" text-white mx-2 text-sm">(630 đánh giá)</span>
+                <span className=" text-white text-sm mx-2">38,171 học viên</span>
               </div>
-              <div className="details__info">
-                <p className="details__text">
-                  <i className="fa-solid fa-circle-check details__icon"></i> Dành cho
+              <div className=" mt-[10px] flex flex-col w-full gap-4 justify-center">
+                <p className=" text-white text-sm mx-[6px] flex items-center gap-2">
+                  <i className="fa-solid fa-circle-check text-price-color text-xl"></i> Dành cho
                   các bạn từ band 4.0 trở lên.
                 </p>
-                <p className="details__text">
-                  <i className="fa-solid fa-circle-check details__icon"></i> Sở hữu
+                <p className=" text-white text-sm mx-[6px] flex items-center gap-2">
+                  <i className="fa-solid fa-circle-check text-price-color text-xl"></i> Sở hữu
                   trọn bộ 4 khoá học
-                  <span className="details--italic"
+                  <span className=" italic font-semibold"
                     >IELTS Intensive online: Listening - Reading - Writing -
                     Speaking</span
                   >
                 </p>
-                <p className="details__text">
-                  <i className="fa-solid fa-circle-check details__icon"></i> Tặng kèm
+                <p className=" text-white text-sm mx-[6px] flex items-center gap-2">
+                  <i className="fa-solid fa-circle-check text-price-color text-xl"></i> Tặng kèm
                   khoá
-                  <span className="details--underline"
+                  <span className=" underline font-semibold"
                     >Luyện nghe nói tiếng Anh cùng Ted Talks</span
                   >
                   trị giá 599k
                 </p>
-                <p className="details__text">
-                  <i className="fa-solid fa-circle-check details__icon"></i> Combo
+                <p className=" text-white text-sm mx-[6px] flex items-center gap-2">
+                  <i className="fa-solid fa-circle-check text-price-color text-xl"></i> Combo
                   khoá học có giá trị 12 tháng
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="details-under have--bg-color">
-          <div className="grid wide">
-            <div className="details__box-fixed hide-on-tablet">
+        <div className=" bg-exam-bg-color mt-10 rounded-xl overflow-hidden">
+          <div className="max-w-[1200px] m-auto grid">
+            <ul className=" ml-[10px] mt-[20px] list-none flex flex-wrap border-b-[1px] border-b-[#e0e0e0] bg-transparent max-w-full relative">
+              <li className=" flex whitespace-nowrap">
+                <Link
+                  href=""
+                  className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color"
+                  >Mục tiêu khóa học</Link>
+              </li>
+              <li className="flex whitespace-nowrap">
+                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color"
+                  >Thông tin khóa học</Link>
+              </li>
+              <li className="flex whitespace-nowrap">
+                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color"
+                  >Chương trình học</Link>
+              </li>
+              <li className="flex whitespace-nowrap">
+                <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-nav-hover-text-color duration-300 ease-in-out hover:border-b-nav-hover-text-color">Đánh giá (630)</Link>
+              </li>
+            </ul>
+            <div className="flex">
+            <div className=" w-8/12">
+              <div className=" w-9/12">
+                <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
+                  <h2 className=" text-2xl my-4">
+                    Bạn sẽ đạt được gì sau khoá học?
+                  </h2>
+                  <p className=" text-base my-4">
+                    1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                </div>
+                <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
+                  <h2 className=" text-2xl my-4">
+                    Bạn sẽ đạt được gì sau khoá học?
+                  </h2>
+                  <p className=" text-base my-4">
+                    1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                </div>
+                <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
+                  <h2 className=" text-2xl my-4">
+                    Bạn sẽ đạt được gì sau khoá học?
+                  </h2>
+                  <p className=" text-base my-4">
+                    1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                </div>
+                <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
+                  <h2 className=" text-2xl my-4">
+                    Bạn sẽ đạt được gì sau khoá học?
+                  </h2>
+                  <p className=" text-base my-4">
+                    1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                </div>
+                <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
+                  <h2 className=" text-2xl my-4">
+                    Bạn sẽ đạt được gì sau khoá học?
+                  </h2>
+                  <p className=" text-base my-4">
+                    1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                  <p className="text-base my-4">
+                    4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
+                    Training
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="w-4/12 h-fit mt-5 bg-white z-20 shadow-xl rounded-[10px]">
               <Image
-                width={100}
-                height={150}
+                width={1000}
+                height={1000}
                 src="https://study4.com/media/courses/CourseSeries/files/2023/10/11/combo_intensive.webp"
                 alt=""
-                className="details__img"
+                className=" text-transparent rounded-[10px] w-full"
               />
-              <div className="details__price-box">
-                <h2 className="details__endow">Ưu đãi đặc biệt tháng 5/2024:</h2>
-                <div className="flex__container">
-                  <h3 className="details__price-new">1.525.000đ</h3>
-                  <div className="details__price-old-box">
-                    <span className="details__price-old">Giá gốc: 3.596.000đ</span>
-                    <span className="details__price-eco">Tiết kiệm: 2.071.000đ</span>
-                    <span className="details__percent">(-57%)</span>
+              <div className=" p-4 border-b-[1px] border-b-course-border-color">
+                <h2 className=" text-lg my-[10px] font-bold">Ưu đãi đặc biệt tháng 5/2024:</h2>
+                <div className=" flex item-center">
+                  <h3 className=" text-3xl text-price-color font-semibold">1.525.000đ</h3>
+                  <div className=" ml-[10px]"> 
+                    <span className=" block text-sm line-through text-exam-text-color">Giá gốc: 3.596.000đ</span>
+                    <span className=" block text-xl text-economy-price-text-color font-medium">Tiết kiệm: 2.071.000đ</span>
+                    <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
                   </div>
                 </div>
-                <a href="" className="details__btn details__btn-register"
-                  >ĐĂNG KÝ HỌC NGAY</a
-                >
-                <a href="" className="details__btn details__btn-try"
-                  >Học thử miễn phí</a
-                >
+                <Link href="" className=" bg-nav-hover-text-color text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+                  >ĐĂNG KÝ HỌC NGAY</Link>
+                <Link href="" className=" text-nav-text-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+                  >Học thử miễn phí</Link>
               </div>
-              <div className="details__price-box">
+              <div className="p-4 border-b-[1px] border-b-course-border-color">
                 <div className="details__ads">
-                  <p className="details__ads-content">
+                  <p className=" flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-users details__icon-under"></i> 38,171
                     học viên đã đăng ký
                   </p>
-                  <p className="details__ads-content">
+                  <p className="flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-book-open details__icon-under"></i>
                     86 chủ đề, 809 bài học
                   </p>
-                  <p className="details__ads-content">
+                  <p className="flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-pencil details__icon-under"></i>
                     1,970 bài tập thực hành
                   </p>
-                  <p className="details__ads-content">
+                  <p className="flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-user-clock details__icon-under"></i>
                     Combo 4 khoá học có giá trị 12 tháng
                   </p>
-                  <p className="details__ads-content">
+                  <p className="flex items-center text-sm my-[10px]">
                     <i className="fa-solid fa-house-laptop details__icon-under"></i>
   
                     Có thể học trên điện thoại và máy tính
                   </p>
                 </div>
               </div>
-              <div className="details__price-box">
-                <p className="details__contact">
+              <div className="p-4 border-b-[1px] border-b-course-border-color">
+                <p className=" text-sm">
                   Chưa chắc chắn khoá học này dành cho bạn?
                 </p>
-                <a href="" className="details__link"
-                  >Liên hệ để nhận tư vấn miễn phí!</a
-                >
+                <Link href="" className=" text-sm text-nav-hover-text-color"
+                  >Liên hệ để nhận tư vấn miễn phí!</Link>
               </div>
             </div>
-            <ul className="tag-search__transition">
-              <li className="tag-search__transition-item">
-                <a
-                  href=""
-                  className="tag-search__transition-link tag-search__transition-link--chosen"
-                  >Mục tiêu khóa học</a
-                >
-              </li>
-              <li className="tag-search__transition-item">
-                <a href="" className="tag-search__transition-link"
-                  >Thông tin khóa học</a
-                >
-              </li>
-              <li className="tag-search__transition-item">
-                <a href="" className="tag-search__transition-link"
-                  >Chương trình học</a
-                >
-              </li>
-              <li className="tag-search__transition-item">
-                <a href="" className="tag-search__transition-link">Đánh giá (630)</a>
-              </li>
-            </ul>
-            <div className="row container__details">
-              <div className="details__content-left col l-8 m-6 c-12">
-                <div className="details__box-content">
-                  <h2 className="details__box-header">
-                    Bạn sẽ đạt được gì sau khoá học?
-                  </h2>
-                  <p className="details__box-text">
-                    1️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    2️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    3️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    4️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                </div>
-                <div className="details__box-content">
-                  <h2 className="details__box-header">
-                    Bạn sẽ đạt được gì sau khoá học?
-                  </h2>
-                  <p className="details__box-text">
-                    1️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    2️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    3️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    4️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                </div>
-                <div className="details__box-content">
-                  <h2 className="details__box-header">
-                    Bạn sẽ đạt được gì sau khoá học?
-                  </h2>
-                  <p className="details__box-text">
-                    1️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    2️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    3️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                  <p className="details__box-text">
-                    4️⃣Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                    Training
-                  </p>
-                </div>
-              </div>
-              <div
-                className="details__content-right col l-4 m-6 c-12 hide-on-mobile hide"
-              >
-                <div className="details__box-fixed">
-                  <Image
-                    width={100}
-                    height={150}
-                    src="https://study4.com/media/courses/CourseSeries/files/2023/10/11/combo_intensive.webp"
-                    alt=""
-                    className="details__img"
-                  />
-                  <div className="details__price-box">
-                    <h2 className="details__endow">Ưu đãi đặc biệt tháng 5/2024:</h2>
-                    <div className="flex__container">
-                      <h3 className="details__price-new">1.525.000đ</h3>
-                      <div className="details__price-old-box">
-                        <span className="details__price-old"
-                          >Giá gốc: 3.596.000đ</span
-                        >
-                        <span className="details__price-eco"
-                          >Tiết kiệm: 2.071.000đ</span
-                        >
-                        <span className="details__percent">(-57%)</span>
-                      </div>
-                    </div>
-                    <a href="" className="details__btn details__btn-register"
-                      >ĐĂNG KÝ HỌC NGAY</a
-                    >
-                    <a href="" className="details__btn details__btn-try"
-                      >Học thử miễn phí</a
-                    >
-                  </div>
-                  <div className="details__price-box">
-                    <div className="details__ads">
-                      <p className="details__ads-content">
-                        <i className="fa-solid fa-users details__icon-under"></i>
-                        38,171 học viên đã đăng ký
-                      </p>
-                      <p className="details__ads-content">
-                        <i className="fa-solid fa-book-open details__icon-under"></i>
-                        86 chủ đề, 809 bài học
-                      </p>
-                      <p className="details__ads-content">
-                        <i className="fa-solid fa-pencil details__icon-under"></i>
-                        1,970 bài tập thực hành
-                      </p>
-                      <p className="details__ads-content">
-                        <i className="fa-solid fa-user-clock details__icon-under"></i>
-                        Combo 4 khoá học có giá trị 12 tháng
-                      </p>
-                      <p className="details__ads-content">
-                        <i
-                          className="fa-solid fa-house-laptop details__icon-under"
-                        ></i>
-  
-                        Có thể học trên điện thoại và máy tính
-                      </p>
-                    </div>
-                  </div>
-                  <div className="details__price-box">
-                    <p className="details__contact">
-                      Chưa chắc chắn khoá học này dành cho bạn?
-                    </p>
-                    <a href="" className="details__link"
-                      >Liên hệ để nhận tư vấn miễn phí!</a
-                    >
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

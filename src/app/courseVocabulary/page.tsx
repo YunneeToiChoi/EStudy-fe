@@ -1,44 +1,43 @@
 
 import "../courseLearn/courseLearn.css"
+import  Link  from 'next/link';
 export default function CourseVocabulary(){
     return(
         <div className="content__container">
         <input type="checkbox" id="content__checkbox" className="content__input" />
         <div className="content-left hide-on-mobile hide-on-tablet">
           <div className="flex__container header__container">
-            <a href="courseLearn.html" className="content-left__header"
-              >IELTS General Reading</a
-            >
-            <a href="" className="content-left__dropleft">
+            <Link href="courseLearn.html" className="content-left__header"
+              >IELTS General Reading</Link>
+            <Link href="" className="content-left__dropleft">
               <label htmlFor="content__checkbox"
                 ><i className="content-left__icon fa-solid fa-angle-left"></i
               ></label>
-            </a>
+            </Link>
           </div>
           <div className="course-learn__container">
             <ul className="course-learn__list">
               <li className="course-learn__item">
-                <a href="" className="course-learn__link course-learn__link--chosen"
-                  >Từ vựng TOEIC</a
-                >
+                <Link href="" className="course-learn__link course-learn__link--chosen"
+                  >Từ vựng TOEIC</Link>
               </li>
               <li className="course-learn__item">
-                <a href="" className="course-learn__link">
+                <Link href="" className="course-learn__link">
                   Phương pháp làm các dạng câu hỏi trong IELTS General Reading
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a href="" className="course-learn__link">
+                <Link href="" className="course-learn__link">
                   Video chữa đề chi tiết
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a href="" className="course-learn__link"> PRACTICE ZONE </a>
+                <Link href="" className="course-learn__link"> PRACTICE ZONE </Link>
               </li>
               <li className="course-learn__item">
-                <a href="" className="course-learn__link">
+                <Link href="" className="course-learn__link">
                   GT Practice Set 7 Test 1: Luyện tập từ vựng
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -48,9 +47,9 @@ export default function CourseVocabulary(){
             <div
               className="nav__content-header-right hide-on-mobile hide-on-tablet"
             >
-              <a href="" className="nav__content-link-right"
+              <Link href="" className="nav__content-link-right"
                 >IELTS General Reading
-              </a>
+              </Link>
               <i className="nav__content-right__icon fa-solid fa-chevron-right"></i>
               <span className="nav__content-transition-right">Từ vựng TOEIC</span>
             </div>
@@ -65,39 +64,38 @@ export default function CourseVocabulary(){
           />
           <div className="nav__mobile-course hide">
             <div className="flex__container header__container">
-              <a href="" className="content-left__header">IELTS General Reading</a>
-              <a href="" className="content-left__dropleft">
+              <Link href="" className="content-left__header">IELTS General Reading</Link>
+              <Link href="" className="content-left__dropleft">
                 <label htmlFor="nav-mobile-course-checkbox"
                   ><i className="content-left__icon fa-solid fa-angle-left"></i
                 ></label>
-              </a>
+              </Link>
             </div>
             <div className="course-learn__container">
               <ul className="course-learn__list">
                 <li className="course-learn__item">
-                  <a
+                  <Link
                     href=""
                     className="course-learn__link course-learn__link--chosen"
-                    >Từ vựng TOEIC</a
-                  >
+                    >Từ vựng TOEIC</Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link">
+                  <Link href="" className="course-learn__link">
                     Phương pháp làm các dạng câu hỏi trong IELTS General Reading
-                  </a>
+                  </Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link">
+                  <Link href="" className="course-learn__link">
                     Video chữa đề chi tiết
-                  </a>
+                  </Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link"> PRACTICE ZONE </a>
+                  <Link href="" className="course-learn__link"> PRACTICE ZONE </Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link">
+                  <Link href="" className="course-learn__link">
                     GT Practice Set 7 Test 1: Luyện tập từ vựng
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -112,49 +110,48 @@ export default function CourseVocabulary(){
               </div>
               <div className="content__box">
                 <h2 className="content__box-header">List 1</h2>
-                <a
+                <Link
                   href="vocabularyFlashCard.html"
-                  className="content__box-course content__box-course--done"
-                >
+                  className="content__box-course content__box-course--done">
                   <i
                     className="fa-solid fa-circle-check content__box-course__icon-done"
                   ></i>
                   <h3 className="content__box-course-category">Từ vựng:</h3>
                   <span className="content__box-description"> FlashCard</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description">
                     Trắc nghiệm từ vựng</span
                   >
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Tìm cặp</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Nghe từ vựng</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description">
                     Dịch nghĩa / Điền từ</span
                   >
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Nghe chính tả</span>
-                </a>
+                </Link>
               </div>
               <div className="content__box">
                 <h2 className="content__box-header">List 2</h2>
-                <a
+                <Link
                   href=""
                   className="content__box-course content__box-course--done"
                 >
@@ -163,40 +160,40 @@ export default function CourseVocabulary(){
                   ></i>
                   <h3 className="content__box-course-category">Từ vựng:</h3>
                   <span className="content__box-description"> FlashCard</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description">
                     Trắc nghiệm từ vựng</span
                   >
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Tìm cặp</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Nghe từ vựng</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description">
                     Dịch nghĩa / Điền từ</span
                   >
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Nghe chính tả</span>
-                </a>
+                </Link>
               </div>
               <div className="content__box">
                 <h2 className="content__box-header">List 3</h2>
-                <a
+                <Link
                   href=""
                   className="content__box-course content__box-course--done"
                 >
@@ -205,38 +202,38 @@ export default function CourseVocabulary(){
                   ></i>
                   <h3 className="content__box-course-category">Từ vựng:</h3>
                   <span className="content__box-description"> FlashCard</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description">
                     Trắc nghiệm từ vựng</span
                   >
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Tìm cặp</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Nghe từ vựng</span>
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description">
                     Dịch nghĩa / Điền từ</span
                   >
-                </a>
-                <a href="" className="content__box-course">
+                </Link>
+                <Link href="" className="content__box-course">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="content__box-course-category">Luyện tập:</h3>
                   <span className="content__box-description"> Nghe chính tả</span>
-                </a>
+                </Link>
               </div>
-              <a href="" className="content__transition-number">1</a>
+              <Link href="" className="content__transition-number">1</Link>
             </div>
           </div>
         </div>

@@ -13,9 +13,9 @@ export default function Home() {
           <span className=' font-semibold text-5xl text-black tracking-wide'>Welcome to the</span>
           <span className='font-semibold text-5xl text-primary-bg-color tracking-wide'>Learning English</span>
           <span ><TextGenerateEffect words={words} /></span>
-          <div className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
-            <Link href="/register" className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">Get Started</Link>
-          </div>
+          <Link href="/register" className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
+            <span  className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">Get Started</span>
+          </Link>
         </div>
         <Image
           width={100}
@@ -208,7 +208,7 @@ export default function Home() {
                   </div>
                 </div>
               </a>
-              <a href="#" className=" group">
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -250,8 +250,8 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-              </a>
-              <a href="#" className=" group">
+              </Link>
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -293,8 +293,8 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-              </a>
-              <a href="#" className=" group">
+              </Link>
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -336,7 +336,7 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

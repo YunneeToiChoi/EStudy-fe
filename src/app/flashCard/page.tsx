@@ -1,4 +1,5 @@
 import Image from "next/image";
+import  Link  from 'next/link';
 export default function FlashCard(){
     return(
        <div>
@@ -8,7 +9,7 @@ export default function FlashCard(){
             <h2 className=" text-3xl font-bold text-white">
               <i className="fa-solid fa-tv mr-4"></i>Flashcards
             </h2>
-            <a href="" className=" mt-[40px] no-underline p-2 rounded-xl text-base text-primary-bg-color bg-white inline-block hover:bg-slate-100 font-medium">Khám phá</a>
+            <Link href="" className=" mt-[40px] no-underline p-2 rounded-xl text-base text-primary-bg-color bg-white inline-block hover:bg-slate-100 font-medium">Khám phá</Link>
           </div>
         </div>
       </div>
@@ -23,7 +24,7 @@ export default function FlashCard(){
             <div className=" my-5">
               <div className="">
                 <div className="grid grid-cols-5 gap-5">
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -49,8 +50,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -76,8 +77,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -103,8 +104,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -130,8 +131,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -157,8 +158,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -184,8 +185,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -211,8 +212,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -238,8 +239,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -265,8 +266,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -292,8 +293,8 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
-                  <a href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
+                  </Link>
+                  <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
                         Cambridge Vocabulary for IELTS (20 units)
@@ -319,7 +320,7 @@ export default function FlashCard(){
                         />
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
