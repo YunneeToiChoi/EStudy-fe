@@ -6,17 +6,17 @@ import Image from "next/image";
         <input type="checkbox" id="content__checkbox" className="content__input" />
         <div className="content-left hide-on-mobile hide-on-tablet">
           <div className="flex__container header__container">
-            <a href="courseLearn.html" className="content-left__header">List 1</a>
-            <a href="" className="content-left__dropleft">
+            <Link href="courseLearn.html" className="content-left__header">List 1</Link>
+            <Link href="" className="content-left__dropleft">
               <label htmlFor="content__checkbox"
                 ><i className="content-left__icon fa-solid fa-angle-left"></i
               ></label>
-            </a>
+            </Link>
           </div>
           <div className="course-learn__container">
             <ul className="course-learn__list">
               <li className="course-learn__item">
-                <a
+                <Link
                   href="vocabularyFlashCard.html"
                   className="content__box-course content__box-course--done content__box-course--chosen content__box-course-in-list"
                 >
@@ -29,10 +29,10 @@ import Image from "next/image";
                   >
                     FlashCard</span
                   >
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a
+                <Link
                   href="multichoiceLearn.html"
                   className="content__box-course content__box-course--done content__box-course-in-list"
                 >
@@ -45,10 +45,10 @@ import Image from "next/image";
                   >
                     Trắc nghiệm từ vựng</span
                   >
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a
+                <Link
                   href="findPairLearn.html"
                   className="content__box-course content__box-course--done content__box-course-in-list"
                 >
@@ -61,10 +61,10 @@ import Image from "next/image";
                   >
                     Tìm cặp</span
                   >
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a
+                <Link
                   href="listenLearn.html"
                   className="content__box-course content__box-course--done content__box-course-in-list"
                 >
@@ -77,10 +77,10 @@ import Image from "next/image";
                   >
                     Nghe từ vựng</span
                   >
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a
+                <Link
                   href="translateLearn.html"
                   className="content__box-course content__box-course--done content__box-course-in-list"
                 >
@@ -93,10 +93,10 @@ import Image from "next/image";
                   >
                     Dịch nghĩa / Điền từ</span
                   >
-                </a>
+                </Link>
               </li>
               <li className="course-learn__item">
-                <a
+                <Link
                   href="listenSpell.html"
                   className="content__box-course content__box-course--done content__box-course-in-list"
                 >
@@ -109,7 +109,7 @@ import Image from "next/image";
                   >
                     Nghe chính tả</span
                   >
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -119,9 +119,9 @@ import Image from "next/image";
             <div
               className="nav__content-header-right hide-on-mobile hide-on-tablet"
             >
-              <a href="" className="nav__content-link-right"
+              <Link href="" className="nav__content-link-right"
                 >IELTS General Reading
-              </a>
+              </Link>
               <i className="nav__content-right__icon fa-solid fa-chevron-right"></i>
               <span className="nav__content-transition-right">Từ vựng TOEIC</span>
             </div>
@@ -136,55 +136,55 @@ import Image from "next/image";
           />
           <div className="nav__mobile-course hide">
             <div className="flex__container header__container">
-              <a href="" className="content-left__header">IELTS General Reading</a>
-              <a href="" className="content-left__dropleft">
+              <Link href="" className="content-left__header">IELTS General Reading</Link>
+              <Link href="" className="content-left__dropleft">
                 <label htmlFor="nav-mobile-course-checkbox"
                   ><i className="content-left__icon fa-solid fa-angle-left"></i
                 ></label>
-              </a>
+              </Link>
             </div>
             <div className="course-learn__container">
               <ul className="course-learn__list">
                 <li className="course-learn__item">
-                  <a
+                  <Link
                     href=""
                     className="course-learn__link course-learn__link--chosen"
                     >Từ vựng TOEIC</a
                   >
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link">
+                  <Link href="" className="course-learn__link">
                     Phương pháp làm các dạng câu hỏi trong IELTS General Reading
-                  </a>
+                  </Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link">
+                  <Link href="" className="course-learn__link">
                     Video chữa đề chi tiết
-                  </a>
+                  </Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link"> PRACTICE ZONE </a>
+                  <Link href="" className="course-learn__link"> PRACTICE ZONE </Link>
                 </li>
                 <li className="course-learn__item">
-                  <a href="" className="course-learn__link">
+                  <Link href="" className="course-learn__link">
                     GT Practice Set 7 Test 1: Luyện tập từ vựng
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
           <div className="content-right__container">
             <div className="grid wide grid-wide-course-learn">
-              <a href="" className="flashcard__train">Luyện tập flashcards</a>
+              <Link href="" className="flashcard__train">Luyện tập flashcards</Link>
               <div className="train__flex-container">
-                <a
+                <Link
                   href=""
                   className="flashcard__train-link flashcard__train-link--random"
                 >
                   <i className="fa-solid fa-shuffle flashcard__train-icon"></i> Xem
                   ngẫu nhiên</a
                 >
-                <a
+                <Link
                   href=""
                   className="flashcard__train-link flashcard__train-link--stop"
                 >
@@ -224,17 +224,17 @@ import Image from "next/image";
                       <h2 className="vocabulary__content-header">
                         accountant (n) /ə&apos;kaʊntənt/
                       </h2>
-                      <a href="#" className="vocabulary__speaker">
+                      <Link href="#" className="vocabulary__speaker">
                         <i
                           className="fa-solid fa-volume-high vocabulary__content-icon"
                         ></i>
-                      </a>
+                      </Link>
                       <span className="vocabulary__national">UK</span>
-                      <a href="#" className="vocabulary__speaker">
+                      <Link href="#" className="vocabulary__speaker">
                         <i
                           className="fa-solid fa-volume-high vocabulary__content-icon"
                         ></i>
-                      </a>
+                      </Link>
                       <span className="vocabulary__national">US</span>
                     </div>
                     <div className="vocabulary__study">
@@ -281,17 +281,17 @@ import Image from "next/image";
                       <h2 className="vocabulary__content-header">
                         accountant (n) /ə&apos;kaʊntənt/
                       </h2>
-                      <a href="#" className="vocabulary__speaker">
+                      <Link href="#" className="vocabulary__speaker">
                         <i
                           className="fa-solid fa-volume-high vocabulary__content-icon"
                         ></i>
-                      </a>
+                      </Link>
                       <span className="vocabulary__national">UK</span>
-                      <a href="#" className="vocabulary__speaker">
+                      <Link href="#" className="vocabulary__speaker">
                         <i
                           className="fa-solid fa-volume-high vocabulary__content-icon"
                         ></i>
-                      </a>
+                      </Link>
                       <span className="vocabulary__national">US</span>
                     </div>
                     <div className="vocabulary__study">
@@ -338,17 +338,17 @@ import Image from "next/image";
                       <h2 className="vocabulary__content-header">
                         accountant (n) /ə&apos;kaʊntənt/
                       </h2>
-                      <a href="#" className="vocabulary__speaker">
+                      <Link href="#" className="vocabulary__speaker">
                         <i
                           className="fa-solid fa-volume-high vocabulary__content-icon"
                         ></i>
-                      </a>
+                      </Link>
                       <span className="vocabulary__national">UK</span>
-                      <a href="#" className="vocabulary__speaker">
+                      <Link href="#" className="vocabulary__speaker">
                         <i
                           className="fa-solid fa-volume-high vocabulary__content-icon"
                         ></i>
-                      </a>
+                      </Link>
                       <span className="vocabulary__national">US</span>
                     </div>
                     <div className="vocabulary__study">
@@ -388,7 +388,7 @@ import Image from "next/image";
                   </div>
                 </div>
               </div>
-              <a href="" className="content__transition-number">1</a>
+              <Link href="" className="content__transition-number">1</Link>
             </div>
           </div>
         </div>

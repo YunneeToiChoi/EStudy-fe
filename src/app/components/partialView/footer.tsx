@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
+import  Link  from 'next/link';
 
 export default function Footer() {
     const pathname = usePathname();
@@ -27,78 +28,49 @@ export default function Footer() {
                         />
                         <p className="text-sm font-semibold">© 2024</p>
                         <div className="flex w-full gap-4 justify-center">
-                            <a href="" className="footer__link">
+                            <Link href="" className="footer__link">
                                 <i className="fa-brands fa-facebook footer__icon fil text-white"></i>
-                            </a>
-                            <a href="" className="footer__link">
+                            </Link>
+                            <Link href="" className="footer__link">
                                 <i className="fa-brands fa-instagram footer__icon text-white"></i>
-                            </a>
-                            <a href="" className="footer__link">
+                            </Link>
+                            <Link href="" className="footer__link">
                                 <i className="fa-brands fa-twitter footer__icon text-white"></i>
-                            </a>
-                            <a href="" className="footer__link">
+                            </Link>
+                            <Link href="" className="footer__link">
                                 <i className="fa-brands fa-linkedin footer__icon text-white"></i>
-                            </a>
-                            <a href="" className="footer__link">
+                            </Link>
+                            <Link href="" className="footer__link">
                                 <i className="fa-brands fa-tiktok footer__icon text-white"></i>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="flex flex-col gap-6">
                         <h3 className="text-2xl font-bold text-white">Khóa học online</h3>
                         <ul className="list-none flex flex-col gap-4">
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Reading</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Reading</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Writing</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Writing</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">Complete TOEIC</a>
+                                <Link href="" className="text-base no-underline text-white font-light">Complete TOEIC</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="flex flex-col gap-6">
-                        <h3 className="text-2xl font-bold text-white">Khóa học online</h3>
-                        <ul className="list-none flex flex-col gap-4">
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Reading</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Writing</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">Complete TOEIC</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</a>
-                            </li>
-                            <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</Link>
                             </li>
                         </ul>
                     </div>
@@ -106,28 +78,28 @@ export default function Footer() {
                         <h3 className="text-2xl font-bold text-white">Khóa học online</h3>
                         <ul className="list-none flex flex-col gap-4">
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Reading</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Reading</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Writing</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Writing</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">Complete TOEIC</a>
+                                <Link href="" className="text-base no-underline text-white font-light">Complete TOEIC</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</Link>
                             </li>
                         </ul>
                     </div>
@@ -135,28 +107,57 @@ export default function Footer() {
                         <h3 className="text-2xl font-bold text-white">Khóa học online</h3>
                         <ul className="list-none flex flex-col gap-4">
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Reading</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Reading</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS General Writing</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Writing</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">Complete TOEIC</a>
+                                <Link href="" className="text-base no-underline text-white font-light">Complete TOEIC</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</Link>
                             </li>
                             <li>
-                                <a href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</a>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="flex flex-col gap-6">
+                        <h3 className="text-2xl font-bold text-white">Khóa học online</h3>
+                        <ul className="list-none flex flex-col gap-4">
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Reading</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS General Writing</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">Complete TOEIC</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Fundamentals</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Listening</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Reading</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Speaking</Link>
+                            </li>
+                            <li>
+                                <Link href="" className="text-base no-underline text-white font-light">IELTS Intensive Writing</Link>
                             </li>
                         </ul>
                     </div>

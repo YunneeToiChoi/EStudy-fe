@@ -19,7 +19,7 @@ export default function FlashCard(){
             <p className=" p-4 rounded-[6px] text-base bg-alert-flashcard-color my-5 text-alert-text-color">
               Chú ý: Bạn có thể tạo flashcards từ highlights (bao gồm các
               highlights các bạn đã tạo trước đây) trong trang chi tiết kết quả
-              bài thi. <a href="" className="alert__link">Xem hướng dẫn</a>.
+              bài thi. <Link href="" className="alert__link">Xem hướng dẫn</Link>.
             </p>
             <div className=" my-5">
               <div className="">

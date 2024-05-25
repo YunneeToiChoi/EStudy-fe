@@ -183,7 +183,7 @@ export default function CourseDetail()
                 </div>
               </div>
             </div>
-            <div className="w-4/12 h-fit mt-5 bg-white z-20 shadow-xl rounded-[10px]">
+            <div className="w-4/12 h-fit mt-5 bg-white shadow-xl rounded-[10px]">
               <Image
                 width={1000}
                 height={1000}

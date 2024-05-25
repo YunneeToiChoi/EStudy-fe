@@ -19,28 +19,28 @@ export default function Profile()
               alt=""
               className="avt__user"
             />
-            <a href="" className="avatar__change"
+            <Link href="" className="avatar__change"
               ><i className="fa-solid fa-pencil avatar__icon"></i
-            ></a>
+            ></Link>
           </div>
         </div>
         <div className="user__name-container">
           <h1 className="name__user">thaigiabao122</h1>
-          <a href="" className="user__public">Trang công khai</a>
+          <Link href="" className="user__public">Trang công khai</Link>
         </div>
         <ul className="tag-search__transition">
           <li className="tag-search__transition-item">
-            <a
+            <Link
               href=""
               className="tag-search__transition-link tag-search__transition-link--chosen"
               >Khóa học</a
             >
           </li>
           <li className="tag-search__transition-item">
-            <a href="" className="tag-search__transition-link">Kết quả luyện thi</a>
+            <Link href="" className="tag-search__transition-link">Kết quả luyện thi</Link>
           </li>
           <li className="tag-search__transition-item">
-            <a href="" className="tag-search__transition-link">Posts</a>
+            <Link href="" className="tag-search__transition-link">Posts</Link>
           </li>
         </ul>
         <div className="course__registed-container">
@@ -49,7 +49,7 @@ export default function Profile()
           </p>
           <h3 className="course__registed-header">Các khóa đã kích hoạt</h3>
           <div className="course__active-container row">
-            <a href="" className="couse__active-link col l-3 m-6 c-12">
+            <Link href="" className="couse__active-link col l-3 m-6 c-12">
               <div className="course__active-box">
                 <h4 className="course__active-title">Complete TOEIC</h4>
                 <p className="course__active-state">Đã kích hoạt</p>
@@ -61,8 +61,8 @@ export default function Profile()
                   >Từ vựng TOEIC - List 10
                 </p>
               </div>
-            </a>
-            <a href="" className="couse__active-link col l-3 m-6 c-12">
+            </Link>
+            <Link href="" className="couse__active-link col l-3 m-6 c-12">
               <div className="course__active-box">
                 <h4 className="course__active-title">Complete TOEIC</h4>
                 <p className="course__active-state">Đã kích hoạt</p>
@@ -74,8 +74,8 @@ export default function Profile()
                   >Từ vựng TOEIC - List 10
                 </p>
               </div>
-            </a>
-            <a href="" className="couse__active-link col l-3 m-6 c-12">
+            </Link>
+            <Link href="" className="couse__active-link col l-3 m-6 c-12">
               <div className="course__active-box">
                 <h4 className="course__active-title">Complete TOEIC</h4>
                 <p className="course__active-state">Đã kích hoạt</p>
@@ -87,8 +87,8 @@ export default function Profile()
                   >Từ vựng TOEIC - List 10
                 </p>
               </div>
-            </a>
-            <a href="" className="couse__active-link col l-3 m-6 c-12">
+            </Link>
+            <Link href="" className="couse__active-link col l-3 m-6 c-12">
               <div className="course__active-box">
                 <h4 className="course__active-title">Complete TOEIC</h4>
                 <p className="course__active-state">Đã kích hoạt</p>
@@ -100,7 +100,7 @@ export default function Profile()
                   >Từ vựng TOEIC - List 10
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default function Header() {
       const header:any = document.querySelector('.header');
       const currentScrollPosition = window.scrollY;
 
-      if (currentScrollPosition > 0) {
+      if (currentScrollPosition >0) {
         header.classList.add('shadow-md');
         header.classList.add('bg-white');
       } else {
@@ -64,7 +64,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <div className='header fixed z-20 top-0 left-0 right-0 transition duration-300 ease-in-out'>
+    <div className='header fixed z-20 top-0 left-0 right-0 transition duration-500 ease-in-out'>
       <nav className=" w-full py-5">
         <div className="w-full block max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
@@ -98,11 +98,6 @@ export default function Header() {
                 <li className="group">
                   <Link href="/flashCard" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
                     Flashcards
-                  </Link>
-                </li>
-                <li className="group">
-                  <Link href="/dashBoard/getAllUser" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
-                    Blog
                   </Link>
                 </li>
                 <li className="group">

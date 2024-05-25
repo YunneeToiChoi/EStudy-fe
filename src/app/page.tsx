@@ -165,7 +165,7 @@ export default function Home() {
           <div className="relative my-[150px] w-screen rounded-3xl left-1/2 transform -translate-x-1/2 bg-[#F5F5FD]  p-16">
             <h2 className="  font-semibold text-3xl text-center text-[#17165B] ">Đề thi mới nhất</h2>
             <div className=" mt-16 grid grid-cols-4 gap-14">
-              <a href="#" className=" group">
+              <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
@@ -207,7 +207,7 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-              </a>
+              </Link>
               <Link href="#" className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
