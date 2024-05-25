@@ -2,11 +2,9 @@
 import  Link  from 'next/link';
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { registerUser } from "../../../redux/features/apiRequest";
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { Button } from '@/components/ui/button'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   Form,
   FormControl,
@@ -59,6 +57,7 @@ export default function Register(){
         };
         registerUser(newUser,dispatch,navigate.push);
       }
+
     return(
         <div className="pt-10 mx-10 flex items-center justify-center">
           <div className="bg-white/35 w-[600px] px-[60px] py-[30px] rounded-lg shadow-xl">

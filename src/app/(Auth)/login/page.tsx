@@ -3,11 +3,9 @@
 import  Link  from 'next/link';
 import { loginUser } from "../../../redux/features/apiRequest";
 import { useDispatch } from "react-redux";
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { Button } from '@/components/ui/button'
 import {
     Form,
     FormControl,
@@ -19,6 +17,9 @@ import {
 import { Input } from '@/components/ui/input'
 import { LoginBody, LoginBodyType } from '@/schemaValidate/auth.schema'
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+
+
+
 const words = [
   {
     text: "Log",
@@ -42,7 +43,11 @@ const words = [
   },
 ]
 
+
+
+
 export default function Login() {
+
     const form = useForm<LoginBodyType>({
         resolver: zodResolver(LoginBody),
         defaultValues: {
@@ -62,6 +67,7 @@ export default function Login() {
         };
         await loginUser(newUser, dispatch, navigate.push); // Gọi API login
       };
+
 
     return (
       <div className="pt-10 mx-10 flex items-center justify-center">
