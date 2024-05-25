@@ -1,4 +1,5 @@
 import "./profile.css"
+import  Link  from 'next/link';
 import Image from 'next/image';
 export default function Profile()
 {
@@ -33,8 +34,7 @@ export default function Profile()
             <Link
               href=""
               className="tag-search__transition-link tag-search__transition-link--chosen"
-              >Khóa học</a
-            >
+              >Khóa học</Link>
           </li>
           <li className="tag-search__transition-item">
             <Link href="" className="tag-search__transition-link">Kết quả luyện thi</Link>

@@ -70,21 +70,22 @@ export default function ExamOnline()
     </div>
     <div className="relative p-16">
       <div className=" mt-8 grid grid-cols-3 gap-14">
-        <Link href="#" className=" group">
-          <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
-          <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
-            <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
-            width={1000} 
-            height={1000} 
-            quality={100}
-            alt='image' 
-            src="/img/E-balck.jpg">
-            </Image>
-          </div>
+      <div className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
+        <Link
+          href="/courseDetails"
+          className=" no-underline text-black ">
+          <div className=" p-3 flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              src="/img/.svg/classroom.svg"
+              alt=""
+              className=" w-full p-3"
+            />
             <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
               IELTS Simulation Listening test 1
             </h4>
-            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4 items-center">
               <div className='w-full flex items-center justify-between'>
                 <div className=' flex gap-2 items-center'>
                   <i className="fa-regular fa-clock"></i>
@@ -113,21 +114,23 @@ export default function ExamOnline()
             </div>
           </div>
         </Link>
-        <Link href="#" className=" group">
-          <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
-          <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
-            <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
-            width={1000} 
-            height={1000} 
-            quality={100}
-            alt='image' 
-            src="/img/bg_pro-E.jpg">
-            </Image>
-          </div>
+      </div>
+      <div className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
+        <Link
+          href="/courseDetails"
+          className=" no-underline text-black ">
+          <div className=" p-3 flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              src="/img/.svg/desk.svg"
+              alt=""
+              className=" w-full p-3"
+            />
             <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
               IELTS Simulation Listening test 1
             </h4>
-            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4 items-center">
               <div className='w-full flex items-center justify-between'>
                 <div className=' flex gap-2 items-center'>
                   <i className="fa-regular fa-clock"></i>
@@ -156,21 +159,23 @@ export default function ExamOnline()
             </div>
           </div>
         </Link>
-        <Link href="#" className=" group">
-          <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
-          <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
-            <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
-            width={1000} 
-            height={1000} 
-            quality={100}
-            alt='image' 
-            src="/img/Speak_E.jpg">
-            </Image>
-          </div>
-            <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
+      </div>
+      <div className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
+        <Link
+          href="/courseDetails"
+          className=" no-underline text-black ">
+          <div className=" p-3 flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              src="/img/.svg/grammar.svg"
+              alt=""
+              className=" w-full p-3"
+            />
+              <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
               IELTS Simulation Listening test 1
             </h4>
-            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4 items-center">
               <div className='w-full flex items-center justify-between'>
                 <div className=' flex gap-2 items-center'>
                   <i className="fa-regular fa-clock"></i>
@@ -199,21 +204,23 @@ export default function ExamOnline()
             </div>
           </div>
         </Link>
-        <Link href="#" className=" group">
-          <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
-          <div className=' w-full h-72 group relative overflow-hidden rounded-[10px] '>
-            <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
-            width={1000} 
-            height={1000} 
-            quality={100}
-            alt='image' 
-            src="/img/E-learn.jpg">
-            </Image>
-          </div>
+      </div>
+      <div className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
+        <Link
+          href="/courseDetails"
+          className="no-underline text-black ">
+          <div className=" p-3 flex flex-col items-center">
+            <Image
+              width={100}
+              height={100}
+              src="/img/.svg/program.svg"
+              alt=""
+              className=" w-full p-3"
+            />
             <h4 className=" text-xl font-medium text-center mt-4 tracking-wide">
               IELTS Simulation Listening test 1
             </h4>
-            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4">
+            <div className=" flex flex-col w-full text-sm text-exam-text-color my-4 items-center">
               <div className='w-full flex items-center justify-between'>
                 <div className=' flex gap-2 items-center'>
                   <i className="fa-regular fa-clock"></i>
@@ -242,6 +249,7 @@ export default function ExamOnline()
             </div>
           </div>
         </Link>
+      </div>
       </div>
     </div>
   </div>

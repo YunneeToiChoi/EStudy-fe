@@ -2,7 +2,7 @@
 import  Link  from 'next/link';
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
-import { registerUser } from "../../../redux/features/apiRequest";
+import { registerUser } from "../../../../redux/features/apiRequest";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {

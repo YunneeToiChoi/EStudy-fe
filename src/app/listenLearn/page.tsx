@@ -1,4 +1,5 @@
 import "../courseLearn/courseLearn.css"
+import  Link  from 'next/link';
 export default function listenLearn(){
     return(
         <div className="content__container">
@@ -148,8 +149,7 @@ export default function listenLearn(){
                   <Link
                     href=""
                     className="course-learn__link course-learn__link--chosen"
-                    >Từ vựng TOEIC</a
-                  >
+                    >Từ vựng TOEIC</Link>
                 </li>
                 <li className="course-learn__item">
                   <Link href="" className="course-learn__link">
@@ -174,7 +174,7 @@ export default function listenLearn(){
           </div>
           <div className="content-right__container">
             <div className="grid wide grid-wide-course-learn">
-              <Linkudio className="spell__audio" controls>
+              <audio className="spell__audio" controls>
                 <source src="" type="audio/mpeg" />
               </audio>
               <div className="content__box row">
@@ -211,8 +211,7 @@ export default function listenLearn(){
               </div>
               <div className="multichoice__option">
                 <Link href="" className="multichoice__option-link"
-                  ><i className="fa-solid fa-angle-left"></i> Câu trước</a
-                >
+                  ><i className="fa-solid fa-angle-left"></i> Câu trước</Link>
                 <div className="multichoice__auto-container">
                   <input type="checkbox" id="multichoice__checkbox" />
                   <label htmlFor="multichoice__checkbox" className="multichoice__auto"
@@ -229,8 +228,7 @@ export default function listenLearn(){
                   <Link
                     href=""
                     className="multichoice__list-number multichoice__list-number--chosen"
-                    >1</a
-                  >
+                    >1</Link>
                   <Link href="" className="multichoice__list-number">2</Link>
                   <Link href="" className="multichoice__list-number">3</Link>
                   <Link href="" className="multichoice__list-number">4</Link>

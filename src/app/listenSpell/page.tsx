@@ -1,4 +1,5 @@
 import "../courseLearn/courseLearn.css"
+import  Link  from 'next/link';
 export default function listenSpell()
 {
     return (
@@ -149,8 +150,7 @@ export default function listenSpell()
                   <Link
                     href=""
                     className="course-learn__link course-learn__link--chosen"
-                    >Từ vựng TOEIC</a
-                  >
+                    >Từ vựng TOEIC</Link>
                 </li>
                 <li className="course-learn__item">
                   <Link href="" className="course-learn__link">
@@ -202,13 +202,11 @@ export default function listenSpell()
                   </div>
                   <div className="listenSpell__link-option">
                     <Link href="" className="listenSpell__link"
-                      >Lựa chọn từ để luyện</a
-                    >
+                      >Lựa chọn từ để luyện</Link>
                     <Link href="" className="listenSpell__link"
-                      >Xem danh sách các từ bỏ qua / sai</a
-                    >
+                      >Xem danh sách các từ bỏ qua / sai</Link>
                   </div>
-                  <Linkudio className="spell__audio" controls>
+                  <audio className="spell__audio" controls>
                     <source src="" type="audio/mpeg" />
                   </audio>
                   <p className="listenSpell__speaker">
@@ -269,8 +267,7 @@ export default function listenSpell()
               </div>
               <div className="multichoice__option">
                 <Link href="" className="multichoice__option-link"
-                  ><i className="fa-solid fa-angle-left"></i> Câu trước</a
-                >
+                  ><i className="fa-solid fa-angle-left"></i> Câu trước</Link>
                 <div className="multichoice__auto-container">
                   <input type="checkbox" id="multichoice__checkbox" />
                   <label htmlFor="multichoice__checkbox" className="multichoice__auto"
@@ -287,8 +284,7 @@ export default function listenSpell()
                   <Link
                     href=""
                     className="multichoice__list-number multichoice__list-number--chosen"
-                    >1</a
-                  >
+                    >1</Link>
                   <Link href="" className="multichoice__list-number">2</Link>
                   <Link href="" className="multichoice__list-number">3</Link>
                   <Link href="" className="multichoice__list-number">4</Link>
