@@ -1,4 +1,5 @@
 import "../courseLearn/courseLearn.css"
+import  Link  from 'next/link';
 import Image from "next/image";
  export default function vocabularyFlashCard(){
     return(
@@ -149,8 +150,7 @@ import Image from "next/image";
                   <Link
                     href=""
                     className="course-learn__link course-learn__link--chosen"
-                    >Từ vựng TOEIC</a
-                  >
+                    >Từ vựng TOEIC</Link>
                 </li>
                 <li className="course-learn__item">
                   <Link href="" className="course-learn__link">
@@ -182,15 +182,13 @@ import Image from "next/image";
                   className="flashcard__train-link flashcard__train-link--random"
                 >
                   <i className="fa-solid fa-shuffle flashcard__train-icon"></i> Xem
-                  ngẫu nhiên</a
-                >
+                  ngẫu nhiên</Link>
                 <Link
                   href=""
                   className="flashcard__train-link flashcard__train-link--stop"
                 >
                   <i className="fa-solid fa-ban flashcard__train-icon"></i> Dừng học
-                  list từ này</a
-                >
+                  list từ này</Link>
               </div>
               <div className="content__box">
                 <div className="vocabulary__total-container">
