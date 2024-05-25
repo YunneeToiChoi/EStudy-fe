@@ -2,7 +2,7 @@ import Image from "next/image";
 import  Link  from 'next/link';
 export default function FlashCard(){
     return(
-       <div className="max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
+       <div className="pt-10 max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
          <div className=" px-9 py-[40px] rounded-lg bg-gradient-to-r from-primary-bg-color to-[#9ceaef]">
         <div className="">
           <div className="">

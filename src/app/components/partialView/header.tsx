@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../redux/features/apiRequest";
 import { createAxios } from "../../../redux/createInstance";
@@ -21,18 +21,22 @@ export default function Header() {
   }
 
   const [scrollPosition, setScrollPosition] = useState(0);
+  const pathname = usePathname(); // Lấy URL hiện tại
 
   useEffect(() => {
     const handleScroll = () => {
       const header:any = document.querySelector('.header');
       const currentScrollPosition = window.scrollY;
 
-      if (currentScrollPosition > 40) {
+      if (currentScrollPosition > 0) {
         header.classList.add('shadow-md');
         header.classList.add('bg-white');
       } else {
-        header.classList.remove('shadow-md');
-        header.classList.remove('bg-white');
+        const specificRoutes = ['/courseLearn'];
+        if (!specificRoutes.includes(pathname)) {
+          header.classList.remove('shadow-md');
+          header.classList.remove('bg-white');
+        }
       }
 
       setScrollPosition(currentScrollPosition);
@@ -44,10 +48,23 @@ export default function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [pathname]);
+
+  useEffect(() => {
+    const header:any = document.querySelector('.header');
+    const specificRoutes = ['/courseLearn'];
+
+    if (specificRoutes.includes(pathname)) {
+      header.classList.add('shadow-md');
+      header.classList.add('bg-white');
+    } else {
+        header.classList.remove('shadow-md');
+        header.classList.remove('bg-white');
+    }
+  }, [pathname]);
 
   return (
-    <div className='header fixed z-20 top-0 left-0 right-0 transition duration-300 ease-in-out rounded-b-3xl'>
+    <div className='header fixed z-20 top-0 left-0 right-0 transition duration-300 ease-in-out'>
       <nav className=" w-full py-5">
         <div className="w-full block max-w-7xl mx-auto">
           <div className="flex items-center justify-between">

@@ -3,7 +3,7 @@ export default function ActiveCourse()
 {
     return(
         <div >
-      <div className=" flex mx-[40px] items-center justify-center">
+      <div className="pt-10 flex mx-[40px] items-center justify-center">
         <div className=" w-[600px] px-[60px] py-[30px] border-[1px] border-course-border-color rounded-xl shadow-md">
           <h3 className="text-4xl font-medium">Kích hoạt khoá học</h3>
           <p className=" text-base font-medium my-[10px]">Mã kích hoạt</p>
