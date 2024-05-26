@@ -48,7 +48,7 @@ export const registerUser = async (user:any, dispatch:any, navigate:any) => {
 export const getAllUsers = async (accessToken:any, dispatch:any, axiosJWT:any) => {
   dispatch(getUsersStart());
   try {
-    const res = await axiosJWT.get(`${URL_ENDPOINT}/v1/user`, {
+    const res = await axiosJWT.get(`${URL_ENDPOINT}/Courses/GetAllCourses`, {
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(getUsersSuccess(res.data));
