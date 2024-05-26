@@ -8,7 +8,7 @@ export default function Footer() {
     const pathname = usePathname();
 
     // Định nghĩa các route cần ẩn footer
-    const hiddenRoutes = ['/courseLearn','/course/banner'];
+    const hiddenRoutes = ['/course/courseOption/courseLearn','/course/courseOption/courseVocabulary','/course/courseOption/courseGrammar'];
 
     // Kiểm tra nếu pathname thuộc các route cần ẩn
     if (hiddenRoutes.includes(pathname)) {

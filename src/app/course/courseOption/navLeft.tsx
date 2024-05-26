@@ -1,7 +1,7 @@
-import  Link  from 'next/link';
-export  default function test1(){
+import Link from 'next/link';
+export default function NavLeftOptionCourse(){
     return(
-        <div>  
+        <div>
              <div className=" flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
             <Link href="" className=" text-xl no-underline text-white">IELTS General Reading</Link>
             <label htmlFor="content_checkbox"
@@ -36,4 +36,4 @@ export  default function test1(){
           </div>
         </div>
     )
- }
+}

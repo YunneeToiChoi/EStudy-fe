@@ -1,49 +1,10 @@
-
-import "../courseLearn/courseLearn.css"
 import  Link  from 'next/link';
-export default function CourseVocabulary(){
+
+import "/public/handicraftCSS/source.css"
+export default function Body(){
     return(
-        <div className="content__container">
-        <input type="checkbox" id="content__checkbox" className="content__input" />
-        <div className="content-left hide-on-mobile hide-on-tablet">
-          <div className="flex__container header__container">
-            <Link href="courseLearn.html" className="content-left__header"
-              >IELTS General Reading</Link>
-            <Link href="" className="content-left__dropleft">
-              <label htmlFor="content__checkbox"
-                ><i className="content-left__icon fa-solid fa-angle-left"></i
-              ></label>
-            </Link>
-          </div>
-          <div className="course-learn__container">
-            <ul className="course-learn__list">
-              <li className="course-learn__item">
-                <Link href="" className="course-learn__link course-learn__link--chosen"
-                  >Từ vựng TOEIC</Link>
-              </li>
-              <li className="course-learn__item">
-                <Link href="" className="course-learn__link">
-                  Phương pháp làm các dạng câu hỏi trong IELTS General Reading
-                </Link>
-              </li>
-              <li className="course-learn__item">
-                <Link href="" className="course-learn__link">
-                  Video chữa đề chi tiết
-                </Link>
-              </li>
-              <li className="course-learn__item">
-                <Link href="" className="course-learn__link"> PRACTICE ZONE </Link>
-              </li>
-              <li className="course-learn__item">
-                <Link href="" className="course-learn__link">
-                  GT Practice Set 7 Test 1: Luyện tập từ vựng
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="content-right">
-          <nav className="nav__content-right">
+        <div>
+            <nav className="nav__content-right">
             <div
               className="nav__content-header-right hide-on-mobile hide-on-tablet"
             >
@@ -237,6 +198,5 @@ export default function CourseVocabulary(){
             </div>
           </div>
         </div>
-      </div>
     )
 }

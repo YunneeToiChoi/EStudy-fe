@@ -1,8 +1,8 @@
 import  Link  from 'next/link';
-export  default function test2(){
+export default function Body(){
     return(
         <div>
-              <nav className=" fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">
+             <nav className=" fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">
             <div
               className="max-lg:hidden flex items-center">
               <Link href="" className=" no-underline text-nav-hover-text-color text-sm"
@@ -122,4 +122,4 @@ export  default function test2(){
           </div>
         </div>
     )
- }
+}

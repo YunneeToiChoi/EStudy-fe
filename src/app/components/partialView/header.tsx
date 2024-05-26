@@ -22,7 +22,7 @@ export default function Header() {
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const pathname = usePathname(); // Lấy URL hiện tại
-  const specificRoutes = ['/courseLearn','/course/banner'];
+  const specificRoutes = ['/course/courseOption/courseLearn','/course/courseOption/courseVocabulary','/course/courseOption/courseGrammar'];
 
   useEffect(() => {
     const handleScroll = () => {
