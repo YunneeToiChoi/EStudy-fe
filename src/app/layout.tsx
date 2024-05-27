@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import "/public/handicraftCSS/base.css";
+import "/public/handicraftCSS/iconFontA.css";
 import ReduxProvider from "@/redux/provider";
 
 import Header from "./components/partialView/header";
