@@ -6,12 +6,9 @@ import  Link  from 'next/link';
 
 export default function Footer() {
     const pathname = usePathname();
-
-    // Định nghĩa các route cần ẩn footer
-    const hiddenRoutes = ['/course/courseOption/courseLearn','/course/courseOption/courseVocabulary','/course/courseOption/courseGrammar'];
-
+ 
     // Kiểm tra nếu pathname thuộc các route cần ẩn
-    if (hiddenRoutes.includes(pathname)) {
+    if (pathname.startsWith('/course/')) {
         return null; // Không render footer
     }
 

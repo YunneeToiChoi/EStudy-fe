@@ -6,8 +6,7 @@ export default function NavLeftTestCourse(){
             <Link href="courseLearn.html" className="content-left__header">List 1</Link>
             <Link href="" className="content-left__dropleft">
               <label htmlFor="content__checkbox"
-                ><i className="content-left__icon fa-solid fa-angle-left"></i
-              ></label>
+                ><i className="content-left__icon fa-solid fa-angle-left"></i></label>
             </Link>
           </div>
           <div className="course-learn__container">

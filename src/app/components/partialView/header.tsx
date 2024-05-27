@@ -22,7 +22,6 @@ export default function Header() {
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const pathname = usePathname(); // Lấy URL hiện tại
-  const specificRoutes = ['/course/courseOption/courseLearn','/course/courseOption/courseVocabulary','/course/courseOption/courseGrammar'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +32,7 @@ export default function Header() {
         header.classList.add('shadow-md');
         header.classList.add('bg-white');
       } else {
-        if (!specificRoutes.includes(pathname)) {
+        if (!pathname.startsWith('/course/')) {
           header.classList.remove('shadow-md');
           header.classList.remove('bg-white');
         }
@@ -52,7 +51,7 @@ export default function Header() {
 
   useEffect(() => {
     const header:any = document.querySelector('.header')
-    if (specificRoutes.includes(pathname)) {
+    if (pathname.startsWith('/course/')) {
       header.classList.add('shadow-md');
       header.classList.add('bg-white');
     } else {
