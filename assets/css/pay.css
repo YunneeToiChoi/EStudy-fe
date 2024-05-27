@@ -1,0 +1,58 @@
+*{
+    font-size: 1rem;
+}
+
+.pay__container{
+    width: 1000px;
+    padding: 30px 60px;
+    border: 1px solid var(--course-border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 0 0 rgba(143, 156, 173, .2);
+}
+
+.pay__header{
+    margin: 20px 0px;
+    font-size: 1.6rem;
+}
+
+.pay__content{
+    margin: 16px 0px;
+}
+
+.pay__link{
+    color: var(--nav-hover-text-color);
+    text-decoration: none;
+}
+
+.pay__link:hover{
+    color: black;
+    transition: 0.2s;
+}
+
+.pay__for{
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.pay__img{
+    margin-left: 30px;
+}
+
+.pay__item{
+    margin-left: 26px;
+}
+
+.pay__item-child{
+    margin-left: 50px;
+}
+
+.pay__text-bold{
+    font-weight: 600;
+}
+
+.pay__rules{
+    margin-top: 30px;
+
+}

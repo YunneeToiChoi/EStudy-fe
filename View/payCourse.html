@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/grid.css" />
+    <link rel="stylesheet" href="../assets/css/loginAndRegisterAndActive.css" />
+    <link rel="stylesheet" href="../assets/css/pay.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>STUDY4</title>
+  </head>
+  <body>
+    <!-- Navbar : Should be in Layout -->
+    <nav class="navbar">
+      <div class="grid wide">
+        <div class="nav__container">
+          <a href="/View/home.html">
+            <img
+              class="nav__img"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EOw8FBT_Sn6rQqg_NQGLLkHQKEQjA1h_c6ujo5_A&s"
+              alt="Logo"
+              class="nav_logo"
+              width="150px"
+              height="55px"
+            />
+          </a>
+          <div class="nav_right">
+            <ul class="nav__list hide-on-tablet hide-on-mobile">
+              <li class="nav__item">
+                <a href="/View/courseOnline.html" class="nav__link"
+                  >Khóa học online</a
+                >
+              </li>
+              <li class="nav__item">
+                <a href="/View/examOnline.html" class="nav__link"
+                  >Đề thi online</a
+                >
+              </li>
+              <li class="nav__item">
+                <a href="/View/flashCard.html" class="nav__link">Flashcards</a>
+              </li>
+              <li class="nav__item">
+                <a href="" class="nav__link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="/View/activeCourse.html" class="nav__link"
+                  >Kích hoạt khóa học</a
+                >
+              </li>
+              <li class="nav__item nav__item-login">
+                <a href="/View/login.html" class="nav__link-login">Đăng nhập</a>
+              </li>
+            </ul>
+
+            <label for="nav-mobile-input" class="menubar__icon hide">
+              <i class="fa-solid fa-bars nav__icon"></i>
+            </label>
+            <input type="checkbox" id="nav-mobile-input" class="nav__input" />
+            <label for="nav-mobile-input" class="nav__overlay"></label>
+            <div class="nav__mobile hide">
+              <ul class="nav__list-mobile">
+                <li class="nav__item-mobile">
+                  <a href="/View/courseOnline.html" class="nav__link-mobile"
+                    >Khóa học online</a
+                  >
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="/View/examOnline.html" class="nav__link-mobile"
+                    >Đề thi online</a
+                  >
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="/View/flashCard.html" class="nav__link-mobile"
+                    >Flashcards</a
+                  >
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="" class="nav__link-mobile">Blog</a>
+                </li>
+                <li class="nav__item-mobile">
+                  <a href="/View/activeCourse.html" class="nav__link-mobile"
+                    >Kích hoạt khóa học</a
+                  >
+                </li>
+                <li
+                  class="nav__item-mobile nav__item-login nav__item-login-mobile"
+                >
+                  <a
+                    href="/View/login.html"
+                    class="nav__link-login nav__link-login-mobile"
+                    >Đăng nhập</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- End NavBar -->
+    <!-- Body -->
+    <div class="content">
+      <div class="content__container">
+        <div class="pay__container">
+          <h2 class="pay__header">Hướng dẫn thanh toán</h2>
+          <p class="pay__content">
+            Bạn vui lòng chuyển khoản cho chúng tôi theo một trong các hình thức
+            sau đây.
+          </p>
+          <p class="pay__content">
+            Sau khi xác nhận thông tin chuyển khoản, chúng tôi sẽ gửi cho bạn mã
+            kích hoạt khoá học qua tin nhắn, zalo theo số điện thoại hoặc email
+            đặt hàng. Bạn có thể email hoặc gọi điện trực tiếp cho chúng tôi nếu
+            không nhận được mã kích hoạt. Hotline hỗ trợ kích hoạt:
+            <a href="" class="pay__link">096-369-5525</a>
+          </p>
+          <p class="pay__for">Dành cho học viên ở trong nước</p>
+          <ul class="pay__list">
+            <li class="pay__item">
+              Ngân hàng ACB - Ngân hàng thương mại cổ phần Á Châu ACB
+            </li>
+            <ul class="pay__list-child">
+              <li class="pay__item-child">
+                Chủ TK:
+                <span class="pay__text-bold">
+                  Công Ty TNHH Công Nghệ A Plus
+                </span>
+              </li>
+              <li class="pay__item-child">
+                Số tài khoản: <span class="pay__text-bold">3333 588 588</span>
+              </li>
+              <li class="pay__item-child">
+                Nội dung chuyển khoản: Tên + SĐT đặt hàng
+              </li>
+              <li class="pay__item-child">
+                <a href="" class="pay__link">Quét mã QR </a>
+              </li>
+            </ul>
+            <img
+              src="https://lh6.googleusercontent.com/CdK4b3misE24U_54MVmTunK9MQrw_YgRhzfj8F3VQF1a617rFYXq4dexhPYLhnVB26-i-5sNy6MwV3nFWAsyNK5eZvMUPpk937yNuxnaMNUBySBl3Ef5Ar7QS13_eouKdtb4bu9CeDSbHp-hh9HzW6M"
+              alt=""
+              width="30%"
+              class="pay__img"
+            />
+            <li class="pay__item">
+              <a href="" class="pay__link">Các ngân hàng khác</a>
+            </li>
+            <li class="pay__item">
+              <a href="" class="pay__link">Quét mã QR Momo </a>
+            </li>
+          </ul>
+          <p class="pay__for">Dành cho học viên ở nước ngoài</p>
+          <ul class="pay__list">
+            <li class="pay__item">
+              Wise.com (wisetransfer): lhc1702@gmail.com
+            </li>
+            <li class="pay__item">
+              Remitly.com: Ngân hàng SHB - 1023 213 679 - HOÀNG THỊ HỒNG
+            </li>
+          </ul>
+          <p class="pay__rules">
+            Khi đăng ký khóa học, bạn xác nhận đã đọc và đồng ý với
+            <a href="" class="pay__link">Điều khoản và điều kiện giao dịch</a>
+            của STUDY4.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- End Body -->
+    <!-- Footer : Should be in Layout -->
+    <footer class="footer">
+      <div class="grid wide">
+        <div class="footer__container row">
+          <div class="footer__box col l-2">
+            <img
+              width="100px"
+              height="30px"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EOw8FBT_Sn6rQqg_NQGLLkHQKEQjA1h_c6ujo5_A&s"
+              alt=""
+            />
+            <p class="footer__text">© 2021</p>
+            <div class="footer__social">
+              <a href="" class="footer__link">
+                <i class="fa-brands fa-facebook footer__icon"></i
+              ></a>
+              <a href="" class="footer__link">
+                <i class="fa-brands fa-instagram footer__icon"></i>
+              </a>
+              <a href="" class="footer__link">
+                <i class="fa-brands fa-twitter footer__icon"></i>
+              </a>
+              <a href="" class="footer__link">
+                <i class="fa-brands fa-linkedin footer__icon"></i>
+              </a>
+              <a href="" class="footer__link">
+                <i class="fa-brands fa-tiktok footer__icon"></i>
+              </a>
+            </div>
+          </div>
+          <div class="footer__box col l-2">
+            <h3 class="footer__header">Khóa học online</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Writing</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">Complete TOEIC</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Fundamentals</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Listening</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Speaking</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Writing</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__box col l-2">
+            <h3 class="footer__header">Khóa học online</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Writing</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">Complete TOEIC</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Fundamentals</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Listening</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Speaking</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Writing</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__box col l-2">
+            <h3 class="footer__header">Khóa học online</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Writing</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">Complete TOEIC</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Fundamentals</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Listening</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Speaking</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Writing</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__box col l-2">
+            <h3 class="footer__header">Khóa học online</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS General Writing</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">Complete TOEIC</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Fundamentals</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Listening</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Reading</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Speaking</a>
+              </li>
+              <li class="footer__item">
+                <a href="" class="footer__link">IELTS Intensive Writing</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__business">
+          <h3 class="footer__header footer__header--margin">
+            Thông tin doanh nghiệp
+          </h3>
+          <ul class="footer__list">
+            <li class="footer__item">
+              <p class="footer__information">Công ty TNHH Công Nghệ A Plus</p>
+            </li>
+            <li class="footer__item">
+              <p class="footer__information">
+                Giấy chứng nhận Đăng ký doanh nghiệp số: 0109675459 do Sở Kế
+                hoạch và Đầu tư thành phố Hà Nội cấp ngày 17/06/2021.
+              </p>
+            </li>
+            <li class="footer__item">
+              <p class="footer__information">
+                Điện thoại liên hệ/Hotline: 096 369 5525
+              </p>
+            </li>
+            <li class="footer__item">
+              <p class="footer__information">Email: study4.team@gmail.com.</p>
+            </li>
+            <li class="footer__item">
+              <p class="footer__information">
+                Địa chỉ trụ sở: Số 15, Ngõ 208 Giải Phóng, Phường Phương Liệt,
+                Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam
+              </p>
+            </li>
+          </ul>
+          <p class="footer__copyright">
+            @ 2021 - Bản quyền của Công ty TNHH Công Nghệ A Plus.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+  </body>
+</html>
