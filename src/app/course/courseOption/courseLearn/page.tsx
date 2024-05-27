@@ -1,5 +1,5 @@
 import  Link  from 'next/link';
-export default function Body(){
+export default function BodyCourseOption(){
     return(
         <div>
              <nav className=" fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">

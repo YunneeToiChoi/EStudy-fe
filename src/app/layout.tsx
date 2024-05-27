@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import "../../public/handicraftCSS/base.css";
-import "../../public/handicraftCSS/responsive.css";
-import "../../public/handicraftCSS/grid.css";
-import "../../public/handicraftCSS/header.css";
-import "../../public/handicraftCSS/footer.css";
-import "../../public/handicraftCSS/home.css";
-import "../../public/handicraftCSS/iconFontA.css";
+import "/public/handicraftCSS/base.css";
 import ReduxProvider from "@/redux/provider";
 
 import Header from "./components/partialView/header";

@@ -1,6 +1,5 @@
 import  Link  from 'next/link';
-import "/public/handicraftCSS/source.css"
-export default function Body(){
+export default function BodyCourseOption(){
     return(
         <div>
                  <nav className="nav__content-right">
