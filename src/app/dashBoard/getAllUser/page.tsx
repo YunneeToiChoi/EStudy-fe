@@ -2,10 +2,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
-import { deleteUser, getAllUsers } from "../../../redux/features/apiRequest";
-import { createAxios } from "../../../redux/createInstance";
+import { deleteUser, getAllUsers } from  "@/app/service/api/apiRequest";
+import { createAxios } from "../../service/api/createInstance";
 import "./getAllUser.css";
-import { loginSuccess } from "../../../redux/features/authSlices";
+import { loginSuccess } from "../../service/redux/authSlices";
 
 const HomePage = () => {
   const user = useSelector((state: any) => state.auth.login?.currentUser); // Get user data from redux state

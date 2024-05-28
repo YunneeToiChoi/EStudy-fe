@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import "/public/handicraftCSS/base.css";
 import "/public/handicraftCSS/iconFontA.css";
-import ReduxProvider from "@/redux/provider";
+import ReduxProvider from "@/app/service/redux/provider";
 
 import Header from "./components/partialView/header";
 import Footer from "./components/partialView/footer";

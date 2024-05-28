@@ -9,7 +9,7 @@ import {
   registerFailed,
   registerStart,
   registerSuccess,
-} from "./authSlices";
+} from "@/app/service/redux/authSlices";
 import {
   deleteUserFailed,
   deleteUsersSuccess,
@@ -18,7 +18,7 @@ import {
   getUsersStart,
   getUsersSuccess,
   resetMsg,
-} from "./userSlice";
+} from "@/app/service/redux/userSlice";
 //npm install axios
 
 const URL_ENDPOINT=process.env.NEXT_PUBLIC_API_ENDPOINT;
