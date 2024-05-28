@@ -155,7 +155,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className="Error_messages"
+      className=" px-4 text-red-600 italic text-xs"
       {...props}
     >
       {body}

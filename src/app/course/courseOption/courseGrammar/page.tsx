@@ -1,209 +1,200 @@
 import  Link  from 'next/link';
+import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsCourseGrammar';
 export default function BodyCourseOption(){
     return(
         <div>
-                 <nav className="nav__content-right">
-            <div
-              className="nav__content-header-right hide-on-mobile hide-on-tablet"
-            >
-              <Link href="" className="nav__content-link-right"
-                >IELTS General Reading
-             </Link>
-              <i className="nav__content-right__icon fa-solid fa-chevron-right"></i>
-              <span className="nav__content-transition-right">Từ vựng TOEIC</span>
-            </div>
-            <label className="hide" htmlFor="nav-mobile-course-checkbox"
-              ><i className="fa-solid fa-bars nav__icon"></i
+            <nav className="fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">
+            <BreadcrumbWithCustomSeparator></BreadcrumbWithCustomSeparator>
+            <label className="lg:hidden" htmlFor="nav-mobile-course-checkbox"
+              ><i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i
             ></label>
           </nav>
           <input
             type="checkbox"
             id="nav-mobile-course-checkbox"
-            className="nav-mobile-course__input"
+            className="peer/blockMenu nav-mobile-course__input"
           />
-          <div className="nav__mobile-course hide">
-            <div className="flex__container header__container">
-              <Link href="" className="content-left__header">IELTS General Reading</Link>
-              <Link href="" className="content-left__dropleft">
+          <div className="peer-checked/blockMenu:-translate-x-0 fixed bg-white pt-[120px] h-full top-0 bottom-0 right-0 left-0 -translate-x-full transition duration-500 ease-in-out">
+            <div className="flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
+              <Link href="" className=" text-xl no-underline text-white">IELTS General Reading</Link>
                 <label htmlFor="nav-mobile-course-checkbox"
-                  ><i className="content-left__icon fa-solid fa-angle-left"></i
+                  ><i className="text-white text-xl cursor-pointer fa-solid fa-angle-left"></i
                 ></label>
-             </Link>
             </div>
-            <div className="course-learn__container">
-              <ul className="course-learn__list">
+            <div className=" border-r-[1px] border-r-[#e0e0e0]">
+              <ul className="list-none">
                 <li className="course-learn__item">
                   <Link
                     href=""
-                    className="course-learn__link course-learn__link--chosen"
+                    className="border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out"
                     >Từ vựng TOEIC</Link>
                 </li>
                 <li className="course-learn__item">
-                  <Link href="" className="course-learn__link">
+                  <Link href="" className="border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
                     Phương pháp làm các dạng câu hỏi trong IELTS General Reading
                  </Link>
                 </li>
                 <li className="course-learn__item">
-                  <Link href="" className="course-learn__link">
+                  <Link href="" className="border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
                     Video chữa đề chi tiết
                  </Link>
                 </li>
                 <li className="course-learn__item">
-                  <Link href="" className="course-learn__link"> PRACTICE ZONE</Link>
+                  <Link href="" className="border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out"> PRACTICE ZONE</Link>
                 </li>
                 <li className="course-learn__item">
-                  <Link href="" className="course-learn__link">
+                  <Link href="" className="border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
                     GT Practice Set 7 Test 1: Luyện tập từ vựng
                  </Link>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="content-right__container">
-            <div className="grid wide grid-wide-course-learn">
-              <h1 className="content__header">Ngữ pháp TOEIC</h1>
-              <div className="content__box">
+          <div className="flex py-[60px]">
+            <div className="mx-auto max-2xl:mx-[40px] w-[1000px] grid">
+              <h1 className="text-3xl font-semibold mt-[50px]">Ngữ pháp TOEIC</h1>
+              <div className=" bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">Tiến độ học tập</h2>
                 <p className="content__box-percent">0%</p>
-                <div className="content__box-process"></div>
+                <div className="p-1 w-full bg-[#e0e0e0] rounded-[10px]"></div>
               </div>
-              <div className="content__box">
+              <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">List 1</h2>
                 <Link
                   href="vocabularyFlashCard.html"
-                  className="content__box-course content__box-course--done"
+                  className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-500"
                   ></i>
-                  <h3 className="content__box-course-category">Từ vựng:</h3>
-                  <span className="content__box-description"> FlashCard</span>
+                  <h3 className=" mx-2">Từ vựng:</h3>
+                  <span className=" text-xl"> FlashCard</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description">
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl">
                     Trắc nghiệm từ vựng</span
                   >
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Tìm cặp</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Tìm cặp</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nghe từ vựng</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nghe từ vựng</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description">
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl">
                     Dịch nghĩa / Điền từ</span
                   >
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nghe chính tả</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nghe chính tả</span>
                </Link>
-                <Link href="grammarChoice.html" className="content__box-course">
+                <Link href="grammarChoice.html" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nouns</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nouns</span>
                </Link>
-                <Link href="grammarInput.html" className="content__box-course">
+                <Link href="grammarInput.html" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Indefinite</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Indefinite</span>
                </Link>
               </div>
-              <div className="content__box">
+              <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">List 2</h2>
                 <Link
                   href=""
-                  className="content__box-course content__box-course--done"
+                  className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-500"
                   ></i>
-                  <h3 className="content__box-course-category">Từ vựng:</h3>
-                  <span className="content__box-description"> FlashCard</span>
+                  <h3 className=" mx-2">Từ vựng:</h3>
+                  <span className=" text-xl"> FlashCard</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description">
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl">
                     Trắc nghiệm từ vựng</span
                   >
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Tìm cặp</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Tìm cặp</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nghe từ vựng</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nghe từ vựng</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description">
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl">
                     Dịch nghĩa / Điền từ</span
                   >
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nghe chính tả</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nghe chính tả</span>
                </Link>
               </div>
-              <div className="content__box">
+              <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">List 3</h2>
                 <Link
                   href=""
-                  className="content__box-course content__box-course--done"
+                  className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-500"
                   ></i>
-                  <h3 className="content__box-course-category">Từ vựng:</h3>
-                  <span className="content__box-description"> FlashCard</span>
+                  <h3 className=" mx-2">Từ vựng:</h3>
+                  <span className=" text-xl"> FlashCard</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description">
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl">
                     Trắc nghiệm từ vựng</span
                   >
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Tìm cặp</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Tìm cặp</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nghe từ vựng</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nghe từ vựng</span>
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description">
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl">
                     Dịch nghĩa / Điền từ</span
                   >
                </Link>
-                <Link href="" className="content__box-course">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
-                  <span className="content__box-description"> Nghe chính tả</span>
+                  <h3 className=" mx-2">Luyện tập:</h3>
+                  <span className=" text-xl"> Nghe chính tả</span>
                </Link>
               </div>
-              <Link href="" className="content__transition-number">1</Link>
+              <Link href="" className=" mt-[30px] text-base text-white bg-nav-hover-text-color px-[14px] py-[10px] rounded no-underline w-fit">1</Link>
             </div>
           </div>
         </div>

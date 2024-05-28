@@ -51,9 +51,9 @@ export default function Register(){
     const handleRegister = async (values:RegisterBodyType)=>{
         const { email, password, username,phone } = values;
         const newUser = {
-          UsersEmail: email,
-          UsersPassword:password,
-          UsersName:username,
+          UserEmail: email,
+          UserPassword:password,
+          UserName:username,
         };
         registerUser(newUser,dispatch,navigate.push);
       }

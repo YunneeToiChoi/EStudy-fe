@@ -1,16 +1,11 @@
 import  Link  from 'next/link';
+import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsCourseLearn';
+
 export default function BodyCourseOption(){
     return(
         <div>
              <nav className=" fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">
-            <div
-              className="max-lg:hidden flex items-center">
-              <Link href="" className=" no-underline text-nav-hover-text-color text-sm"
-                >IELTS General Reading
-              </Link>
-              <i className=" text-sm px-1 text-nav-hover-text-color fa-solid fa-chevron-right"></i>
-              <span className="no-underline text-nav-hover-text-color text-sm font-medium">Bài học thử</span>
-            </div>
+             <BreadcrumbWithCustomSeparator></BreadcrumbWithCustomSeparator>
             <label className="lg:hidden" htmlFor="nav-mobile-course-checkbox"
               ><i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i
             ></label>
@@ -33,8 +28,7 @@ export default function BodyCourseOption(){
                   <Link
                     href=""
                     className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out"
-                    >Bài học thử</Link
-                  >
+                    >Bài học thử</Link>
                 </li>
                 <li className="course-learn__item">
                   <Link href="" className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
@@ -67,12 +61,12 @@ export default function BodyCourseOption(){
               </div>
               <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">Hướng dẫn làm dạng T/F/NG</h2>
-                <Link href="" className=" flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className=" flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className=" mx-2">Video bài giảng:</h3>
                   <span className=" text-xl"> Lý thuyết</span>
                 </Link>
-                <Link href="" className="flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="mx-2">Video bài giảng:</h3>
                   <span className="text-xl"> Lý thuyết</span>
@@ -80,12 +74,12 @@ export default function BodyCourseOption(){
               </div>
               <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">Hướng dẫn làm dạng T/F/NG</h2>
-                <Link href="" className=" flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className=" flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className=" mx-2">Video bài giảng:</h3>
                   <span className=" text-xl"> Lý thuyết</span>
                 </Link>
-                <Link href="" className="flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="mx-2">Video bài giảng:</h3>
                   <span className="text-xl"> Lý thuyết</span>
@@ -93,12 +87,12 @@ export default function BodyCourseOption(){
               </div>
               <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">Hướng dẫn làm dạng T/F/NG</h2>
-                <Link href="" className=" flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className=" flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className=" mx-2">Video bài giảng:</h3>
                   <span className=" text-xl"> Lý thuyết</span>
                 </Link>
-                <Link href="" className="flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="mx-2">Video bài giảng:</h3>
                   <span className="text-xl"> Lý thuyết</span>
@@ -106,12 +100,12 @@ export default function BodyCourseOption(){
               </div>
               <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                 <h2 className="content__box-header">Hướng dẫn làm dạng T/F/NG</h2>
-                <Link href="" className=" flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className=" flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className=" mx-2">Video bài giảng:</h3>
                   <span className=" text-xl"> Lý thuyết</span>
                 </Link>
-                <Link href="" className="flex items-center text-base p-3 no-underline text-black">
+                <Link href="" className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                   <i className="fa-regular fa-circle-play"></i>
                   <h3 className="mx-2">Video bài giảng:</h3>
                   <span className="text-xl"> Lý thuyết</span>
