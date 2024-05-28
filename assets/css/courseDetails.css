@@ -135,6 +135,7 @@
 .details__btn-register{
     background-color: var(--nav-hover-text-color);
     color: white;
+    cursor: pointer;
 }
 
 .details__btn-try{
@@ -180,4 +181,71 @@
 .details__box-text{
     font-size: 1rem;
     margin: 16px 0px;
+}
+
+#details-pay-input{
+    display: none;
+}
+
+#details-pay-input:checked ~ .nav__overlay{
+    display: block;
+}
+
+#details-pay-input:checked ~ .course__details-pay{
+    display: block;
+}
+
+.course__details-pay{
+    position: fixed;
+    display: none;
+    width: 500px;
+    padding: 30px;
+    top: 10%;
+    left: 30%;
+    background-color: white;
+    box-shadow: 0 4px 0 0 rgba(143, 156, 173, .2);
+    border: 1px solid var(--course-border-color);
+    margin: 10px 0px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.course__pay-header{
+    margin: 16px 0px;
+    font-size: 1.2rem;
+}
+
+.pay__choose{
+    margin-top: 40px;
+}
+
+.pay__input-text{
+    margin: 10px 0px;
+    width: 100%;
+}
+
+.pay__input-select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid var(--course-border-color);
+    outline: 0;
+    color: var(--copyright-text-color);
+}
+
+.pay__text{
+    margin: 10px 0px;
+}
+
+.pay__link{
+    text-decoration: none;
+    color: var(--tag-text-color);
+    display: block;
+    margin: 20px 0px;
+}
+
+.pay__link:hover{
+    color: black;
+    transition: 0.2s;
 }
