@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from  "@/app/service/api/apiAuthRequest";
-import { createAxios } from "../../service/api/createInstance";
-import { logOutSuccess } from "../../service/redux/authSlices";
+import { logOut } from  "@/service/api/apiAuthRequest";
+import { createAxios } from "../../../service/api/createInstance";
+import { logOutSuccess } from "../../../service/reduxState/authSlices";
 import Link from 'next/link';
 import Image from "next/image";   
 

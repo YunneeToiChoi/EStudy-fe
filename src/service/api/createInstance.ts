@@ -12,13 +12,14 @@ const refreshToken = async () => {
 
     return res.data;
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };
 
 export const createAxios = (user: any, dispatch: any, stateSuccess: any) => {
-  const newInstance = axios.create();
+  const newInstance = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
+});
   newInstance.interceptors.request.use(
     async (config) => {
       let date = new Date();

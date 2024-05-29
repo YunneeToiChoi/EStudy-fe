@@ -2,7 +2,7 @@
 import  Link  from 'next/link';
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
-import { registerUser } from  "@/app/service/api/apiAuthRequest";
+import { registerUser } from  "@/service/api/apiAuthRequest";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -14,7 +14,7 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { RegisterBody, RegisterBodyType } from '@/app/service/schemaValidate/auth.schema'
+import { RegisterBody, RegisterBodyType } from '@/schemaValidate/auth.schema'
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 const words = [

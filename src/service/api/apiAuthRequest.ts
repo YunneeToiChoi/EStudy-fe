@@ -1,4 +1,4 @@
-import axios from "axios";
+import * as request from "@/lib/utils/request";
 import {
   loginFailed,
   loginStart,
@@ -9,7 +9,7 @@ import {
   registerFailed,
   registerStart,
   registerSuccess,
-} from "@/app/service/redux/authSlices";
+} from "@/service/reduxState/authSlices";
 import {
   deleteUserFailed,
   deleteUsersSuccess,
@@ -18,20 +18,14 @@ import {
   getUsersStart,
   getUsersSuccess,
   resetMsg,
-} from "@/app/service/redux/userSlice";
+} from "@/service/reduxState/userSlice";
 //npm install axios
-
-const URL_ENDPOINT=process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
   dispatch(loginStart());
   try {
-    const res = await axios.post(`${URL_ENDPOINT}/Auth_API/Login`, user,{
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    dispatch(loginSuccess(res.data));//nhan du lieu tu backend
+    const res = await request.post('/Auth_API/Login', user);
+    dispatch(loginSuccess(res));//nhan du lieu tu backend
     navigate("/");
   } catch (err:any) {
     dispatch(loginFailed(err.response.data));
@@ -41,7 +35,7 @@ export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truy
 export const registerUser = async (user:any, dispatch:any, navigate:any) => {
   dispatch(registerStart());
   try {
-    await axios.post(`${URL_ENDPOINT}/Auth_API/Register`, user);
+    await request.post('/Auth_API/Register', user);
     dispatch(registerSuccess());
     navigate("/login");
   } catch (err:any) {
@@ -52,7 +46,7 @@ export const registerUser = async (user:any, dispatch:any, navigate:any) => {
 export const getAllUsers = async (accessToken:any, dispatch:any, axiosJWT:any) => {
   dispatch(getUsersStart());
   try {
-    const res = await axiosJWT.get(`${URL_ENDPOINT}/Auth/Get_AllUsers`, {
+    const res = await axiosJWT.get('/Auth/Get_AllUsers', {
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(getUsersSuccess(res.data));
@@ -64,7 +58,7 @@ export const getAllUsers = async (accessToken:any, dispatch:any, axiosJWT:any) =
 export const deleteUser = async (accessToken:any, dispatch:any, id:any, axiosJWT:any) => {
   dispatch(deleteUserStart());
   try {
-    const res = await axiosJWT.delete(`${URL_ENDPOINT}/v1/user/` + id, {
+    const res = await axiosJWT.delete('/v1/user/' + id, {
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(deleteUsersSuccess(res.data));
@@ -76,7 +70,7 @@ export const deleteUser = async (accessToken:any, dispatch:any, id:any, axiosJWT
 export const logOut = async (dispatch:any, id:any, navigate:any, accessToken:any, axiosJWT:any) => {
   dispatch(logOutStart());
   try {
-    await axiosJWT.post(`${URL_ENDPOINT}/v1/auth/logout`, id, {
+    await axiosJWT.post('/v1/auth/logout', id, {
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(logOutSuccess());

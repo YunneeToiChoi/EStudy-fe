@@ -2,10 +2,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
-import { deleteUser, getAllUsers } from  "@/app/service/api/apiAuthRequest";
-import { createAxios } from "../../service/api/createInstance";
+import { deleteUser, getAllUsers } from  "@/service/api/apiAuthRequest";
+import { createAxios } from "@/service/api/createInstance";
 import "./getAllUser.css";
-import { loginSuccess } from "../../service/redux/authSlices";
+import { loginSuccess } from "@/service/reduxState/authSlices";
 
 const HomePage = () => {
   const user = useSelector((state: any) => state.auth.login?.currentUser); // Get user data from redux state
@@ -14,7 +14,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const navigate = useRouter();
   let axiosJWT = createAxios(user, dispatch, loginSuccess);
-  console.log(user);
 
   const handleDelete = (id: any) => {
     deleteUser(user?.accessToken, dispatch, id, axiosJWT);

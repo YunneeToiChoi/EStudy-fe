@@ -1,7 +1,7 @@
 "use client"
 
 import  Link  from 'next/link';
-import { loginUser } from "@/app/service/api/apiAuthRequest";
+import { loginUser } from "@/service/api/apiAuthRequest";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -15,7 +15,7 @@ import {
     FormMessage
   } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { LoginBody, LoginBodyType } from '@/app/service/schemaValidate/auth.schema'
+import { LoginBody, LoginBodyType } from '@/schemaValidate/auth.schema'
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 
