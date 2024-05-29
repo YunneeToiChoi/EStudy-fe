@@ -1,7 +1,29 @@
 Domain: https://estudy.elearning.engineer/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+## Point API
+Don't fotgot Header key/value : ContentType : application/json
+--------------Register------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/Register
+[UserEmail,UserPassword] can use UserPhone
+--------------Login------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/Login
+[UserEmail,UserPassword] 
+Don't forgot save UserId when got reponse data from login
+--------------GetAllCourse------------
+[HttpGet]
+https://elearning.engineer/api/Courses_API/Get_AllCourses
+--------------Order Course [BuyCourse]------------
+[HttpPost]
+https://elearning.engineer/api/Order_API/Buy_Course
+[UserId,CourseId,PhoneNumber,Address]
+--------------Get UserCourse------------
+[HttpGet]
+https://elearning.engineer/api/UserCourses_API/Get_AllUserCourses
+--------------Get Momo QR ------------
+[Updating]
 ## Getting Started
 
 First, run the development server:
