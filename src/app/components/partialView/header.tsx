@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from  "@/app/service/api/apiRequest";
+import { logOut } from  "@/app/service/api/apiAuthRequest";
 import { createAxios } from "../../service/api/createInstance";
 import { logOutSuccess } from "../../service/redux/authSlices";
 import Link from 'next/link';
-import Image from "next/image";
+import Image from "next/image";   
 
 export default function Header() {
+  
   const user = useSelector((state:any)=> state.auth.login.currentUser);
   const accessToken = user?.accessToken;
   const id = user?._id;
@@ -112,7 +113,7 @@ export default function Header() {
                 <Link href={`${user ? '/' : '/register'}`} className="cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
                   {user ? (
                     <>
-                      <p>Hi <span>{user.usersName}</span></p>
+                      <p>Hi <span>{user.user.userName}</span></p>
                       <span className="navbar-logout" onClick={handleLogout}> Log out</span>
                     </>
                   ) : (
@@ -153,7 +154,7 @@ export default function Header() {
                   <li className="nav__item-mobile nav__item-login nav__item-login-mobile">
                     {user ? (
                       <>
-                        <p>Hi <span>{user.usersName}</span></p>
+                        <p>Hi <span>{user.user.userName}</span></p>
                         <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
                       </>
                     ) : (

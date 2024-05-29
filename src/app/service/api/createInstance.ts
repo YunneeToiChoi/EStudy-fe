@@ -1,12 +1,14 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
+const URL_ENDPOINT=process.env.NEXT_PUBLIC_API_ENDPOINT;
+
 const refreshToken = async () => {
   try {
     const instance = axios.create({
       withCredentials: true
     });
-    const res = await instance.post("http://localhost:8000/v1/auth/refresh");
+    const res = await instance.post(`${URL_ENDPOINT}/v1/auth/refresh`);
 
     return res.data;
   } catch (err) {

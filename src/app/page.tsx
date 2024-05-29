@@ -1,11 +1,29 @@
+"use client"
+
 import Image from 'next/image';
 import  Link  from 'next/link';
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from 'next/navigation';
+import { getAllCourse } from "@/app/service/api/apiCourseRequest";
+
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const words = `Trang web của chúng tôi cung cấp các khóa học trực tuyến chất lượng cao và dịch vụ thi thử, giúp bạn dễ dàng nâng cao kiến thức và kỹ năng chuyên môn mọi lúc, mọi nơi. Đăng ký ngay hôm nay để tiếp cận hàng loạt khóa học đa dạng, từ cơ bản đến nâng cao, được thiết kế bởi các chuyên gia hàng đầu trong ngành. Trải nghiệm dịch vụ thi thử chuyên nghiệp để đánh giá và cải thiện hiệu suất học tập của bạn một cách hiệu quả nhất !
 `;
 
 export default function Home() {
+
+  const listCourses=useSelector((state:any) => state.courses.course?.listCourse)
+  const dispatch = useDispatch();
+  const navigate = useRouter();
+    
+  useEffect(() => {
+    getAllCourse(dispatch,navigate.push)
+    console.log(listCourses)
+  }, []);
+
   return (
     <div className='max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto'>
       <div className="flex gap-5 items-center">

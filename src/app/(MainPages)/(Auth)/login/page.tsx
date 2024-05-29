@@ -1,7 +1,7 @@
 "use client"
 
 import  Link  from 'next/link';
-import { loginUser } from "@/app/service/api/apiRequest";
+import { loginUser } from "@/app/service/api/apiAuthRequest";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod'

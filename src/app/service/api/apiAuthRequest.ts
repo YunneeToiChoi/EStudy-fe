@@ -26,7 +26,11 @@ const URL_ENDPOINT=process.env.NEXT_PUBLIC_API_ENDPOINT;
 export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
   dispatch(loginStart());
   try {
-    const res = await axios.post(`${URL_ENDPOINT}/Auth/Login`, user,{withCredentials:true});
+    const res = await axios.post(`${URL_ENDPOINT}/Auth_API/Login`, user,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     dispatch(loginSuccess(res.data));//nhan du lieu tu backend
     navigate("/");
   } catch (err:any) {
@@ -37,7 +41,7 @@ export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truy
 export const registerUser = async (user:any, dispatch:any, navigate:any) => {
   dispatch(registerStart());
   try {
-    await axios.post(`${URL_ENDPOINT}/Auth/Register`, user);
+    await axios.post(`${URL_ENDPOINT}/Auth_API/Register`, user);
     dispatch(registerSuccess());
     navigate("/login");
   } catch (err:any) {
@@ -48,7 +52,7 @@ export const registerUser = async (user:any, dispatch:any, navigate:any) => {
 export const getAllUsers = async (accessToken:any, dispatch:any, axiosJWT:any) => {
   dispatch(getUsersStart());
   try {
-    const res = await axiosJWT.get(`${URL_ENDPOINT}/Courses/GetAllCourses`, {
+    const res = await axiosJWT.get(`${URL_ENDPOINT}/Auth/Get_AllUsers`, {
       headers: { token: `Bearer ${accessToken}` },
     });
     dispatch(getUsersSuccess(res.data));
