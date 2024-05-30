@@ -2,42 +2,39 @@ import Link from 'next/link';
 export default function NavLeftTestCourse(){
     return(
         <div>
-            <div className="flex__container header__container">
-            <Link href="courseLearn.html" className="content-left__header">List 1</Link>
-            <Link href="" className="content-left__dropleft">
-              <label htmlFor="content__checkbox"
-                ><i className="content-left__icon fa-solid fa-angle-left"></i></label>
-            </Link>
+            <div className="flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
+            <Link href="courseLearn.html" className="text-xl no-underline text-white">List 1</Link>
+              <label htmlFor="content_checkbox"
+                ><i className="text-white text-xl cursor-pointer fa-solid fa-angle-left"></i></label>
           </div>
           <div className="course-learn__container">
             <ul className="course-learn__list">
               <li className="course-learn__item">
                 <Link
                   href="vocabularyFlashCard.html"
-                  className="content__box-course content__box-course--done content__box-course--chosen content__box-course-in-list"
+                  className=" text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-600"
                   ></i>
-                  <h3 className="content__box-course-category">Từ vựng:</h3>
+                  <h3 className=" mx-2">Từ vựng:</h3>
                   <span
-                    className="content__box-description content__box-description-in-list"
+                    className=" text-base"
                   >
-                    FlashCard</span
-                  >
+                    FlashCard</span>
                 </Link>
               </li>
               <li className="course-learn__item">
                 <Link
                   href="multichoiceLearn.html"
-                  className="content__box-course content__box-course--done content__box-course-in-list"
+                  className="text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-600"
                   ></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
+                  <h3 className=" mx-2">Luyện tập:</h3>
                   <span
-                    className="content__box-description content__box-description-in-list"
+                    className=" text-base"
                   >
                     Trắc nghiệm từ vựng</span
                   >
@@ -46,14 +43,14 @@ export default function NavLeftTestCourse(){
               <li className="course-learn__item">
                 <Link
                   href="findPairLearn.html"
-                  className="content__box-course content__box-course--done content__box-course-in-list"
+                  className="text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-600"
                   ></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
+                  <h3 className=" mx-2">Luyện tập:</h3>
                   <span
-                    className="content__box-description content__box-description-in-list"
+                    className=" text-base"
                   >
                     Tìm cặp</span
                   >
@@ -62,14 +59,14 @@ export default function NavLeftTestCourse(){
               <li className="course-learn__item">
                 <Link
                   href="listenLearn.html"
-                  className="content__box-course content__box-course--done content__box-course-in-list"
+                  className="text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-600"
                   ></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
+                  <h3 className=" mx-2">Luyện tập:</h3>
                   <span
-                    className="content__box-description content__box-description-in-list"
+                    className=" text-base"
                   >
                     Nghe từ vựng</span
                   >
@@ -78,14 +75,14 @@ export default function NavLeftTestCourse(){
               <li className="course-learn__item">
                 <Link
                   href="translateLearn.html"
-                  className="content__box-course content__box-course--done content__box-course-in-list"
+                  className="text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-600"
                   ></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
+                  <h3 className=" mx-2">Luyện tập:</h3>
                   <span
-                    className="content__box-description content__box-description-in-list"
+                    className=" text-base"
                   >
                     Dịch nghĩa / Điền từ</span
                   >
@@ -94,17 +91,16 @@ export default function NavLeftTestCourse(){
               <li className="course-learn__item">
                 <Link
                   href="listenSpell.html"
-                  className="content__box-course content__box-course--done content__box-course-in-list"
+                  className="text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200"
                 >
                   <i
-                    className="fa-solid fa-circle-check content__box-course__icon-done"
+                    className="fa-solid fa-circle-check text-green-600"
                   ></i>
-                  <h3 className="content__box-course-category">Luyện tập:</h3>
+                  <h3 className=" mx-2">Luyện tập:</h3>
                   <span
-                    className="content__box-description content__box-description-in-list"
+                    className=" text-base"
                   >
-                    Nghe chính tả</span
-                  >
+                    Nghe chính tả</span>
                 </Link>
               </li>
             </ul>

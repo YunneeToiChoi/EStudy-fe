@@ -1,17 +1,12 @@
 import  Link  from 'next/link';
+import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsFindPairLearn';
+
+
 export default function BodyCourseTest(){
     return(
         <div>
              <nav className="nav__content-right">
-            <div
-              className="nav__content-header-right hide-on-mobile hide-on-tablet"
-            >
-              <Link href="" className="nav__content-link-right"
-                >IELTS General Reading
-              </Link>
-              <i className="nav__content-right__icon fa-solid fa-chevron-right"></i>
-              <span className="nav__content-transition-right">Từ vựng TOEIC</span>
-            </div>
+            <BreadcrumbWithCustomSeparator></BreadcrumbWithCustomSeparator>
             <label className="hide" htmlFor="nav-mobile-course-checkbox"
               ><i className="fa-solid fa-bars nav__icon"></i
             ></label>
