@@ -14,7 +14,7 @@ https://elearning.engineer/api/Auth_API/Login
 Don't forgot save UserId when got reponse data from login
 --------------GetAllUsers------------
 [HttpGet]
-https://elearning.engineer/api/Auth_API/GetAllUsers
+https://elearning.engineer/api/Auth_API/Get_AllUsers
 --------------GetAllCourse------------
 [HttpGet]
 https://elearning.engineer/api/Courses_API/Get_AllCourses
