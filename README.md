@@ -21,9 +21,13 @@ https://elearning.engineer/api/Courses_API/Get_AllCourses
 --------------Order Course [BuyCourse]------------
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Course
---------------Get UserCourse------------
+--------------Get All UserBuyCourse------------ lấy tất cả khóa học người dùng A hiện có
 [HttpPost]
 https://elearning.engineer/api/UserCourses_API/Get_AllCoursesByUser
+[userId]
+--------------Get All Course By User ------------ lấy tất cả người dùng mua khóa học đó
+[HttpPost]
+https://elearning.engineer/api/UserCourses_API/Get_AllUsersBuyCourse
 [userId]
 --------------Buy_Success [Buy_Success]------------
 [HttpPost]
