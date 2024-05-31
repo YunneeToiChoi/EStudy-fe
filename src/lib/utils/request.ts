@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//Config URL base for reques
 const request = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
 })
