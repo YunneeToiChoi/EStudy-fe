@@ -22,8 +22,9 @@ https://elearning.engineer/api/Courses_API/Get_AllCourses
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Course
 --------------Get UserCourse------------
-[HttpGet]
-https://elearning.engineer/api/UserCourses_API/Get_AllUserCourses
+[HttpPost]
+https://elearning.engineer/api/UserCourses_API/Get_AllCoursesByUser
+[userId]
 --------------Buy_Success [Buy_Success]------------
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Success
