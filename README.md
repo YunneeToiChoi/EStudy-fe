@@ -21,12 +21,42 @@ https://elearning.engineer/api/Courses_API/Get_AllCourses
 --------------Order Course [BuyCourse]------------
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Course
-[UserId,CourseId,PhoneNumber,Address]
 --------------Get UserCourse------------
 [HttpGet]
 https://elearning.engineer/api/UserCourses_API/Get_AllUserCourses
+--------------Buy_Success [Buy_Success]------------
+[HttpPost]
+https://elearning.engineer/api/Order_API/Buy_Success
+[OrderId]
 --------------Get Momo QR ------------
-[Updating]
+[HttpPost]
+https://elearning.engineer/api/Momo_Payment
+{
+  "subPartnerCode": "",
+  "requestId": "",
+  "amount": ,
+  "orderId": "",
+  "orderInfo": "",
+  "redirectUrl": "",
+  "ipnUrl": "",
+  "requestType": "",
+  "extraData": "",
+  "lang": ""
+}
+## Draw Data Momo
+{
+  "subPartnerCode": "",
+  "requestId": "2323332323331321321",
+  "amount": 10000,
+  "orderId": "MM15403232433536472575",
+  "orderInfo": "YOMOST Sua Chua Uong Bac Ha&Viet Quat 170ml/1 Hop.",
+  "redirectUrl": "https://facebook.com",
+  "ipnUrl": "https://www.youtube.com",
+  "requestType": "captureWallet",
+  "extraData": "",
+  "lang": "vi"
+}
+
 ## Getting Started
 
 First, run the development server:
