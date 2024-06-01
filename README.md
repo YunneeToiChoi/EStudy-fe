@@ -33,6 +33,10 @@ https://elearning.engineer/api/UserCourses_API/Get_AllUsersBuyCourse
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Success
 [OrderId]
+--------------Get_AllUnitsByCourse [Lay cac Part1 2 3 4 theo course]------------
+[HttpPost]
+https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse
+[courseId]
 --------------Get Momo QR ------------
 [HttpPost]
 https://elearning.engineer/api/Momo_Payment
