@@ -37,6 +37,10 @@ https://elearning.engineer/api/Order_API/Buy_Success
 [HttpPost]
 https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse
 [courseId]
+--------------Get_AllContainerAndLessonByUnit ( lay 20 container + 6 lesson trong moi container ) ------------
+[HttpPost]
+https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit
+[unitId]
 --------------Get Momo QR ------------
 [HttpPost]
 https://elearning.engineer/api/Momo_Payment
