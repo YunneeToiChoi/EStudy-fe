@@ -4,17 +4,17 @@ const courseSlice = createSlice({
     name: "courses",
     initialState:{
         course:{
-            listCourse:null,
+            data:null,
             isFetching: false,
             error:false,
         },
         AllUserCourse:{
-            NumberOfUser: null,
+            data: null,
             isFetching: false,
             error: false,
         },
         AllCourseByUsers:{
-            CourseOfUsers:null,
+            data:null,
             isFetching:false,
             error:false,
         },
@@ -26,7 +26,7 @@ const courseSlice = createSlice({
         },
         getCourseSuccess: (state,action) => {
             state.course.isFetching = false;
-            state.course.listCourse= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.course.data= action.payload;//nhan du lieu dc truyen vao apirequest
             state.course.error = false;
         },
         getCourseFailed: (state,action) =>{
@@ -39,7 +39,7 @@ const courseSlice = createSlice({
         },
         getAllUsersByCourseSuccess: (state,action) =>{
             state.AllUserCourse.isFetching = false;
-            state.AllUserCourse.NumberOfUser= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.AllUserCourse.data= action.payload;//nhan du lieu dc truyen vao apirequest
             state.AllUserCourse.error = false;
         },
         getAllUsersByCourseFailed: (state,action) =>{
@@ -52,7 +52,7 @@ const courseSlice = createSlice({
         },
         getAllCourseByUsersSuccess: (state,action) =>{
             state.AllCourseByUsers.isFetching = false;
-            state.AllCourseByUsers.CourseOfUsers = action.payload;
+            state.AllCourseByUsers.data = action.payload;
         },
         getAllCourseByUsersFailed: (state,action) =>{
             state.AllCourseByUsers.isFetching = false;

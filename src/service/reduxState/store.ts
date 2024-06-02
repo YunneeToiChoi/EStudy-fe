@@ -3,6 +3,8 @@ import thunk from 'redux-thunk';
 import authReducer from "./authSlices";
 import userReducer from "./userSlice";
 import courseReducer from "./courseSlices";
+import orderReducer from "./orderSlices";
+import paymentMomoReducer from "./paymentSlices";
 import {
   persistStore,
   persistReducer,
@@ -21,7 +23,7 @@ const persistConfig = {
   storage,
 };
 const rootReducer = combineReducers({ auth: authReducer, users: userReducer});
-const ThunkReducer = combineReducers({courses: courseReducer});
+const ThunkReducer = combineReducers({courses: courseReducer, order: orderReducer, paymentMomo: paymentMomoReducer});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

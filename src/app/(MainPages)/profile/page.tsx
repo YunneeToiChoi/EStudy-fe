@@ -12,23 +12,22 @@ export default function Profile()
   const dispatch = useDispatch();
   const navigate = useRouter();
 
-  const user = useSelector((state:any)=> state.persistedReducer.auth.login.currentUser);
+  const user = useSelector((state:any)=> state.persistedReducer.auth.login.data);
   useEffect(() => {
     if (!user) {
       navigate.push("/login");
     }
     else{
       const UserId = {
-
         userId : user.user.userId,
       }
-      getAllCoursesByUser(UserId, dispatch, navigate.push);
+      getAllCoursesByUser(UserId, dispatch);
       setIsLoading(false);
     }
 }, [dispatch, navigate,user]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.getAllCoursesByUser?.CourseOfUsers?.courses);
+  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.getAllCoursesByUser?.data?.courses);
 
     if (isLoading) {
       return <div>Loading...</div>;

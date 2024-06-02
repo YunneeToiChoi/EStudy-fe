@@ -23,22 +23,21 @@ export const getAllCourse = async (dispatch:any, navigate:any) => {//truyen req 
     }
   };
 
-export const getAllUserByCourse = async (idCourse:any,dispatch:any, navigate:any) => {
+export const getAllUserByCourse = async (idCourse:any,dispatch:any) => {
   dispatch(getAllUsersByCourseStart()); 
   try{
     const res = await request.post('/UserCourses_API/Get_AllUsersBuyCourse',idCourse);
     dispatch(getAllUsersByCourseSuccess(res));
-    navigate("#");
   }catch (err:any) {
     dispatch(getAllUsersByCourseFailed(err.response.data));
   }
 }
-export const getAllCoursesByUser = async (idUser:any,dispatch:any, navigate:any)=>{
+
+export const getAllCoursesByUser = async (idUser:any,dispatch:any)=>{
   dispatch(getAllCourseByUsersStart());
   try {
     const res = await request.post('/UserCourses_API/Get_AllCoursesByUser', idUser);
     dispatch(getAllCourseByUsersSuccess(res))
-    navigate("#");
   }
   catch (err:any) {
     dispatch(getAllCourseByUsersFailed(err.response.data));

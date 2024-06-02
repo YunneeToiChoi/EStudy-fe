@@ -7,38 +7,97 @@ import { useSelector } from "react-redux";
 
 import {getAllUserByCourse} from "@/service/api/apiCourseRequest"
 import { useEffect, useState } from 'react';
+
+import {
+  RequestApiOrder,
+  RequestApiPaymentMomo,
+  RequestApiNotifySuccess
+} from "@/service/api/apiOrderRequest";
+
 export default function CourseDetail({ params }: { params: {id: string } })
 {
+  const idCourse = params.id;
   const dispatch = useDispatch();
   const navigate = useRouter();
-  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.course?.listCourse);
-  const course = listCourses?.courses?.find((course: any) => course.courseId.toString() === params.id);
-  
-  if (!course) {
-    // Xử lý trường hợp không tìm thấy khóa học
-    return <div>Không tìm thấy khóa học</div>;
-  }
-  
-  const courseId ={
+  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.course?.data);
+  const course = listCourses?.courses?.find((course: any) => course.courseId.toString() === idCourse);
+  const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
+  const numbersOfUsers = useSelector((state: any) => state.ThunkReducer.courses?.AllUserCourse?.data?.totalAmount);
+  const orderData = useSelector((state: any) => state.ThunkReducer.order?.order?.data);
+  const paymentMomoData = useSelector((state: any) => state.ThunkReducer.paymentMomo?.Momo?.data);
+  const statusSuccessOrder= useSelector((state: any) => state.ThunkReducer.paymentMomo?.NotifyMomo?.data);
 
-      courseId : Number(params.id),
-  }
   const [isLoading, setIsLoading] = useState(true);
-  
+  const courseId = Number(idCourse);
+
   useEffect(() => {
     async function fetchData() {
-      await getAllUserByCourse(courseId, dispatch, navigate.push);
+      await getAllUserByCourse({ courseId }, dispatch);
       setIsLoading(false);
     }
     fetchData();
-  }, [dispatch, navigate]);
+  }, [dispatch, courseId]);
 
-  const numbersOfUsers:number = useSelector((state: any) => state.ThunkReducer.courses.AllUserCourse?.NumberOfUser?.totalAmount);
+  if (!course) {
+    return <div>Không tìm thấy khóa học</div>;
+  }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Đang tải...</div>;
   }
-  
+
+  const handleOrder = async () => {
+    if (!user) {
+      navigate.push("/login");
+    } else {
+      const dataOrder = {
+        UserId: user.userId,
+        CourseId: Number(idCourse),
+        Address: "CodeNgu",
+        TotalAmount: course.coursePrice,
+        PhoneNumber: user.phoneNumber,
+      };
+
+      RequestApiOrder(dataOrder, dispatch);
+      const statusOrderData= orderData?.status;
+      if (statusOrderData === 200) {
+        await Request_Momo(orderData);
+        await handleResponseMomo(orderData);
+      }
+    }
+  };
+
+  const Request_Momo = async (orderData: any) => {
+    if (orderData.status === 200) {
+      const dataPaymentMomo = {
+        "subPartnerCode": "",
+        "requestId": "232902823132131213242dasde3232131231adadadaadadadsdasds22d3gf0231313",
+        "amount": course.coursePrice,
+        "orderId": String(orderData.orderId),
+        "orderInfo": "Thanh toán khoá học : " + course.courseName,
+        "redirectUrl": process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
+        "ipnUrl": "https://facebook.com",
+        "requestType": "captureWallet",
+        "extraData": "",
+        "lang": "vi"
+      };
+      RequestApiPaymentMomo(dataPaymentMomo, dispatch);
+    } else {
+      console.log("Request Payment Momo failed!!!");
+    }
+  };
+
+  const handleResponseMomo = async (orderData:any) => {
+    const resultCodeSuccess = await paymentMomoData?.resultCode;
+    alert(resultCodeSuccess)
+    if (resultCodeSuccess == 0) {
+      const pathSuccess = await paymentMomoData?.payUrl;
+      navigate.push(pathSuccess);
+    } else {
+      alert("Request Payment Momo failed!!!");
+    }
+  };
+
   return(
     <div>
     <div className=" items-center justify-center flex">
@@ -239,8 +298,9 @@ export default function CourseDetail({ params }: { params: {id: string } })
               </div>
             </div>
 
-            <button id="Course_Create" className=" bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
-              >ĐĂNG KÝ HỌC NGAY</button>
+            <button onClick={() => handleOrder()} id="Course_Create" className=" bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent">
+              ĐĂNG KÝ HỌC NGAY
+              </button>
 
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
               >Học thử miễn phí</Link>
