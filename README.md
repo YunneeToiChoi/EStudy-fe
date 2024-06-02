@@ -27,7 +27,7 @@ https://elearning.engineer/api/UserCourses_API/Get_AllCoursesByUser
 [userId]
 --------------Get All Users Buy Course ------------ lấy tất cả người dùng mua khóa học đó
 [HttpPost]
-https://elearning.engineer/api/UserCourses_API/Get_AllUsersBuyCourse
+https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought
 [courseId]
 --------------Buy_Success [Buy_Success]------------
 [HttpPost]
