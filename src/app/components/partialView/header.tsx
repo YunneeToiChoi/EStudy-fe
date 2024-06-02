@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Header() {
   
-  const user = useSelector((state:any)=> state.auth.login.currentUser);
+  const user = useSelector((state:any)=> state.persistedReducer.auth.login.currentUser);
   const accessToken = user?.accessToken;
   const id = user?._id;
   const dispatch = useDispatch();

@@ -3,6 +3,12 @@ import {
     getCourseStart,
     getCourseFailed,
     getCourseSuccess,
+    getAllUsersByCourseSuccess,
+    getAllUsersByCourseStart,
+    getAllUsersByCourseFailed,
+    getAllCourseByUsersStart,
+    getAllCourseByUsersSuccess,
+    getAllCourseByUsersFailed,
 }
 from "@/service/reduxState/courseSlices";
 
@@ -16,3 +22,25 @@ export const getAllCourse = async (dispatch:any, navigate:any) => {//truyen req 
       dispatch(getCourseFailed(err.response.data));
     }
   };
+
+export const getAllUserByCourse = async (idCourse:any,dispatch:any, navigate:any) => {
+  dispatch(getAllUsersByCourseStart()); 
+  try{
+    const res = await request.post('/UserCourses_API/Get_AllUsersBuyCourse',idCourse);
+    dispatch(getAllUsersByCourseSuccess(res));
+    navigate("#");
+  }catch (err:any) {
+    dispatch(getAllUsersByCourseFailed(err.response.data));
+  }
+}
+export const getAllCoursesByUser = async (idUser:any,dispatch:any, navigate:any)=>{
+  dispatch(getAllCourseByUsersStart());
+  try {
+    const res = await request.post('/UserCourses_API/Get_AllCoursesByUser', idUser);
+    dispatch(getAllCourseByUsersSuccess(res))
+    navigate("#");
+  }
+  catch (err:any) {
+    dispatch(getAllCourseByUsersFailed(err.response.data));
+  }
+};

@@ -1,16 +1,43 @@
 "use client"
 import  Link  from 'next/link';
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
+
+import {getAllUserByCourse} from "@/service/api/apiCourseRequest"
+import { useEffect, useState } from 'react';
 export default function CourseDetail({ params }: { params: {id: string } })
 {
-  const listCourses = useSelector((state: any) => state.courses.course?.listCourse);
+  const dispatch = useDispatch();
+  const navigate = useRouter();
+  
+  const courseId ={
+
+      courseId : Number(params.id),
+  }
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    async function fetchData() {
+      await getAllUserByCourse(courseId, dispatch, navigate.push);
+      setIsLoading(false);
+    }
+    fetchData();
+  }, [dispatch, navigate]);
+
+  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.course?.listCourse);
+  const numbersOfUsers:number = useSelector((state: any) => state.ThunkReducer.courses.AllUserCourse?.NumberOfUser?.totalAmount);
   const course = listCourses?.courses?.find((course: any) => course.courseId.toString() === params.id);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!course) {
     // Xử lý trường hợp không tìm thấy khóa học
     return <div>Không tìm thấy khóa học</div>;
-    }
+  }
   
   return(
     <div>
@@ -211,8 +238,10 @@ export default function CourseDetail({ params }: { params: {id: string } })
                 <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
               </div>
             </div>
-            <Link href="" className=" bg-primary-bg-color text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
-              >ĐĂNG KÝ HỌC NGAY</Link>
+
+            <button id="Course_Create" className=" bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+              >ĐĂNG KÝ HỌC NGAY</button>
+
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
               >Học thử miễn phí</Link>
           </div>
@@ -259,6 +288,7 @@ export default function CourseDetail({ params }: { params: {id: string } })
       <div>courseImage:{course.courseImage}</div>
       <div>courseTag:{course.courseTag}</div>
       <div>coursePrice:{course.coursePrice}</div>
+      <div>UsersByCourse:{numbersOfUsers}</div>
     </div>
   </div>
   )

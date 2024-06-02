@@ -9,7 +9,7 @@ import { getAllCourse } from "@/service/api/apiCourseRequest";
 
 export default function GetAllCourses() {
 
-    const listCourses=useSelector((state:any) => state.courses.course?.listCourse);
+    const listCourses=useSelector((state:any) => state.ThunkReducer.courses.course?.listCourse);
     const dispatch = useDispatch();
     const navigate = useRouter();
       

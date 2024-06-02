@@ -1,7 +1,39 @@
+"use client"
 import  Link  from 'next/link';
 import Image from 'next/image';
+import { useDispatch } from "react-redux";
+import { useRouter } from 'next/navigation';
+import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react';
+
+import {getAllCoursesByUser} from "@/service/api/apiCourseRequest"
 export default function Profile()
 {
+  const dispatch = useDispatch();
+  const navigate = useRouter();
+
+  const user = useSelector((state:any)=> state.persistedReducer.auth.login.currentUser);
+  useEffect(() => {
+    if (!user) {
+      navigate.push("/login");
+    }
+    else{
+      const UserId = {
+
+        userId : user.user.userId,
+      }
+      getAllCoursesByUser(UserId, dispatch, navigate.push);
+      setIsLoading(false);
+    }
+}, [dispatch, navigate]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.getAllCoursesByUser?.CourseOfUsers?.courses);
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
     return(
         <div className="grid wide">
         <div className="img__container">
