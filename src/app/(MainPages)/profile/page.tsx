@@ -25,7 +25,7 @@ export default function Profile()
       getAllCoursesByUser(UserId, dispatch, navigate.push);
       setIsLoading(false);
     }
-}, [dispatch, navigate]);
+}, [dispatch, navigate,user]);
   const [isLoading, setIsLoading] = useState(true);
 
   const listCourses = useSelector((state: any) => state.ThunkReducer.courses.getAllCoursesByUser?.CourseOfUsers?.courses);

@@ -139,3 +139,108 @@ https://www.youtube.com/watch?v=ucdjfU_XKpw&list=PLFfVmM19UNqn1ZIWvxn1artfz-C6dg
 ![alt text](./public/img/image-2.png)
 # Intercepting Routes: Sử dụng khi bạn cần chặn và xử lý trước khi vào route chính.
 ![alt text](./public/img/image-3.png)
+
+
+
+
+
+# http://localhost:8000/api/Momo_Payment
+[POST]
+
+{
+  "subPartnerCode": "", // luon de null
+  "requestId": "232331321321", //là id riêng biệt mỗi lần request momo, random + ( id user + id course ), mỗi mã là riêng biệt
+  "amount": 10000, // price course
+  "orderId": "MM154043356472575", //là id riêng biệt mỗi lần request momo, là mã từ bảng order khi user order thành công, cái này t gửi về cho m sau Bước mua khóa học
+  "orderInfo": "Mua khóa xxx"// Description tự tạo -> thanh toán khóa xx yy zz
+  "redirectUrl": "https://www.youtube.com", // chuyen ve trang xyz sau khi thanh toan thanh cong ( BACKEND )
+  "ipnUrl": "https://facebook.com", // chuyen ve trang xyz sau khi thanh toan thanh cong ( sau khi post ) ( FRONT END )
+  "requestType": "captureWallet", // de mac dinh nhu the nay
+  "extraData": "eyJ1c2VybmFtZSI6ICJtb21vIn0=", // để Rỗng : ""
+  "lang": "vi" ->> để theo language cấu hình FE, nếu chưa làm thì để mặc định vi
+}
+"redirectUrl": 
+"ipnUrl": 
+=>> nên để trùng url của front end 
+Mỗi lần thanh toán chỉ có 10p
+SUCCESS 
+resultCode":0," == 0 là true
+payUrl
+là 2 trường quan trọng. PayUrl là m nhận về xong chuyển giao diện người dùng mua đến đó. Thanh toán tại đây thành công mới về giao diện theo requestId
+
+{"partnerCode":"MOMORPBF20220425","orderId":"MM1540433536472575","requestId":"23233232331321321","amount":10000,"responseTime":1717146397649,"message":"Thành công.","resultCode":0,"payUrl":"https://payment.momo.vn/v2/gateway/pay?t=TU9NT1JQQkYyMDIyMDQyNXxNTTE1NDA0MzM1MzY0NzI1NzU&s=8af600ac20edb24191ce20ac05bc86f3c68e128d48b29437f2a857d02c9e70d3"}
+
+
+
+
+
+
+# Flow thanh toán
+User nhấn đăng ký học ->FE gửi data Order(2) lên -> -> BE lưu Order và gửi về cho FE [status 200, messages, và orderID] -> FE gửi data Payment(3) lên theo format mới 
+->> BE gửi yêu cầu lên momo tạo mã -> trả về Url(0) và status(1) cho FE nhận, sau đó FE chạy trang URL(0) 
+__True : trả về giao diện xyz -> gửi Post lên http://localhost:8000/api/Order_API/Buy_Success (4)-> BE lưu Order 
+__false nếu hủy hoặc sau 10p : thông báo thanh toán thất bại
+
+(0) -- payUrl
+(1) -- resultCode
+
+Data Order (2)
+[Post]
+http://localhost:8000/api/Order_API/Buy_Course
+    "UserId" : "8fbac872-697a-427d-a00b-985ebd669212",
+    "CourseId": 1,
+    "Address": " dsndnsadnsad",
+    "TotalAmount" : 1.5,
+    "PhoneNumber" : "12321321"
+
+Data trả về Status(200)
+{ status = 200, orderId: 1005, message = "Course purchased successfully." }
+orderId kiểu int
+
+Mẹo : User nhấn mua , FE gửi axios Order(2) , nếu backend lưu được sẽ trả về status 200, messages, và orderID -> FE nhận status 200, 
+OrderId tại code FE, rồi gửi tiếp axios Payment(3) -> backend gửi yêu cầu mã từ momo
+
+
+Data payment(3)
+ format mới
+     public string SubPartnerCode { get; set; } = string.Empty;
+     public string RequestId { get; set; } = string.Empty;
+     public long Amount { get; set; } 
+     public string OrderId { get; set; }= string.Empty;
+     public string OrderInfo { get; set; } = string.Empty;
+     public string RedirectUrl { get; set; } = string.Empty;
+     public string IpnUrl { get; set; } = string.Empty;
+     public string RequestType { get; set; } = string.Empty;
+     public string ExtraData { get; set; } = string.Empty;
+     public string Lang { get; set; } = string.Empty;
+DATA NHẬN
+(0) và (1)
+
+Data Buy_Success (4)
+OrderId (int) 
+Data return 
+_succes :  return Json(new { status = 200,order = existingOrder, message = "Update Order State Successful" });
+_error :   return BadRequest("You Had Bought Before");
+
+
+
+# draw Data
+
+{
+  "subPartnerCode": "",
+  "requestId": "23233323232e3331321321",
+  "amount": 10000,
+  "orderId": "MM15403232332433536472575",
+  "orderInfo": "YOMOST Sua Chua Uong Bac Ha&Viet Quat 170ml/1 Hop.",
+  "redirectUrl": "https://facebook.com/",
+  "ipnUrl": "https://www.youtube.com/",
+  "requestType": "captureWallet",
+  "extraData": "",
+  "lang": "vi"
+}
+
+
+Nhớ đổi request + redirectUrl + ipnUrl + orderId
+Method : http://localhost:8000/api/Momo_Payment
+[POST]
+Flow : 

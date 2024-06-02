@@ -11,6 +11,13 @@ export default function CourseDetail({ params }: { params: {id: string } })
 {
   const dispatch = useDispatch();
   const navigate = useRouter();
+  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.course?.listCourse);
+  const course = listCourses?.courses?.find((course: any) => course.courseId.toString() === params.id);
+  
+  if (!course) {
+    // Xử lý trường hợp không tìm thấy khóa học
+    return <div>Không tìm thấy khóa học</div>;
+  }
   
   const courseId ={
 
@@ -26,17 +33,10 @@ export default function CourseDetail({ params }: { params: {id: string } })
     fetchData();
   }, [dispatch, navigate]);
 
-  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.course?.listCourse);
   const numbersOfUsers:number = useSelector((state: any) => state.ThunkReducer.courses.AllUserCourse?.NumberOfUser?.totalAmount);
-  const course = listCourses?.courses?.find((course: any) => course.courseId.toString() === params.id);
 
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  if (!course) {
-    // Xử lý trường hợp không tìm thấy khóa học
-    return <div>Không tìm thấy khóa học</div>;
   }
   
   return(
