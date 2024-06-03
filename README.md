@@ -70,6 +70,12 @@ https://elearning.engineer/api/Momo_Payment
   "lang": "vi"
 }
 
+## Luyen tap
+--------------Get All List Vocab of Lesson (Lesson of Container,Container of unit, unit of course ) [Data trả về này dùng để show 55 list vocab và random trò chơi flash card]------------
+[HttpPost]
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
+[lessonId]
+
 ## Getting Started
 
 First, run the development server:
