@@ -25,11 +25,6 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
 
  const handlePayment = async (courseDetail:any,resOrder:any,idUser:any,dispatch:any,navigate:any) => {
   const reqId:string = await handleRandomReqID(idUser,courseDetail.courseId.toString());
-  console.log("reqId: " + reqId);
-  console.log("amount: " + courseDetail.coursePrice);
-  console.log("orderId: " + String(resOrder.orderId));
-  console.log("orderInfo: " + courseDetail.courseName);
-  console.log("redirectUrl:"+process.env.NEXT_PUBLIC_CLIENT_ENDPOINT);
   const dataPaymentMomo = {
     subPartnerCode: "",
     requestId: reqId,
@@ -42,7 +37,6 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
     extraData: "",
     lang: "vi",
   };
-  console.log(dataPaymentMomo);
   RequestApiPaymentMomo(dataPaymentMomo, dispatch,navigate);
 };
 
