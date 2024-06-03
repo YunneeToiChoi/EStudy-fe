@@ -4,7 +4,6 @@ import  Link  from 'next/link';
 
 import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from 'next/navigation';
 import { getAllCourse } from "@/service/api/apiCourseRequest";
 
 export default function GetAllCourses() {

@@ -1,4 +1,6 @@
 import * as request from "@/lib/utils/request";
+import { useRouter } from 'next/navigation';
+
 import {
     OrderStart,
     OrderFailed,
@@ -16,27 +18,58 @@ import{
 }
 from "@/service/reduxState/paymentSlices"
 
-export const RequestApiOrder = async (dataOrder:any,dispatch:any) => {
+const handleRandomReqID = async (idUser: string, idCourse: string): Promise<string> => {
+  const currentDate = new Date().toLocaleString().replace(/\D/g, '');
+  return `${idUser}${idCourse}${currentDate}`.split('').sort(() => Math.random() - 0.5).join('');
+};
+
+ const handlePayment = async (courseDetail:any,resOrder:any,idUser:any,dispatch:any,navigate:any) => {
+  const reqId:string = await handleRandomReqID(idUser,courseDetail.courseId.toString());
+  console.log("reqId: " + reqId);
+  console.log("amount: " + courseDetail.coursePrice);
+  console.log("orderId: " + String(resOrder.orderId));
+  console.log("orderInfo: " + courseDetail.courseName);
+  console.log("redirectUrl:"+process.env.NEXT_PUBLIC_CLIENT_ENDPOINT);
+  const dataPaymentMomo = {
+    subPartnerCode: "",
+    requestId: reqId,
+    amount: courseDetail.coursePrice,
+    orderId: String(resOrder.orderId),
+    orderInfo: `Thanh toán khoá học: ${courseDetail.courseName}`,
+    redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
+    ipnUrl: "https://facebook.com",
+    requestType: "captureWallet",
+    extraData: "",
+    lang: "vi",
+  };
+  console.log(dataPaymentMomo);
+  RequestApiPaymentMomo(dataPaymentMomo, dispatch,navigate);
+};
+
+export const RequestApiOrder = async (dataOrder:any,dispatch:any,courseDetail:any,idUser:string,navigate:any) => {
     dispatch(OrderStart()); 
     try{
       const res = await request.post('/Order_API/Buy_Course',dataOrder);
       dispatch(OrderSuccess(res));
+      await handlePayment(courseDetail,res,idUser,dispatch,navigate);
     }catch (err:any) {
-      dispatch(OrderFailed(err.response.data));
+      console.log("Order thất bại!!")
     }
   }
-
-  export const RequestApiPaymentMomo = async (dataPayment:any,dispatch:any) => {
+  
+  const RequestApiPaymentMomo = async (dataPayment:any,dispatch:any,navigate:any) => {
     dispatch(MomoStart()); 
     try{
       const res = await request.post('/Momo_Payment',dataPayment);
       dispatch(MomoSuccess(res));
+      console.log("resByMomo"+res);
+      navigate(res.payUrl);
     }catch (err:any) {
-      dispatch(MomoFailed(err.response.data));
+      alert("Lỗi Momo!!!")
     }
   }
 
-  export const RequestApiNotifySuccess = async (orderId:any,dispatch:any) => {
+ const RequestApiNotifySuccess = async (orderId:any,dispatch:any) => {
     dispatch(NotifyMomoStart()); 
     try{
       const res = await request.post('/Order_API/Buy_Success',orderId);

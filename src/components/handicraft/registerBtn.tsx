@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
 
 export function ButtonGhost() {
-  return <Button variant="ghost">SignUp</Button>
+  return <Button>SignUp</Button>
 }

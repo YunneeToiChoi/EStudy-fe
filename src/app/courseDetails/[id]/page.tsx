@@ -2,105 +2,23 @@
 import  Link  from 'next/link';
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 
 import {getAllDetailCourse} from "@/service/api/apiCourseRequest"
 import { useEffect, useState } from 'react';
 
-import {
-  RequestApiOrder,
-  RequestApiPaymentMomo,
-  RequestApiNotifySuccess
-} from "@/service/api/apiOrderRequest";
+import OrderDialog from "@/app/components/courseDetail/dialogOrderCourse"
 
 export default function CourseDetail({ params }: { params: {id: string } })
 {
   const { id: idCourse } = params;
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const CoursesDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
-  const courseIdByState = CoursesDetail?.courseDetail?.courseId;
-  const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
-  const numbersOfUsers = useSelector((state: any) => state.ThunkReducer.courses?.AllUserCourse?.data?.totalAmount);
-  const orderData = useSelector((state: any) => state.ThunkReducer.order?.order?.data);
-  const paymentMomoData = useSelector((state: any) => state.ThunkReducer.paymentMomo?.Momo?.data);
-  const statusSuccessOrder = useSelector((state: any) => state.ThunkReducer.paymentMomo?.NotifyMomo?.data);
-
   const courseId = Number(idCourse);
+  const CoursesDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
+  const dispatch = useDispatch();
+
     useEffect(() => {
-      const fetchCourseDetails = async () => {
-        if (courseIdByState !== courseId) {
-          await getAllDetailCourse({ courseId }, dispatch);
-        }
-      };
-    
-      fetchCourseDetails();
-    }, [courseIdByState,courseId,dispatch]);
-
-    console.log("test")
-
-
-  // const handleOrder = async () => {
-  //   if (!user) {
-  //     router.push("/login");
-  //     return;
-  //   }
-
-  //   if (!course) {
-  //     console.error('Course details not available yet');
-  //     return;
-  //   }
-
-  //   const dataOrder = {
-  //     UserId: user.userId,
-  //     CourseId: Number(idCourse),
-  //     Address: "CodeNgu",
-  //     TotalAmount: course.coursePrice,
-  //     PhoneNumber: user.phoneNumber,
-  //   };
-
-  //   try {
-  //     await RequestApiOrder(dataOrder, dispatch);
-  //     if (orderData?.status === 200) {
-  //       await handlePayment(orderData);
-  //     }
-  //   } catch (error) {
-  //     console.error('Failed to place order:', error);
-  //   }
-  // };
-
-  // const handlePayment = async (orderData: any) => {
-  //   if (!course) {
-  //     console.error('Course details not available yet');
-  //     return;
-  //   }
-
-  //   const dataPaymentMomo = {
-  //     subPartnerCode: "",
-  //     requestId: "232902823132131213242dasde3232131231adadadaadadadsdasds22d3gf0231313",
-  //     amount: course.coursePrice,
-  //     orderId: String(orderData.orderId),
-  //     orderInfo: `Thanh toán khoá học: ${course.courseName}`,
-  //     redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
-  //     ipnUrl: "https://facebook.com",
-  //     requestType: "captureWallet",
-  //     extraData: "",
-  //     lang: "vi",
-  //   };
-
-  //   try {
-  //     await RequestApiPaymentMomo(dataPaymentMomo, dispatch);
-  //     if (paymentMomoData?.resultCode === 0) {
-  //       router.push(paymentMomoData.payUrl);
-  //     } else {
-  //       alert("Request Payment Momo failed!!!");
-  //     }
-  //   } catch (error) {
-  //     console.error('Request Payment Momo failed:', error);
-  //   }
-  // };
-
+      getAllDetailCourse({ courseId }, dispatch);
+    }, [dispatch,courseId]);
 
   if (!CoursesDetail) {
     return <div>Không tìm thấy khóa học</div>;
@@ -305,11 +223,7 @@ export default function CourseDetail({ params }: { params: {id: string } })
                 <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
               </div>
             </div>
-            {/* onClick={() => handleOrder()} id="Course_Create" */}
-            <button  className=" bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent">
-              ĐĂNG KÝ HỌC NGAY
-              </button>
-
+            <OrderDialog courseId={courseId} CoursesDetail={CoursesDetail}></OrderDialog>
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
               >Học thử miễn phí</Link>
           </div>

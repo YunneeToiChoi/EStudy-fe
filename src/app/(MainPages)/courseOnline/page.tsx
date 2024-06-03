@@ -1,9 +1,7 @@
-import Image from "next/image";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { FlipWords } from "@/components/ui/flip-words";
-import  Link  from 'next/link';
 
-import GetAllCourses from '@/app/components/course/getAllCourse';
+import GetAllCourses from './getAllCourse';
 
 const wordss = ["trực tuyến", "chất lượng", "chuẩn CEFR"];
 
