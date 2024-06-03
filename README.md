@@ -244,3 +244,23 @@ Nhớ đổi request + redirectUrl + ipnUrl + orderId
 Method : http://localhost:8000/api/Momo_Payment
 [POST]
 Flow : 
+
+
+
+#  Tìm hiều về race condition của lỗi bất đồng bộ 
+
+Race condition là một tình huống xảy ra trong lập trình đa luồng khi hai hoặc nhiều luồng cố gắng thực hiện các hoạt động trên cùng một tài nguyên cùng một lúc mà không có sự đồng bộ hóa đúng đắn. Kết quả của các hoạt động này có thể phụ thuộc vào thứ tự của các luồng và thời điểm mà chúng được thực hiện, điều này có thể dẫn đến hành vi không mong muốn hoặc không nhất quán.
+
+Trong ngữ cảnh của ứng dụng web của bạn, race condition có thể xảy ra khi có nhiều yêu cầu mạng được gửi và xử lý bất đồng bộ, và không có cơ chế nào để đảm bảo rằng chúng được xử lý theo thứ tự mong muốn. Điều này có thể dẫn đến tình trạng như vấn đề bạn đang gặp, khi một yêu cầu được xử lý trước khi yêu cầu khác hoàn thành, gây ra sự không nhất quán trong dữ liệu hoặc hành vi của ứng dụng.
+
+Để giải quyết race condition, bạn có thể cần sử dụng các kỹ thuật đồng bộ hóa như mutex, semaphore hoặc sử dụng các cơ chế xử lý bất đồng bộ như async/await, Promise để đảm bảo thứ tự thực thi mong muốn và tránh xung đột giữa các hoạt động.
+
+# Tìm hểu về  Preflight Request
+
+Quá trình Preflight Request
+Preflight Request: Trình duyệt sẽ gửi một yêu cầu HTTP OPTIONS đến máy chủ để kiểm tra xem yêu cầu chính sẽ được cho phép hay không. Yêu cầu này bao gồm các thông tin về phương thức HTTP và các tiêu đề mà yêu cầu chính sẽ sử dụng.
+
+Server Response: Máy chủ phản hồi lại với thông tin về những phương thức HTTP và tiêu đề mà nó cho phép. Nếu máy chủ cho phép yêu cầu với phương thức và tiêu đề được sử dụng, trình duyệt sẽ tiến hành gửi yêu cầu chính.
+
+Actual Request: Sau khi nhận được phản hồi cho phép từ máy chủ, trình duyệt sẽ gửi yêu cầu chính với dữ liệu thực tế.
+

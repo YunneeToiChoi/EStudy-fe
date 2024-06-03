@@ -54,7 +54,15 @@ export const RegisterBody = z
     .min(1,{message:"Input cannot be empty"})
   })
   .strict()
+  
   .superRefine(({ confirmPassword, password }, ctx) => {
+    if (!passwordPattern.test(password)) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'The password is incorrect',
+        path: ['password']
+      });
+    }
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: 'custom',

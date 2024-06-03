@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 
-import {getAllUserByCourse} from "@/service/api/apiCourseRequest"
+import {getAllDetailCourse} from "@/service/api/apiCourseRequest"
 import { useEffect, useState } from 'react';
 
 import {
@@ -16,87 +16,95 @@ import {
 
 export default function CourseDetail({ params }: { params: {id: string } })
 {
-  const idCourse = params.id;
+  const { id: idCourse } = params;
   const dispatch = useDispatch();
-  const navigate = useRouter();
-  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.course?.data);
-  const course = listCourses?.courses?.find((course: any) => course.courseId.toString() === idCourse);
+  const router = useRouter();
+  const CoursesDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
+  const courseIdByState = CoursesDetail?.courseDetail?.courseId;
   const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
   const numbersOfUsers = useSelector((state: any) => state.ThunkReducer.courses?.AllUserCourse?.data?.totalAmount);
   const orderData = useSelector((state: any) => state.ThunkReducer.order?.order?.data);
   const paymentMomoData = useSelector((state: any) => state.ThunkReducer.paymentMomo?.Momo?.data);
-  const statusSuccessOrder= useSelector((state: any) => state.ThunkReducer.paymentMomo?.NotifyMomo?.data);
+  const statusSuccessOrder = useSelector((state: any) => state.ThunkReducer.paymentMomo?.NotifyMomo?.data);
 
-  const [isLoading, setIsLoading] = useState(true);
   const courseId = Number(idCourse);
+    useEffect(() => {
+      const fetchCourseDetails = async () => {
+        if (courseIdByState !== courseId) {
+          await getAllDetailCourse({ courseId }, dispatch);
+        }
+      };
+    
+      fetchCourseDetails();
+    }, [courseIdByState,courseId,dispatch]);
 
-  useEffect(() => {
-    async function fetchData() {
-      await getAllUserByCourse({ courseId }, dispatch);
-      setIsLoading(false);
-    }
-    fetchData();
-  }, [dispatch, courseId]);
+    console.log("test")
 
-  if (!course) {
+
+  // const handleOrder = async () => {
+  //   if (!user) {
+  //     router.push("/login");
+  //     return;
+  //   }
+
+  //   if (!course) {
+  //     console.error('Course details not available yet');
+  //     return;
+  //   }
+
+  //   const dataOrder = {
+  //     UserId: user.userId,
+  //     CourseId: Number(idCourse),
+  //     Address: "CodeNgu",
+  //     TotalAmount: course.coursePrice,
+  //     PhoneNumber: user.phoneNumber,
+  //   };
+
+  //   try {
+  //     await RequestApiOrder(dataOrder, dispatch);
+  //     if (orderData?.status === 200) {
+  //       await handlePayment(orderData);
+  //     }
+  //   } catch (error) {
+  //     console.error('Failed to place order:', error);
+  //   }
+  // };
+
+  // const handlePayment = async (orderData: any) => {
+  //   if (!course) {
+  //     console.error('Course details not available yet');
+  //     return;
+  //   }
+
+  //   const dataPaymentMomo = {
+  //     subPartnerCode: "",
+  //     requestId: "232902823132131213242dasde3232131231adadadaadadadsdasds22d3gf0231313",
+  //     amount: course.coursePrice,
+  //     orderId: String(orderData.orderId),
+  //     orderInfo: `Thanh toán khoá học: ${course.courseName}`,
+  //     redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
+  //     ipnUrl: "https://facebook.com",
+  //     requestType: "captureWallet",
+  //     extraData: "",
+  //     lang: "vi",
+  //   };
+
+  //   try {
+  //     await RequestApiPaymentMomo(dataPaymentMomo, dispatch);
+  //     if (paymentMomoData?.resultCode === 0) {
+  //       router.push(paymentMomoData.payUrl);
+  //     } else {
+  //       alert("Request Payment Momo failed!!!");
+  //     }
+  //   } catch (error) {
+  //     console.error('Request Payment Momo failed:', error);
+  //   }
+  // };
+
+
+  if (!CoursesDetail) {
     return <div>Không tìm thấy khóa học</div>;
   }
-
-  if (isLoading) {
-    return <div>Đang tải...</div>;
-  }
-
-  const handleOrder = async () => {
-    if (!user) {
-      navigate.push("/login");
-    } else {
-      const dataOrder = {
-        UserId: user.userId,
-        CourseId: Number(idCourse),
-        Address: "CodeNgu",
-        TotalAmount: course.coursePrice,
-        PhoneNumber: user.phoneNumber,
-      };
-
-      RequestApiOrder(dataOrder, dispatch);
-      const statusOrderData= orderData?.status;
-      if (statusOrderData === 200) {
-        await Request_Momo(orderData);
-        await handleResponseMomo(orderData);
-      }
-    }
-  };
-
-  const Request_Momo = async (orderData: any) => {
-    if (orderData.status === 200) {
-      const dataPaymentMomo = {
-        "subPartnerCode": "",
-        "requestId": "232902823132131213242dasde3232131231adadadaadadadsdasds22d3gf0231313",
-        "amount": course.coursePrice,
-        "orderId": String(orderData.orderId),
-        "orderInfo": "Thanh toán khoá học : " + course.courseName,
-        "redirectUrl": process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
-        "ipnUrl": "https://facebook.com",
-        "requestType": "captureWallet",
-        "extraData": "",
-        "lang": "vi"
-      };
-      RequestApiPaymentMomo(dataPaymentMomo, dispatch);
-    } else {
-      console.log("Request Payment Momo failed!!!");
-    }
-  };
-
-  const handleResponseMomo = async (orderData:any) => {
-    const resultCodeSuccess = await paymentMomoData?.resultCode;
-    alert(resultCodeSuccess)
-    if (resultCodeSuccess == 0) {
-      const pathSuccess = await paymentMomoData?.payUrl;
-      navigate.push(pathSuccess);
-    } else {
-      alert("Request Payment Momo failed!!!");
-    }
-  };
 
   return(
     <div>
@@ -297,8 +305,8 @@ export default function CourseDetail({ params }: { params: {id: string } })
                 <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
               </div>
             </div>
-
-            <button onClick={() => handleOrder()} id="Course_Create" className=" bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent">
+            {/* onClick={() => handleOrder()} id="Course_Create" */}
+            <button  className=" bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent">
               ĐĂNG KÝ HỌC NGAY
               </button>
 
@@ -342,13 +350,13 @@ export default function CourseDetail({ params }: { params: {id: string } })
       </div>
     </div>
     <div>
-      <div>CourseId:{course.courseId}</div>
+      {/* <div>CourseId:{course.courseId}</div>
       <div>courseName:{course.courseName}</div>
       <div>courseDescription:{course.courseDescription}</div>
       <div>courseImage:{course.courseImage}</div>
       <div>courseTag:{course.courseTag}</div>
       <div>coursePrice:{course.coursePrice}</div>
-      <div>UsersByCourse:{numbersOfUsers}</div>
+      <div>UsersByCourse:{numbersOfUsers}</div> */}
     </div>
   </div>
   )
