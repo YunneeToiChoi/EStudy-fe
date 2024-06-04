@@ -19,10 +19,9 @@ const courseSlice = createSlice({
             state.order.data= action.payload;//nhan du lieu dc truyen vao apirequest
             state.order.error = false;
         },
-        OrderFailed: (state,action) =>{
+        OrderFailed: (state) =>{
             state.order.isFetching = false;
             state.order.error = true;
-            state.msg = action.payload;
         },
     }
 });

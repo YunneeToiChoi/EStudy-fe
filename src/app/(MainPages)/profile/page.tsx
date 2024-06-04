@@ -78,60 +78,132 @@ export default function Profile()
             Bạn chưa đăng ký học khoá học nào!
           </p>
           <h3 className="course__registed-header">Các khóa đã kích hoạt</h3>
-          <div className="course__active-container row">
-            <Link href="" className="couse__active-link col l-3 m-6 c-12">
-              <div className="course__active-box">
-                <h4 className="course__active-title">Complete TOEIC</h4>
-                <p className="course__active-state">Đã kích hoạt</p>
-                <p className="course__active-percent">17%</p>
-                <div className="course__active-progress"></div>
-                <p className="course__active-continue">
-                  <span className="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </Link>
-            <Link href="" className="couse__active-link col l-3 m-6 c-12">
-              <div className="course__active-box">
-                <h4 className="course__active-title">Complete TOEIC</h4>
-                <p className="course__active-state">Đã kích hoạt</p>
-                <p className="course__active-percent">17%</p>
-                <div className="course__active-progress"></div>
-                <p className="course__active-continue">
-                  <span className="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </Link>
-            <Link href="" className="couse__active-link col l-3 m-6 c-12">
-              <div className="course__active-box">
-                <h4 className="course__active-title">Complete TOEIC</h4>
-                <p className="course__active-state">Đã kích hoạt</p>
-                <p className="course__active-percent">17%</p>
-                <div className="course__active-progress"></div>
-                <p className="course__active-continue">
-                  <span className="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </Link>
-            <Link href="" className="couse__active-link col l-3 m-6 c-12">
-              <div className="course__active-box">
-                <h4 className="course__active-title">Complete TOEIC</h4>
-                <p className="course__active-state">Đã kích hoạt</p>
-                <p className="course__active-percent">17%</p>
-                <div className="course__active-progress"></div>
-                <p className="course__active-continue">
-                  <span className="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </Link>
-          </div>
+          <div className=" mt-16 grid grid-cols-4 gap-14">
+              <Link href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className='mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/E-balck.jpg">
+                  </Image>
+                </div>
+                <h3 className=" text-base font-medium text-center">
+                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
+                    Lược Làm Bài - Chữa đề chi tiết
+                  </h3>
+                  <div className=" pt-2 flex flex-col">
+                    <div className="">
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <span className=" text-xl font-semibold text-price-color">699.000đ</span>
+                    <span className=" text-xl line-through px-3">899.000đ</span>
+                    <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-22%</span>
+                  </div>
+                </div>
+              </Link>
+              <Link href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className='mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/bg_pro-E.jpg">
+                  </Image>
+                </div>
+                <h3 className=" text-base font-medium text-center">
+                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
+                    Lược Làm Bài - Chữa đề chi tiết
+                  </h3>
+                  <div className=" pt-2 flex flex-col">
+                    <div className="">
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <span className=" text-xl font-semibold text-price-color">699.000đ</span>
+                    <span className=" text-xl line-through px-3">899.000đ</span>
+                    <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-22%</span>
+                  </div>
+                </div>
+              </Link>
+              <Link href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className=' mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/Speak_E.jpg">
+                  </Image>
+                </div>
+                <h3 className=" text-base font-medium text-center">
+                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
+                    Lược Làm Bài - Chữa đề chi tiết
+                  </h3>
+                  <div className=" pt-2 flex flex-col">
+                    <div className="">
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <span className=" text-xl font-semibold text-price-color">699.000đ</span>
+                    <span className=" text-xl line-through px-3">899.000đ</span>
+                    <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-22%</span>
+                  </div>
+                </div>
+              </Link>
+              <Link href="#" className=" group">
+                <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
+                <div className='mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
+                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  width={1000} 
+                  height={1000} 
+                  quality={100}
+                  alt='image' 
+                  src="/img/E-learn.jpg">
+                  </Image>
+                </div>
+                <h3 className=" text-base font-medium text-center">
+                    [IELTS General Training] Intensive Reading: Từ Vựng - Chiến
+                    Lược Làm Bài - Chữa đề chi tiết
+                  </h3>
+                  <div className=" pt-2 flex flex-col">
+                    <div className="">
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                      <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <span className=" text-xl font-semibold text-price-color">699.000đ</span>
+                    <span className=" text-xl line-through px-3">899.000đ</span>
+                    <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-22%</span>
+                  </div>
+                </div>
+              </Link>
+            </div>
         </div>
       </div>
     )

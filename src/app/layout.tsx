@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
       <html lang="en" suppressHydrationWarning>
         <body className={roboto.className}>
-          <div className="bg-primary-bg-color fixed top-[-500px] bottom-0 left-[-200px] rounded-br-full w-7/12"></div>
+          <div className="bg-primary-bg-color fixed top-[-500px] bottom-0 left-[-200px] rounded-br-full w-[1100px]"></div>
           <div className="backdrop-blur-xl fixed top-0 bottom-0 right-0 left-0  bg-white/90">
           </div>
           <div className=" absolute z-20 left-0 right-0">

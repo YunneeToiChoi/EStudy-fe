@@ -1,5 +1,4 @@
 import * as request from "@/lib/utils/request";
-import { useRouter } from 'next/navigation';
 
 import {
     OrderStart,
@@ -47,7 +46,7 @@ export const RequestApiOrder = async (dataOrder:any,dispatch:any,courseDetail:an
       dispatch(OrderSuccess(res));
       await handlePayment(courseDetail,res,idUser,dispatch,navigate);
     }catch (err:any) {
-      console.log("Order thất bại!!")
+      dispatch(OrderFailed());
     }
   }
   
@@ -56,10 +55,11 @@ export const RequestApiOrder = async (dataOrder:any,dispatch:any,courseDetail:an
     try{
       const res = await request.post('/Momo_Payment',dataPayment);
       dispatch(MomoSuccess(res));
-      console.log("resByMomo"+res);
-      navigate(res.payUrl);
+      if(res.resultCode==0){
+        navigate(res.payUrl);
+      }
     }catch (err:any) {
-      alert("Lỗi Momo!!!")
+      dispatch(MomoFailed())
     }
   }
 

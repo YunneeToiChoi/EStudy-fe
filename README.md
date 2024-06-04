@@ -5,29 +5,29 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Don't fotgot Header key/value : ContentType : application/json
 --------------Register------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/Register
+https://elearning.engineer/api/Auth_API/Register(complete)
 [UserEmail,UserPassword] can use UserPhone
 --------------Login------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/Login
+https://elearning.engineer/api/Auth_API/Login(complete)
 [UserEmail,UserPassword] 
 Don't forgot save UserId when got reponse data from login
 --------------GetAllUsers------------
 [HttpGet]
-https://elearning.engineer/api/Auth_API/Get_AllUsers
+https://elearning.engineer/api/Auth_API/Get_AllUsers(complete)
 --------------GetAllCourse------------
 [HttpGet]
-https://elearning.engineer/api/Courses_API/Get_AllCourses
+https://elearning.engineer/api/Courses_API/Get_AllCourses(complete)
 --------------Order Course [BuyCourse]------------
 [HttpPost]
-https://elearning.engineer/api/Order_API/Buy_Course
+https://elearning.engineer/api/Order_API/Buy_Course(complete)
 --------------Get All Course By User------------ lấy tất cả khóa học người dùng A hiện có
 [HttpPost]
-https://elearning.engineer/api/UserCourses_API/Get_AllCoursesByUser
+https://elearning.engineer/api/UserCourses_API/Get_AllCoursesByUser(complete)
 [userId]
 --------------Get All Users Buy Course ------------ lấy tất cả người dùng mua khóa học đó
 [HttpPost]
-https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought
+https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought(complete)
 [courseId]
 --------------Buy_Success [Buy_Success]------------
 [HttpPost]

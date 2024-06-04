@@ -13,7 +13,6 @@ const PaymentSlice = createSlice({
             isFetching: false,
             error:false,
         },
-        msg:"",
     },
     reducers:{
         MomoStart: (state) =>{
@@ -24,10 +23,9 @@ const PaymentSlice = createSlice({
             state.Momo.data= action.payload;//nhan du lieu dc truyen vao apirequest
             state.Momo.error = false;
         },
-        MomoFailed: (state,action) =>{
+        MomoFailed: (state) =>{
             state.Momo.isFetching = false;
             state.Momo.error = true;
-            state.msg = action.payload;
         },
         NotifyMomoStart: (state) =>{
             state.Momo.isFetching = true;
@@ -37,10 +35,9 @@ const PaymentSlice = createSlice({
             state.Momo.data= action.payload;//nhan du lieu dc truyen vao apirequest
             state.Momo.error = false;
         },
-        NotifyMomoFailed: (state,action) =>{
+        NotifyMomoFailed: (state) =>{
             state.Momo.isFetching = false;
             state.Momo.error = true;
-            state.msg = action.payload;
         },
     }
 });
