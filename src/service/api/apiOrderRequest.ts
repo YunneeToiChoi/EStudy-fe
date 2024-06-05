@@ -31,7 +31,7 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
     orderId: String(resOrder.orderId),
     orderInfo: `Thanh toán khoá học: ${courseDetail.courseName}`,
     redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
-    ipnUrl: "https://facebook.com",
+    ipnUrl: "http://localhost:8000/api/Momo_Payment/GetIpnFromMomo",
     requestType: "captureWallet",
     extraData: "",
     lang: "vi",
