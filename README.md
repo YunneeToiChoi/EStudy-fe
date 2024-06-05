@@ -33,14 +33,6 @@ https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought(com
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Success
 [OrderId]
---------------Get_AllUnitsByCourse [Lay cac Part1 2 3 4 theo course]------------
-[HttpPost]
-https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse
-[courseId]
---------------Get_AllContainerAndLessonByUnit ( lay 20 container + 6 lesson trong moi container ) ------------
-[HttpPost]
-https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit
-[unitId]
 --------------Get Momo QR ------------
 [HttpPost]
 https://elearning.engineer/api/Momo_Payment
@@ -71,6 +63,14 @@ https://elearning.engineer/api/Momo_Payment
 }
 
 ## Luyen tap
+--------------Get_AllUnitsByCourse [Lay cac Part1 2 3 4 theo course]------------
+[HttpPost]
+https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse
+[courseId,userId] -> if have not this course, will return 404 bad request
+--------------Get_AllContainerAndLessonByUnit ( lay 20 container + 6 lesson trong moi container ) ------------
+[HttpPost]
+https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit
+[unitId]
 --------------Get All List Vocab of Lesson (Lesson of Container,Container of unit, unit of course ) [Data trả về này dùng để show 55 list vocab và random trò chơi flash card]------------
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
