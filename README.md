@@ -33,6 +33,10 @@ https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought(com
 [HttpPost]
 https://elearning.engineer/api/Courses_API/Get_UnregisteredCourses
 [userId]
+--------------Get All OutstandingCourses then User Hadn't Register Before--------------------
+[HttpPost]
+https://elearning.engineer/api/Courses_API/Get_OutstandingCoursesUserNotBought
+[userId,amountOutstanding] // truyen tham so so luong vao
 --------------Buy_Success [Buy_Success]------------
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Success
