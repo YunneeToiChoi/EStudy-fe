@@ -27,7 +27,7 @@ export default function RootLayout({
           <div className=" absolute z-20 left-0 right-0">
           <ReduxProvider>
               <Header />
-              <div className=" pt-[120px] z-30">
+              <div className=" z-30">
                   {children}
               </div>
               <Footer />

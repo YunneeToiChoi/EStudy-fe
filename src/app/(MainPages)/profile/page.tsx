@@ -1,17 +1,20 @@
 "use client"
-import  Link  from 'next/link';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 import GetCoursesByUser from "./getCourseByUser"
-export default function Profile()
-{
-  const navigate = useRouter();
+import { useEffect } from 'react';
 
-  const user = useSelector((state:any)=> state.persistedReducer.auth.login.data);
+export default function Profile() {
+  const navigate = useRouter();
+  const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
+
+  useEffect(() => {
     if (!user) {
       navigate.push("/login");
     }
+  }, [user, navigate]);
 
     return(
         <div className="grid wide">

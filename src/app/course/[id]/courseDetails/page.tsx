@@ -17,6 +17,7 @@ export default function CourseDetail({ params }: { params: {id: string } })
   const courseId = Number(idCourse);
   const router = useRouter();
   const dispatch = useDispatch();
+  const state =useSelector((state: any) => state.ThunkReducer.courses.CourseDetail);
 
   useEffect(() => {
     getDetailCourse({courseId}, dispatch);
@@ -24,9 +25,15 @@ export default function CourseDetail({ params }: { params: {id: string } })
 
   const courseDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data?.courseDetail);
   const amountUser = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
-  if (!courseDetail || courseId !== courseDetail.courseId) {
+  if(state.isFetching==true){
     return <div className='w-full py-[60px] text-5xl font-extrabold text-center'>...Loading</div>;
   }
+  else{
+    if (!courseDetail || courseId !== courseDetail.courseId) {
+      return <div className='w-full py-[60px] text-5xl font-extrabold text-center'>Khoá học không tồn tại</div>;
+    }
+  }
+  
   var coursePrice:string;
   if(courseDetail.coursePrice){
     coursePrice = addDotsToCurrency(courseDetail.coursePrice)+"đ";

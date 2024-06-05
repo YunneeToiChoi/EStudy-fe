@@ -7,8 +7,8 @@ export default function BodyCourseOption(){
              <nav className=" fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">
              <BreadcrumbWithCustomSeparator></BreadcrumbWithCustomSeparator>
             <label className="lg:hidden" htmlFor="nav-mobile-course-checkbox"
-              ><i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i
-            ></label>
+              ><i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i>
+              </label>
           </nav>
           <input
             type="checkbox"
@@ -19,8 +19,8 @@ export default function BodyCourseOption(){
             <div className=" flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
               <Link href="" className=" text-xl no-underline text-white">IELTS General Reading</Link>
                 <label htmlFor="nav-mobile-course-checkbox"
-                  ><i className=" text-white text-xl cursor-pointer fa-solid fa-angle-left"></i
-                ></label>
+                  ><i className=" text-white text-xl cursor-pointer fa-solid fa-angle-left"></i>
+                  </label>
             </div>
             <div className=" border-r-[1px] border-r-[#e0e0e0]">
               <ul className=" list-none">
