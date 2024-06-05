@@ -235,7 +235,7 @@ export default function CourseDetail({ params }: { params: {id: string } })
                 <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
               </div>
             </div>
-            <OrderDialog courseId={courseId} CoursesDetail={CourseDetail}></OrderDialog>
+            <OrderDialog courseId={courseId} CoursesDetail={courseDetail}></OrderDialog>
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
               >Học thử miễn phí</Link>
           </div>
