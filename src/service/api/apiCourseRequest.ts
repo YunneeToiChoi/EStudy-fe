@@ -12,6 +12,13 @@ import {
 }
 from "@/service/reduxState/courseSlices";
 
+import {
+  getUnitStart,
+  getUnitFailed,
+  getUnitSuccess
+}
+from "@/service/reduxState/userSlices"
+
 export const getAllCourse = async (dispatch:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
     dispatch(getCourseStart());
     try {
@@ -22,7 +29,7 @@ export const getAllCourse = async (dispatch:any) => {//truyen req user(username,
     }
   };
 
-export const getAllDetailCourse = async (idCourse:any,dispatch:any) => {
+export const getDetailCourse = async (idCourse:any,dispatch:any) => {
   dispatch(getCourseDetailStart()); 
   try{
     const res = await request.post('/UserCourses_API/Get_DetailCourseAndUserBought',idCourse);
@@ -40,5 +47,16 @@ export const getAllCoursesByUser = async (idUser:any,dispatch:any)=>{
   }
   catch (err:any) {
     dispatch(getAllCourseByUsersFailed(err.response.data));
+  }
+};
+
+export const GetAllUnitsByCourse = async (data:any,dispatch:any, navigate:any) => {
+  dispatch(getUnitStart());
+  try {
+        const res = request.post('/Unit_API/Get_AllUnitsByCourse', data);
+        dispatch(getUnitSuccess(res));
+        navigate("/")
+      }catch (err:any) {
+    dispatch(getUnitFailed(err));
   }
 };

@@ -42,7 +42,7 @@ import {
           <button className=" bg-transparent outline-none"><AvatarDemo></AvatarDemo></button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>{UserName}</DropdownMenuLabel>
+          <DropdownMenuLabel className='text-primary-bg-color text-center'>{UserName}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <Link href="/profile">

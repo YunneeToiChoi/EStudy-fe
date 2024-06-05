@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from  "@/service/api/apiAuthRequest";
 import { createAxios } from "../../../service/api/createInstance";
 import { logOutSuccess } from "../../../service/reduxState/authSlices";
 import Link from 'next/link';
@@ -16,10 +15,6 @@ export default function Header() {
   const dispatch = useDispatch();
   const navigate = useRouter();
   let axiosJWT = createAxios(user, dispatch, logOutSuccess);
-
-  const handleLogout = () => {
-    logOut(dispatch, id, navigate.push, accessToken, axiosJWT);
-  }
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const pathname = usePathname(); // Lấy URL hiện tại
@@ -158,7 +153,7 @@ export default function Header() {
                     {user ? (
                       <>
                         <p>Hi <span>{user.user.userName}</span></p>
-                        <Link href="/" className="navbar-logout" onClick={handleLogout}> Log out</Link>
+                        <Link href="/" className="navbar-logout"> Log out</Link>
                       </>
                     ) : (
                       <Link href="/login" className="nav__link-login">Đăng nhập</Link>

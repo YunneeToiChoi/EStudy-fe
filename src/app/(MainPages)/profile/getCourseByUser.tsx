@@ -4,26 +4,35 @@ import  Link  from 'next/link';
 
 import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCourse } from "@/service/api/apiCourseRequest";
+import { getAllCoursesByUser } from "@/service/api/apiCourseRequest";
 
-export default function GetAllCourses() {
+export default function GetCoursesByUser() {
 
-    const listCourses=useSelector((state:any) => state.ThunkReducer.courses.course?.data);
     const dispatch = useDispatch();
-    const [fetching, setFetching] = useState(false);
-      
+    const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
+    const listCourses = useSelector((state: any) => state.ThunkReducer.courses.AllCourseByUsers?.data?.courses);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
-      if (!fetching && (!listCourses || listCourses.length === 0)) {
-        setFetching(true);
-        getAllCourse(dispatch).finally(() => setFetching(false));
-      }
-    }, [dispatch, fetching,listCourses]);
+        if (user?.user?.userId) {
+            const UserId = {
+                userId: user.user.userId
+            }
+            getAllCoursesByUser(UserId, dispatch).then(() => {
+                setIsLoading(false);
+            });
+        }
+    }, [dispatch, user]);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return(
       <div className="relative p-16">
-            <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học online :</h2>
+            <h2 className="  font-semibold text-3xl text-[#17165B] ">Khoá học của tôi</h2>
             <div className=" mt-16 grid grid-cols-3 gap-14">
-            {listCourses?.courses?.map((course:any) =>{
+            {listCourses.map((course:any) =>{
                 return(
                 <Link key={course.courseId} href={`/course/${course.courseId}/courseDetails`}className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">

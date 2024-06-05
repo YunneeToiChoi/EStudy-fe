@@ -36,7 +36,6 @@ interface OrderDialogProps {
 const OrderDialog: React.FC<OrderDialogProps> = ({ courseId ,CoursesDetail}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const courseIdByState = CoursesDetail?.courseDetail;
   const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
   const form = useForm<OrderCourseBodyType>({
     resolver: zodResolver(OrderCourseBody),
@@ -58,10 +57,10 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId ,CoursesDetail}) => 
       UserId: user.userId,
       CourseId: courseId,
       Address: address,
-      TotalAmount: courseIdByState.coursePrice,
+      TotalAmount: CoursesDetail.coursePrice,
       PhoneNumber: phone,
     };
-     RequestApiOrder(dataOrder, dispatch,courseIdByState,user.userId,router.push);
+     RequestApiOrder(dataOrder, dispatch,CoursesDetail,user.userId,router.push);
   };
 
   return (

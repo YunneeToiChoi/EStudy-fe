@@ -2,27 +2,39 @@
 import  Link  from 'next/link';
 import Image from "next/image";
 import { useDispatch } from "react-redux";
+import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 
-import {getAllDetailCourse} from "@/service/api/apiCourseRequest"
-import { useEffect, useState } from 'react';
+import {getDetailCourse} from "@/service/api/apiCourseRequest"
+import { useEffect} from 'react';
 
 import OrderDialog from "@/app/components/courseDetail/dialogOrderCourse"
+import  addDotsToCurrency  from "@/lib/utils/currency";
 
 export default function CourseDetail({ params }: { params: {id: string } })
 {
   const { id: idCourse } = params;
   const courseId = Number(idCourse);
-  const CoursesDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
+  const router = useRouter();
   const dispatch = useDispatch();
 
-    useEffect(() => {
-      getAllDetailCourse({ courseId }, dispatch);
-    }, [dispatch,courseId]);
+  useEffect(() => {
+    getDetailCourse({courseId}, dispatch);
+  }, [dispatch, courseId, router.push]);
 
-  if (!CoursesDetail) {
-    return <div>Không tìm thấy khóa học</div>;
+  const courseDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data?.courseDetail);
+  const amountUser = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
+  if (!courseDetail || courseId !== courseDetail.courseId) {
+    return <div className='w-full py-[60px] text-5xl font-extrabold text-center'>...Loading</div>;
   }
+  var coursePrice:string;
+  if(courseDetail.coursePrice){
+    coursePrice = addDotsToCurrency(courseDetail.coursePrice)+"đ";
+  }
+  else{
+    coursePrice="Free"
+  }
+
 
   return(
     <div>
@@ -43,7 +55,7 @@ export default function CourseDetail({ params }: { params: {id: string } })
               <i className="fa-solid fa-star"></i>
             </div>
             <span className=" text-white mx-2 text-sm">(630 đánh giá)</span>
-            <span className=" text-white text-sm mx-2">38,171 học viên</span>
+            <span className=" text-white text-sm mx-2">{amountUser.totalAmount>0?(<span>{amountUser.totalAmount} học viên</span>):(<span>Chưa có học viên nào đăng kí</span>)} </span>
           </div>
           <div className=" mt-[10px] flex flex-col w-full gap-4 justify-center">
             <p className=" text-white text-sm mx-[6px] flex items-center gap-2">
@@ -214,28 +226,27 @@ export default function CourseDetail({ params }: { params: {id: string } })
             className=" text-transparent rounded-[10px] w-full"
           />
           <div className=" p-4 border-b-[1px] border-b-course-border-color">
-            <h2 className=" text-lg my-[10px] font-bold">Ưu đãi đặc biệt tháng 5/2024:</h2>
+            <h2 className=" text-2xl text-center my-[10px] font-bold">{courseDetail.courseName}</h2>
             <div className=" flex item-center">
-              <h3 className=" text-3xl text-price-color font-semibold">1.525.000đ</h3>
+              <h3 className=" text-3xl text-price-color font-semibold items-center flex">{coursePrice}</h3>
               <div className=" ml-[10px]"> 
                 <span className=" block text-sm line-through text-exam-text-color">Giá gốc: 3.596.000đ</span>
                 <span className=" block text-xl text-economy-price-text-color font-medium">Tiết kiệm: 2.071.000đ</span>
                 <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
               </div>
             </div>
-            <OrderDialog courseId={courseId} CoursesDetail={CoursesDetail}></OrderDialog>
+            <OrderDialog courseId={courseId} CoursesDetail={CourseDetail}></OrderDialog>
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
               >Học thử miễn phí</Link>
           </div>
           <div className="p-4 border-b-[1px] border-b-course-border-color">
             <div className="details__ads">
               <p className=" gap-3 flex items-center text-sm my-[10px]">
-                <i className="fa-solid fa-users details__icon-under"></i> 38,171
-                học viên đã đăng ký
+                <i className="fa-solid fa-users details__icon-under"></i>{amountUser.totalAmount>0?(<span>{amountUser.totalAmount} học viên đã đăng ký</span>):(<span>Chưa có học viên nào đăng kí</span>)}
               </p>
               <p className=" gap-3 flex items-center text-sm my-[10px]">
                 <i className="fa-solid fa-book-open details__icon-under"></i>
-                86 chủ đề, 809 bài học
+                {courseDetail.courseTag}
               </p>
               <p className=" gap-3 flex items-center text-sm my-[10px]">
                 <i className="fa-solid fa-pencil details__icon-under"></i>
@@ -253,24 +264,12 @@ export default function CourseDetail({ params }: { params: {id: string } })
             </div>
           </div>
           <div className="p-4 border-b-[1px] border-b-course-border-color">
-            <p className=" text-sm">
-              Chưa chắc chắn khoá học này dành cho bạn?
-            </p>
-            <Link href="" className=" text-sm text-primary-bg-color"
-              >Liên hệ để nhận tư vấn miễn phí!</Link>
+            <div className=" text-sm text-primary-bg-color"
+              >{courseDetail.courseDescription}</div>
           </div>
         </div>
         </div>
       </div>
-    </div>
-    <div>
-      {/* <div>CourseId:{course.courseId}</div>
-      <div>courseName:{course.courseName}</div>
-      <div>courseDescription:{course.courseDescription}</div>
-      <div>courseImage:{course.courseImage}</div>
-      <div>courseTag:{course.courseTag}</div>
-      <div>coursePrice:{course.coursePrice}</div>
-      <div>UsersByCourse:{numbersOfUsers}</div> */}
     </div>
   </div>
   )

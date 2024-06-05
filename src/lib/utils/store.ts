@@ -1,10 +1,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import thunk from 'redux-thunk';
-import authReducer from "./authSlices";
-import userReducer from "./userSlice";
-import courseReducer from "./courseSlices";
-import orderReducer from "./orderSlices";
-import paymentMomoReducer from "./paymentSlices";
+import authReducer from "@/service/reduxState/authSlices";
+import courseReducer from "@/service/reduxState/courseSlices";
+import orderReducer from "@/service/reduxState/orderSlices";
+import paymentMomoReducer from "@/service/reduxState/paymentSlices";
 import {
   persistStore,
   persistReducer,
@@ -22,7 +20,7 @@ const persistConfig = {
   version: 1,
   storage,
 };
-const rootReducer = combineReducers({ auth: authReducer, users: userReducer});
+const rootReducer = combineReducers({ auth: authReducer});
 const ThunkReducer = combineReducers({courses: courseReducer, order: orderReducer, paymentMomo: paymentMomoReducer});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
