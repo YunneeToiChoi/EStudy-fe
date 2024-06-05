@@ -29,6 +29,10 @@ https://elearning.engineer/api/UserCourses_API/Get_AllCoursesByUser(complete)
 [HttpPost]
 https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought(complete)
 [courseId]
+--------------Get All Courses then User Hadn't Register Before--------------------
+[HttpPost]
+https://elearning.engineer/api/Courses_API/Get_UnregisteredCourses
+[userId]
 --------------Buy_Success [Buy_Success]------------
 [HttpPost]
 https://elearning.engineer/api/Order_API/Buy_Success
@@ -66,7 +70,7 @@ https://elearning.engineer/api/Momo_Payment
 --------------Get_AllUnitsByCourse [Lay cac Part1 2 3 4 theo course]------------
 [HttpPost]
 https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse
-[courseId,userId] -> if have not this course, will return 404 bad request
+[courseId,userId] -> if user have not this course, will return 404 bad request
 --------------Get_AllContainerAndLessonByUnit ( lay 20 container + 6 lesson trong moi container ) ------------
 [HttpPost]
 https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit
