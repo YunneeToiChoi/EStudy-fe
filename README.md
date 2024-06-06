@@ -69,6 +69,15 @@ https://elearning.engineer/api/Momo_Payment
   "extraData": "",
   "lang": "vi"
 }
+## Draw request tracking 
+gui len luc duoc chuyen qua redirect (page success ) sau do nhan ve ma status backend tra ve neu true/false
+[Post]
+https://elearning.engineer/api/Momo_Payment/RequestTracking
+[orderId] (string)
+[requestId] (string )
+
+
+
 
 ## Luyen tap
 --------------Get_AllUnitsByCourse [Lay cac Part1 2 3 4 theo course]------------
