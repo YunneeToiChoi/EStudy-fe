@@ -50,12 +50,11 @@ export const getAllCoursesByUser = async (idUser:any,dispatch:any)=>{
   }
 };
 
-export const GetAllUnitsByCourse = async (data:any,dispatch:any, navigate:any) => {
+export const GetAllUnitsByCourse = async (data:any,dispatch:any) => {
   dispatch(getUnitStart());
   try {
-        const res = request.post('/Unit_API/Get_AllUnitsByCourse', data);
+        const res = await request.post('/Unit_API/Get_AllUnitsByCourse', data);
         dispatch(getUnitSuccess(res));
-        navigate("/")
       }catch (err:any) {
     dispatch(getUnitFailed(err));
   }
