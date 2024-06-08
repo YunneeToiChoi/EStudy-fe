@@ -18,6 +18,16 @@ const courseSlice = createSlice({
             isFetching:false,
             error:false,
         },
+        UnregisteredCourses:{
+            data:null,
+            isFetching:false,
+            error:false,
+        },
+        PopularCourse:{
+            data:null,
+            isFetching:false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -58,7 +68,31 @@ const courseSlice = createSlice({
             state.AllCourseByUsers.isFetching = false;
             state.AllCourseByUsers.error = true;
             state.msg = action.payload;
-        }
+        },
+        getUnregisteredCoursesStart: (state)=>{
+            state.UnregisteredCourses.isFetching = true;
+        },
+        getUnregisteredCoursesSuccess: (state,action) =>{
+            state.UnregisteredCourses.isFetching = false;
+            state.UnregisteredCourses.data = action.payload;
+        },
+        getUnregisteredCoursesFailed: (state,action) =>{
+            state.UnregisteredCourses.isFetching = false;
+            state.UnregisteredCourses.error = true;
+            state.msg = action.payload;
+        },
+        getPopularCourseStart: (state)=>{
+            state.PopularCourse.isFetching = true;
+        },
+        getPopularCourseSuccess: (state,action) =>{
+            state.PopularCourse.isFetching = false;
+            state.PopularCourse.data = action.payload;
+        },
+        getPopularCourseFailed: (state,action) =>{
+            state.PopularCourse.isFetching = false;
+            state.PopularCourse.error = true;
+            state.msg = action.payload;
+        },
     }
 });
 
@@ -72,6 +106,12 @@ export const {
     getAllCourseByUsersStart,
     getAllCourseByUsersSuccess,
     getAllCourseByUsersFailed,
+    getUnregisteredCoursesStart,
+    getUnregisteredCoursesSuccess,
+    getUnregisteredCoursesFailed,
+    getPopularCourseStart,
+    getPopularCourseSuccess,
+    getPopularCourseFailed,
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

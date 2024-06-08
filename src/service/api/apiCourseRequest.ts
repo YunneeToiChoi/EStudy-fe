@@ -9,6 +9,12 @@ import {
     getAllCourseByUsersStart,
     getAllCourseByUsersSuccess,
     getAllCourseByUsersFailed,
+    getUnregisteredCoursesStart,
+    getUnregisteredCoursesSuccess,
+    getUnregisteredCoursesFailed,
+    getPopularCourseStart,
+    getPopularCourseSuccess,
+    getPopularCourseFailed,
 }
 from "@/service/reduxState/courseSlices";
 
@@ -29,6 +35,27 @@ export const getAllCourse = async (dispatch:any) => {//truyen req user(username,
     }
   };
 
+  export const getPopularCourse = async (data:any,dispatch:any) => {
+    dispatch(getPopularCourseStart()); 
+    try{
+      const res = await request.post('/Courses_API/Get_OutstandingCoursesUserNotBought',data);
+       dispatch(getPopularCourseSuccess(res));
+    }catch (err:any) {
+      dispatch(getPopularCourseFailed(err.response.data));
+    }
+  }
+  
+  export const getUnregisterCourse = async (idUser:any,dispatch:any) => {
+    dispatch(getUnregisteredCoursesStart()); 
+    try{
+      const res = await request.post('/Courses_API/Get_UnregisteredCourses',idUser);
+       dispatch(getUnregisteredCoursesSuccess(res));
+    }catch (err:any) {
+      dispatch(getUnregisteredCoursesFailed(err.response.data));
+    }
+  }
+
+ 
 export const getDetailCourse = async (idCourse:any,dispatch:any) => {
   dispatch(getCourseDetailStart()); 
   try{

@@ -4,33 +4,26 @@ import  Link  from 'next/link';
 
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCourse,getUnregisterCourse } from "@/service/api/apiCourseRequest";
+import { getPopularCourse } from "@/service/api/apiCourseRequest";
 
-export default function GetAllCourses() {
+export default function GetPoplarCourses() {
    const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
     const dispatch = useDispatch();
-    const listCourses = useSelector((state: any) => {
-        if (!user) {
-            return state.ThunkReducer.courses.course?.data?.courses;
-        } else {
-            return state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCourses;
-        }
-    });
+    const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCourses);
 
     useEffect(() => {
         if (!listCourses) {
-            if (!user) {
-                getAllCourse(dispatch);
-            } else {
-                const UserId = { userId: user.userId };
-                getUnregisterCourse(UserId, dispatch);
+            const data = { 
+                userId: user?.userId,
+                amountOutstanding: 4
             }
+            getPopularCourse(data, dispatch);
         }
     }, [dispatch, listCourses, user]);
 
     return(
-      <div className="relative p-16">
-            <h2 className="  font-semibold text-3xl text-[#17165B] ">Combo khoá học online :</h2>
+      <div className="relative my-[150px] w-screen rounded-3xl left-1/2 transform -translate-x-1/2 bg-[#F5F5FD]  p-16">
+             <h2 className="  font-semibold text-3xl text-center text-[#17165B] ">Khóa học online nổi bật</h2>
             <div className=" mt-16 grid grid-cols-3 gap-14">
             {listCourses?.map((course:any) =>{
                 return(
@@ -42,7 +35,7 @@ export default function GetAllCourses() {
                   height={1000} 
                   quality={100}
                   alt='image' 
-                  src="/img/bg_pro-E.jpg">
+                  src="/img/Speak_E.jpg">
                   </Image>
                 </div>
                 <h3 className=" text-base font-medium text-center">{course.courseName}</h3>

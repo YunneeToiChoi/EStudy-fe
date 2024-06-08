@@ -18,7 +18,7 @@ const useGetAllUnits = (params: any) => {
 
   useEffect(() => {
     GetAllUnitsByCourse(apiRequest, dispatch);
-  }, [apiRequest, dispatch]); // Thêm `apiRequest` vào dependency array
+  }, [dispatch]); // Thêm `apiRequest` vào dependency array
 
   return ListUnits;
 };

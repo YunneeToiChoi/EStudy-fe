@@ -31,19 +31,16 @@ https://elearning.engineer/api/UserCourses_API/Get_DetailCourseAndUserBought(com
 [courseId]
 --------------Get All Courses then User Hadn't Register Before--------------------
 [HttpPost]
-https://elearning.engineer/api/Courses_API/Get_UnregisteredCourses
+https://elearning.engineer/api/Courses_API/Get_UnregisteredCourses(complete)
 [userId]
 --------------Get All OutstandingCourses then User Hadn't Register Before--------------------
 [HttpPost]
 https://elearning.engineer/api/Courses_API/Get_OutstandingCoursesUserNotBought
 [userId,amountOutstanding] // truyen tham so so luong vao
 --------------Buy_Success [Buy_Success]------------
-[HttpPost]
-https://elearning.engineer/api/Order_API/Buy_Success
-[OrderId]
 --------------Get Momo QR ------------
 [HttpPost]
-https://elearning.engineer/api/Momo_Payment
+https://elearning.engineer/api/Momo_Payment(complete)
 {
   "subPartnerCode": "",
   "requestId": "",
@@ -82,7 +79,7 @@ https://elearning.engineer/api/Momo_Payment/RequestTracking
 ## Luyen tap
 --------------Get_AllUnitsByCourse [Lay cac Part1 2 3 4 theo course]------------
 [HttpPost]
-https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse
+https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse(complete)
 [courseId,userId] -> if user have not this course, will return 404 bad request
 --------------Get_AllContainerAndLessonByUnit ( lay 20 container + 6 lesson trong moi container ) ------------
 [HttpPost]
