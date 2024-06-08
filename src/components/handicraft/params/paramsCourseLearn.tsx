@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link"
-import { usePathname } from 'next/navigation';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,10 +10,6 @@ import {
 } from "@/components/ui/breadcrumb"
 
 export function BreadcrumbWithCustomSeparator() {
-
-  const pathname = usePathname();
-  const pathArray = pathname.split('/').filter(segment => segment);
-  console.log(pathname);
   return (
     <Breadcrumb>
       <BreadcrumbList>

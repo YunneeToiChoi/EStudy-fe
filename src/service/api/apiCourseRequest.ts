@@ -17,7 +17,7 @@ import {
   getUnitFailed,
   getUnitSuccess
 }
-from "@/service/reduxState/userSlices"
+from "@/service/reduxState/unitSlices"
 
 export const getAllCourse = async (dispatch:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
     dispatch(getCourseStart());

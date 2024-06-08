@@ -37,7 +37,6 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
     extraData: "",
     lang: "vi",
   };
-  console.log("aaaaa")
   RequestApiPaymentMomo(dataPaymentMomo, dispatch, navigate);
 };
 
@@ -65,12 +64,21 @@ export const RequestApiOrder = async (dataOrder:any,dispatch:any,courseDetail:an
     }
   }
 
- const RequestApiNotifySuccess = async (orderId:any,dispatch:any) => {
-    dispatch(NotifyMomoStart()); 
-    try{
-      const res = await request.post('/Order_API/Buy_Success',orderId);
-      dispatch(NotifyMomoSuccess(res));
-    }catch (err:any) {
-      dispatch(NotifyMomoFailed(err.response.data));
-    }
+export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => {
+const parsedUrl = new URL(dataTracking);
+const queryParams = new URLSearchParams(parsedUrl.search);
+const orderId = queryParams.get('orderId');
+const requestId = queryParams.get('requestId');
+const requestData={
+  orderId: String(orderId),
+  requestId: String(requestId)
+}
+  dispatch(NotifyMomoStart()); 
+  try{
+    const res = await request.post('/Momo_Payment/RequestTracking',requestData);
+    dispatch(NotifyMomoSuccess(res));
+  }catch (err:any) {
+    const { status, data } = err.response;
+    dispatch(NotifyMomoFailed({ status, data }));
   }
+}

@@ -11,9 +11,9 @@ import { useEffect} from 'react';
 import OrderDialog from "@/app/components/courseDetail/dialogOrderCourse"
 import  addDotsToCurrency  from "@/lib/utils/currency";
 
-export default function CourseDetail({ params }: { params: {id: string } })
+export default function CourseDetail({ params }: { params: {course: string } })
 {
-  const { id: idCourse } = params;
+  const { course: idCourse } = params;
   const courseId = Number(idCourse);
   const router = useRouter();
   const dispatch = useDispatch();

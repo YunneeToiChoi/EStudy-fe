@@ -28,16 +28,17 @@ const PaymentSlice = createSlice({
             state.Momo.error = true;
         },
         NotifyMomoStart: (state) =>{
-            state.Momo.isFetching = true;
+            state.NotifyMomo.isFetching = true;
         },
         NotifyMomoSuccess: (state,action) => {
-            state.Momo.isFetching = false;
-            state.Momo.data= action.payload;//nhan du lieu dc truyen vao apirequest
-            state.Momo.error = false;
+            state.NotifyMomo.isFetching = false;
+            state.NotifyMomo.data= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.NotifyMomo.error = false;
         },
-        NotifyMomoFailed: (state) =>{
-            state.Momo.isFetching = false;
-            state.Momo.error = true;
+        NotifyMomoFailed: (state,action) =>{
+            state.NotifyMomo.isFetching = false;
+            state.NotifyMomo.error = true;
+            state.NotifyMomo.data= action.payload;
         },
     }
 });

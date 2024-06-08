@@ -17,7 +17,7 @@ export default function GetAllCourses() {
         setFetching(true);
         getAllCourse(dispatch).finally(() => setFetching(false));
       }
-    }, [dispatch, fetching,listCourses]);
+    }, [dispatch,listCourses,fetching]);
 
     return(
       <div className="relative p-16">
