@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const courseSlice = createSlice({
+const orderSlice = createSlice({
     name: "order",
     initialState:{
         order:{
@@ -30,6 +30,6 @@ export const {
     OrderStart,
     OrderFailed,
     OrderSuccess,
-} = courseSlice.actions;
+} = orderSlice.actions;
 
-export default courseSlice.reducer;
+export default orderSlice.reducer;

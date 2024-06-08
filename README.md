@@ -35,7 +35,7 @@ https://elearning.engineer/api/Courses_API/Get_UnregisteredCourses(complete)
 [userId]
 --------------Get All OutstandingCourses then User Hadn't Register Before--------------------
 [HttpPost]
-https://elearning.engineer/api/Courses_API/Get_OutstandingCoursesUserNotBought
+https://elearning.engineer/api/Courses_API/Get_OutstandingCoursesUserNotBought(complete)
 [userId,amountOutstanding] // truyen tham so so luong vao
 --------------Buy_Success [Buy_Success]------------
 --------------Get Momo QR ------------

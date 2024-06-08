@@ -23,7 +23,6 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
 };
 
  const handlePayment = async (courseDetail:any,resOrder:any,idUser:any,dispatch:any,navigate:any) => {
-  console.log("avvaaaa")
   const reqId:string = await handleRandomReqID(idUser,courseDetail.courseId.toString());
   const dataPaymentMomo = {
     subPartnerCode: "",

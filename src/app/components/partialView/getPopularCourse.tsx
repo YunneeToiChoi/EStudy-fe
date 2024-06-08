@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPopularCourse } from "@/service/api/apiCourseRequest";
 
 export default function GetPoplarCourses() {
-   const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
-    const dispatch = useDispatch();
-    const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCourses);
+  const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
+  const dispatch = useDispatch();
+  const listCourses = useSelector((state: any) => state.ThunkReducer.courses.PopularCourse?.data?.outstandingCourses);
 
     useEffect(() => {
         if (!listCourses) {

@@ -1,55 +1,38 @@
+"use client" 
 import  Link  from 'next/link';
 import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsCourseLearn';
+import ListUnitsComponent from "../getUnit"
 
-export default function BodyCourseOption(){
-    return(
+export default function BodyCourseOption({ params }: { params: {course: string, unit:string } }){
+    const checkIdUnit= params.unit;
+    console.log(checkIdUnit);
+    if(checkIdUnit=="LandingCourse"){
+      return <div>đây là landing Page</div>
+    }
+    else{
+      return(
         <div>
              <nav className=" fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between ">
              <BreadcrumbWithCustomSeparator></BreadcrumbWithCustomSeparator>
-            <label className="lg:hidden" htmlFor="nav-mobile-course-checkbox"
+            <label className="lg:hidden" htmlFor="content_checkbox_mb"
               ><i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i>
               </label>
           </nav>
           <input
             type="checkbox"
-            id="nav-mobile-course-checkbox"
+            id="content_checkbox_mb"
             className=" peer/blockMenu nav-mobile-course__input"
           />
           <div className="peer-checked/blockMenu:-translate-x-0 fixed bg-white pt-[120px] h-full top-0 bottom-0 right-0 left-0 -translate-x-full transition duration-500 ease-in-out">
-            <div className=" flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
-              <Link href="" className=" text-xl no-underline text-white">IELTS General Reading</Link>
-                <label htmlFor="nav-mobile-course-checkbox"
-                  ><i className=" text-white text-xl cursor-pointer fa-solid fa-angle-left"></i>
-                  </label>
+          <div>
+            <div className="flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
+              <Link href="" className="text-xl no-underline text-white">IELTS General Reading</Link>
+              <label htmlFor="content_checkbox_mb">
+                <i className="text-white text-xl cursor-pointer fa-solid fa-angle-left"></i>
+              </label>
             </div>
-            <div className=" border-r-[1px] border-r-[#e0e0e0]">
-              <ul className=" list-none">
-                <li className="course-learn__item">
-                  <Link
-                    href=""
-                    className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out"
-                    >Bài học thử</Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
-                    Phương pháp làm các dạng câu hỏi trong IELTS General Reading
-                  </Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
-                    Video chữa đề chi tiết
-                  </Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out"> PRACTICE ZONE </Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className=" border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out">
-                    GT Practice Set 7 Test 1: Luyện tập từ vựng
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <ListUnitsComponent params={params}></ListUnitsComponent>
+          </div>
           </div>
           <div className=" flex py-[60px]">
             <div className=" mx-auto max-2xl:mx-[40px] w-[1000px] grid">
@@ -116,4 +99,5 @@ export default function BodyCourseOption(){
           </div>
         </div>
     )
+    }
 }

@@ -25,6 +25,13 @@ import {
 }
 from "@/service/reduxState/unitSlices"
 
+import {
+  getContentUnitStart,
+  getContentUnitFailed,
+  getContentUnitSuccess
+}
+from "@/service/reduxState/containerAndLessonSlices"
+
 export const getAllCourse = async (dispatch:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
     dispatch(getCourseStart());
     try {
@@ -84,5 +91,15 @@ export const GetAllUnitsByCourse = async (data:any,dispatch:any) => {
         dispatch(getUnitSuccess(res));
       }catch (err:any) {
     dispatch(getUnitFailed(err));
+  }
+};
+
+export const GetAllContentByUnit = async (UnitId:any,dispatch:any) => {
+  dispatch(getContentUnitStart());
+  try {
+        const res = await request.post('/Container_API/Get_AllContainerAndLessonByUnit', UnitId);
+        dispatch(getContentUnitSuccess(res));
+      }catch (err:any) {
+    dispatch(getContentUnitFailed(err));
   }
 };

@@ -4,6 +4,7 @@ import courseReducer from "@/service/reduxState/courseSlices";
 import orderReducer from "@/service/reduxState/orderSlices";
 import unitReducer from "@/service/reduxState/unitSlices";
 import paymentMomoReducer from "@/service/reduxState/paymentSlices";
+import contentUnitsSlice from "@/service/reduxState/containerAndLessonSlices";
 import {
   persistStore,
   persistReducer,
@@ -22,7 +23,13 @@ const persistConfig = {
   storage,
 };
 const rootReducer = combineReducers({ auth: authReducer});
-const ThunkReducer = combineReducers({courses: courseReducer, order: orderReducer, paymentMomo: paymentMomoReducer,unit: unitReducer});
+const ThunkReducer = combineReducers({
+  courses: courseReducer, 
+  order: orderReducer, 
+  paymentMomo: paymentMomoReducer,
+  unit: unitReducer,
+  contentUnits:contentUnitsSlice
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

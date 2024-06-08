@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userSlice = createSlice({
+const unitSlice = createSlice({
     name: "unit",
     initialState:{
         units:{
@@ -31,6 +31,6 @@ export const {
     getUnitStart,
     getUnitFailed,
     getUnitSuccess
-} = userSlice.actions;
+} = unitSlice.actions;
 
-export default userSlice.reducer;
+export default unitSlice.reducer;

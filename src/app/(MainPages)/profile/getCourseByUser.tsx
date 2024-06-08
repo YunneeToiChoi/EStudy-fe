@@ -40,7 +40,7 @@ export default function GetCoursesByUser() {
             <div className=" mt-16 grid grid-cols-3 gap-14">
             {listCourses.map((course:any) =>{
                 return(
-                <Link key={course.courseId} href={`/course/${course.courseId}/courseOption`}className=" group">
+                <Link key={course.courseId} href={`/course/${course.courseId}/Unit/LandingCourse/courseOption`}className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5">
                 <div className='mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
                   <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
