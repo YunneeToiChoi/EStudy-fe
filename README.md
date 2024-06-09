@@ -89,12 +89,15 @@ https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit(com
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 [lessonId]
---------------Get_AllQuestionOfLesson ------------
+--------------Get_AllQuestionOfLesson ----------------------------------------------------------------
 [HttpPost]
 https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 [lessonId]
 400 -> lỗi do lesson || 500 -> server ->> 200 success
-
+--------------Get All List Vocab Find pair------------------------------------------------------------
+[HttpPost]
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
+[lessonId]
 ## Getting Started
 
 First, run the development server:
