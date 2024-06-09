@@ -11,7 +11,7 @@ interface CourseOptionProps {
 }
 
 const CourseOption: React.FC<CourseOptionProps> = ({ navLeft, bodyMaterialCourse, params }) => {
-  const { user, dataFetched, currentCourse } = useCheckoutUnitHook(params);
+  const {currentCourse } = useCheckoutUnitHook(params);
 
   if (currentCourse) {
     return (

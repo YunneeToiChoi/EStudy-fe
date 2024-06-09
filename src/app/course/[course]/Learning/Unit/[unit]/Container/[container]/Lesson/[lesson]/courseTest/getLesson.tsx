@@ -1,12 +1,14 @@
+"use client"
+import useGetAllUnits from "@/hook/getAllUnitHook"; // Ensure correct path
 import Link from 'next/link';
-export default function NavLeftTestCourse(){
+
+interface LessonListProps {
+  params: any;
+}
+const ListLessonComponent: React.FC<LessonListProps> = ({ params }) => {
+  const ListLesson = useGetAllUnits(params);
+    const idUnit = Number(params.unit);
     return(
-        <div>
-            <div className="flex px-2 py-5 bg-nav-hover-text-color items-center justify-between">
-            <Link href="courseLearn.html" className="text-xl no-underline text-white">List 1</Link>
-              <label htmlFor="content_checkbox"
-                ><i className="text-white text-xl cursor-pointer fa-solid fa-angle-left"></i></label>
-          </div>
           <div className="course-learn__container">
             <ul className="course-learn__list">
               <li className="course-learn__item">
@@ -105,6 +107,8 @@ export default function NavLeftTestCourse(){
               </li>
             </ul>
           </div>
-        </div>
+        
     )
 }
+
+export default ListLessonComponent;

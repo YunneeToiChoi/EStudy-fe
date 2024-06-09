@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/course/@navLeftCourse/courseLearn/page.jsx", "src/app/course/@navLeftCourse/courseLearn/page.jsx", "src/lib/utils"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/course/@navLeftCourse/courseLearn/page.jsx", "src/app/course/@navLeftCourse/courseLearn/page.jsx", "src/lib/utils", "src/app/course/[course]/Learning/Unit/[unit]/Container/[container]/Lesson/[lesson]/courseTest/@navLeft"],
   "exclude": ["node_modules"]
 }
