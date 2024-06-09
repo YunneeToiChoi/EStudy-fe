@@ -7,13 +7,16 @@ interface UnitsIdProps {
 
 const Container: React.FC<UnitsIdProps> = ({ params }) => {
     const ContentsUnit = useSelector((state: any) => state.ThunkReducer.contentUnits?.ContentUnit?.data);
+    const ListCourse=useSelector((state: any) => state.ThunkReducer.courses?.AllCourseByUsers?.data?.courses);
+    const TitleCourse=ListCourse?.find((course:any)=>course.courseId===Number(params.course))
+    console.log(TitleCourse);
     const listContainers = ContentsUnit?.find((content: any) => content.unitId === Number(params.unit));
     const listContainersCount = listContainers?.containers;
 
     return (
         <div className="flex py-[60px]">
             <div className="mx-auto max-2xl:mx-[40px] w-[1000px] grid">
-                <h1 className="text-3xl font-semibold mt-[50px]">Bài học thử</h1>
+                <h1 className="text-3xl font-semibold mt-[50px]">{TitleCourse.courseName}</h1>
                 <div className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
                     <h2 className="content__box-header">Tiến độ học tập</h2>
                     <p className="content__box-percent">0%</p>
