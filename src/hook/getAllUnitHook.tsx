@@ -7,8 +7,10 @@ const useGetAllUnits = (params: any) => {
   const courseId = Number(idCourse);
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.persistedReducer.auth?.login?.data);
+  const CourseId = useSelector((state: any) => state.ThunkReducer.unit.units?.data?.units);
+
   const userId = user?.user.userId;
-  // Sử dụng useMemo để giữ nguyên giá trị của apiRequest giữa các lần render
+
   const apiRequest = useMemo(() => ({
     courseId: courseId,
     userId: userId
@@ -17,8 +19,10 @@ const useGetAllUnits = (params: any) => {
   const ListUnits = useSelector((state: any) => state.ThunkReducer.unit?.units?.data?.units);
 
   useEffect(() => {
-    GetAllUnitsByCourse(apiRequest, dispatch);
-  }, [dispatch]); // Thêm `apiRequest` vào dependency array
+    if (!CourseId || CourseId.length === 0 || !CourseId.some((unit: any) => unit.courseId === courseId)) {
+      GetAllUnitsByCourse(apiRequest, dispatch);
+    }
+  }, [dispatch, apiRequest, CourseId, courseId]);
 
   return ListUnits;
 };

@@ -15,27 +15,26 @@ export default function useCourseOption({
   params: { course: string }
 }) {
   const dispatch = useDispatch();
+  const navigate = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth?.login?.data?.user);
   const listCourses = useSelector((state: any) => state.ThunkReducer.courses.AllCourseByUsers?.data?.courses);
-  const navigate = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const ListUnits = useSelector((state: any) => state.ThunkReducer.unit.units?.data?.units);
+
+  const [dataFetched, setDataFetched] = useState(false);
+
+  const checkCourse = ListUnits?.some((Unit: any) => Unit.courseId === Number(params.course));
 
   const redirectToLogin = useCallback(() => {
     navigate.push("/login");
   }, [navigate]);
 
-  const fetchCourses = useCallback(() => {
-    if (user) {
+  const fetchCourses = useCallback(async () => {
+    if (user && !checkCourse) {
       const userId = { userId: user.userId };
-      getAllCoursesByUser(userId, dispatch)
-        .then(() => {
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Failed to fetch courses", error);
-        });
+      await getAllCoursesByUser(userId, dispatch);
     }
-  }, [user, dispatch]);
+    setDataFetched(true);
+  }, [user, dispatch, checkCourse]);
 
   useEffect(() => {
     if (!user) {
@@ -45,11 +44,13 @@ export default function useCourseOption({
     }
   }, [user, redirectToLogin, fetchCourses]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   const currentCourse = listCourses?.find((course: any) => course.courseId === Number(params.course));
+
+  useEffect(() => {
+    if (user && dataFetched && !currentCourse) {
+      navigate.push(`/course/${params.course}/courseDetails`);
+    }
+  }, [user, dataFetched, currentCourse, navigate, params.course]);
 
   if (currentCourse) {
     return (
@@ -63,8 +64,7 @@ export default function useCourseOption({
         </BodyMainCourse>
       </div>
     );
-  } else {
-    navigate.push(`/course/${params.course}/courseDetails`);
-    return null;
   }
+
+  return null;
 }

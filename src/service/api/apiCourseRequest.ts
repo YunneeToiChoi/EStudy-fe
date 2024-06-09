@@ -1,4 +1,5 @@
 import * as request from "@/lib/utils/request";
+import { useSelector } from "react-redux";
 import {
     getCourseStart,
     getCourseFailed,
@@ -84,22 +85,32 @@ export const getAllCoursesByUser = async (idUser:any,dispatch:any)=>{
   }
 };
 
-export const GetAllUnitsByCourse = async (data:any,dispatch:any) => {
+export const GetAllUnitsByCourse = async (data: any, dispatch: any) => {
   dispatch(getUnitStart());
   try {
-        const res = await request.post('/Unit_API/Get_AllUnitsByCourse', data);
-        dispatch(getUnitSuccess(res));
-      }catch (err:any) {
-    dispatch(getUnitFailed(err));
+    const res = await request.post('/Unit_API/Get_AllUnitsByCourse', data);
+    dispatch(getUnitSuccess(res));
+    
+    const listUnits = res.units;
+    let UnitsArray: any[] = [];
+
+    if (listUnits && listUnits.length > 0) {
+      for (const unit of listUnits) {
+        const res = await request.post('/Container_API/Get_AllContainerAndLessonByUnit', { unitId: unit.unitId });
+        UnitsArray.push(res.unitDetail);
+      }
+      
+      dispatch(getContentUnitStart());
+      try {
+        dispatch(getContentUnitSuccess(UnitsArray));
+      } catch (err: any) {
+        dispatch(getContentUnitFailed(err.message || err));
+      }
+    } else {
+      console.log("listUnits failed or empty!!");
+    }
+  } catch (err: any) {
+    dispatch(getUnitFailed(err.message || err));
   }
 };
 
-export const GetAllContentByUnit = async (UnitId:any,dispatch:any) => {
-  dispatch(getContentUnitStart());
-  try {
-        const res = await request.post('/Container_API/Get_AllContainerAndLessonByUnit', UnitId);
-        dispatch(getContentUnitSuccess(res));
-      }catch (err:any) {
-    dispatch(getContentUnitFailed(err));
-  }
-};
