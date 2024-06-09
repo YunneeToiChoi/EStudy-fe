@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -22,37 +23,38 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-import {OrderCourseBody,OrderCourseBodyType} from '@/schemaValidate/orderCourse.schema'
+import { OrderCourseBody, OrderCourseBodyType } from '@/schemaValidate/orderCourse.schema'
 
-import {
-  RequestApiOrder,
-} from "@/service/api/apiOrderRequest";
+import { RequestApiOrder } from "@/service/api/apiOrderRequest";
 
 interface OrderDialogProps {
   courseId: number;
-  CoursesDetail:any;
+  CoursesDetail: any;
 }
 
-const OrderDialog: React.FC<OrderDialogProps> = ({ courseId ,CoursesDetail}) => {
+const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm<OrderCourseBodyType>({
     resolver: zodResolver(OrderCourseBody),
     defaultValues: {
-        address: '',
-        phone: ''
+      address: '',
+      phone: ''
     }
-  })
+  });
 
-  const checkUser =()=>{
+  const checkUser = () => {
     if (!user) {
       router.push("/login");
     }
   }
 
-  const handleOrder =  (values: OrderCourseBodyType) => {
-    const { address, phone } =  values; 
+  const handleOrder = async (values: OrderCourseBodyType) => {
+    setIsSubmitting(true); // Disable the button
+    const { address, phone } = values;
     const dataOrder = {
       UserId: user.userId,
       CourseId: courseId,
@@ -60,74 +62,70 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId ,CoursesDetail}) => 
       TotalAmount: CoursesDetail.coursePrice,
       PhoneNumber: phone,
     };
-     RequestApiOrder(dataOrder, dispatch,CoursesDetail,user.userId,router.push);
+    await RequestApiOrder(dataOrder, dispatch, CoursesDetail, user.userId, router.push);
+    setIsSubmitting(false); // Enable the button again
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button onClick={()=>checkUser()} >ĐĂNG KÝ HỌC NGAY</Button>
+        <Button onClick={checkUser}>ĐĂNG KÝ HỌC NGAY</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[490px]">
         <DialogHeader>
           <DialogTitle>Thanh toán khoá học</DialogTitle>
           <DialogDescription>
-          Mua khoá học: [IELTS General Training] Intensive Writing: Thực hành luyện tập Writing GT
+            Mua khoá học: [IELTS General Training] Intensive Writing: Thực hành luyện tập Writing GT
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleOrder)}
-          noValidate
-          >
-          <div className="grid gap-4 py-4">
-          <div className="grid items-center gap-4">
-            <Label htmlFor="name" className="text-left">
-              Phone number
-            </Label>
-            <FormField
-              control={form.control}
-              name='phone'
-              defaultValue=""
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                  <Input
-                    className="col-span-3"
-                    {...field}
-                  />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="grid items-center gap-4">
-            <Label htmlFor="username" className="text-left">
-              Address
-            </Label>
-            <FormField
-              control={form.control}
-              name='address'
-              defaultValue=""
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                  <Input
-                    className="col-span-3"
-                    {...field}
-                  />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        </div>
-          <button className="bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent" type="submit">ĐẶT HÀNG NGAY</button>
-        </form>
+          <form onSubmit={form.handleSubmit(handleOrder)} noValidate>
+            <div className="grid gap-4 py-4">
+              <div className="grid items-center gap-4">
+                <Label htmlFor="phone" className="text-left">
+                  Phone number
+                </Label>
+                <FormField
+                  control={form.control}
+                  name='phone'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input className="col-span-3" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="grid items-center gap-4">
+                <Label htmlFor="address" className="text-left">
+                  Address
+                </Label>
+                <FormField
+                  control={form.control}
+                  name='address'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input className="col-span-3" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <button 
+              className="bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent" 
+              type="submit" 
+              disabled={isSubmitting}
+            >
+              ĐẶT HÀNG NGAY
+            </button>
+          </form>
         </Form>
-        </DialogContent>
+      </DialogContent>
     </Dialog>
   )
 }

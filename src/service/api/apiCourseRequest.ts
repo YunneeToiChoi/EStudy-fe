@@ -1,5 +1,4 @@
 import * as request from "@/lib/utils/request";
-import { useSelector } from "react-redux";
 import {
     getCourseStart,
     getCourseFailed,
@@ -99,7 +98,6 @@ export const GetAllUnitsByCourse = async (data: any, dispatch: any) => {
         const res = await request.post('/Container_API/Get_AllContainerAndLessonByUnit', { unitId: unit.unitId });
         UnitsArray.push(res.unitDetail);
       }
-      
       dispatch(getContentUnitStart());
       try {
         dispatch(getContentUnitSuccess(UnitsArray));

@@ -5,6 +5,8 @@ import orderReducer from "@/service/reduxState/orderSlices";
 import unitReducer from "@/service/reduxState/unitSlices";
 import paymentMomoReducer from "@/service/reduxState/paymentSlices";
 import contentUnitsSlice from "@/service/reduxState/containerAndLessonSlices";
+import questionSlice from "@/service/reduxState/questionSlices"
+import vocabSlice from "@/service/reduxState/vocabSlices"
 import {
   persistStore,
   persistReducer,
@@ -28,7 +30,9 @@ const ThunkReducer = combineReducers({
   order: orderReducer, 
   paymentMomo: paymentMomoReducer,
   unit: unitReducer,
-  contentUnits:contentUnitsSlice
+  contentUnits:contentUnitsSlice,
+  question:questionSlice,
+  vocab:vocabSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
