@@ -17,7 +17,7 @@ const ListUnitsComponent: React.FC<UnitsListProps> = ({ params }) => {
                     ListUnits.map((units: any) => (
                         <li key={units.unitId} className="course-learn__item">
                             <Link
-                                href={`/course/${params.course}/Unit/${units.unitId}/courseOption`}
+                                href={`/course/${params.course}/Learning/Unit/${units.unitId}/courseOption`}
                                 className={`border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out ${idUnit === units.unitId ? 'border-l-nav-hover-text-color bg-tag-search-bg-color' : ''}`}
                             >
                                 {units?.unitTittle}

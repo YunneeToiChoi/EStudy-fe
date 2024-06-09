@@ -1,19 +1,14 @@
 "use client";
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import NavLeftCourse from '@/app/components/course/navLeftCourse'; 
-import BodyMainCourse from '@/app/components/course/bodyMainCourse';
 import { useRouter } from 'next/navigation';
 import { getAllCoursesByUser } from "@/service/api/apiCourseRequest";
 
-export default function useCourseOption({
-  navLeft, bodyMaterialCourse, params
-}: {
-  children: React.ReactNode,
-  navLeft: React.ReactNode,
-  bodyMaterialCourse: React.ReactNode,
-  params: { course: string }
-}) {
+interface Params {
+  course: string;
+}
+
+const useCheckoutUnitHook = (params: Params) => {
   const dispatch = useDispatch();
   const navigate = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth?.login?.data?.user);
@@ -52,19 +47,7 @@ export default function useCourseOption({
     }
   }, [user, dataFetched, currentCourse, navigate, params.course]);
 
-  if (currentCourse) {
-    return (
-      <div className="content__container">
-        <input type="checkbox" id="content_checkbox" className="peer/checkboxTranslate hidden" />
-        <NavLeftCourse>
-          {navLeft}
-        </NavLeftCourse>
-        <BodyMainCourse>
-          {bodyMaterialCourse}
-        </BodyMainCourse>
-      </div>
-    );
-  }
+  return { user, dataFetched, currentCourse };
+};
 
-  return null;
-}
+export default useCheckoutUnitHook;
