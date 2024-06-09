@@ -85,11 +85,19 @@ https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse(complete)
 [HttpPost]
 https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit(complete)
 [unitId]
---------------Get All List Vocab of Lesson (Lesson of Container,Container of unit, unit of course ) [Data trả về này dùng để show 55 list vocab và random trò chơi flash card]------------
+--------------Get All List Vocab of Lesson (Lesson of Container,Container of unit, unit of course ) [Data trả về này dùng để show 55 list vocab và random trò chơi flash card]--
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 [lessonId]
-
+--------------Get_AllQuestionOfLesson ----------------------------------------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
+[lessonId]
+400 -> lỗi do lesson || 500 -> server ->> 200 success
+--------------Get All List Vocab Find pair------------------------------------------------------------
+[HttpPost]
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
+[lessonId]
 ## Getting Started
 
 First, run the development server:
