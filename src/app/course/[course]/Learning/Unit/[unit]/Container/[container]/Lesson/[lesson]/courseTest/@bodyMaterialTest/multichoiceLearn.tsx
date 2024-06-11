@@ -1,5 +1,5 @@
 import  Link  from 'next/link';
-export default function BodyCourseTest(){
+export default function MultiChoiceLearn(){
     return(
         <div>
              <nav className="nav__content-right">

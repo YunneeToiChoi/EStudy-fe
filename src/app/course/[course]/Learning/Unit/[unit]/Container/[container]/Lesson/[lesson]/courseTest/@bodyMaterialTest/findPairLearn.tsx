@@ -2,7 +2,7 @@ import  Link  from 'next/link';
 import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsFindPairLearn';
 
 
-export default function BodyCourseTest(){
+export default function FindPairLearn(){
     return(
         <div>
              <nav className="nav__content-right">
