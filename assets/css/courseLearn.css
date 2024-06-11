@@ -583,5 +583,59 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
 
+.aleart__box{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ffefd8;
+    color: #855a1f;
+}
+
+.vocab__flashcard-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px 0px;
+    flex-direction: column;
+}
+
+.vocab__text{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.vocab__spelling{
+    margin-top: 20px;
+}
+
+.vocab__flashcard-container--rate{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.vocab__rate-category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.vocab__rate-text{
+    margin-top: 6px;
+}
+
+.vocab__rate-category--easy{
+    color: #3cb46e;
+}
+
+.vocab__rate-category--medium{
+    color: #ffad3b;
+}
+
+.vocab__rate-category--hard{
+    color: #e43a45;
 }
