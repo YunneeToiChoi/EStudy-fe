@@ -1,5 +1,13 @@
 import  Link  from 'next/link';
-export default function ListenSpell(){
+import { useDispatch } from 'react-redux';
+
+interface ListenSpellProps{
+  params: any;
+}
+
+export const ListenSpell: React.FC<ListenSpellProps> =({params}) => {
+  const dispatch= useDispatch();
+  const idLesson ={lessonId: params.lesson};
     return(
         <div>
              <nav className="nav__content-right">

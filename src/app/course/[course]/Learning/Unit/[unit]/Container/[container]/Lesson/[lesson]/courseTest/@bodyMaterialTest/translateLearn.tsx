@@ -1,5 +1,12 @@
 import  Link  from 'next/link';
-export default function TranslateLearn(){
+import { useDispatch } from 'react-redux';
+interface TranslateLearnProps{
+  params:any
+}
+export const TranslateLearn: React.FC<TranslateLearnProps> = ({params})=>{
+   const dispatch=useDispatch();
+   const idLesson ={lessonId: params.lesson};
+   console.log(idLesson);
     return(
         <div>
                <nav className="nav__content-right">

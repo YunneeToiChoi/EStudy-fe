@@ -1,6 +1,15 @@
 import  Link  from 'next/link';
 import Image from 'next/image';
-export default function VocabularyFlashCard(){
+import { useDispatch } from 'react-redux';
+import {getVocabOfLesson} from "@/service/api/apiVocabRequest"
+interface VocabFlashcardProps {
+  params: any;
+}
+export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =>{
+  const dispatch= useDispatch(); 
+  const idLesson ={lessonId: Number(params.lesson)};
+  getVocabOfLesson(idLesson,dispatch);
+
     return(
         <div>
                 <nav className="nav__content-right">

@@ -1,16 +1,19 @@
 "use client";
 
 import { useSearchParams } from 'next/navigation';
-import VocabularyFlashCard from "./vocabularyFlashCard";
-import TranslateLearn from "./translateLearn";
-import MultiChoiceLearn from "./multichoiceLearn";
-import ListenSpell from "./listenSpell";
-import ListenLearn from "./listenLearn";
-import GrammarInput from './grammarInput';
-import GrammarChoice from './grammarChoice';
-import FindPairLearn from './findPairLearn';
+import { VocabularyFlashCard } from "./vocabularyFlashCard";
+import { TranslateLearn } from "./translateLearn";
+import { MultiChoiceLearn } from "./multichoiceLearn";
+import { ListenSpell } from "./listenSpell";
+import { ListenLearn } from "./listenLearn";
+import { GrammarInput } from './grammarInput';
+import { GrammarChoice } from './grammarChoice';
+import { FindPairLearn } from './findPairLearn';
 
-export default function BodyMaterial() {
+const DefaultComponent = () => <div>Type not recognized</div>;
+DefaultComponent.displayName = 'DefaultComponent';
+
+export default function BodyMaterial({ params }: { params: { course: string, unit: string, container: string, lesson: string } }) {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   let Component;
@@ -42,9 +45,9 @@ export default function BodyMaterial() {
       Component = GrammarChoice;
       break;
     default:
-      Component = () => <div>Type not recognized</div>;
+      Component = DefaultComponent;
       break;
   }
 
-  return <Component />;
+  return <Component params={params} />;
 }

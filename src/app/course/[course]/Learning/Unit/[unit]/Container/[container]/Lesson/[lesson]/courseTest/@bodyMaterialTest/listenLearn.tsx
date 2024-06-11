@@ -1,5 +1,13 @@
 import  Link  from 'next/link';
-export default function ListenLearn(){
+import { useDispatch } from 'react-redux';
+
+interface ListenLearnProps{
+  params:any;
+}
+
+export const ListenLearn :React.FC<ListenLearnProps> = ({ params}) => {
+  const dispatch= useDispatch();
+  const idLesson ={lessonId: params.lesson};
     return(
         <div>
                 <nav className="nav__content-right">

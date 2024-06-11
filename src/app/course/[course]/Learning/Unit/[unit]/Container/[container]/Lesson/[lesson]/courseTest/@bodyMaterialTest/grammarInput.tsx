@@ -1,5 +1,13 @@
 import  Link  from 'next/link';
-export default function GrammarInput(){
+import { useDispatch } from 'react-redux';
+
+interface GrammarChoiceProps{
+  params:any
+}
+
+export const GrammarInput : React.FC<GrammarChoiceProps> = ({params})=>{
+  const dispatch= useDispatch();
+  const idLesson ={lessonId: params.lesson};
     return(
         <div>
                <nav className="nav__content-right">

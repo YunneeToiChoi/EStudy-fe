@@ -27,7 +27,7 @@ const useGetAllLessons = (params: any) => {
     if (!CourseId || CourseId.length === 0 || !CourseId.some((unit: any) => unit.courseId === courseId)) {
       GetAllUnitsByCourse(apiRequest, dispatch);
     }
-  }, [dispatch, apiRequest, CourseId, courseId,ListUnits,Unit,ListContainer,Container,ListLessons]);
+  }, [dispatch, apiRequest, CourseId, courseId]);
 
   return ListLessons;
 };

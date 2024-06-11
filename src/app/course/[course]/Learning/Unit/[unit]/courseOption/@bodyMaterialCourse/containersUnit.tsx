@@ -23,12 +23,12 @@ const Container: React.FC<UnitsIdProps> = ({ params }) => {
                 </div>
                 {listContainersCount?.map((container: any, index: number) => (
                     <div key={index} className="bg-white p-5 border-[1px] border-course-border-color rounded-[10px] shadow-lg text-base my-[40px] w-full">
-                        <h2 className="content__box-header">{container.containerTitle}</h2>
+                        <h2 className="content__box-header text-xl font-bold tracking-normal">{container.containerTitle}</h2>
                         {container.lessons?.map((lesson: any, lessonIndex: number) => (
                             <Link key={lessonIndex} href={`/course/${params.course}/Learning/Unit/${params.unit}/Container/${container.containerId}/Lesson/${lesson.lessonId}/courseTest?TAG=${lesson.tagID}`} className="flex items-center text-base p-3 no-underline text-black hover:bg-exam-bg-color transition duration-100">
                                 <i className="fa-regular fa-circle-play"></i>
-                                <h3 className="mx-2">{lesson.lessonTitle}: </h3>
-                                <span className="text-xl">{lesson.lessonType}</span>
+                                <h3 className="mx-2 font-medium text-base">{lesson.lessonType}: </h3>
+                                <span className="">{lesson.lessonTitle}</span>
                             </Link>
                         ))}
                     </div>

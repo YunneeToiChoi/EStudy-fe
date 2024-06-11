@@ -1,5 +1,15 @@
 import  Link  from 'next/link';
-export default function MultiChoiceLearn(){
+import { useDispatch } from 'react-redux';
+import {getAllQuestionOfLesson} from "@/service/api/apiQuestionRequest"
+
+interface MultiChoiceProps{
+  params:any
+}
+
+export const MultiChoiceLearn: React.FC<MultiChoiceProps>= ({params})=>{
+  const dispatch= useDispatch();
+  const idLesson ={lessonId: params.lesson};
+  getAllQuestionOfLesson(idLesson, dispatch);
     return(
         <div>
              <nav className="nav__content-right">

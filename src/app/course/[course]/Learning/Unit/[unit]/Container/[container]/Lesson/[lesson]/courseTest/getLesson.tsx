@@ -18,11 +18,11 @@ const ListLessonComponent: React.FC<LessonListProps> = ({ params }) => {
                          href={`/course/${params.course}/Learning/Unit/${params.unit}/Container/${params.container}/Lesson/${lesson.lessonId}/courseTest?TAG=${lesson.tagID}`}
                         className={` text-sm border-l-[4px] border-l-transparent flex items-center p-3 no-underline text-black hover:border-l-nav-hover-text-color hover:bg-exam-bg-color transition duration-200 ${LessonId === lesson.lessonId ? 'border-l-nav-hover-text-color bg-tag-search-bg-color' : ''}`}>
                         <i className="fa-solid fa-circle-check text-green-600"></i>
-                        <h3 className=" mx-2">{lesson.lessonTitle}</h3>
+                        <h3 className=" mx-2 text-base font-medium">{lesson.lessonType}:</h3>
                         <span
-                          className=" text-base"
+                          className=" "
                         >
-                          {lesson.lessonType}</span>
+                          {lesson.lessonTitle}</span>
                       </Link>
                     </li>
                     ))

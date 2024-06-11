@@ -1,9 +1,16 @@
 import  Link  from 'next/link';
+import { useDispatch } from 'react-redux';
 import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsFindPairLearn';
+import {getVocabFindPair} from "@/service/api/apiVocabRequest"
 
-
-export default function FindPairLearn(){
-    return(
+interface findPairProps {
+  params: any;
+}
+export const FindPairLearn: React.FC<findPairProps> = ({ params }) =>{
+  const dispatch= useDispatch(); 
+  const idLesson ={lessonId: Number(params.lesson)};
+  getVocabFindPair(idLesson,dispatch);
+  return(
         <div>
              <nav className="nav__content-right">
             <BreadcrumbWithCustomSeparator></BreadcrumbWithCustomSeparator>
