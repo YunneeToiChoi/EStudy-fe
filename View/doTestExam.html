@@ -129,33 +129,37 @@
                 </audio>
                 <ul class="tag-search__list">
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link tag-search__link--chosen"
+                    <a
+                      href="#"
+                      class="tag-search__link tag-search__link--chosen"
                       >Tất cả</a
                     >
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 1</a>
+                    <a href="#" class="tag-search__link">Part 1</a>
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 2</a>
+                    <a href="#" class="tag-search__link">Part 2</a>
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 3</a>
+                    <a href="#" class="tag-search__link">Part 3</a>
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 4</a>
+                    <a href="#" class="tag-search__link">Part 4</a>
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 5</a>
+                    <a href="#" class="tag-search__link">Part 5</a>
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 6</a>
+                    <a href="#" class="tag-search__link">Part 6</a>
                   </li>
                   <li class="tag-search__item">
-                    <a href="" class="tag-search__link">Part 7</a>
+                    <a href="#" class="tag-search__link">Part 7</a>
                   </li>
                 </ul>
-                <div class="testExam__content-box">
+                <div
+                  class="testExam__content-box testExam__content-box--active"
+                >
                   <img
                     src="https://study4.com/media/ets2023/img/10/image13.png"
                     alt=""
@@ -190,7 +194,7 @@
                 </div>
                 <div class="testExam__content-box">
                   <img
-                    src="https://study4.com/media/ets2023/img/10/image13.png"
+                    src="https://study4.com/media/ets2023/img/10/image14.png"
                     alt=""
                     class="testExam__img"
                   />
@@ -313,7 +317,30 @@
       </div>
     </div>
     <!-- End Body -->
+    <script>
+      const $ = document.querySelector.bind(document);
+      const $$ = document.querySelectorAll.bind(document);
+
+      const tabs = $$(".tag-search__link");
+      const panes = $$(".testExam__content-box");
+
+      const tabActive = $(".tag-search__link.tag-search__link--chosen");
+
+      tabs.forEach((tab, index) => {
+        const pane = panes[index];
+
+        tab.onclick = function () {
+          $(".tag-search__link.tag-search__link--chosen").classList.remove(
+            "tag-search__link--chosen"
+          );
+          $(
+            ".testExam__content-box.testExam__content-box--active"
+          ).classList.remove("testExam__content-box--active");
+
+          this.classList.add("tag-search__link--chosen");
+          pane.classList.add("testExam__content-box--active");
+        };
+      });
+    </script>
   </body>
 </html>
-
-<!-- Will be done tomorrows  -->

@@ -172,7 +172,12 @@
 }
 
 .testExam__content-box{
+    display: none;
     margin: 20px 0px;
+}
+
+.testExam__content-box--active{
+    display: block;
 }
 
 .testExam__question{
@@ -229,4 +234,12 @@
 
 .multichoice__list-number{
     margin: 10px 0px;
+}
+
+.tag-search__link{
+    opacity: 0.6;
+}
+
+.tag-search__link--chosen{
+    opacity: 1;
 }
