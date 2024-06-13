@@ -639,3 +639,30 @@
 .vocab__rate-category--hard{
     color: #e43a45;
 }
+
+.vocabulary__container{
+    cursor: pointer;
+    display: none;
+}
+
+
+
+.rate__container{
+    display: block;
+}
+
+.vocab__flashcard-translate{
+    cursor: pointer;
+}
+
+.vocab__flashcard-checkbox{
+    display: none;
+}
+
+.vocab__flashcard-checkbox:checked ~ .vocab__flashcard-translate{
+    display: none;
+}
+
+.vocab__flashcard-checkbox:checked ~ .vocabulary__container{
+    display: block;
+}
