@@ -1,18 +1,23 @@
 import  Link  from 'next/link';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import {getVocabOfLesson} from "@/service/api/apiVocabRequest"
 interface VocabFlashcardProps {
   params: any;
 }
 export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =>{
   const dispatch= useDispatch(); 
-  const idLesson ={lessonId: Number(params.lesson)};
-  getVocabOfLesson(idLesson,dispatch);
+  const idLesson ={lessonId: Number(params.lesson)}; 
+  const ListFlashcard= useSelector((state:any)=> state.ThunkReducer?.vocab?.VocabByLesson?.data?.data)
+  console.log(ListFlashcard)
+  useEffect(()=>{
+    getVocabOfLesson(idLesson,dispatch);
+  },[dispatch])
 
     return(
-      <div className="content-right__container">
-        <div className="grid wide grid-wide-course-learn">
+        <div className="grid wide grid-wide-course-learn pb-6">
           <Link href="" className="flashcard__train">Luyện tập flashcards</Link>
           <div className="train__flex-container">
             <Link
@@ -53,7 +58,49 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
             </div>
           </div>
           <p className="vocabulary__description">List có 55 từ</p>
-          <div className="content__box">
+          {ListFlashcard?.map((card:any)=>(
+            <div className="content__box">
+            <div className="vocabulary__container row">
+              <div className="col l-8">
+                <div className="vocabulary__flex-header">
+                  <h2 className="vocabulary__content-header">
+                    {card.vocabTitle}
+                  </h2>
+                  <Link href="#" className="vocabulary__speaker">
+                    <i
+                      className="fa-solid fa-volume-high vocabulary__content-icon"
+                    ></i>
+                  </Link>
+                  <span className="vocabulary__national">UK</span>
+                  <Link href="#" className="vocabulary__speaker">
+                    <i
+                      className="fa-solid fa-volume-high vocabulary__content-icon"
+                    ></i>
+                  </Link>
+                  <span className="vocabulary__national">US</span>
+                </div>
+                <div className="vocabulary__study">
+                  <h4 className="vocabulary__study-header">Định nghĩa:</h4>
+                  <p className="vocabulary__study-content">
+                    {card.mean}
+                  </p>
+                  <br />
+                  <h4 className="vocabulary__study-header">Ví dụ:</h4>
+                  {card.example}
+                </div>
+              </div>
+              <div className="col l-4">
+                <Image
+                  width={100}
+                  height={100}
+                  src="https://study4.com/media/toeic_course_vocabs/media/02_Accounting.jpg.webp"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          ))}
+           <div className="content__box">
             <div className="vocabulary__container row">
               <div className="col l-8">
                 <div className="vocabulary__flex-header">
@@ -224,8 +271,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
               </div>
             </div>
           </div>
-          <Link href="" className="content__transition-number">1</Link>
+          <Link href="#" className="mt-[30px] text-base text-white bg-nav-hover-text-color px-[14px] py-[10px] rounded no-underline w-fit">1</Link>
         </div>
-      </div>
     )
 }

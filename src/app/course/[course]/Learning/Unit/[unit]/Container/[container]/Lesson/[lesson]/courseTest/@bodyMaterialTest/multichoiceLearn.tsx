@@ -55,7 +55,6 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
   };
 
   return (
-    <div className="content-right__container">
       <div className="grid wide grid-wide-course-learn">
         {currentQuestion && (
           <div className="content__box">
@@ -100,6 +99,5 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

@@ -94,7 +94,10 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
             <ListLessonComponent params={params} />
           </div>
         </div>
-        <Component params={params}  />
+        <div className='flex w-full items-center'>
+          <Component params={params}  />
+        </div>
+        
 </div>
   );
 }
