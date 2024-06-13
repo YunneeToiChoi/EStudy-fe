@@ -666,3 +666,7 @@
 .vocab__flashcard-checkbox:checked ~ .vocabulary__container{
     display: block;
 }
+
+.vocab__flashcard-list{
+    margin-left: 40px;
+}
