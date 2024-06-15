@@ -1,6 +1,5 @@
 import  Link  from 'next/link';
 import { useDispatch } from 'react-redux';
-import {BreadcrumbWithCustomSeparator} from '@/components/handicraft/params/paramsFindPairLearn';
 import {getVocabFindPair} from "@/service/api/apiVocabRequest"
 
 interface findPairProps {

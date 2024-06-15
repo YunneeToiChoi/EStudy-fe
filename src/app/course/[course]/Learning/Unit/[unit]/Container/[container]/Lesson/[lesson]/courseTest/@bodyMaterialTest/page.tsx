@@ -10,7 +10,6 @@ import { ListenLearn } from "./listenLearn";
 import { GrammarInput } from './grammarInput';
 import { GrammarChoice } from './grammarChoice';
 import { FindPairLearn } from './findPairLearn';
-import FlashcardDetail from "./flashcardDetail"
 import ListLessonComponent from "../getLesson";
 import { BreadcrumbWithCustomSeparator } from '@/components/handicraft/params/paramsCourseLearn';
 
@@ -44,6 +43,9 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
     case 'FLASH_CARD':
       Component = VocabularyFlashCard;
       break;
+      case 'flashCardDetail':
+      Component = VocabularyFlashCard;
+    break;
     case 'Multiple_Choice':
       Component = MultiChoiceLearn;
       break;
@@ -65,9 +67,6 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
       break;
     case 'GrammarChoice':
       Component = GrammarChoice;
-      break;
-    case 'flashCardDetail':
-      Component = FlashcardDetail;
       break;
     default:
       Component = DefaultComponent;
