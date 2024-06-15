@@ -111,6 +111,11 @@ https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
 [lessonId]
+--------------Get All List Vocab Listen Chossen ( 1 file nghe có 9 cái đáp án ) ------------------------------------------------------------
+[HttpPost]
+http://localhost:8000/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag = LISTEN_VOCAB ] 
+[lessonId]
+
 ## Getting Started
 
 First, run the development server:
