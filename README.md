@@ -4,7 +4,7 @@ VIDEO :
 FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 Multiple_Choice : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 FIND_PAIR : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
-LISTEN_VOCAB :
+LISTEN_VOCAB : https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
 LISTEN_SPELLING :
 LISTEN_PICTURE :
 LISTEN_PURPOSE :
@@ -113,9 +113,8 @@ https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
 [lessonId]
 --------------Get All List Vocab Listen Chossen ( 1 file nghe có 9 cái đáp án ) ------------------------------------------------------------
 [HttpPost]
-http://localhost:8000/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag = LISTEN_VOCAB ] 
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag = LISTEN_VOCAB ] 
 [lessonId]
-
 ## Getting Started
 
 First, run the development server:
