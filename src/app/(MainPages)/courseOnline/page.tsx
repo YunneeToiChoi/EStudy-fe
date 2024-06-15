@@ -13,11 +13,11 @@ Cambridge và Oxford (Anh) với hệ thống bài giảng, bài tập phong ph�
 export default function CourseOnline()
 {
     return(
-        <div className=" pt-10 max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
+      <div className=" pt-10 max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
       <div className="">
         <div className="">
           <h1 className=" text-4xl font-semibold">Khóa học<span className=" text-primary-bg-color"><FlipWords className="text-primary-bg-color" words={wordss} /></span></h1>
-          <div className="content__text">
+          <div className="mb-[50px]">
           <TextGenerateEffect words={words} />
           </div>
         </div>

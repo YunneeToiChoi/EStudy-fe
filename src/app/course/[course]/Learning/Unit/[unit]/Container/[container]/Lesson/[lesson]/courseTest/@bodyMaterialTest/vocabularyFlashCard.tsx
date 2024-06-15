@@ -21,7 +21,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
 
     return(
           <>
-          <Link href="" className=" block text-center no-underline text-black text-base border-[1px] border-primary-bg-color rounded p-3 bg-tag-search-bg-color font-semibold hover:text-white hover:bg-primary-bg-color-hover transition duration-300 mb-10">Luyện tập flashcards</Link>
+          <Link href={`/course/${params.course}/Learning/Unit/${params.unit}/Container/${params.container}/Lesson/${params.lesson}/courseTest?TAG=flashCardDetail`} className=" block text-center no-underline text-black text-base border-[1px] border-primary-bg-color rounded p-3 bg-tag-search-bg-color font-semibold hover:text-white hover:bg-primary-bg-color-hover transition duration-300 mb-10">Luyện tập flashcards</Link>
           <p className="text-xl">List có {NumberOfListCard} từ</p>
           {ListFlashcard?.map((card:any)=>(
             <div key={card.vocabId} className="bg-white p-5 border-[1px] border-course-border-color rounded-xl shadow-md text-base my-[40px] w-full">

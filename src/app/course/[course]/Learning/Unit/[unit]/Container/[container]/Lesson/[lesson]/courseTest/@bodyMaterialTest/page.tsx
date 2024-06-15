@@ -10,6 +10,7 @@ import { ListenLearn } from "./listenLearn";
 import { GrammarInput } from './grammarInput';
 import { GrammarChoice } from './grammarChoice';
 import { FindPairLearn } from './findPairLearn';
+import FlashcardDetail from "./flashcardDetail"
 import ListLessonComponent from "../getLesson";
 import { BreadcrumbWithCustomSeparator } from '@/components/handicraft/params/paramsCourseLearn';
 
@@ -65,6 +66,9 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
     case 'GrammarChoice':
       Component = GrammarChoice;
       break;
+    case 'flashCardDetail':
+      Component = FlashcardDetail;
+      break;
     default:
       Component = DefaultComponent;
       break;
@@ -72,7 +76,7 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
 
   return (
     <div>
-        <nav className="fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between">
+        <nav className="fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between z-10">
           <BreadcrumbWithCustomSeparator />
           <label className="lg:hidden" htmlFor="content_checkbox_mb">
             <i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i>
