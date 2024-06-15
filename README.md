@@ -9,7 +9,7 @@ LISTEN_SPELLING :
 LISTEN_PICTURE : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 LISTEN_PURPOSE :
 LISTEN_QUEST_RESPONSE : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
-LISTEN_SPEECH :
+LISTEN_SPEECH ( đối thoại và nghe hiểu bài nói ): https://elearning.engineer/api/Question_API/Get_AllListenSpeech
 FILL_WORD :  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
 FILL_TEXT_WORD :
 READING :
@@ -140,7 +140,12 @@ https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson [Tag = LISTE
 [HttpPost]
 https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res [Tag = LISTEN_QUEST_RESPONSE ] 
 [lessonId]
- 
+
+--------------------------Get Question Speech -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllListenSpeech [Tag = LISTEN_SPEECH ] 
+[lessonId]
+
 ## Getting Started
 
 First, run the development server:
