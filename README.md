@@ -10,7 +10,7 @@ LISTEN_PICTURE :
 LISTEN_PURPOSE :
 LISTEN_QUEST_RESPONSE :
 LISTEN_SPEECH :
-FILL_WORD :
+FILL_WORD :  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
 FILL_TEXT_WORD :
 READING :
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
@@ -94,27 +94,38 @@ https://elearning.engineer/api/Momo_Payment/RequestTracking
 [HttpPost]
 https://elearning.engineer/api/Unit_API/Get_AllUnitsByCourse(complete)
 [courseId,userId] -> if user have not this course, will return 404 bad request
+
 --------------Get_AllContainerAndLessonByUnit ( lay 20 container + 6 lesson trong moi container ) ------------
 [HttpPost]
 https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit(complete)
 [unitId]
+
 --------------Get All List Vocab of Lesson (Lesson of Container,Container of unit, unit of course ) [Data trả về này dùng để show 55 list vocab và random trò chơi flash card]--
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 [lessonId]
+
 --------------Get_AllQuestionOfLesson ----------------------------------------------------------------
 [HttpPost]
 https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 [lessonId]
 400 -> lỗi do lesson || 500 -> server ->> 200 success
+
 --------------Get All List Vocab Find pair------------------------------------------------------------
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
 [lessonId]
+
 --------------Get All List Vocab Listen Chossen ( 1 file nghe có 9 cái đáp án ) ------------------------------------------------------------
 [HttpPost]
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag = LISTEN_VOCAB ] 
 [lessonId]
+
+--------------Get All List Vocab Fill World  ------------------------------------------------------------
+[HttpPost]
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld [Tag = FILL_WORD ] 
+[lessonId]
+
 ## Getting Started
 
 First, run the development server:
