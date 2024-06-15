@@ -22,7 +22,7 @@ import * as request from "@/lib/utils/request";
  export const getVocabFindPair = async (lessonId:any,dispatch:any) => {
     dispatch(getVocabFindPairStart());
     try {
-      const res = await request.get(`/VocabFlashCard_API/Get_AllVocabFindpair`,lessonId);
+      const res = await request.post(`/VocabFlashCard_API/Get_AllVocabFindpair`,lessonId);
       dispatch(getVocabFindPairSuccess(res));
     } catch (err:any) {
       dispatch(getVocabFindPairFailed(err.response.data));

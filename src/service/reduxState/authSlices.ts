@@ -47,12 +47,10 @@ const authSlice = createSlice({
             state.login.isFetching = false;
             state.login.data = null;
             state.login.error = false;
-            state.msg="";
         },
-        logOutFailed: (state,action) =>{
+        logOutFailed: (state) =>{
             state.login.isFetching = false;
             state.login.error = true;
-            state.msg = action.payload;
         },
         logOutStart: (state) =>{
             state.login.isFetching = true;

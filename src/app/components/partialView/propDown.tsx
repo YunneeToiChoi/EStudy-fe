@@ -1,19 +1,14 @@
 import Link from 'next/link';
 import {
+  AlignCenter,
+    Atom,
     Cloud,
-    CreditCard,
     Github,
-    Keyboard,
     LifeBuoy,
     LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
+    SquareMenu,
+    SquareTerminal,
     User,
-    UserPlus,
-    Users,
   } from "lucide-react"
    
   import { Button } from "@/components/ui/button"
@@ -25,17 +20,26 @@ import {
     DropdownMenuLabel,
     DropdownMenuPortal,
     DropdownMenuSeparator,
-    DropdownMenuShortcut,
     DropdownMenuSub,
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
   import {AvatarDemo} from "./avatar"
+  import { useRouter } from 'next/navigation';
+import {useDispatch} from "react-redux";
+  import { logOut } from "@/service/api/apiAuthRequest";
   interface UserAccount {
     UserName: any;
   }
   export const DropdownMenuDemo: React.FC<UserAccount> = ({UserName}) => {
+    const dispatch = useDispatch();
+    const navigate = useRouter();
+
+     const handleLogOut = () => {
+      logOut(dispatch,navigate.push);
+     }
+    
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -49,65 +53,60 @@ import {
             <DropdownMenuItem>
               <User className="mr-2 h-4 w-4" />
               <span>Profile</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
             </Link>
-            <DropdownMenuItem>
-              <CreditCard className="mr-2 h-4 w-4" />
-              <span>Billing</span>
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Keyboard className="mr-2 h-4 w-4" />
-              <span>Keyboard shortcuts</span>
-              <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-            </DropdownMenuItem>
           </DropdownMenuGroup>
-          <DropdownMenuSeparator />
+          <div className=' hidden max-lg:block'>
+              <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Users className="mr-2 h-4 w-4" />
-              <span>Team</span>
-            </DropdownMenuItem>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
-                <UserPlus className="mr-2 h-4 w-4" />
-                <span>Invite users</span>
+                <AlignCenter className="mr-2 h-4 w-4" />
+                <span>Menu</span>
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   <DropdownMenuItem>
-                    <Mail className="mr-2 h-4 w-4" />
-                    <span>Email</span>
+                    <Link href="/courseOnline" className=" text-base font-medium">Khoá học online</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    <span>Message</span>
+                  <Link href="/examOnline" className=" text-base font-medium">Đề thi online</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                  <Link href="/flashCard" className=" text-base font-medium">Flashcards</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                  <Link href="/activeCourse" className=" text-base font-medium">Kích hoạt khoá học</Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    <span>More...</span>
-                  </DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
-            <DropdownMenuItem>
-              <Plus className="mr-2 h-4 w-4" />
-              <span>New Team</span>
-              <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-            </DropdownMenuItem>
           </DropdownMenuGroup>
+          </div>
+        
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Github className="mr-2 h-4 w-4" />
-            <span>GitHub</span>
-          </DropdownMenuItem>
+          <Link href="">
+          <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+              <Github className="mr-2 h-4 w-4" />
+              <span>GitHub</span>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem>
+                    <Atom className="mr-2 h-4 w-4"></Atom>
+                    <Link href="/courseOnline" className=" text-base font-medium">Front-end</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <SquareTerminal className="mr-2 h-4 w-4"></SquareTerminal>
+                  <Link href="/examOnline" className=" text-base font-medium">Back-end</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+           </Link>
           <DropdownMenuItem>
             <LifeBuoy className="mr-2 h-4 w-4" />
             <span>Support</span>
@@ -117,10 +116,9 @@ import {
             <span>API</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={handleLogOut}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

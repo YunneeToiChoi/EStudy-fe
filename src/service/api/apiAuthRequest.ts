@@ -32,3 +32,13 @@ export const registerUser = async (user:any, dispatch:any, navigate:any) => {
     dispatch(registerFailed(err.response.data));
   }
 };
+
+export const logOut = async (dispatch:any,navigate:any) => {
+  dispatch(logOutStart());
+  try {
+    dispatch(logOutSuccess());
+    navigate("/login");
+  } catch (err) {
+    dispatch(logOutFailed());
+  }
+};

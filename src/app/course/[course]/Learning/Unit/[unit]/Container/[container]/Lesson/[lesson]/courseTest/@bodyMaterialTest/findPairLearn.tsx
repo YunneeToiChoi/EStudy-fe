@@ -11,7 +11,7 @@ export const FindPairLearn: React.FC<findPairProps> = ({ params }) =>{
   const idLesson ={lessonId: Number(params.lesson)};
   getVocabFindPair(idLesson,dispatch);
   return(
-        <div className="grid wide grid-wide-course-learn">
+        <div className="grid wide grid-wide-course-learn pt-11">
           <div className="content__box row">
             <Link href="" className="paircard__box col l-3"
               >thang máy =a machine that takes people to different floors in

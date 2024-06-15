@@ -105,8 +105,6 @@ export default function Header() {
                   {user ? (
                     <>
                     <DropdownMenuDemo UserName={user.user.userName}></DropdownMenuDemo>
-                      {/* <p>Hi <span>{user.user.userName}</span></p> */}
-                      {/* <span className="navbar-logout" onClick={handleLogout}> Log out</span> */}
                     </>
                   ) : (
                     <>
@@ -118,48 +116,6 @@ export default function Header() {
                   </Link>
                     </>
                   )}
-              </div>
-              <label htmlFor="nav-mobile-input" className="menubar__icon hide">
-                <i className="fa-solid fa-bars nav__icon"></i>
-              </label>
-              <input type="checkbox" id="nav-mobile-input" className="nav__input" />
-              <label htmlFor="nav-mobile-input" className="nav__overlay"></label>
-              <div className="nav__mobile hide">
-                <ul className="nav__list-mobile">
-                  <li className="nav__item-mobile">
-                    <Link href="/courseOnline" className="nav__link-mobile">
-                      Khóa học online
-                    </Link>
-                  </li>
-                  <li className="nav__item-mobile">
-                    <Link href="/examOnline" className="nav__link-mobile">
-                      Đề thi online
-                    </Link>
-                  </li>
-                  <li className="nav__item-mobile">
-                    <Link href="/flashCard" className="nav__link-mobile">
-                      Flashcards
-                    </Link>
-                  </li>
-                  <li className="nav__item-mobile">
-                    <Link href="/dashBoard/getAllUser" className="nav__link-mobile">Blog</Link>
-                  </li>
-                  <li className="nav__item-mobile">
-                    <Link href="/activeCourse" className="nav__link-mobile">
-                      Kích hoạt khóa học
-                    </Link>
-                  </li>
-                  <li className="nav__item-mobile nav__item-login nav__item-login-mobile">
-                    {user ? (
-                      <>
-                        <p>Hi <span>{user.user.userName}</span></p>
-                        <Link href="/" className="navbar-logout"> Log out</Link>
-                      </>
-                    ) : (
-                      <Link href="/login" className="nav__link-login">Đăng nhập</Link>
-                    )}
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

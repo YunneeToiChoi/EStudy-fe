@@ -95,7 +95,10 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
           </div>
         </div>
         <div className='flex w-full items-center'>
-          <Component params={params}  />
+          <div className='grid max-w-[900px] mx-auto pb-6 pt-20'>
+            <Component params={params}  />
+          </div>
+          
         </div>
         
 </div>
