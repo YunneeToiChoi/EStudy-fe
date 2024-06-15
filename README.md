@@ -8,7 +8,7 @@ LISTEN_VOCAB : https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenCh
 LISTEN_SPELLING :
 LISTEN_PICTURE : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 LISTEN_PURPOSE :
-LISTEN_QUEST_RESPONSE :
+LISTEN_QUEST_RESPONSE : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
 LISTEN_SPEECH :
 FILL_WORD :  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
 FILL_TEXT_WORD :
@@ -135,6 +135,12 @@ https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson [Tag = VIDEO ]
 [HttpPost]
 https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson [Tag = LISTEN_PICTURE ] 
 [lessonId]
+
+--------------------------Get Question Listen Picture -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res [Tag = LISTEN_QUEST_RESPONSE ] 
+[lessonId]
+ 
 ## Getting Started
 
 First, run the development server:
