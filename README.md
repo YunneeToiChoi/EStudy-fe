@@ -1,6 +1,6 @@
 Domain: https://estudy.elearning.engineer/
 ## TAG
-VIDEO :
+VIDEO : https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson
 FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 Multiple_Choice : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 FIND_PAIR : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
@@ -126,6 +126,10 @@ https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag
 https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld [Tag = FILL_WORD ] 
 [lessonId]
 
+--------------------------Get All Video -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson [Tag = VIDEO ] 
+[lessonId]
 ## Getting Started
 
 First, run the development server:
