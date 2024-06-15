@@ -2,17 +2,17 @@ Domain: https://estudy.elearning.engineer/
 ## TAG
 VIDEO : https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson
 FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
-Multiple_Choice : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
-FIND_PAIR : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
-LISTEN_VOCAB : https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
-LISTEN_SPELLING :
-LISTEN_PICTURE : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
-LISTEN_PURPOSE :
-LISTEN_QUEST_RESPONSE : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
-LISTEN_SPEECH ( đối thoại và nghe hiểu bài nói ): https://elearning.engineer/api/Question_API/Get_AllListenSpeech
-FILL_WORD :  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
-FILL_TEXT_WORD :
-READING :
+Multiple_Choice ( trắc nghiệm cơ bản có 4 đáp án ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
+DOUBLE_CHOICE :
+FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
+LISTEN_VOCAB ( bài nghe chọn từ vựng ): https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
+LISTEN_PICTURE ( bài nghe tranh 4 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
+LISTEN_QUEST_RESPONSE ( bài nghe hỏi đáp 3 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
+LISTEN_SPEECH ( đối thoại và nghe hiểu bài nói 4 options, full tittle ): https://elearning.engineer/api/Question_API/Get_AllListenSpeech
+FILL_WORD ( bài điền từ , gõ tay ):  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
+READING (bài điền từ = trắc nghiệm ):
+WRITTEN_FORM ( form email có nhiều options ): 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ## Point API
 Don't fotgot Header key/value : ContentType : application/json
