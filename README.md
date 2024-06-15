@@ -6,7 +6,7 @@ Multiple_Choice : https://elearning.engineer/api/Question_API/Get_AllQuestionOfL
 FIND_PAIR : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
 LISTEN_VOCAB : https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
 LISTEN_SPELLING :
-LISTEN_PICTURE :
+LISTEN_PICTURE : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 LISTEN_PURPOSE :
 LISTEN_QUEST_RESPONSE :
 LISTEN_SPEECH :
@@ -129,6 +129,11 @@ https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld [Tag = F
 --------------------------Get All Video -----------------------------------
 [HttpPost]
 https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson [Tag = VIDEO ] 
+[lessonId]
+
+--------------------------Get Question Listen Picture -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson [Tag = LISTEN_PICTURE ] 
 [lessonId]
 ## Getting Started
 
