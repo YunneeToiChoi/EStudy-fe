@@ -3,14 +3,14 @@ Domain: https://estudy.elearning.engineer/
 VIDEO : https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson
 FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 Multiple_Choice ( trắc nghiệm cơ bản có 4 đáp án ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
-DOUBLE_CHOICE :
+DOUBLE_CHOICE ( trắc nghiệm chỉ có 2 câu a,b )  : https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice
 FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
 LISTEN_VOCAB ( bài nghe chọn từ vựng ): https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
 LISTEN_PICTURE ( bài nghe tranh 4 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 LISTEN_QUEST_RESPONSE ( bài nghe hỏi đáp 3 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
 LISTEN_SPEECH ( đối thoại và nghe hiểu bài nói 4 options, full tittle ): https://elearning.engineer/api/Question_API/Get_AllListenSpeech
 FILL_WORD ( bài điền từ , gõ tay ):  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
-READING (bài điền từ = trắc nghiệm ):
+READING (bài điền từ = trắc nghiệm ): https://elearning.engineer/api/Question_API/Get_AllQuestionReading
 WRITTEN_FORM ( form email có nhiều options ): 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
@@ -144,6 +144,16 @@ https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res [Tag = LISTE
 --------------------------Get Question Speech -----------------------------------
 [HttpPost]
 https://elearning.engineer/api/Question_API/Get_AllListenSpeech [Tag = LISTEN_SPEECH ] 
+[lessonId]
+
+--------------------------Get Question Double choice -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice [Tag = DOUBLE_CHOICE ] 
+[lessonId]
+
+--------------------------Get Question Reading -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllQuestionReading [Tag = READING ] 
 [lessonId]
 
 ## Getting Started
