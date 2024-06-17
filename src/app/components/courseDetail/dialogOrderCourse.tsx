@@ -30,9 +30,10 @@ import { RequestApiOrder } from "@/service/api/apiOrderRequest";
 interface OrderDialogProps {
   courseId: number;
   CoursesDetail: any;
+  lastPrice: number;
 }
 
-const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail }) => {
+const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastPrice }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
@@ -62,7 +63,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail }) =>
       TotalAmount: CoursesDetail.coursePrice,
       PhoneNumber: phone,
     };
-    await RequestApiOrder(dataOrder, dispatch, CoursesDetail, user.userId, router.push);
+    await RequestApiOrder(dataOrder, dispatch,lastPrice, CoursesDetail, user.userId, router.push);
     setIsSubmitting(false); // Enable the button again
   };
 

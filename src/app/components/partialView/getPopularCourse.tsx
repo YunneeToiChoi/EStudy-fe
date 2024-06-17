@@ -6,6 +6,8 @@ import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopularCourse } from "@/service/api/apiCourseRequest";
 
+import addDotsToCurrency from "@/lib/utils/currency"
+
 export default function GetPoplarCourses() {
   const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
   const dispatch = useDispatch();
@@ -35,7 +37,7 @@ export default function GetPoplarCourses() {
                   height={1000} 
                   quality={100}
                   alt='image' 
-                  src="/img/Speak_E.jpg">
+                  src="/img/bg_pro-E.jpg">
                   </Image>
                 </div>
                 <h3 className=" text-base font-medium text-center">{course.courseName}</h3>
@@ -48,11 +50,23 @@ export default function GetPoplarCourses() {
                       <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
                     </div>
                   </div>
-                  <div className="flex items-center">
-                    <span className=" text-xl font-semibold text-price-color">{course.coursePrice}</span>
-                    <span className=" text-xl line-through px-3">899.000đ</span>
-                    <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-22%</span>
-                  </div>
+                  {
+                      course.courseSale > 0 ? 
+                      (
+                        <div className="flex items-center">                  
+                         <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.coursePrice)}đ</span>
+                        <span className=" text-xl line-through px-3">{addDotsToCurrency(course.lastPrice)}đ</span>
+                        <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-{course.courseSale}%</span>
+                        </div>   
+
+                      ): (
+                        <div className="flex flex-col items-center"> 
+                        <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.lastPrice)}đ</span>
+                        <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">Không hỗ trợ giảm giá</span>
+                        </div>
+                       
+                      )
+                    }
                 </div>
               </Link>
                 )

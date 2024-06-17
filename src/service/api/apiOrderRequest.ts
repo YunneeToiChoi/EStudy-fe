@@ -22,12 +22,12 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
   return `${idUser}${idCourse}${currentDate}`.split('').sort(() => Math.random() - 0.5).join('');
 };
 
- const handlePayment = async (courseDetail:any,resOrder:any,idUser:any,dispatch:any,navigate:any) => {
+ const handlePayment = async (courseDetail:any,resOrder:any,lastPrice:any,idUser:any,dispatch:any,navigate:any) => {
   const reqId:string = await handleRandomReqID(idUser,courseDetail.courseId.toString());
   const dataPaymentMomo = {
     subPartnerCode: "",
     requestId: reqId,
-    amount: courseDetail.coursePrice,
+    amount: lastPrice,
     orderId: String(resOrder.orderId),
     orderInfo: `Thanh toán khoá học: ${courseDetail.courseName}`,
     redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
@@ -39,12 +39,12 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
   RequestApiPaymentMomo(dataPaymentMomo, dispatch, navigate);
 };
 
-export const RequestApiOrder = async (dataOrder:any,dispatch:any,courseDetail:any,idUser:string,navigate:any) => {
+export const RequestApiOrder = async (dataOrder:any,dispatch:any,lastPrice:any,courseDetail:any,idUser:string,navigate:any) => {
     dispatch(OrderStart()); 
     try{
       const res = await request.post('/Order_API/Buy_Course',dataOrder);
       dispatch(OrderSuccess(res));
-      await handlePayment(courseDetail,res,idUser,dispatch,navigate);
+      await handlePayment(courseDetail,res,lastPrice,idUser,dispatch,navigate);
     }catch (err:any) {
       dispatch(OrderFailed());
     }

@@ -4,27 +4,17 @@ import  Link  from 'next/link';
 
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCourse,getUnregisterCourse } from "@/service/api/apiCourseRequest";
+import {getUnregisterCourse } from "@/service/api/apiCourseRequest";
 
+import addDotsToCurrency from "@/lib/utils/currency"
 export default function GetAllCourses() {
    const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
     const dispatch = useDispatch();
-    const listCourses = useSelector((state: any) => {
-        if (!user) {
-            return state.ThunkReducer.courses.course?.data?.courses;
-        } else {
-            return state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCourses;
-        }
-    });
-
+    const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCoursesResponse);
     useEffect(() => {
         if (!listCourses) {
-            if (!user) {
-                getAllCourse(dispatch);
-            } else {
-                const UserId = { userId: user.userId };
-                getUnregisterCourse(UserId, dispatch);
-            }
+            const UserId = { userId: user?.userId };
+            getUnregisterCourse(UserId, dispatch);
         }
     }, [dispatch, listCourses, user]);
 
@@ -55,12 +45,24 @@ export default function GetAllCourses() {
                       <i className="fa-solid fa-star course__icon-star text-sm text-star-color"></i>
                     </div>
                   </div>
-                  <div className="flex items-center">
-                    <span className=" text-xl font-semibold text-price-color">{course.coursePrice}</span>
-                    <span className=" text-xl line-through px-3">899.000đ</span>
-                    <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-22%</span>
+                  {
+                      course.courseSale > 0 ? 
+                      (
+                        <div className="flex items-center">                  
+                         <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.coursePrice)}đ</span>
+                        <span className=" text-xl line-through px-3">{addDotsToCurrency(course.lastPrice)}đ</span>
+                        <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-{course.courseSale}%</span>
+                        </div>   
+
+                      ): (
+                        <div className="flex flex-col items-center"> 
+                        <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.lastPrice)}đ</span>
+                        <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">Không hỗ trợ giảm giá</span>
+                        </div>
+                       
+                      )
+                    }
                   </div>
-                </div>
               </Link>
                 )
               })}

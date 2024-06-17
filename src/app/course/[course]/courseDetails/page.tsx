@@ -24,6 +24,7 @@ export default function CourseDetail({ params }: { params: {course: string } })
   }, [dispatch, courseId, router.push]);
 
   const courseDetail = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data?.courseDetail);
+  const lastPrice =useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data?.finalPrice);
   const amountUser = useSelector((state: any) => state.ThunkReducer.courses.CourseDetail?.data);
   if(state.isFetching==true){
     return <div className='w-full py-[60px] text-5xl font-extrabold text-center'>...Loading</div>;
@@ -42,16 +43,15 @@ export default function CourseDetail({ params }: { params: {course: string } })
     coursePrice="Free"
   }
 
-
   return(
     <div>
     <div className=" items-center justify-center flex">
       <div className=" w-full py-[60px] bg-cover bg-courseDetails rounded-xl">
         <div className=" max-w-[1200px] m-auto grid">
           <h2 className=" text-3xl text-white">
-            Combo khoá học IELTS Intensive [Tặng khoá TED Talks]
+            {courseDetail.courseName}
           </h2>
-          <Link href="" className=" my-[10px] text-sm py-[6px] px-[10px] bg-tag-bg-color w-fit text-nav-hover-text-color inline-block rounded-[30px] font-medium no-underline">#Khóa học online</Link>
+          <Link href="" className=" my-[10px] text-sm py-[6px] px-[10px] bg-tag-bg-color w-fit text-nav-hover-text-color inline-block rounded-[30px] font-medium no-underline"> {courseDetail.courseTag}</Link>
           <div className=" flex items-center">
             <div className=" flex text-sm text-star-color items-center">
               <span className="mr-2">5</span>
@@ -235,14 +235,13 @@ export default function CourseDetail({ params }: { params: {course: string } })
           <div className=" p-4 border-b-[1px] border-b-course-border-color">
             <h2 className=" text-2xl text-center my-[10px] font-bold">{courseDetail.courseName}</h2>
             <div className=" flex item-center">
-              <h3 className=" text-3xl text-price-color font-semibold items-center flex">{coursePrice}</h3>
+              <h3 className=" text-3xl text-price-color font-semibold items-center flex">{addDotsToCurrency(lastPrice)}</h3>
               <div className=" ml-[10px]"> 
-                <span className=" block text-sm line-through text-exam-text-color">Giá gốc: 3.596.000đ</span>
-                <span className=" block text-xl text-economy-price-text-color font-medium">Tiết kiệm: 2.071.000đ</span>
-                <span className=" text-sm text-economy-price-text-color font-medium">(-57%)</span>
+                <span className=" block text-sm line-through text-exam-text-color">Giá gốc: {coursePrice}đ</span>
+                <span className=" text-sm text-economy-price-text-color font-medium">(-{courseDetail.courseSale}%)</span>
               </div>
             </div>
-            <OrderDialog courseId={courseId} CoursesDetail={courseDetail}></OrderDialog>
+            <OrderDialog courseId={courseId} CoursesDetail={courseDetail} lastPrice={lastPrice}></OrderDialog>
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
               >Học thử miễn phí</Link>
           </div>

@@ -23,15 +23,25 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
 
   useEffect(() => {
     getVocabOfLesson(idLesson, dispatch);
-  }, [dispatch, tag]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (ListFlashcard && ListFlashcard.length > 0) {
-      // Shuffle the ListFlashcard array
       const shuffledCards = shuffleArray(ListFlashcard);
       setRemainingCards(shuffledCards);
     }
   }, [ListFlashcard]);
+
+  useEffect(() => {
+    // Reset the state when tag changes
+    setCurrentCardIndex(0);
+    setIsRotated(false);
+    setIsCompleted(false);
+    if (ListFlashcard && ListFlashcard.length > 0) {
+      const shuffledCards = shuffleArray(ListFlashcard);
+      setRemainingCards(shuffledCards);
+    }
+  }, [tag]);
 
   const shuffleArray = (array: any[]) => {
     const shuffledArray = [...array];
@@ -49,7 +59,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
       setRemainingCards(newRemainingCards);
       const nextIndex = Math.floor(Math.random() * newRemainingCards.length);
       setCurrentCardIndex(nextIndex);
-      setIsRotated(false); 
+      setIsRotated(false);
     } else {
       setIsCompleted(true);
     }
@@ -67,7 +77,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
         <div className="grid wide grid-wide-course-learn">
           <div className="aleart__box">
             <p className="aleart__text">Bạn đã hoàn thành toàn bộ list từ. Chúc mừng!</p>
-            <Link href={`/course/${params.course}/Learning/Unit/${params.unit}/courseOption`} className="block text-center no-underline text-black text-base border-[1px] border-primary-bg-color rounded p-3 bg-tag-search-bg-color font-semibold hover:text-white hover:bg-primary-bg-color-hover transition duration-300">Quay lại</Link>
+            <Link href={`/course/${params.course}/Learning/Unit/${params.unit}/Container/${params.container}/Lesson/${params.lesson}/courseTest?TAG=FLASH_CARD`} className="block text-center no-underline text-black text-base border-[1px] border-primary-bg-color rounded p-3 bg-tag-search-bg-color font-semibold hover:text-white hover:bg-primary-bg-color-hover transition duration-300">Quay lại</Link>
           </div>
         </div>
       </div>
@@ -77,14 +87,14 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
   if (!currentCard) {
     return <p>Loading...</p>;
   }
-
+  
   if (tag === 'FLASH_CARD') {
     return (
       <>
         <Link href={`/course/${params.course}/Learning/Unit/${params.unit}/Container/${params.container}/Lesson/${params.lesson}/courseTest?TAG=flashCardDetail`} className="block text-center no-underline text-black text-base border-[1px] border-primary-bg-color rounded p-3 bg-tag-search-bg-color font-semibold hover:text-white hover:bg-primary-bg-color-hover transition duration-300 mb-10">Luyện tập flashcards</Link>
         <p className="text-xl">List có {remainingCards.length} từ</p>
         {remainingCards.map((card: any) => (
-          <div key={card.vocabId} className="bg-white p-5 border-[1px] border-course-border-color rounded-xl shadow-md text-base my-[40px] w-full">
+          <div key={card.vocabId} className="bg-white max-w-3xl m-auto p-5 border-[1px] border-course-border-color rounded-xl shadow-md text-base my-[40px] w-full">
             <div className="vocabulary__container row">
               <div className="col l-8">
                 <div className="vocabulary__flex-header">
@@ -98,11 +108,13 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                   </Link>
                   <span className="vocabulary__national">US</span>
                 </div>
+                <br />
                 <div className="vocabulary__study">
-                  <h4 className="vocabulary__study-header">Định nghĩa:</h4>
+                  <h4 className="vocabulary__study-header font-semibold">Định nghĩa:</h4>
                   <p className="vocabulary__study-content">{card.mean}</p>
+                  <p>= {card.explanation}</p>
                   <br />
-                  <h4 className="vocabulary__study-header">Ví dụ:</h4>
+                  <h4 className="vocabulary__study-header font-semibold">Ví dụ:</h4>
                   {card.example}
                 </div>
               </div>
@@ -123,7 +135,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
   } else if (tag === 'flashCardDetail') {
     return (
       <>
-        <div className="content-right__container">
+        <div className="">
           <div className="grid wide grid-wide-course-learn">
             <div className="train__flex-container">
               <a href="" className="flashcard__train-link flashcard__train-link--random">
@@ -162,6 +174,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                   <div className="vocab__flashcard-translate-left">
                     <b>Định nghĩa:</b>
                     <p>{currentCard.mean}</p>
+                    <p>= {currentCard.explanation}</p>
                     <b>Ví dụ:</b>
                     <ul className="vocab__flashcard-list">
                       {currentCard.example}
