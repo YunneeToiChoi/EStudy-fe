@@ -15,6 +15,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
   const tag = searchParams.get('TAG');
   const idLesson = { lessonId: Number(params.lesson) };
   const ListFlashcard = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabByLesson?.data?.data);
+  const tagCheck= useSelector((state: any) => state.ThunkReducer?.vocab?.VocabByLesson?.data?.lessonTag?.lessonTag);
 
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [remainingCards, setRemainingCards] = useState<any[]>([]);
@@ -71,6 +72,21 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
 
   const currentCard: any = remainingCards[currentCardIndex];
 
+  const playAudio = (vocabAudioUrl: any, idAudio: string) => {
+    if (!vocabAudioUrl || !vocabAudioUrl.length) {
+      console.error('Invalid audio URL');
+      return;
+    }
+    const audioElement: any = document.getElementById(idAudio);
+    audioElement.src = vocabAudioUrl; // Set the source of the audio element
+    audioElement.play().catch((error: any) => {
+      console.error('Failed to play audio:', error.message);
+    });
+  };
+  if(tagCheck!==tag&&tagCheck=='flashCardDetail'){
+    return <div>Page không tồn tại</div>
+  }
+
   if (isCompleted) {
     return (
       <div className="content-right__container">
@@ -97,16 +113,13 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
           <div key={card.vocabId} className="bg-white max-w-3xl m-auto p-5 border-[1px] border-course-border-color rounded-xl shadow-md text-base my-[40px] w-full">
             <div className="vocabulary__container row">
               <div className="col l-8">
-                <div className="vocabulary__flex-header">
-                  <h2 className="vocabulary__content-header">{card.vocabTitle}</h2>
-                  <Link href="#" className="vocabulary__speaker">
+                <div className="vocabulary__flex-header justify-between">
+                  <h2 className="vocabulary__content-header text-2xl font-semibold">{card.vocabTitle}</h2>
+                  <button onClick={()=>playAudio(card.audioUrlUk,card.vocabTitle)} className="vocabulary__speaker pl-8">
+                  <audio id={card.vocabTitle} data-lang="en" preload='none'>
+                  </audio>
                     <i className="fa-solid fa-volume-high vocabulary__content-icon"></i>
-                  </Link>
-                  <span className="vocabulary__national">UK</span>
-                  <Link href="#" className="vocabulary__speaker">
-                    <i className="fa-solid fa-volume-high vocabulary__content-icon"></i>
-                  </Link>
-                  <span className="vocabulary__national">US</span>
+                  </button>
                 </div>
                 <br />
                 <div className="vocabulary__study">

@@ -43,7 +43,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
     resolver: zodResolver(OrderCourseBody),
     defaultValues: {
       address: '',
-      phone: ''
+      email: ''
     }
   });
 
@@ -55,13 +55,13 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
 
   const handleOrder = async (values: OrderCourseBodyType) => {
     setIsSubmitting(true); // Disable the button
-    const { address, phone } = values;
+    const { address, email } = values;
     const dataOrder = {
       UserId: user.userId,
       CourseId: courseId,
       Address: address,
       TotalAmount: CoursesDetail.coursePrice,
-      PhoneNumber: phone,
+      Email: email,
     };
     await RequestApiOrder(dataOrder, dispatch,lastPrice, CoursesDetail, user.userId, router.push);
     setIsSubmitting(false); // Enable the button again
@@ -84,11 +84,11 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
             <div className="grid gap-4 py-4">
               <div className="grid items-center gap-4">
                 <Label htmlFor="phone" className="text-left">
-                  Phone number
+                  Email
                 </Label>
                 <FormField
                   control={form.control}
-                  name='phone'
+                  name='email'
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>

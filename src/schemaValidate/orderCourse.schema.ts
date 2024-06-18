@@ -7,11 +7,11 @@ export const OrderCourseBody = z
     .trim()
     .min(1,{message:"Input cannot be empty"})
     .min(10,{message:"Address is invalid"}),
-    phone: z.string()
+    email: z
+    .string()
     .min(1,{message:"Input cannot be empty"})
-    .min(9, { message: "Phone number is invalid" })
-    .max(12, { message: "Phone number is invalid" })
-    .regex(/^\d+$/, { message: "Phone number must contain only digits" }), 
+    .email({message:"Invalid email format"})
+    .max(50, { message: "Invalid email format. Email is too long" }), 
   })
   .strict()
 

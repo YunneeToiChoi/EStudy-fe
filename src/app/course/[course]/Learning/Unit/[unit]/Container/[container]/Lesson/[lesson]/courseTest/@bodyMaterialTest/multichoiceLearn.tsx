@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllQuestionOfLesson } from "@/service/api/apiQuestionRequest";
+import { useSearchParams } from 'next/navigation';
 
 interface MultiChoiceProps {
   params: any;
 }
 
 export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
+  const searchParams = useSearchParams();
+  const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
   const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.allQuestionOfLesson);
+  const tagCheck= useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.lessonTag?.lessonTag);
 
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -17,7 +21,7 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
 
   useEffect(() => {
     getAllQuestionOfLesson(idLesson, dispatch);
-  }, [dispatch, idLesson]);
+  }, [dispatch,tagCheck]);
 
   const handlePrevious = () => {
     if (currentPage > 0) {
@@ -53,16 +57,20 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
   const isAnswerCorrect = (answer: string) => {
     return currentQuestion && currentQuestion.correctAnswer === answer;
   };
+  
+  if(tagCheck!==tag){
+    return <div>Page không tồn tại</div>
+  }
 
   return (
         <>
         {currentQuestion && (
-          <div className="content__box">
+          <div className="content__box bg-white p-10 my-4 rounded-xl shadow-xl">
             <h3 className="multichoice__header">
               {currentQuestion.questionText}
             </h3>
             <p className="multichoice__hint">
-              {currentQuestion.questionParagraph}
+             hint: ={currentQuestion.questionTranslate}
             </p>
             <div className="multichoice__box">
               <div className="multichoice__answer">
