@@ -98,7 +98,7 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
         </div>
         <div className="content__box">
           <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
-          <div className="multichoice__list-box">
+          <div className="multichoice__list-box cursor-pointer">
             {ListQuestion && ListQuestion.map((_:any, index:any) => (
               <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
                 {index + 1}

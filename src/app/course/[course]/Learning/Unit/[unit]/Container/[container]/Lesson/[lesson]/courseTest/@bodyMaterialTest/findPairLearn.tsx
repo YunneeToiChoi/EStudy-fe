@@ -1,81 +1,169 @@
-import  Link  from 'next/link';
-import { useDispatch } from 'react-redux';
-import {getVocabFindPair} from "@/service/api/apiVocabRequest"
+import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { getVocabFindPair } from "@/service/api/apiVocabRequest";
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
-interface findPairProps {
+interface FindPairProps {
   params: any;
 }
-export const FindPairLearn: React.FC<findPairProps> = ({ params }) =>{
-  const dispatch= useDispatch(); 
-  const idLesson ={lessonId: Number(params.lesson)};
-  getVocabFindPair(idLesson,dispatch);
-  return(
-        <div className="grid wide grid-wide-course-learn pt-11">
-          <div className="content__box row">
-            <Link href="" className="paircard__box col l-3"
-              >thang máy =a machine that takes people to different floors in
-              a building</Link>
-            <Link
-              href=""
-              className="paircard__box paircard__box-volcabulary col l-3"
-              >Workshop</Link>
-            <Link href="" className="paircard__box col l-3"
-              >thang máy =a machine that takes people to different floors in
-              a building</Link>
-            <Link
-              href=""
-              className="paircard__box paircard__box-volcabulary col l-3"
-              >Workshop</Link>
-            <Link href="" className="paircard__box col l-3"
-              >thang máy =a machine that takes people to different floors in
-              a building</Link>
-            <Link
-              href=""
-              className="paircard__box paircard__box-volcabulary col l-3"
-              >Workshop</Link>
-            <Link href="" className="paircard__box col l-3"
-              >thang máy =a machine that takes people to different floors in
-              a building</Link>
-            <Link
-              href=""
-              className="paircard__box paircard__box-volcabulary col l-3"
-              >Workshop</Link>
-          </div>
-          <div className="multichoice__option">
-            <Link href="" className="multichoice__option-link"
-              ><i className="fa-solid fa-angle-left"></i> Câu trước</Link>
-            <div className="multichoice__auto-container">
-              <input type="checkbox" id="multichoice__checkbox" />
-              <label htmlFor="multichoice__checkbox" className="multichoice__auto"
-                >Tự động chuyển câu</label
-              >
+
+export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
+  const searchParams = useSearchParams();
+  const tag = searchParams.get('TAG');
+  const dispatch = useDispatch();
+  const idLesson = { lessonId: params.lesson };
+  const ListChunk = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabFindPair?.data?.data);
+  const tagCheck = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabFindPair?.data?.lessonTag?.lessonTag);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [autoMove, setAutoMove] = useState(false);
+  const [currentChunk, setCurrentChunk] = useState<any[]>([]);
+  const [selectedPair, setSelectedPair] = useState<any[]>([]);
+  const [correctPairs, setCorrectPairs] = useState<Set<number>>(new Set());
+  const [feedback, setFeedback] = useState<{ indices: number[], correct: boolean } | null>(null);
+
+  useEffect(() => {
+    getVocabFindPair(idLesson, dispatch);
+  }, [dispatch, tagCheck]);
+
+  useEffect(() => {
+    if (ListChunk && ListChunk.length > 0) {
+      updateCurrentChunk(currentPage);
+    }
+  }, [ListChunk, currentPage]);
+
+  const updateCurrentChunk = (pageIndex: number) => {
+    if (ListChunk && ListChunk.length > 0) {
+      const chunk = ListChunk[pageIndex];
+      const combinedVocab: any[] = [];
+      chunk.vocabulary.forEach((vocab: any) => {
+        combinedVocab.push({
+          vocabId: vocab.vocabId,
+          type: 'title',
+          content: vocab.vocabTitle,
+        });
+        combinedVocab.push({
+          vocabId: vocab.vocabId,
+          type: 'mean',
+          content: `${vocab.vocabMean} = ${vocab.vocabExplanation}`,
+        });
+      });
+      setCurrentChunk(shuffleArray(combinedVocab));
+    }
+  };
+
+  const shuffleArray = (array: any[]) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (ListChunk && currentPage < ListChunk.length - 1) {
+      setCorrectPairs(new Set<number>());
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePageClick = (pageIndex: number) => {
+    setCorrectPairs(new Set<number>());
+    setCurrentPage(pageIndex);
+  };
+
+  const handleAutoMoveChange = () => {
+    setAutoMove(!autoMove);
+  };
+
+  const handleCardClick = (item: any, index: number) => {
+    if (correctPairs.has(item.vocabId)) return;
+  
+    const newSelectedPair = [...selectedPair, { ...item, index }];
+    setSelectedPair(newSelectedPair);
+  
+    if (newSelectedPair.length === 2) {
+      const [first, second] = newSelectedPair;
+  
+      if (first.vocabId === second.vocabId && first.type !== second.type) {
+        setCorrectPairs((prev:any) => new Set([...prev, first.vocabId]));
+        setFeedback({ indices: [first.index, second.index], correct: true });
+  
+        setTimeout(() => {
+          setFeedback(null);
+          setSelectedPair([]);
+          if (autoMove && correctPairs.size === currentChunk.length / 2 - 1) {
+            handleNext();
+          }
+        }, 500);
+      } else {
+        setFeedback({ indices: [first.index, second.index], correct: false });
+  
+        setTimeout(() => {
+          setFeedback(null);
+          setSelectedPair([]);
+        }, 500);
+      }
+    }
+  };
+
+  const currentQuestion = currentChunk.length > 0 ? currentChunk.slice(0, 16) : null;
+
+  if (tagCheck !== tag) {
+    return <div>Page không tồn tại</div>;
+  }
+
+  return (
+    <div className="grid wide grid-wide-course-learn pt-11">
+      {currentQuestion && (
+        <div className="grid grid-cols-4 grid-rows-4 gap-2 mb-10">
+          {currentQuestion.map((item: any, index: number) => (
+            <div
+              key={index}
+              onClick={(e) => { e.preventDefault(); handleCardClick(item, index); }}
+              className={`p-5 w-full transition duration-300 h-full flex items-center justify-center  cursor-pointer
+                ${item.type === 'title' ? 'paircard__box-volcabulary' : 'text-nav-hover-text-color'}
+                ${correctPairs.has(item.vocabId) && !(feedback && feedback.indices.includes(index)) ? 'invisible' : ''}
+                ${selectedPair.some(pair => pair.index === index) ? 'bg-gray-300' : 'bg-white'}
+                ${feedback && feedback.indices.includes(index) ? (feedback.correct ? '!bg-green-500' : '!bg-red-500') : ''}`}
+            >
+              {item.content}
             </div>
-            <Link href="" className="multichoice__option-link"
-              >Câu sau <i className="fa-solid fa-angle-right"></i
-            ></Link>
-          </div>
-          <div className="content__box">
-            <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
-            <div className="multichoice__list-box">
-              <Link
-                href=""
-                className="multichoice__list-number multichoice__list-number--chosen"
-                >1</Link>
-              <Link href="" className="multichoice__list-number">2</Link>
-              <Link href="" className="multichoice__list-number">3</Link>
-              <Link href="" className="multichoice__list-number">4</Link>
-              <Link href="" className="multichoice__list-number">5</Link>
-              <Link href="" className="multichoice__list-number">6</Link>
-              <Link href="" className="multichoice__list-number">7</Link>
-              <Link href="" className="multichoice__list-number">8</Link>
-              <Link href="" className="multichoice__list-number">9</Link>
-              <Link href="" className="multichoice__list-number">10</Link>
-              <Link href="" className="multichoice__list-number">11</Link>
-              <Link href="" className="multichoice__list-number">12</Link>
-              <Link href="" className="multichoice__list-number">13</Link>
-              <Link href="" className="multichoice__list-number">14</Link>
-            </div>
-          </div>
+          ))}
         </div>
-    )
-}
+      )}
+      <div className="multichoice__option">
+        <button onClick={handlePrevious} className={`multichoice__option-link ${currentPage === 0 ? 'invisible' : ''}`} disabled={currentPage === 0}>
+          <i className="fa-solid fa-angle-left"></i> Câu trước
+        </button>
+        <div className="multichoice__auto-container">
+          <input type="checkbox" id="multichoice__checkbox" checked={autoMove} onChange={handleAutoMoveChange} />
+          <label htmlFor="multichoice__checkbox" className="multichoice__auto">
+            Tự động chuyển câu
+          </label>
+        </div>
+        <button onClick={handleNext} className={`multichoice__option-link ${!ListChunk || currentPage === ListChunk.length - 1 ? 'invisible' : ''}`} disabled={!ListChunk || currentPage === ListChunk.length - 1}>
+          Câu sau <i className="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+      <div className="content__box">
+        <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
+        <div className="multichoice__list-box cursor-pointer">
+          {ListChunk && ListChunk.map((_: any, index: any) => (
+            <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
+              {index + 1}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
