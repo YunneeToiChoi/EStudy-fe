@@ -670,3 +670,49 @@
 .vocab__flashcard-list{
     margin-left: 40px;
 }
+
+.extend__input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdc5d1;
+    border-radius: .35rem;
+}
+
+.extend__input:focus{
+    background-color: #fff;
+    border-color: #7c93d2;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(53, 80, 154, .25);
+}
+
+.extend__input-box{
+    margin: 10px 0px;
+}
+
+.extend__link{
+    color: var(--tag-text-color);
+    display: block;
+    text-decoration: none;
+    margin: 20px 0px;
+}
+
+.extend__link:hover{
+    color: black;
+    transition: 0.2s;
+}
+
+.content__box-time-left{
+    padding: 20px;
+    background-color: var(--alert-flashcard-color);
+    margin: 40px 0px;
+    border-radius: 10px;
+    color: var(--alert-text-color);
+}
+
+.content__box-details{
+    margin: 10px 0px;
+}
