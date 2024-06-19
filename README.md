@@ -4,7 +4,7 @@ VIDEO : https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson
 FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
 Multiple_Choice ( trắc nghiệm cơ bản có 4 đáp án ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 DOUBLE_CHOICE ( trắc nghiệm chỉ có 2 câu a,b )  : https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice
-FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
+FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair(complete)
 LISTEN_VOCAB ( bài nghe chọn từ vựng ): https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
 LISTEN_PICTURE ( bài nghe tranh 4 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 LISTEN_QUEST_RESPONSE ( bài nghe hỏi đáp 3 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
@@ -102,18 +102,18 @@ https://elearning.engineer/api/Container_API/Get_AllContainerAndLessonByUnit(com
 
 --------------Get All List Vocab of Lesson (Lesson of Container,Container of unit, unit of course ) [Data trả về này dùng để show 55 list vocab và random trò chơi flash card]--
 [HttpPost]
-https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson(complete)
 [lessonId]
 
 --------------Get_AllQuestionOfLesson ----------------------------------------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
+https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson(complete)
 [lessonId]
 400 -> lỗi do lesson || 500 -> server ->> 200 success
 
 --------------Get All List Vocab Find pair------------------------------------------------------------
 [HttpPost]
-https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair(complete)
 [lessonId]
 
 --------------Get All List Vocab Listen Chossen ( 1 file nghe có 9 cái đáp án ) ------------------------------------------------------------

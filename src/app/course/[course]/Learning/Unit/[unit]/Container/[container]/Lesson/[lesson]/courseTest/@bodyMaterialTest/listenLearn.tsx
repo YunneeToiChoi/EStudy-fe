@@ -10,63 +10,6 @@ export const ListenLearn :React.FC<ListenLearnProps> = ({ params}) => {
   const idLesson ={lessonId: params.lesson};
     return(
         <div>
-                <nav className="nav__content-right">
-            <div
-              className="nav__content-header-right hide-on-mobile hide-on-tablet"
-            >
-              <Link href="" className="nav__content-link-right"
-                >IELTS General Reading
-              </Link>
-              <i className="nav__content-right__icon fa-solid fa-chevron-right"></i>
-              <span className="nav__content-transition-right">Từ vựng TOEIC</span>
-            </div>
-            <label className="hide" htmlFor="nav-mobile-course-checkbox"
-              ><i className="fa-solid fa-bars nav__icon"></i
-            ></label>
-          </nav>
-          <input
-            type="checkbox"
-            id="nav-mobile-course-checkbox"
-            className="nav-mobile-course__input"
-          />
-          <div className="nav__mobile-course hide">
-            <div className="flex__container header__container">
-              <Link href="" className="content-left__header">IELTS General Reading</Link>
-              <Link href="" className="content-left__dropleft">
-                <label htmlFor="nav-mobile-course-checkbox"
-                  ><i className="content-left__icon fa-solid fa-angle-left"></i
-                ></label>
-              </Link>
-            </div>
-            <div className="course-learn__container">
-              <ul className="course-learn__list">
-                <li className="course-learn__item">
-                  <Link
-                    href=""
-                    className="course-learn__link course-learn__link--chosen"
-                    >Từ vựng TOEIC</Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className="course-learn__link">
-                    Phương pháp làm các dạng câu hỏi trong IELTS General Reading
-                  </Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className="course-learn__link">
-                    Video chữa đề chi tiết
-                  </Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className="course-learn__link"> PRACTICE ZONE </Link>
-                </li>
-                <li className="course-learn__item">
-                  <Link href="" className="course-learn__link">
-                    GT Practice Set 7 Test 1: Luyện tập từ vựng
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
           <div className="content-right__container">
             <div className="grid wide grid-wide-course-learn">
               <audio className="spell__audio" controls>
