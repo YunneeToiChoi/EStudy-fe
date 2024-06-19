@@ -25,6 +25,17 @@ https://elearning.engineer/api/Auth_API/Register(complete)
 https://elearning.engineer/api/Auth_API/Login(complete)
 [UserEmail,UserPassword] 
 Don't forgot save UserId when got reponse data from login
+--------------User Update Avatar------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/User_UpdateAvatar
+[userId] 
+
+    const response = await axios.post('http://localhost:8000/api/Auth_API/User_UpdateAvatar', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
 --------------GetAllUsers------------
 [HttpGet]
 https://elearning.engineer/api/Auth_API/Get_AllUsers(complete)
