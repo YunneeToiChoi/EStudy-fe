@@ -5,7 +5,10 @@ import * as request from "@/lib/utils/request";
     getVocabByLessonSuccess,
     getVocabFindPairStart,
     getVocabFindPairFailed,
-    getVocabFindPairSuccess
+    getVocabFindPairSuccess,
+    getVocabListenStart,
+    getVocabListenFailed,
+    getVocabListenSuccess
  }
  from "@/service/reduxState/vocabSlices"
 
@@ -28,3 +31,13 @@ import * as request from "@/lib/utils/request";
       dispatch(getVocabFindPairFailed(err.response.data));
     }
  }
+
+ export const getVocabListen = async (lessonId:any,dispatch:any) => {
+  dispatch(getVocabListenStart());
+  try {
+    const res = await request.post(`/VocabFlashCard_API/Get_AllListenChossenVocab`,lessonId);
+    dispatch(getVocabListenSuccess(res));
+  } catch (err:any) {
+    dispatch(getVocabListenFailed(err.response.data));
+  }
+}

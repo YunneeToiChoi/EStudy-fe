@@ -13,6 +13,11 @@ const vocabSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        VocabListen:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -38,8 +43,21 @@ const vocabSlice = createSlice({
             state.VocabFindPair.error = false;
         },
         getVocabFindPairFailed: (state,action) =>{
-            state.VocabByLesson.isFetching = false;
-            state.VocabByLesson.error = true;
+            state.VocabFindPair.isFetching = false;
+            state.VocabFindPair.error = true;
+            state.msg = action.payload;
+        },
+        getVocabListenStart: (state) =>{
+            state.VocabListen.isFetching = true;
+        },
+        getVocabListenSuccess: (state,action) => {
+            state.VocabListen.isFetching = false;
+            state.VocabListen.data = action.payload;
+            state.VocabListen.error = false;
+        },
+        getVocabListenFailed: (state,action) =>{
+            state.VocabListen.isFetching = false;
+            state.VocabListen.error = true;
             state.msg = action.payload;
         },
     }
@@ -51,7 +69,10 @@ export const {
     getVocabByLessonSuccess,
     getVocabFindPairStart,
     getVocabFindPairFailed,
-    getVocabFindPairSuccess
+    getVocabFindPairSuccess,
+    getVocabListenStart,
+    getVocabListenFailed,
+    getVocabListenSuccess
 } = vocabSlice.actions;
 
 export default vocabSlice.reducer;

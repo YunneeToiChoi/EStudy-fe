@@ -59,7 +59,7 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
     case 'ListenSpell':
       Component = ListenSpell;
       break;
-    case 'ListenLearn':
+    case 'LISTEN_VOCAB':
       Component = ListenLearn;
       break;
     case 'GrammarInput':
