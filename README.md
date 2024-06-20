@@ -1,11 +1,11 @@
 Domain: https://estudy.elearning.engineer/
 ## TAG
 VIDEO : https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson
-FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson
-Multiple_Choice ( trắc nghiệm cơ bản có 4 đáp án ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
+FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson(complete)
+Multiple_Choice ( trắc nghiệm cơ bản có 4 đáp án ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson(complete)
 DOUBLE_CHOICE ( trắc nghiệm chỉ có 2 câu a,b )  : https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice
-FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair(complete)
-LISTEN_VOCAB ( bài nghe chọn từ vựng ): https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab
+FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair(complete)(complete)
+LISTEN_VOCAB ( bài nghe chọn từ vựng ): https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab(complete)
 LISTEN_PICTURE ( bài nghe tranh 4 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
 LISTEN_QUEST_RESPONSE ( bài nghe hỏi đáp 3 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res
 LISTEN_SPEECH ( đối thoại và nghe hiểu bài nói 4 options, full tittle ): https://elearning.engineer/api/Question_API/Get_AllListenSpeech
@@ -129,7 +129,7 @@ https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair(complete)
 
 --------------Get All List Vocab Listen Chossen ( 1 file nghe có 9 cái đáp án ) ------------------------------------------------------------
 [HttpPost]
-https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag = LISTEN_VOCAB ] 
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag = LISTEN_VOCAB ] (complete)
 [lessonId]
 
 --------------Get All List Vocab Fill World  ------------------------------------------------------------

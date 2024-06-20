@@ -52,8 +52,7 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
     case 'FIND_PAIR':
       Component = FindPairLearn;
       break;
-    // Add other cases here for other components
-    case 'TranslateLearn':
+    case 'FILL_WORD':
       Component = TranslateLearn;
       break;
     case 'ListenSpell':
