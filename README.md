@@ -35,6 +35,12 @@ https://elearning.engineer/api/Auth_API/User_UpdateAvatar
                     'Content-Type': 'multipart/form-data'
                 }
             });
+            
+--------------User Active Code------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/ActiveCode
+[userId,code]      
+ActiveCode
 
 --------------GetAllUsers------------
 [HttpGet]
