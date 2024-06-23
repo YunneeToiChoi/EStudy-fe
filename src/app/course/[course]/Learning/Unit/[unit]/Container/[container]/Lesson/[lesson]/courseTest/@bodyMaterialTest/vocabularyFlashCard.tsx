@@ -167,19 +167,8 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                 <div className={`flashcard ease-in-out h-full ${isRotated ? 'toTateY-180' : ''}`}>
                   <div className="absolute h-full py-4 px-8 top-0 bottom-0 right-0 left-0 flex w-full z-[2] flex-col justify-center items-center backface toTateX-0">
                     <div className="vocab__flashcard-container">
-                      <div>
-                        <span className="vocab__text">{currentCard.vocabTitle}</span>
-                        <a href="#" className="vocabulary__speaker">
-                          <i className="fa-solid fa-volume-high vocabulary__content-icon"></i>
-                        </a>
-                        <span className="vocabulary__national">UK</span>
-                        <a href="#" className="vocabulary__speaker">
-                          <i className="fa-solid fa-volume-high vocabulary__content-icon"></i>
-                        </a>
-                        <span className="vocabulary__national">US</span>
-                      </div>
-                      <div>
-                        <p className="vocab__spelling">(n) /elɪveɪtər/</p>
+                      <div >
+                        <span className="vocab__text">{currentCard.vocabTitle} ({currentCard.vocabType})</span>
                       </div>
                     </div>
                   </div>

@@ -40,7 +40,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'img.freepik.com',
+                hostname: 'firebasestorage.googleapis.com',
                 port: '',
                 pathname: '/**',
             },

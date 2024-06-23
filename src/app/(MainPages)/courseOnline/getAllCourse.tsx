@@ -27,12 +27,12 @@ export default function GetAllCourses() {
                 <Link key={course.courseId} href={`/course/${course.courseId}/courseDetails`}className=" group">
                 <div className=" shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5 h-full">
                 <div className='mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
-                  <Image className='object-fill transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
+                  <Image className=' object-cover h-full transition duration-500 ease group-hover:brightness-[95%] group-hover:scale-105' 
                   width={1000} 
                   height={1000} 
                   quality={100}
                   alt='image' 
-                  src="/img/bg_pro-E.jpg">
+                  src={course.courseImage}>
                   </Image>
                 </div>
                 <h3 className=" text-base font-medium text-center">{course.courseName}</h3>
@@ -49,8 +49,8 @@ export default function GetAllCourses() {
                       course.courseSale > 0 ? 
                       (
                         <div className="flex items-center">                  
-                         <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.coursePrice)}đ</span>
-                        <span className=" text-xl line-through px-3">{addDotsToCurrency(course.lastPrice)}đ</span>
+                         <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.lastPrice)}đ</span>
+                        <span className=" text-xl line-through px-3">{addDotsToCurrency(course.coursePrice)}đ</span>
                         <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-{course.courseSale}%</span>
                         </div>   
 

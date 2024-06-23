@@ -13,22 +13,33 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
   const dispatch = useDispatch();
   const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.allQuestionOfLesson);
-  const tagCheck= useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.lessonTag?.lessonTag);
+  const tagCheck = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.lessonTag?.lessonTag);
 
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [autoMove, setAutoMove] = useState(false);
+  const [blinkEffect, setBlinkEffect] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [playingAudio, setPlayingAudio] = useState(false);
 
   useEffect(() => {
     getAllQuestionOfLesson(idLesson, dispatch);
   }, [dispatch, tagCheck]);
 
   useEffect(() => {
-    setTimeout(() => playAudio(),1000)
-  }, [currentPage]);
+    if (audioRef.current && ListQuestion && ListQuestion[currentPage]) {
+      const currentQuestion = ListQuestion[currentPage];
+      if (currentQuestion.questionAudio) {
+        audioRef.current.src = currentQuestion.questionAudio;
+        audioRef.current.load();
+        setTimeout(() => {
+          audioRef.current?.play().catch((error: any) => {
+            console.error('Failed to play audio:', error.message);
+          });
+        }, 500);
+      }
+    }
+  }, [currentPage, ListQuestion]);
 
   const handlePrevious = () => {
     if (currentPage > 0) {
@@ -54,24 +65,25 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
 
   const handleAnswerClick = (answer: string) => {
     setSelectedAnswer(answer);
-    if (currentQuestion && currentQuestion.correctAnswer === answer && autoMove) {
-      setTimeout(() => {
-        handleNext();
-      }, 300);
+    if (currentQuestion) {
+      if (currentQuestion.correctAnswer === answer) {
+        if (autoMove) {
+          setTimeout(() => {
+            handleNext();
+          }, 300);
+        }
+      } else {
+        setBlinkEffect(true);
+        setTimeout(() => {
+          setBlinkEffect(false);
+          setSelectedAnswer('');
+        }, 300);
+      }
     }
   };
 
   const isAnswerCorrect = (answer: string) => {
     return currentQuestion && currentQuestion.correctAnswer === answer;
-  };
-
-  const playAudio = () => {
-    if (currentQuestion && audioRef.current) {
-      audioRef.current.src = "https://firebasestorage.googleapis.com/v0/b/estudy-426108.appspot.com/o/0.wav?alt=media"; // Cập nhật src của audio
-      audioRef.current.load(); // Tải lại audio
-      audioRef.current.play(); // Phát audio
-      setPlayingAudio(true); // Đánh dấu là đang phát audio
-    }
   };
 
   if(tagCheck !== tag){
@@ -90,10 +102,30 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
           </p>
           <div className="multichoice__box">
             <div className="multichoice__answer">
-              <div className={`multichoice__link cursor-pointer ${selectedAnswer === currentQuestion.optionA ? (isAnswerCorrect(currentQuestion.optionA) ? ' bg-green-500' : ' bg-red-600') : ''}`} onClick={() => handleAnswerClick(currentQuestion.optionA)}>{currentQuestion.optionA}</div>
-              <div className={`multichoice__link cursor-pointer ${selectedAnswer === currentQuestion.optionB ? (isAnswerCorrect(currentQuestion.optionB) ? 'bg-green-500' : ' bg-red-600') : ''}`} onClick={() => handleAnswerClick(currentQuestion.optionB)}>{currentQuestion.optionB}</div>
-              <div className={`multichoice__link cursor-pointer ${selectedAnswer === currentQuestion.optionC ? (isAnswerCorrect(currentQuestion.optionC) ? 'bg-green-500' : ' bg-red-600') : ''}`} onClick={() => handleAnswerClick(currentQuestion.optionC)}>{currentQuestion.optionC}</div>
-              <div className={`multichoice__link cursor-pointer ${selectedAnswer === currentQuestion.optionD ? (isAnswerCorrect(currentQuestion.optionD) ? 'bg-green-500' : ' bg-red-600') : ''}`} onClick={() => handleAnswerClick(currentQuestion.optionD)}>{currentQuestion.optionD}</div>
+              <div
+                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === currentQuestion.optionA ? (isAnswerCorrect(currentQuestion.optionA) ? ' bg-green-500' : (blinkEffect ? ' bg-red-600 ' : ' bg-red-600')) : ''}`}
+                onClick={() => handleAnswerClick(currentQuestion.optionA)}
+              >
+                {currentQuestion.optionA}
+              </div>
+              <div
+                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === currentQuestion.optionB ? (isAnswerCorrect(currentQuestion.optionB) ? 'bg-green-500' : (blinkEffect ? ' bg-red-600 ' : ' bg-red-600')) : ''}`}
+                onClick={() => handleAnswerClick(currentQuestion.optionB)}
+              >
+                {currentQuestion.optionB}
+              </div>
+              <div
+                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === currentQuestion.optionC ? (isAnswerCorrect(currentQuestion.optionC) ? 'bg-green-500' : (blinkEffect ? ' bg-red-600 ' : ' bg-red-600')) : ''}`}
+                onClick={() => handleAnswerClick(currentQuestion.optionC)}
+              >
+                {currentQuestion.optionC}
+              </div>
+              <div
+                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === currentQuestion.optionD ? (isAnswerCorrect(currentQuestion.optionD) ? 'bg-green-500' : (blinkEffect ? ' bg-red-600 ' : ' bg-red-600')) : ''}`}
+                onClick={() => handleAnswerClick(currentQuestion.optionD)}
+              >
+                {currentQuestion.optionD}
+              </div>
             </div>
           </div>
         </div>
@@ -115,14 +147,14 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
       <div className="content__box">
         <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
         <div className="multichoice__list-box cursor-pointer">
-          {ListQuestion && ListQuestion.map((_:any, index:any) => (
+          {ListQuestion && ListQuestion.map((_: any, index: any) => (
             <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
               {index + 1}
             </div>
           ))}
         </div>
       </div>
-      <audio ref={audioRef} onEnded={() => setPlayingAudio(false)} style={{ display: 'none' }} />
+      <audio ref={audioRef} style={{ display: 'none' }} />
     </>
   );
 };

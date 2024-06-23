@@ -10,6 +10,7 @@ import { ListenLearn } from "./listenLearn";
 import { GrammarInput } from './grammarInput';
 import { GrammarChoice } from './grammarChoice';
 import { FindPairLearn } from './findPairLearn';
+import {PictureQuiz} from './picListenQuiz';
 import ListLessonComponent from "../getLesson";
 import { BreadcrumbWithCustomSeparator } from '@/components/handicraft/params/paramsCourseLearn';
 
@@ -66,6 +67,9 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
       break;
     case 'GrammarChoice':
       Component = GrammarChoice;
+      break;
+    case 'LISTEN_PICTURE':
+      Component = PictureQuiz;
       break;
     default:
       Component = DefaultComponent;

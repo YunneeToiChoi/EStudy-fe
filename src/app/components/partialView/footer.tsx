@@ -161,35 +161,33 @@ export default function Footer() {
                 </div>
                 <div className="mx-6 mt-9">
                     <h3 className="text-center text-white text-3xl font-extrabold">
-                        Thông tin doanh nghiệp
+                        Thông tin nhóm thành viên
                     </h3>
                     <ul className="mt-4 list-none flex flex-col items-center justify-center gap-5">
                         <li>
-                            <p className="font-light text-base text-white">Công ty TNHH Công Nghệ A Plus</p>
+                            <p className="font-light text-base text-white"></p>
                         </li>
                         <li>
                             <p className="font-light text-base text-white">
-                                Giấy chứng nhận Đăng ký doanh nghiệp số: 0109675459 do Sở Kế
-                                hoạch và Đầu tư thành phố Hà Nội cấp ngày 17/06/2021.
+                                Trường đại học tin học và ngoại ngữ HUFLIT
                             </p>
                         </li>
                         <li>
                             <p className="font-light text-base text-white">
-                                Điện thoại liên hệ/Hotline: 096 369 5525
+                                Điện thoại liên hệ/Hotline: 096 *** ****
                             </p>
                         </li>
                         <li>
-                            <p className="font-light text-base text-white">Email: study4.team@gmail.com.</p>
+                            <p className="font-light text-base text-white">Email: softwaretestact@gmail.com</p>
                         </li>
                         <li>
                             <p className="font-light text-base text-white">
-                                Địa chỉ trụ sở: Số 15, Ngõ 208 Giải Phóng, Phường Phương Liệt,
-                                Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam
+                                HCM city
                             </p>
                         </li>
                     </ul>
                     <p className="text-white text-lg font-medium text-center mt-5">
-                        @ 2021 - Bản quyền của Công ty TNHH Công Nghệ A Plus.
+                        @ 2024 - Bản quyền của ANHEMTOIDICODE.
                     </p>
                 </div>
             </div>

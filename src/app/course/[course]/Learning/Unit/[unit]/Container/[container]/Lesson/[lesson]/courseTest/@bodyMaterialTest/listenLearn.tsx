@@ -30,10 +30,12 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (audioRef.current) {
-      setTimeout(() => audioRef.current?.play(),1000)
+    if (audioRef.current && ListChunk && ListChunk[currentPage]) {
+      audioRef.current.src = ListChunk[currentPage].url;
+      audioRef.current.load();
+      setTimeout(() => audioRef.current?.play(), 1000);
     }
-  }, [currentPage]);
+  }, [currentPage, ListChunk]);
 
   const handlePrevious = () => {
     if (currentPage > 0) {
@@ -108,11 +110,12 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
   }
 
   const currentChunk = ListChunk ? ListChunk[currentPage] : null;
+ 
 
   return (
     <div>
-      <div className="content-right__container">
-        <div className="flex flex-col gap-11 pt-11 items-center justify-center">
+      <div className="">
+        <div className="flex flex-col gap-11 items-center justify-center">
           <div className='w-[800px] p-10 bg-white rounded-xl shadow-2xl'>
             {currentChunk && (
               <audio ref={audioRef}  className="spell__audio my-10" controls>
