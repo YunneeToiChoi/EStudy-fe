@@ -51,6 +51,12 @@ ActiveCode
 --------------GetAllUsers------------
 [HttpGet]
 https://elearning.engineer/api/Auth_API/Get_AllUsers(complete)
+
+--------------Get User Profile------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/Get_UserProfile
+[userId]
+
 --------------GetAllCourse------------
 [HttpGet]
 https://elearning.engineer/api/Courses_API/Get_AllCourses(complete)
