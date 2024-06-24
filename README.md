@@ -20,6 +20,12 @@ Don't fotgot Header key/value : ContentType : application/json
 [HttpPost]
 https://elearning.engineer/api/Auth_API/Register(complete)
 [UserEmail,UserPassword] can use UserPhone
+
+--------------ResendLink------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/ResendLink 
+[userEmail]
+
 --------------Login------------
 [HttpPost]
 https://elearning.engineer/api/Auth_API/Login(complete)
