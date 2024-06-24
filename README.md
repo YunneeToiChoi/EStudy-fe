@@ -31,17 +31,29 @@ https://elearning.engineer/api/Auth_API/ResendLink
 https://elearning.engineer/api/Auth_API/Login(complete)
 [UserEmail,UserPassword] 
 Don't forgot save UserId when got reponse data from login
---------------User Update Avatar------------
+--------------User Update Image------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/User_UpdateAvatar
-[userId] 
+https://elearning.engineer/api/Auth_API/User_UpdateImage
+required : [userId] 
 
-    const response = await axios.post('http://localhost:8000/api/Auth_API/User_UpdateAvatar', formData, {
+    const response = await axios.post('http://localhost:8000/api/Auth_API/User_UpdateImage', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            
+optional : [userAvatar,userBanner]    
+
+--------------User Update Profile------------ ( không có cập nhật password ) update password là 1 method khác
+[HttpPost]
+https://elearning.engineer/api/Auth_API/EditUserProfile
+required : [userId] 
+optional : [userName,userEmail,userDescription,phoneNumber]
+
+--------------Edit Password------------ 
+[HttpPost]
+https://elearning.engineer/api/Auth_API/EditPassword
+required : [userId,oldPassword,newPassword,confirmPassword] 
+
 --------------User Active Code------------
 [HttpPost]
 https://elearning.engineer/api/Auth_API/ActiveCode
