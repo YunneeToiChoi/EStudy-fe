@@ -110,3 +110,24 @@
 .active__course-connect{
     font-size: 1rem;
 }
+
+.update__info--text{
+    font-size: 1rem;
+    margin: 10px 0px;
+}
+
+.tag-search__transition-link{
+    font-size: 1rem !important;
+}
+
+.active__course-input--about{
+    height: 100px;
+}
+
+.update__block{
+    display: none;
+}
+
+.active{
+    display: block;
+}

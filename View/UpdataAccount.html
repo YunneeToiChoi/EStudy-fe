@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/home.css" />
     <link rel="stylesheet" href="../assets/css/grid.css" />
+    <link rel="stylesheet" href="../assets/css/loginAndRegisterAndActive.css" />
     <link rel="stylesheet" href="../assets/css/examOnline.css" />
-    <link rel="stylesheet" href="../assets/css/profile.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -112,120 +112,95 @@
     <!-- End NavBar -->
     <!-- Body -->
     <div class="content">
-      <div class="grid wide">
-        <div class="img__container">
-          <div class="avatar__container">
-            <img
-              src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg"
-              width="100%"
-              height="120px"
-              alt=""
-              class="backgroud__avt"
+      <div class="content__container">
+        <div class="login__container">
+          <h3 class="active__course-header">Cập nhật thông tin cá nhân</h3>
+          <ul class="tag-search__transition">
+            <li class="tag-search__transition-item">
+              <a
+                href="#"
+                class="tag-search__transition-link tag-search__transition-link--chosen"
+                >Thông tin cơ bản</a
+              >
+            </li>
+            <li class="tag-search__transition-item">
+              <a href="#" class="tag-search__transition-link"
+                >Đổi ảnh đại diện</a
+              >
+            </li>
+          </ul>
+          <div class="update__block active">
+            <p class="update__info--text">
+              Email: chiemhoctot@gmail.com (STUDY4 không hỗ trợ đổi email. Vui
+              lòng liên hệ chúng tôi nếu bạn đã mua khóa học và muốn đổi
+              account.)
+            </p>
+            <p class="active__course-label">Họ và tên</p>
+            <input
+              type="text"
+              class="active__course-input"
+              placeholder="Họ và tên bạn"
             />
-            <img
-              width="100px"
-              height="100px"
-              src="https://static.vecteezy.com/system/resources/previews/030/504/836/non_2x/avatar-account-flat-isolated-on-transparent-background-for-graphic-and-web-design-default-social-media-profile-photo-symbol-profile-and-people-silhouette-user-icon-vector.jpg"
-              alt=""
-              class="avt__user"
+            <p class="active__course-label">Email</p>
+            <input
+              type="text"
+              class="active__course-input"
+              placeholder="Email"
             />
-            <a href="UpdataAccount.html" class="avatar__change"
-              ><i class="fa-solid fa-pencil avatar__icon"></i
-            ></a>
+            <p class="active__course-label">Về bản thân</p>
+            <input
+              type="text"
+              class="active__course-input active__course-input--about"
+              placeholder="Chia sẻ những điều thú vị về bạn"
+            />
+            <p class="active__course-label">Username</p>
+            <input
+              type="text"
+              class="active__course-input"
+              placeholder="Một username ngắn gọn"
+            />
+            <p class="active__course-label">Mật khẩu</p>
+            <input
+              type="text"
+              class="active__course-input"
+              placeholder="Mật Khẩu"
+            />
+            <p class="active__course-label">Nhập lại mật khẩu</p>
+            <input
+              type="text"
+              class="active__course-input"
+              placeholder="Nhập lại mật khẩu"
+            />
+            <a href="" class="active__course-link">Lưu</a>
           </div>
-        </div>
-        <div class="user__name-container">
-          <h1 class="name__user">thaigiabao122</h1>
-          <a href="" class="user__public">Trang công khai</a>
-        </div>
-        <ul class="tag-search__transition">
-          <li class="tag-search__transition-item">
-            <a
-              href=""
-              class="tag-search__transition-link tag-search__transition-link--chosen"
-              >Khóa học</a
-            >
-          </li>
-          <li class="tag-search__transition-item">
-            <a href="" class="tag-search__transition-link">Kết quả luyện thi</a>
-          </li>
-          <li class="tag-search__transition-item">
-            <a href="" class="tag-search__transition-link">Posts</a>
-          </li>
-        </ul>
-        <div class="course__registed-container">
-          <!-- If dont have course -->
-          <!-- Can show when dont have course by JavaScript -->
-          <p style="display: none" class="course__registed--dont-have-course">
-            Bạn chưa đăng ký học khoá học nào!
-          </p>
-          <!-- If have course -->
-          <h3 class="course__registed-header">Các khóa đã kích hoạt</h3>
-          <div class="course__active-container row">
-            <a
-              href="courseLearn.html"
-              class="couse__active-link col l-3 m-6 c-12"
-            >
-              <div class="course__active-box">
-                <h4 class="course__active-title">Complete TOEIC</h4>
-                <p class="course__active-state">Đã kích hoạt</p>
-                <p class="course__active-percent">17%</p>
-                <div class="course__active-progress"></div>
-                <p class="course__active-continue">
-                  <span class="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </a>
-            <a
-              href="courseLearn.html"
-              class="couse__active-link col l-3 m-6 c-12"
-            >
-              <div class="course__active-box">
-                <h4 class="course__active-title">Complete TOEIC</h4>
-                <p class="course__active-state">Đã kích hoạt</p>
-                <p class="course__active-percent">17%</p>
-                <div class="course__active-progress"></div>
-                <p class="course__active-continue">
-                  <span class="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </a>
-            <a
-              href="courseLearn.html"
-              class="couse__active-link col l-3 m-6 c-12"
-            >
-              <div class="course__active-box">
-                <h4 class="course__active-title">Complete TOEIC</h4>
-                <p class="course__active-state">Đã kích hoạt</p>
-                <p class="course__active-percent">17%</p>
-                <div class="course__active-progress"></div>
-                <p class="course__active-continue">
-                  <span class="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </a>
-            <a
-              href="courseLearn.html"
-              class="couse__active-link col l-3 m-6 c-12"
-            >
-              <div class="course__active-box">
-                <h4 class="course__active-title">Complete TOEIC</h4>
-                <p class="course__active-state">Đã kích hoạt</p>
-                <p class="course__active-percent">17%</p>
-                <div class="course__active-progress"></div>
-                <p class="course__active-continue">
-                  <span class="course__active-continue-title"
-                    >Tiếp tục bài học: </span
-                  >Từ vựng TOEIC - List 10
-                </p>
-              </div>
-            </a>
+          <div class="update__block">
+            <p class="active__course-label">Ảnh đại diện</p>
+            <img
+              src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
+              alt=""
+              width="150"
+              height="150"
+              id="previewImg"
+            />
+            <input
+              type="file"
+              class="active__course-input"
+              onchange="ChangeImage(this, document.getElementById('previewImg'))"
+            />
+            <p class="active__course-label">Banner</p>
+            <img
+              src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
+              alt=""
+              width="400"
+              height="200"
+              id="previewImg1"
+            />
+            <input
+              type="file"
+              class="active__course-input"
+              onchange="ChangeImage1(this, document.getElementById('previewImg1'))"
+            />
+            <a href="" class="active__course-link">Lưu</a>
           </div>
         </div>
       </div>
@@ -414,5 +389,53 @@
       </div>
     </footer>
     <!-- End Footer -->
+    <script>
+      const $ = document.querySelector.bind(document);
+      const $$ = document.querySelectorAll.bind(document);
+
+      const tabs = $$(".tag-search__transition-link");
+      const panes = $$(".update__block");
+
+      const tabActive = $(
+        ".tag-search__transition-link.tag-search__transition-link--chosen"
+      );
+
+      tabs.forEach((tab, index) => {
+        const pane = panes[index];
+
+        tab.onclick = function () {
+          $(
+            ".tag-search__transition-link.tag-search__transition-link--chosen"
+          ).classList.remove("tag-search__transition-link--chosen");
+          $(".update__block.active").classList.remove("active");
+
+          this.classList.add("tag-search__transition-link--chosen");
+          pane.classList.add("active");
+        };
+      });
+
+      function ChangeImage(UploadImage, previewImg) {
+        if (UploadImage.files && UploadImage.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            document
+              .getElementById("previewImg")
+              .setAttribute("src", e.target.result);
+          };
+          reader.readAsDataURL(UploadImage.files[0]);
+        }
+      }
+      function ChangeImage1(UploadImage, previewImg) {
+        if (UploadImage.files && UploadImage.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            document
+              .getElementById("previewImg1")
+              .setAttribute("src", e.target.result);
+          };
+          reader.readAsDataURL(UploadImage.files[0]);
+        }
+      }
+    </script>
   </body>
 </html>
