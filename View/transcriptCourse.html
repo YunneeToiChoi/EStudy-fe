@@ -332,96 +332,80 @@
           </div>
           <div class="content-right__container">
             <div class="grid wide grid-wide-course-learn">
+              <audio class="spell__audio" controls>
+                <source src="" type="audio/mpeg" />
+              </audio>
               <div class="content__box row">
-                <div class="listenSpell-left col l-4">
-                  <ul class="listenSpell__list">
-                    <li class="listenSpell">List gồm 55 từ</li>
-                    <li class="listenSpell">
-                      Để check đáp án, bạn gõ từ bạn nghe được và bấm Enter. Sau
-                      đó bạn click vào hình lá cờ để check.
-                    </li>
-                    <li class="listenSpell">
-                      Từ vựng sẽ xuất hiện dưới đây sau khi bạn check đáp án
-                      hoặc chuyển câu
-                    </li>
-                  </ul>
+                <div class="content__left col l-6 m-6 c-12">
+                  <input
+                    type="checkbox"
+                    id="transcript__checkbox"
+                    class="transcript__checkbox"
+                  />
+                  <label for="transcript__checkbox" href="" class="transcript"
+                    >Transcript <i class="fa-solid fa-chevron-down"></i
+                  ></label>
+                  <div class="transcript__block">
+                    I'm glad your store carries the new EPG8 smartphone. I've
+                    been waiting a long time to get it. <br />Yes, there's been
+                    a lot of interest in this phone. <br />What colors does it
+                    come in? <br />Three: white, black, and gold. However, since
+                    the phone has been in such high demand, our store doesn't
+                    have all three colors in stock now. <br />Oh. What colors do
+                    you have? <br />
+                  </div>
+                  <input
+                    type="checkbox"
+                    id="transcript__checkbox1"
+                    class="transcript__checkbox1"
+                  />
+                  <label for="transcript__checkbox1" class="transcript"
+                    >Dịch nghĩa <i class="fa-solid fa-chevron-down"></i
+                  ></label>
+                  <div class="transcript__block1">
+                    I'm glad your store carries the new EPG8 smartphone. I've
+                    been waiting a long time to get it. <br />Yes, there's been
+                    a lot of interest in this phone. <br />What colors does it
+                    come in? <br />Three: white, black, and gold. However, since
+                    the phone has been in such high demand, our store doesn't
+                    have all three colors in stock now. <br />Oh. What colors do
+                    you have? <br />
+                  </div>
                 </div>
-                <div class="listenSpell-right col l-8">
-                  <div class="listenSpell__select-container">
-                    <span class="listenSpell__select-text"
-                      >Chọn chế độ luyện tập:</span
-                    >
-                    <select name="" id="" class="listenSpell__select">
-                      <option value="">Tất cả</option>
-                      <option value="">Trừ các từ đã bỏ qua</option>
-                      <option value="">Chỉ những từ làm sai</option>
-                    </select>
-                  </div>
-                  <div class="listenSpell__link-option">
-                    <a href="" class="listenSpell__link"
-                      >Lựa chọn từ để luyện</a
-                    >
-                    <a href="" class="listenSpell__link"
-                      >Xem danh sách các từ bỏ qua / sai</a
-                    >
-                  </div>
-                  <audio class="spell__audio" controls>
-                    <source src="" type="audio/mpeg" />
-                  </audio>
-                  <p class="listenSpell__speaker">
-                    Audio 2 (US)
-                    <a href="#" class="vocabulary__speaker">
-                      <i
-                        class="fa-solid fa-volume-high vocabulary__content-icon"
-                      ></i>
-                    </a>
-                  </p>
-                  <div class="listenSpell__box">
-                    <h3 class="translate__header">
-                      sự đón tiếp, tiệc chiêu đãi
-                    </h3>
-                    <p class="translate__hint">
-                      = the act of greeting people; a formal party at which
-                      important people are welcomed
-                    </p>
-                    <a href="" class="listenSpell__dictation">/Phiên âm/ </a>
-                    <div class="translate__input-container">
-                      <input type="text" class="listenSpell__input" />
-                    </div>
-                  </div>
-                  <div class="listenSpell__answer-container">
-                    <button class="listenSpell__answer">
-                      <i
-                        class="fa-regular fa-circle-check listenSpell__icon"
-                      ></i
-                      >Check kết quả
-                    </button>
-                  </div>
-                  <div class="listenSpell__option">
-                    <div class="listenSpell__option-left">
-                      <input type="checkbox" id="listenSpell__checkbox" />
-                      <label
-                        for="listenSpell__checkbox"
-                        class="listenSpell__text"
-                        >Hiện nghĩa tiếng Việt</label
-                      >
-                      <br />
-                      <input
-                        type="checkbox"
-                        id="listenSpell__checkbox-replay"
-                      />
-                      <label
-                        for="listenSpell__checkbox-replay"
-                        class="listenSpell__text"
-                        >Auto Replay</label
-                      >
-                    </div>
-                    <div class="listenSpell__option-right">
-                      <a href="" class="listenSpell_continue"
-                        >Từ tiếp theo <i class="fa-solid fa-chevron-right"></i
-                      ></a>
-                    </div>
-                  </div>
+                <div class="content__right col l-6 m-6 c-12">
+                  <h3 class="question__header">Q32:</h3>
+                  <p>What are the speakers discussing?</p>
+                  <input
+                    type="radio"
+                    id="A motorcycle"
+                    name="fav_language"
+                    value="motorcycle"
+                  />
+                  <label for="A motorcycle">A. A motorcycle</label><br />
+                  <input
+                    type="radio"
+                    id="A mobile phone"
+                    name="fav_language"
+                    value="A mobile phone"
+                  />
+                  <label for="A mobile phone">B. A mobile phone</label><br />
+                  <input
+                    type="radio"
+                    id="A laptop computer"
+                    name="fav_language"
+                    value="A laptop computer"
+                  />
+                  <label for="A laptop computer">C. A laptop computer</label
+                  ><br />
+                  <input
+                    type="radio"
+                    id="An exercise machine"
+                    name="fav_language"
+                    value="An exercise machine"
+                  />
+                  <label for="An exercise machine"
+                    >D. An exercise machine</label
+                  >
                 </div>
               </div>
               <div class="multichoice__option">

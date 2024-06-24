@@ -716,3 +716,48 @@
 .content__box-details{
     margin: 10px 0px;
 }
+
+.transcript{
+    display: block;
+    text-decoration: none;
+    color: var(--nav-hover-text-color);
+    cursor: pointer;
+    margin: 10px 0px;
+}
+
+.transcript__block{
+    padding: 20px 10px;
+    background-color: var(--tag-search-bg-color);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+    display: none;
+}
+
+.transcript__block1{
+    padding: 20px 10px;
+    background-color: var(--tag-search-bg-color);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+    display: none;
+}
+
+
+.transcript__checkbox{
+    display: none;
+}
+
+.transcript__checkbox1{
+    display: none;
+}
+
+.transcript__checkbox:checked ~ .transcript__block{
+    display: block;
+    animation: fadeInUp ease-in 0.2s ;
+}
+
+.transcript__checkbox1:checked ~ .transcript__block1{
+    display: block;
+    animation: fadeInUp ease-in 0.2s ;
+}
