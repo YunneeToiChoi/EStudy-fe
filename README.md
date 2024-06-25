@@ -60,6 +60,11 @@ https://elearning.engineer/api/Auth_API/ActiveCode
 [userId,code]      
 ActiveCode
 
+--------------User Request Forgot Password ------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/RequestForgotPassword
+[userEmail]
+
 --------------GetAllUsers------------
 [HttpGet]
 https://elearning.engineer/api/Auth_API/Get_AllUsers(complete)
