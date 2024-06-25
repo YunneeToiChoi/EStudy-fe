@@ -761,3 +761,26 @@
     display: block;
     animation: fadeInUp ease-in 0.2s ;
 }
+
+.answer{
+    display: none;
+    margin: 10px 0px;
+}
+
+.show-answer{
+    background-color: var(--nav-hover-text-color);
+    padding: 6px 18px;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.answer__checkbox{
+    display: none;
+}
+
+.answer__checkbox:checked ~ .answer{
+    display: block;
+}
