@@ -3,7 +3,7 @@ Domain: https://estudy.engineer/
 VIDEO : https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson
 FLASH_CARD : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabOfLesson(complete)
 Multiple_Choice ( trắc nghiệm cơ bản có 4 đáp án ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson(complete)
-DOUBLE_CHOICE ( trắc nghiệm chỉ có 2 câu a,b )  : https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice
+DOUBLE_CHOICE ( trắc nghiệm chỉ có 2 câu a,b )  : https://elearning.engineer/api/Question_API/Get_AllQuestionDoubleChoice
 FIND_PAIR ( chọn 2 cặp ) : https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFindpair(complete)(complete)
 LISTEN_VOCAB ( bài nghe chọn từ vựng ): https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab(complete)
 LISTEN_PICTURE ( bài nghe tranh 4 options, 0 tittle ) : https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson
@@ -20,31 +20,60 @@ Don't fotgot Header key/value : ContentType : application/json
 [HttpPost]
 https://elearning.engineer/api/Auth_API/Register(complete)
 [UserEmail,UserPassword] can use UserPhone
+
+--------------ResendLink------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/ResendLink 
+[userEmail]
+
 --------------Login------------
 [HttpPost]
 https://elearning.engineer/api/Auth_API/Login(complete)
 [UserEmail,UserPassword] 
 Don't forgot save UserId when got reponse data from login
---------------User Update Avatar------------
+--------------User Update Image------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/User_UpdateAvatar
-[userId] 
+https://elearning.engineer/api/Auth_API/User_UpdateImage
+required : [userId] 
 
-    const response = await axios.post('http://localhost:8000/api/Auth_API/User_UpdateAvatar', formData, {
+    const response = await axios.post('http://localhost:8000/api/Auth_API/User_UpdateImage', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            
+optional : [userAvatar,userBanner]    
+
+--------------User Update Profile------------ ( không có cập nhật password ) update password là 1 method khác
+[HttpPost]
+https://elearning.engineer/api/Auth_API/EditUserProfile
+required : [userId] 
+optional : [userName,userEmail,userDescription,phoneNumber]
+
+--------------Edit Password------------ 
+[HttpPost]
+https://elearning.engineer/api/Auth_API/EditPassword
+required : [userId,oldPassword,newPassword,confirmPassword] 
+
 --------------User Active Code------------
 [HttpPost]
 https://elearning.engineer/api/Auth_API/ActiveCode
 [userId,code]      
 ActiveCode
 
+--------------User Request Forgot Password ------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/RequestForgotPassword
+[userEmail]
+
 --------------GetAllUsers------------
 [HttpGet]
 https://elearning.engineer/api/Auth_API/Get_AllUsers(complete)
+
+--------------Get User Profile------------
+[HttpPost]
+https://elearning.engineer/api/Auth_API/Get_UserProfile
+[userId]
+
 --------------GetAllCourse------------
 [HttpGet]
 https://elearning.engineer/api/Courses_API/Get_AllCourses(complete)
@@ -165,7 +194,7 @@ https://elearning.engineer/api/Question_API/Get_AllListenSpeech [Tag = LISTEN_SP
 
 --------------------------Get Question Double choice -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice [Tag = DOUBLE_CHOICE ] (fetch)
+https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice [Tag = DOUBLE_CHOICE ] 
 [lessonId]
 
 --------------------------Get Question Reading -----------------------------------
