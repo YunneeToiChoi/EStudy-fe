@@ -34,7 +34,7 @@ export default function Home() {
       <div className=" max-w-full mt-20">
         <div className="">
           <h2 className=" font-semibold text-3xl text-center text-[#17165B]">Đề thi mới nhất</h2>
-          <div className="grid grid-cols-4 gap-14 mt-16">
+          <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-14 mt-16">
             <div className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
               <Link
                 href="#"

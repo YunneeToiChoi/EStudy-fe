@@ -53,7 +53,7 @@ export const RequestApiOrder = async (dataOrder:any,dispatch:any,lastPrice:any,c
   const RequestApiPaymentMomo = async (dataPayment:any,dispatch:any,navigate:any) => {
     dispatch(MomoStart()); 
     try{
-      const res = await request.post('/Momo_Payment',dataPayment);
+      const res = await request.post('/Momo_Payment/MakePayment',dataPayment);
       dispatch(MomoSuccess(res));
       if(res.resultCode==0){
         navigate(res.payUrl);

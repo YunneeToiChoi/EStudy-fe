@@ -140,37 +140,37 @@ https://elearning.engineer/api/VocabFlashCard_API/Get_AllListenChossenVocab [Tag
 
 --------------Get All List Vocab Fill World  ------------------------------------------------------------
 [HttpPost]
-https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld [Tag = FILL_WORD ] 
+https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld [Tag = FILL_WORD ] (fetch)
 [lessonId]
 
 --------------------------Get All Video -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson [Tag = VIDEO ] 
+https://elearning.engineer/api/Video_API/Get_AllVideoOfLesson [Tag = VIDEO ] (fetch)
 [lessonId]
 
 --------------------------Get Question Listen Picture -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson [Tag = LISTEN_PICTURE ] 
+https://elearning.engineer/api/Question_API/Get_AllQuestionOfLesson [Tag = LISTEN_PICTURE ] (fetch)
 [lessonId]
 
 --------------------------Get Question Listen Picture -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res [Tag = LISTEN_QUEST_RESPONSE ] 
+https://elearning.engineer/api/Question_API/Get_AllListen_Quest_Res [Tag = LISTEN_QUEST_RESPONSE ] (fetch)
 [lessonId]
 
 --------------------------Get Question Speech -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllListenSpeech [Tag = LISTEN_SPEECH ] 
+https://elearning.engineer/api/Question_API/Get_AllListenSpeech [Tag = LISTEN_SPEECH ] (fetch)
 [lessonId]
 
 --------------------------Get Question Double choice -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice [Tag = DOUBLE_CHOICE ] 
+https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice [Tag = DOUBLE_CHOICE ] (fetch)
 [lessonId]
 
 --------------------------Get Question Reading -----------------------------------
 [HttpPost]
-https://elearning.engineer/api/Question_API/Get_AllQuestionReading [Tag = READING ] 
+https://elearning.engineer/api/Question_API/Get_AllQuestionReading [Tag = READING ] (fetch)
 [lessonId]
 
 ## Getting Started
@@ -348,6 +348,80 @@ Method : http://localhost:8000/api/Momo_Payment
 [POST]
 Flow : 
 
+
+
+# CASE REPORT MOMO
+
+case 0:
+        return Ok(new { status = 200, message = "Successful" });
+    case 10:
+        return StatusCode(503, new { status = 503, message = "System is under maintenance. Please retry later." });
+    case 11:
+        return StatusCode(403, new { status = 403, message = "Access denied. Please check your settings in M4B portal, or contact MoMo for configurations." });
+    case 12:
+        return StatusCode(400, new { status = 400, message = "Unsupported API version. Please upgrade to the latest version of payment gateway." });
+    case 13:
+        return StatusCode(401, new { status = 401, message = "Merchant authentication failed. Please check your credentials." });
+    case 20:
+        return BadRequest(new { status = 400, message = "Bad format request. Please check the request format or any missing parameters." });
+    case 21:
+        return BadRequest(new { status = 400, message = "Invalid transaction amount. Please check the amount and retry." });
+    case 22:
+        return BadRequest(new { status = 400, message = "Transaction amount is out of range. Please check the allowed range of each payment method." });
+    case 40:
+        return BadRequest(new { status = 400, message = "Duplicated requestId. Please retry with a different requestId." });
+    case 41:
+        return BadRequest(new { status = 400, message = "Duplicated orderId. Please inquiry the orderId's transaction status, or retry with a different orderId." });
+    case 42:
+        return BadRequest(new { status = 400, message = "Invalid orderId or orderId not found. Please retry with a different orderId." });
+    case 43:
+        return BadRequest(new { status = 400, message = "Analogous transaction is being processed. Please check if another analogous transaction is being processed." });
+    case 45:
+        return BadRequest(new { status = 400, message = "Duplicated ItemId. Please retry with a unique ItemId." });
+    case 47:
+        return BadRequest(new { status = 400, message = "Inapplicable information in the given set of valuable data. Please review and retry with another request." });
+    case 98:
+        return StatusCode(503, new { status = 503, message = "This QR Code has not been generated successfully. Please retry later." });
+    case 99:
+        return StatusCode(500, new { status = 500, message = "Unknown error. Please contact MoMo for more details." });
+    case 1000:
+        return Ok(new { status = 200, message = "Transaction is initiated, waiting for user confirmation." });
+    case 1001:
+        return BadRequest(new { status = 400, message = "Transaction failed due to insufficient funds." });
+    case 1002:
+        return BadRequest(new { status = 400, message = "Transaction rejected by the issuers of the payment methods. Please choose other payment methods." });
+    case 1003:
+        return BadRequest(new { status = 400, message = "Transaction cancelled after successfully authorized." });
+    case 1004:
+        return BadRequest(new { status = 400, message = "Transaction failed because the amount exceeds daily/monthly payment limit. Please retry another day." });
+    case 1005:
+        return BadRequest(new { status = 400, message = "Transaction failed because the url or QR code expired. Please send another payment request." });
+    case 1006:
+        return BadRequest(new { status = 400, message = "Transaction failed because user has denied to confirm the payment. Please send another payment request." });
+    case 1007:
+        return BadRequest(new { status = 400, message = "Transaction rejected due to inactive or nonexistent user's account. Please ensure the account status should be active/verified before retrying." });
+    case 1017:
+        return BadRequest(new { status = 400, message = "Transaction cancelled by merchant." });
+    case 1026:
+        return BadRequest(new { status = 400, message = "Transaction restricted due to promotion rules. Please contact MoMo for details." });
+    case 1080:
+        return BadRequest(new { status = 400, message = "Refund attempt failed during processing. Please retry later." });
+    case 1081:
+        return BadRequest(new { status = 400, message = "Refund rejected. The original transaction might have been refunded or exceeds refundable amount." });
+    case 2019:
+        return BadRequest(new { status = 400, message = "Invalid orderGroupId. Please contact MoMo for details." });
+    case 4001:
+        return BadRequest(new { status = 400, message = "Transaction restricted due to incomplete KYCs. Please contact MoMo for details." });
+    case 4100:
+        return BadRequest(new { status = 400, message = "Transaction failed because user failed to login." });
+    case 7000:
+        return Ok(new { status = 200, message = "Transaction is being processed. Please wait for it to be fully processed." });
+    case 7002:
+        return Ok(new { status = 200, message = "Transaction is being processed by the provider of the selected payment instrument." });
+    case 9000:
+        return Ok(new { status = 200, message = "Transaction is authorized successfully. Please proceed with either capture or cancel request." });
+    default:
+        return StatusCode(500, new { status = 500, message = "Unhandled response code from MoMo. Please contact support." });
 
 
 #  Tìm hiều về race condition của lỗi bất đồng bộ 

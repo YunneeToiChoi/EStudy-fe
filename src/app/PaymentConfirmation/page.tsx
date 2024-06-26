@@ -41,12 +41,12 @@ export default function SuccessOrderByMomo() {
     return <div>Page không tồn tại</div>;
   }
 
-  if (res && res.status === 200) {
+  if (res && res?.status === 200) {
     return <div>Order completed successfully!</div>;
   }
 
-  if (res && res.status === 400) {
-    return <div>{res.data}</div>;
+  if (res && ( res.status === 400||res.status ===503||res.status ===403||res.status ===401||res.status ===500)) {
+    return <div>{res?.data?.message}</div>;
   }
 
   return null;

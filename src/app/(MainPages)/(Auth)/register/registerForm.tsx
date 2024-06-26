@@ -1,6 +1,7 @@
 "use client"
 import  Link  from 'next/link';
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch} from "react-redux";
 import { useRouter } from 'next/navigation';
 import { registerUser } from  "@/service/api/apiAuthRequest";
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,9 +17,15 @@ import {
 import { Input } from '@/components/ui/input'
 import { RegisterBody, RegisterBodyType } from '@/schemaValidate/auth.schema'
 import TextTitle from './textTitle';
+
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 export default function RegisterForm(){
     const dispatch = useDispatch();
     const navigate = useRouter();
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
     const form = useForm<RegisterBodyType>({
       resolver: zodResolver(RegisterBody),
@@ -32,13 +39,64 @@ export default function RegisterForm(){
     })
 
     const handleRegister = async (values:RegisterBodyType)=>{
-        const { email, password, username,phone } = values;
+        const { email, password, username} = values;
         const newUser = {
           UserEmail: email,
           UserPassword:password,
           UserName:username,
         };
-        await registerUser(newUser,dispatch,navigate.push);
+       const toastRes= await registerUser(newUser,dispatch);
+        if(toastRes?.status!=200 &&toastRes?.status){
+        toast.error(toastRes?.data + '!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme:"colored",
+        transition: Bounce,
+          });
+        }
+        else{
+          toast.success('Create Account SuccessFull !', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme:"colored",
+            transition: Bounce,
+              });
+            toast.warn(`We've sent an authentication link to your email, check your email !`, {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+              });
+              toast.info('The path is only available for 10 minutes', {
+                position: "bottom-right",
+                autoClose: 10000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
+              sessionStorage.setItem('registeredEmail', email);
+              navigate.push('/login');
+        }
+
       }
 
     return(
@@ -96,7 +154,15 @@ export default function RegisterForm(){
                 <FormItem>
                   <p className="text-base font-medium mt-5 mb-1">Password</p>
                   <FormControl>
-                    <Input placeholder='Nhập mật khẩu' type='password' {...field} />
+                  <div className="relative">
+                      <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
+                      <span
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                        onClick={() => setPasswordVisible(!passwordVisible)}
+                      >
+                        {passwordVisible ? '🙈' : '👁️'}
+                      </span>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -109,7 +175,15 @@ export default function RegisterForm(){
                 <FormItem>
                   <p className="text-base font-medium mt-5 mb-1">Confirm Password</p>
                   <FormControl>
-                    <Input placeholder='Xác nhận mật khẩu' type='password' {...field} />
+                  <div className="relative">
+                      <Input placeholder='Xác nhận mật khẩu' type={confirmPasswordVisible ? 'text' : 'password'} {...field} />
+                      <span
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
+                      >
+                        {confirmPasswordVisible ? '🙈' : '👁️'}
+                      </span>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

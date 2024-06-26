@@ -4,10 +4,14 @@ import {
     AvatarImage,
   } from "@/components/ui/avatar"
   
-  export function AvatarDemo() {
+  interface ImageProps {
+    SrcImage:any;
+  }
+  export const AvatarDemo:React.FC<ImageProps>=({SrcImage}) => {
+    console.log(SrcImage)
     return (
       <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarImage src={SrcImage} alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
     )

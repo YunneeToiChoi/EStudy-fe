@@ -31,11 +31,11 @@ import {useDispatch} from "react-redux";
   import { logOut } from "@/service/api/apiAuthRequest";
   interface UserAccount {
     UserName: any;
+    UserImage:any;
   }
-  export const DropdownMenuDemo: React.FC<UserAccount> = ({UserName}) => {
+  export const DropdownMenuDemo: React.FC<UserAccount> = ({UserName,UserImage}) => {
     const dispatch = useDispatch();
     const navigate = useRouter();
-
      const handleLogOut = () => {
       logOut(dispatch,navigate.push);
      }
@@ -43,7 +43,7 @@ import {useDispatch} from "react-redux";
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className=" bg-transparent outline-none"><AvatarDemo></AvatarDemo></button>
+          <button className=" bg-transparent outline-none"><AvatarDemo SrcImage={UserImage}></AvatarDemo></button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel className='text-primary-bg-color text-center'>{UserName}</DropdownMenuLabel>

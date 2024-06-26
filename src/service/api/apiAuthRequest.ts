@@ -1,35 +1,35 @@
 import * as request from "@/lib/utils/request";
 import {
-  loginFailed,
   loginStart,
-  loginSuccess,
-  logOutFailed,
-  logOutStart,
-  logOutSuccess,
-  registerFailed,
-  registerStart,
-  registerSuccess,
+    loginFailed,
+    loginSuccess,
+    registerStart,
+    registerSuccess,
+    registerFailed,
+    logOutStart,
+    logOutSuccess,
+    logOutFailed,
 } from "@/service/reduxState/authSlices";
 
-export const loginUser = async (user:any, dispatch:any, navigate:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
+export const loginUser = async (user:any, dispatch:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
   dispatch(loginStart());
   try {
     const res = await request.post('/Auth_API/Login', user);
     dispatch(loginSuccess(res));//nhan du lieu tu backend
-    navigate("/");
   } catch (err:any) {
-    dispatch(loginFailed(err.response.data));
+    dispatch(loginFailed());
+    return err?.response;
   }
 };
 
-export const registerUser = async (user:any, dispatch:any, navigate:any) => {
+export const registerUser = async (user:any, dispatch:any) => {
   dispatch(registerStart());
   try {
     await request.post('/Auth_API/Register', user);
     dispatch(registerSuccess());
-    navigate("/login");
   } catch (err:any) {
-    dispatch(registerFailed(err.response.data));
+    dispatch(registerFailed());
+    return err?.response;
   }
 };
 
@@ -42,3 +42,21 @@ export const logOut = async (dispatch:any,navigate:any) => {
     dispatch(logOutFailed());
   }
 };
+
+export const reSendEmail = async (email:any) => {
+  try {
+    const res =await request.post('/Auth_API/ResendLink', email);
+    return res;
+  } catch (err:any) {
+    return err?.response;
+  }
+} 
+
+export const forgotPassword = async (email:any) => {
+  try{
+    const res = await request.post('/Auth_API/RequestForgotPassword', email);
+    return res;
+  }catch (err:any) {
+    return err?.response;
+  }
+}

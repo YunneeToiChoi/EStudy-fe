@@ -8,6 +8,9 @@ import ReduxProvider from "./provider";
 import Header from "./components/partialView/header";
 import Footer from "./components/partialView/footer";
 
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 const roboto = Roboto({ subsets: ["vietnamese"],weight: ['100','300','400','500','700','900']});
 
 export const metadata: Metadata = {
@@ -29,6 +32,17 @@ export default function RootLayout({
               <Header />
               <div className=" z-30">
                   {children}
+                  <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    />
               </div>
               <Footer />
             </ReduxProvider>

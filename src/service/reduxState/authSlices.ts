@@ -23,11 +23,11 @@ const authSlice = createSlice({
             state.login.isFetching = false;
             state.login.data = action.payload;//nhan du lieu dc truyen vao apirequest
             state.login.error = false;
+            state.msg = "";
         },
-        loginFailed: (state,action) =>{
+        loginFailed: (state) =>{
             state.login.isFetching = false;
             state.login.error = true;
-            state.msg = action.payload;
         },
         registerStart: (state) =>{
             state.register.isFetching = true;
@@ -37,11 +37,10 @@ const authSlice = createSlice({
             state.register.error = false;
             state.register.success = true;
         },
-        registerFailed: (state,action) =>{
+        registerFailed: (state) =>{
             state.register.isFetching = false;
             state.register.error = true;
             state.register.success = false;
-            state.msg = action.payload;
         },
         logOutSuccess: (state) => {
             state.login.isFetching = false;
@@ -68,7 +67,7 @@ export const {
     registerFailed,
     logOutStart,
     logOutSuccess,
-    logOutFailed
+    logOutFailed,
 } = authSlice.actions;
 
 export default authSlice.reducer;

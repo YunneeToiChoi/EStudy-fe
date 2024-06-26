@@ -12,11 +12,9 @@ export default function GetAllCourses() {
     const dispatch = useDispatch();
     const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCoursesResponse);
     useEffect(() => {
-        if (!listCourses) {
             const UserId = { userId: user?.userId };
             getUnregisterCourse(UserId, dispatch);
-        }
-    }, [dispatch, listCourses, user]);
+    }, [dispatch, user]);
 
     return(
       <div className="relative p-16">

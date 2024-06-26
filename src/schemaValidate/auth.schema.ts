@@ -6,12 +6,12 @@ export const LoginBody = z
   .object({
     email: z
       .string()
-      .min(1, { message: "Input cannot be empty" })  // Đảm bảo trường không để trống
+      .min(1, { message: "Input cannot be empty" })
       .email({ message: "Invalid email format" })
       .max(50, { message: "Invalid email format. Email is too long" }),
     password: z
       .string()
-      .min(1, { message: "Input cannot be empty" })  // Đảm bảo trường không để trống
+      .min(1, { message: "Input cannot be empty" }) 
       .min(8, { message: "Password must be at least 8 characters long" })
   })
   .superRefine(({ password }, ctx) => {
