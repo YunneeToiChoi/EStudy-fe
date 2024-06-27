@@ -69,7 +69,7 @@ export default function ExamOnline()
       </div>
     </div>
     <div className="relative p-16">
-      <div className=" mt-8 grid grid-cols-3 gap-14">
+      <div className=" mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-14">
       <div className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
         <Link
           href="/courseDetails"

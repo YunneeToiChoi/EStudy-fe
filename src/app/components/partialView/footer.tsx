@@ -15,7 +15,7 @@ export default function Footer() {
     return(
         <footer className="mt-14 py-9 border-t-[1px] border-t-[#e7eaf3] px-[20px] w-full bg-primary-bg-color">
             <div className="">
-                <div className="grid grid-cols-5 gap-8">
+                <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-8">
                     <div className="flex flex-col items-center gap-3">
                         <Image
                             width={80}

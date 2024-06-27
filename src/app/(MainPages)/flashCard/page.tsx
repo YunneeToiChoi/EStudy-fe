@@ -23,7 +23,7 @@ export default function FlashCard(){
             </p>
             <div className=" my-5">
               <div className="">
-                <div className="grid grid-cols-5 gap-5">
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-5">
                   <Link href="#" className="border-[1px] border-course-border-color bg-[#f8f9fa] p-5 rounded-xl mb-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-500 ease-in-out ">
                     <div className="">
                       <h4 className=" text-base font-medium text-center">
