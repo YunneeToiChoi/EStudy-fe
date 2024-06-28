@@ -23,7 +23,7 @@ https://elearning.engineer/api/Auth_API/Register(complete)
 
 --------------ResendLink------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/ResendLink 
+https://elearning.engineer/api/Auth_API/ResendLink (complete)
 [userEmail]
 
 --------------Login------------
@@ -45,24 +45,24 @@ optional : [userAvatar,userBanner]
 
 --------------User Update Profile------------ ( không có cập nhật password ) update password là 1 method khác
 [HttpPost]
-https://elearning.engineer/api/Auth_API/EditUserProfile
+https://elearning.engineer/api/Auth_API/EditUserProfile(complete)
 required : [userId] 
 optional : [userName,userEmail,userDescription,phoneNumber]
 
 --------------Edit Password------------ 
 [HttpPost]
-https://elearning.engineer/api/Auth_API/EditPassword
+https://elearning.engineer/api/Auth_API/EditPassword(complete)
 required : [userId,oldPassword,newPassword,confirmPassword] 
 
 --------------User Active Code------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/ActiveCode
+https://elearning.engineer/api/Auth_API/ActiveCode(cpmplete)
 [userId,code]      
 ActiveCode
 
 --------------User Request Forgot Password ------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/RequestForgotPassword
+https://elearning.engineer/api/Auth_API/RequestForgotPassword(complete)
 [userEmail]
 
 --------------GetAllUsers------------
@@ -71,7 +71,7 @@ https://elearning.engineer/api/Auth_API/Get_AllUsers(complete)
 
 --------------Get User Profile------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/Get_UserProfile
+https://elearning.engineer/api/Auth_API/Get_UserProfile(complete)
 [userId]
 
 --------------GetAllCourse------------

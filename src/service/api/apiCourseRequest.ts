@@ -38,7 +38,7 @@ export const getAllCourse = async (dispatch:any) => {//truyen req user(username,
       const res = await request.get('/Courses_API/Get_AllCourses');
       dispatch(getCourseSuccess(res));//nhan du lieu tu backend
     } catch (err:any) {
-      dispatch(getCourseFailed(err.response.data));
+      dispatch(getCourseFailed(err.response?.data));
     }
   };
 
@@ -48,7 +48,7 @@ export const getAllCourse = async (dispatch:any) => {//truyen req user(username,
       const res = await request.post('/Courses_API/Get_OutstandingCoursesUserNotBought',data);
        dispatch(getPopularCourseSuccess(res));
     }catch (err:any) {
-      dispatch(getPopularCourseFailed(err.response.data));
+      dispatch(getPopularCourseFailed(err.response?.data));
     }
   }
   
@@ -58,7 +58,7 @@ export const getAllCourse = async (dispatch:any) => {//truyen req user(username,
       const res = await request.post('/Courses_API/Get_UnregisteredCourses',idUser);
        dispatch(getUnregisteredCoursesSuccess(res));
     }catch (err:any) {
-      dispatch(getUnregisteredCoursesFailed(err.response.data));
+      dispatch(getUnregisteredCoursesFailed(err.response?.data));
     }
   }
 
@@ -69,7 +69,7 @@ export const getDetailCourse = async (idCourse:any,dispatch:any) => {
     const res = await request.post('/UserCourses_API/Get_DetailCourseAndUserBought',idCourse);
      dispatch(getCourseDetailSuccess(res));
   }catch (err:any) {
-    dispatch(getCourseDetailFailed(err.response.data));
+    dispatch(getCourseDetailFailed(err.response?.data));
   }
 }
 

@@ -16,3 +16,12 @@ export const OrderCourseBody = z
   .strict()
 
 export type OrderCourseBodyType = z.TypeOf<typeof OrderCourseBody>
+
+export const ActiveCode = z
+.object({
+  code: z
+  .string()
+  .trim()
+  .min(1,{message:"Input cannot be empty"})
+})
+export type ActiveCodeType = z.TypeOf<typeof ActiveCode>

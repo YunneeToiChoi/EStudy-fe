@@ -9,13 +9,19 @@ import {
     logOutStart,
     logOutSuccess,
     logOutFailed,
+    getAllInfoUserStart,
+    getAllInfoUserSuccess,
+    getAllInfoUserFailed,
 } from "@/service/reduxState/authSlices";
 
 export const loginUser = async (user:any, dispatch:any) => {//truyen req user(username,password), dispatch( truyen action tu state cua login), navigate( chuyen den trang moi nhu route-dom cua react)
   dispatch(loginStart());
   try {
     const res = await request.post('/Auth_API/Login', user);
-    dispatch(loginSuccess(res));//nhan du lieu tu backend
+    dispatch(loginSuccess(res));
+    if(res.status==200){
+      getAllInfoUser({userId:res?.user?.userId},dispatch)
+    }
   } catch (err:any) {
     dispatch(loginFailed());
     return err?.response;
@@ -59,4 +65,43 @@ export const forgotPassword = async (email:any) => {
   }catch (err:any) {
     return err?.response;
   }
+}
+
+export const InfoUser = async (user:any, dispatch:any) => {
+  try {
+    const res = await request.post('/Auth_API/EditUserProfile', user);
+    return res;
+  } catch (err:any) {
+    return err?.response;
+  }
+};
+
+export const UpdateImage = async (user:any) => {
+  try {
+    const res = await request.post('/Auth_API/User_UpdateImage', user, { headers: {
+      'Content-Type': 'multipart/form-data'
+    }});
+    return res;
+  } catch (err:any) {
+    return err?.response;
+  }
+};
+
+export const editPassword = async (data:any) => {
+  try {
+    const res = await request.post('/Auth_API/EditPassword', data);
+    return res;
+  } catch (err:any) {
+    return err?.response;
+  }
+};
+
+export const getAllInfoUser = async (idUser:any,dispatch:any) => {
+    dispatch(getAllInfoUserStart());
+    try {
+      const res = await request.post(`/Auth_API/Get_UserProfile`,idUser);
+      dispatch(getAllInfoUserSuccess(res));
+    } catch (err:any) {
+      dispatch(getAllInfoUserFailed(err.response.data));
+    }
 }

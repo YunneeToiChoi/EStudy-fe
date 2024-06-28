@@ -1,9 +1,9 @@
 import * as request from "@/lib/utils/request";
 
 import {
-    OrderStart,
-    OrderFailed,
-    OrderSuccess,
+  OrderStart,
+  OrderFailed,
+  OrderSuccess,
 }
 from "@/service/reduxState/orderSlices";
 
@@ -79,5 +79,14 @@ const requestData={
   }catch (err:any) {
     const { status, data } = err.response;
     dispatch(NotifyMomoFailed({ status, data }));
+  }
+}
+
+export const ActiveCodeCourse = async (data:any) => {
+  try{
+    const res = await request.post('/Auth_API/ActiveCode',data);
+    return res;
+  }catch (err:any) {
+    return err?.response;
   }
 }

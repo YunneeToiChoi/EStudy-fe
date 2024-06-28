@@ -8,7 +8,6 @@ import {
     SrcImage:any;
   }
   export const AvatarDemo:React.FC<ImageProps>=({SrcImage}) => {
-    console.log(SrcImage)
     return (
       <Avatar>
         <AvatarImage src={SrcImage} alt="@shadcn" />

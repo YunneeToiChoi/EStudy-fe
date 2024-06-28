@@ -9,12 +9,13 @@ import { useEffect } from 'react';
 export default function Profile() {
   const navigate = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
+  const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
 
   useEffect(() => {
     if (!user) {
       navigate.push("/login");
     }
-  }, [user, navigate]);
+  }, [user, navigate, infoUser]);
 
     return(
         <div className="grid wide">
@@ -23,24 +24,27 @@ export default function Profile() {
             <Image
               src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg"
               width={1000}
-              height={1200}
+              height={100}
               alt=""
-              className="backgroud__avt"/>
-            <Image
+              className=" w-full rounded-xl drop-shadow-2xl h-[300px] object-cover"/>
+              <div  className='absolute bottom-0 left-0 right-0 translate-y-1/2'>
+              <div className=' m-auto relative w-fit'>
+              <Image
               width={100}
               height={100}
-              src="https://static.vecteezy.com/system/resources/previews/030/504/836/non_2x/avatar-account-flat-isolated-on-transparent-background-for-graphic-and-web-design-default-social-media-profile-photo-symbol-profile-and-people-silhouette-user-icon-vector.jpg"
+              src={infoUser.userImage}
               alt=""
-              className="avt__user"
+              className="rounded-full w-36"
             />
-            <Link href="" className="avatar__change"
-              ><i className="fa-solid fa-pencil avatar__icon"></i
+            <Link href="/UpdateAccount" className=" shadow-lg absolute bottom-0 right-0 w-[40px] h-[40px] flex items-center justify-center rounded-full bg-white transition duration-300 ease-in-out hover:bg-slate-200"
+              ><i className="fa-solid fa-pencil"></i
             ></Link>
+              </div>
+              </div>
           </div>
         </div>
-        <div className="user__name-container">
-          <h1 className="name__user">thaigiabao122</h1>
-          <Link href="" className="user__public">Trang công khai</Link>
+        <div className=" flex items-center justify-center mt-11">
+          <h1 className=" text-3xl font-bold text-primary-bg-color">Xin chào {infoUser.userName} !</h1>
         </div>
         <ul className="tag-search__transition">
           <li className="tag-search__transition-item">

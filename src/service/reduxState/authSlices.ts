@@ -13,6 +13,11 @@ const authSlice = createSlice({
             error:false,
             success:false
         },
+        getAllInfoUser:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -54,7 +59,19 @@ const authSlice = createSlice({
         logOutStart: (state) =>{
             state.login.isFetching = true;
         },
-     
+        getAllInfoUserStart: (state) =>{
+            state.getAllInfoUser.isFetching = true;
+        },
+        getAllInfoUserSuccess: (state,action) => {
+            state.getAllInfoUser.isFetching = false;
+            state.getAllInfoUser.data = action.payload;
+            state.getAllInfoUser.error = false;
+        },
+        getAllInfoUserFailed: (state,action) =>{
+            state.getAllInfoUser.isFetching = false;
+            state.getAllInfoUser.error = true;
+            state.msg = action.payload;
+        }
     }
 });
 
@@ -68,6 +85,9 @@ export const {
     logOutStart,
     logOutSuccess,
     logOutFailed,
+    getAllInfoUserStart,
+    getAllInfoUserSuccess,
+    getAllInfoUserFailed,
 } = authSlice.actions;
 
 export default authSlice.reducer;
