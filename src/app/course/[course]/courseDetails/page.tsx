@@ -114,9 +114,8 @@ export default function CourseDetail({ params }: { params: {course: string } })
             <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-primary-bg-color duration-300 ease-in-out hover:border-b-primary-bg-color">Đánh giá (630)</Link>
           </li>
         </ul>
-        <div className="flex">
-        <div className=" w-8/12">
-          <div className=" w-9/12">
+        <div className="grid lg:grid-cols-2 md:grid-cols-2">
+          <div className="">
             <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
               <h2 className=" text-2xl my-4">
                 Bạn sẽ đạt được gì sau khoá học?
@@ -222,9 +221,8 @@ export default function CourseDetail({ params }: { params: {course: string } })
                 Training
               </p>
             </div>
-          </div>
         </div>
-        <div className="w-4/12 h-fit mt-5 bg-white shadow-xl rounded-[10px]">
+        <div className="h-fit mt-5 bg-white shadow-xl rounded-[10px]">
           <Image
             width={1000}
             height={1000}
