@@ -271,34 +271,44 @@ const UpdateAccount = () => {
           </form>
         </Form>
       </div>
-      <div className={`${activeTab === 1 ? 'block' : 'hidden'}`}>
-        <p className="text-base my-[10px]">Ảnh đại diện</p>
-        <img
-          src={selectedAvatar}
-          alt=""
-          width="150"
-          height="150"
-          id="previewImg"
-        />
-        <input
-          type="file"
-          className="text-base w-full p-[10px] rounded-[4px] border-[1px] border-input-color focus:bg-white focus:border-input-focus-color focus:outline-none focus:shadow-lg transition duration-300"
-          onChange={(e) => handleImageChange(e, setSelectedAvatar)}
-        />
-        <p className="text-base my-[10px]">Banner</p>
-        <img
-          src={selectedBanner}
-          alt=""
-          width="400"
-          height="200"
-          id="previewImg1"
-        />
-        <input
-          type="file"
-          className="text-base w-full p-[10px] rounded-[4px] border-[1px] border-input-color focus:bg-white focus:border-input-focus-color focus:outline-none focus:shadow-lg transition duration-300"
-          onChange={(e) => handleImageChange(e, setSelectedBanner)}
-        />
-        <button  onClick={handleImageSave} className="w-full bg-primary-bg-color text-white block text-xl font-medium my-3 text-center no-underline py-3 rounded-[6px]">Lưu</button>
+      <div className={`${activeTab === 1 ? 'flex flex-col' : 'hidden'}`}>
+  <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Ảnh đại diện</p>
+  <img
+    src={selectedAvatar}
+    alt=""
+    width="300"
+    height="300"
+    id="previewImg"
+    className='rounded-full shadow-2xl m-auto mb-8'
+  />
+  <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
+    Chọn ảnh đại diện
+    <input
+      type="file"
+      className="hidden"
+      onChange={(e) => handleImageChange(e, setSelectedAvatar)}
+    />
+  </label>
+  <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Banner</p>
+  <img
+    src={selectedBanner}
+    alt=""
+    width="400"
+    height="200"
+    id="previewImg1"
+    className=' w-full shadow-xl  rounded-lg'
+  />
+  <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
+    Chọn banner
+    <input
+      type="file"
+      className="hidden"
+      onChange={(e) => handleImageChange(e, setSelectedBanner)}
+    />
+  </label>
+  <button onClick={handleImageSave} className="w-full bg-primary-bg-color text-white block text-xl font-medium my-3 text-center no-underline py-3 rounded-[6px]">
+    Lưu
+  </button>
       </div>
 
       <div className={`${activeTab === 2 ? 'block' : 'hidden'}`}>

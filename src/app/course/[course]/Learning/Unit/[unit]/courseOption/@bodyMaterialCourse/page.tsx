@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { BreadcrumbWithCustomSeparator } from '@/components/handicraft/params/paramsCourseLearn';
 import ListUnitsComponent from "../getUnit";
 import Container from "./containersUnit";
-
+import ExtentCourse from './extentCourse';
 export default function BodyCourseOption({ params }: { params: { course: string, unit: string } }) {
   const units = useSelector((state: any) => state.ThunkReducer.unit?.units?.data?.units);
 
   const isValidUnit = Array.isArray(units) && units.some((unit: any) => 
-    unit.unitId === Number(params.unit) && unit.courseId === Number(params.course)
+    unit.unitId === Number(params.unit) && unit.courseId === Number(params.course)||params.unit=="ExtendCourse"
   );
 
   if (params.unit === "LandingCourse") {
@@ -22,7 +22,7 @@ export default function BodyCourseOption({ params }: { params: { course: string,
       return (
         <div>
           <nav className="fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between">
-            <BreadcrumbWithCustomSeparator />
+            <BreadcrumbWithCustomSeparator params={params} />
             <label className="lg:hidden" htmlFor="content_checkbox_mb">
               <i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i>
             </label>
@@ -43,7 +43,9 @@ export default function BodyCourseOption({ params }: { params: { course: string,
               <ListUnitsComponent params={params} />
             </div>
           </div>
-          <Container params={params} />
+          {
+            params.unit==="ExtendCourse" ? <ExtentCourse></ExtentCourse> :  <Container params={params} />
+          }
         </div>
       );
     }

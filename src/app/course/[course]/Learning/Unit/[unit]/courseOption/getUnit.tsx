@@ -8,7 +8,8 @@ interface UnitsListProps {
 
 const ListUnitsComponent: React.FC<UnitsListProps> = ({ params }) => {
     const ListUnits = useGetAllUnits(params);
-    const idUnit = Number(params.unit);
+    const idUnit = Number(params.unit)
+    const checkExtentCourse=params.unit;
 
     return (
         <div className="border-r-[1px] border-r-[#e0e0e0]">
@@ -27,6 +28,14 @@ const ListUnitsComponent: React.FC<UnitsListProps> = ({ params }) => {
                 ) : (
                     <li>No units available</li>
                 )}
+                  <li className="course-learn__item">
+                            <Link
+                                href={`/course/${params.course}/Learning/Unit/ExtendCourse/courseOption`}
+                                className={`border-l-4 border-l-transparent hover:border-l-nav-hover-text-color hover:bg-tag-search-bg-color block px-5 py-4 no-underline text-base text-black transition duration-300 ease-in-out ${checkExtentCourse==='ExtendCourse' ? 'border-l-nav-hover-text-color bg-tag-search-bg-color' : ''}`}
+                            >
+                                Gia hạn khoá học
+                            </Link>
+                    </li>
             </ul>
         </div>
     );

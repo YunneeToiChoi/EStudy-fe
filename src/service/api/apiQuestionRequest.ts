@@ -16,6 +16,16 @@ import {
 }
 from "@/service/reduxState/questionSlices"
 
+import {
+  getListenQuestResStart,
+  getListenQuestResFailed,
+  getListenQuestResSuccess,
+  getListenSpeechStart,
+  getListenSpeechFailed,
+  getListenSpeechSuccess,
+}
+from "@/service/reduxState/listenSlices"
+
 export const getAllQuestionOfLesson = async (lessonId:any,dispatch:any) => {
   dispatch(getQuestionsStart());
   try {
@@ -36,7 +46,6 @@ export const getAllFillWord = async (lessonId:any,dispatch:any) => {
   }
 }
 
-
 export const getAllDoubleChoice = async (lessonId:any,dispatch:any) => {
   dispatch(getDoubleChoiceStart());
   try {
@@ -54,5 +63,26 @@ export const getAllReadingQuest = async (lessonId:any,dispatch:any) => {
     dispatch(getReadingSuccess(res));
   } catch (err:any) {
     dispatch(getReadingFailed(err.response.data));
+  }
+}
+
+
+export const getAllListenQuestRes = async (lessonId:any,dispatch:any) => {
+  dispatch(getListenQuestResStart());
+  try {
+    const res = await request.post('/Question_API/Get_AllListen_Quest_Res', lessonId);
+    dispatch(getListenQuestResSuccess(res));
+  } catch (err:any) {
+    dispatch(getListenQuestResFailed(err.response.data));
+  }
+}
+
+export const getAllListenSpeech = async (lessonId:any,dispatch:any) => {
+  dispatch(getListenSpeechStart());
+  try {
+    const res = await request.post('/Question_API/Get_AllListenSpeech', lessonId);
+    dispatch(getListenSpeechSuccess(res));
+  } catch (err:any) {
+    dispatch(getListenSpeechFailed(err.response.data));
   }
 }

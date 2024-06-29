@@ -11,6 +11,10 @@ import { GrammarInput } from './grammarInput';
 import { GrammarChoice } from './grammarChoice';
 import { FindPairLearn } from './findPairLearn';
 import {PictureQuiz} from './picListenQuiz';
+import {FreAskedQuestions} from './freAskedQuestions';
+import {CrazyWordQuiz} from './crazyWordQuiz';
+import {ReadingQuiz} from './readingQuiz';
+import {listeningComprehension} from './listeningComprehension';
 import ListLessonComponent from "../getLesson";
 import { BreadcrumbWithCustomSeparator } from '@/components/handicraft/params/paramsCourseLearn';
 
@@ -71,6 +75,18 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
     case 'LISTEN_PICTURE':
       Component = PictureQuiz;
       break;
+    case 'LISTEN_QUEST_RESPONSE':
+      Component = FreAskedQuestions;
+      break;
+    case 'READING':
+      Component = CrazyWordQuiz;
+      break;
+    case 'WRITTEN_FORM':
+      Component = ReadingQuiz;
+      break;
+    case 'LISTEN_SPEECH':
+      Component = listeningComprehension;
+      break;
     default:
       Component = DefaultComponent;
       break;
@@ -79,7 +95,7 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
   return (
     <div>
         <nav className="fixed bg-white border-b-[1px] border-b-course-border-color w-full p-6 flex items-center justify-between z-10">
-          <BreadcrumbWithCustomSeparator />
+          <BreadcrumbWithCustomSeparator params={params} />
           <label className="lg:hidden" htmlFor="content_checkbox_mb">
             <i className="fa-solid fa-bars text-xl mr-5 cursor-pointer"></i>
           </label>
@@ -101,7 +117,7 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
           </div>
         </div>
         <div className='flex w-full items-center'>
-          <div className='grid max-w-[900px] mx-auto pb-6 pt-20'>
+          <div className='grid max-w-[1100px] mx-auto pb-6 pt-20 max-[1500px]:mx-10'>
             <Component params={params}  />
           </div>
           

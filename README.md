@@ -33,7 +33,7 @@ https://elearning.engineer/api/Auth_API/Login(complete)
 Don't forgot save UserId when got reponse data from login
 --------------User Update Image------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/User_UpdateImage
+https://elearning.engineer/api/Auth_API/User_UpdateImage(bug)
 required : [userId] 
 
     const response = await axios.post('http://localhost:8000/api/Auth_API/User_UpdateImage', formData, {
@@ -56,7 +56,7 @@ required : [userId,oldPassword,newPassword,confirmPassword]
 
 --------------User Active Code------------
 [HttpPost]
-https://elearning.engineer/api/Auth_API/ActiveCode(cpmplete)
+https://elearning.engineer/api/Auth_API/ActiveCode(complete)
 [userId,code]      
 ActiveCode
 

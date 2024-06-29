@@ -8,6 +8,7 @@ import contentUnitsSlice from "@/service/reduxState/containerAndLessonSlices";
 import questionSlice from "@/service/reduxState/questionSlices"
 import vocabSlice from "@/service/reduxState/vocabSlices"
 import videoSlices from "@/service/reduxState/videoSlices";
+import listenSlices from "@/service/reduxState/listenSlices";
 import {
   persistStore,
   persistReducer,
@@ -34,7 +35,8 @@ const ThunkReducer = combineReducers({
   contentUnits:contentUnitsSlice,
   question:questionSlice,
   vocab:vocabSlice,
-  video:videoSlices
+  video:videoSlices,
+  listen: listenSlices,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

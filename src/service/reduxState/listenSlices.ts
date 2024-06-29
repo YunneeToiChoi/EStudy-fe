@@ -3,11 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const listenSlice = createSlice({
     name: "listen",
     initialState:{
-        listenPicture:{
-            data:null,
-            isFetching: false,
-            error:false,
-        },
         ListenQuestRes:{
             data:null,
             isFetching: false,
@@ -21,19 +16,6 @@ const listenSlice = createSlice({
         msg:"",
     },
     reducers:{
-        getListenPicStart: (state) =>{
-            state.listenPicture.isFetching = true;
-        },
-        getListenPicSuccess: (state,action) => {
-            state.listenPicture.isFetching = false;
-            state.listenPicture.data = action.payload;
-            state.listenPicture.error = false;
-        },
-        getListenPicFailed: (state,action) =>{
-            state.listenPicture.isFetching = false;
-            state.listenPicture.error = true;
-            state.msg = action.payload;
-        },
         getListenQuestResStart: (state) =>{
             state.ListenQuestRes.isFetching = true;
         },
@@ -64,9 +46,6 @@ const listenSlice = createSlice({
 });
 
 export const {
-    getListenPicStart,
-    getListenPicFailed,
-    getListenPicSuccess,
     getListenQuestResStart,
     getListenQuestResFailed,
     getListenQuestResSuccess,
