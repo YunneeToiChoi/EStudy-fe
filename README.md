@@ -11,6 +11,7 @@ LISTEN_QUEST_RESPONSE ( bài nghe hỏi đáp 3 options, 0 tittle ) : https://el
 LISTEN_SPEECH ( đối thoại và nghe hiểu bài nói 4 options, full tittle ): https://elearning.engineer/api/Question_API/Get_AllListenSpeech
 FILL_WORD ( bài điền từ , gõ tay ):  https://elearning.engineer/api/VocabFlashCard_API/Get_AllVocabFillWorld
 READING (bài điền từ = trắc nghiệm ): https://elearning.engineer/api/Question_API/Get_AllQuestionReading
+READING_NOPARA (Part 5, kh có paragraph )  :  https://elearning.engineer/api/Question_API/Get_AllQuestionReadingWithOutParagraph
 WRITTEN_FORM ( form email có nhiều options ): 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
@@ -200,6 +201,11 @@ https://elearning.engineer/api/Question_API/Get_AllQuestionDoulbeChoice [Tag = D
 --------------------------Get Question Reading -----------------------------------
 [HttpPost]
 https://elearning.engineer/api/Question_API/Get_AllQuestionReading [Tag = READING ] (fetch)
+[lessonId]
+
+--------------------------Get Question Reading WithOut Paragraph (part 5 ) -----------------------------------
+[HttpPost]
+https://elearning.engineer/api/Question_API/Get_AllQuestionReadingWithOutParagraph [Tag = READING_NOPARA ] (fetch)
 [lessonId]
 
 ## Getting Started
