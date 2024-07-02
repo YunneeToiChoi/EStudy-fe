@@ -25,19 +25,19 @@ export default function Footer() {
                         />
                         <p className="text-sm font-semibold">© 2024</p>
                         <div className="flex w-full gap-4 justify-center">
-                            <Link href="" className="footer__link">
+                            <Link href="https://web.facebook.com/?_rdc=1&_rdr" className="footer__link">
                                 <i className="fa-brands fa-facebook footer__icon fil text-white"></i>
                             </Link>
-                            <Link href="" className="footer__link">
+                            <Link href="https://www.instagram.com/" className="footer__link">
                                 <i className="fa-brands fa-instagram footer__icon text-white"></i>
                             </Link>
-                            <Link href="" className="footer__link">
+                            <Link href="https://x.com/i/flow/login?redirect_after_login=%2Fhome" className="footer__link">
                                 <i className="fa-brands fa-twitter footer__icon text-white"></i>
                             </Link>
-                            <Link href="" className="footer__link">
+                            <Link href="https://www.linkedin.com/" className="footer__link">
                                 <i className="fa-brands fa-linkedin footer__icon text-white"></i>
                             </Link>
-                            <Link href="" className="footer__link">
+                            <Link href="https://www.tiktok.com/" className="footer__link">
                                 <i className="fa-brands fa-tiktok footer__icon text-white"></i>
                             </Link>
                         </div>
@@ -169,7 +169,7 @@ export default function Footer() {
                         </li>
                         <li>
                             <p className="font-light text-base text-white">
-                                Trường đại học tin học và ngoại ngữ HUFLIT
+                                Trường Đại học Ngoại ngữ và Tin học Tp.HCM
                             </p>
                         </li>
                         <li>
@@ -182,12 +182,12 @@ export default function Footer() {
                         </li>
                         <li>
                             <p className="font-light text-base text-white">
-                                HCM city
+                                Địa chỉ liên hệ hợp tác: 828 Đ. Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh, Việt Nam
                             </p>
                         </li>
                     </ul>
                     <p className="text-white text-lg font-medium text-center mt-5">
-                        @ 2024 - Bản quyền của ANHEMTOIDICODE.
+                        @2024 - Bản quyền của ANHEMTOIDICODE
                     </p>
                 </div>
             </div>

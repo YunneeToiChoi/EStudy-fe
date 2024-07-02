@@ -109,10 +109,10 @@ export default function Header() {
                   ) : (
                     <>
                   <Link href="/login" className="cursor-pointer hover:scale-110 px-[20px] py-[8px] border-[1px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-500 shadow-md ease-in-out">
-                    <span className="text-base no-underline font-medium text-primary-bg-color tracking-wide">Sign in</span>
+                    <span className="text-base no-underline font-medium text-primary-bg-color tracking-wide">Đăng Nhập</span>
                   </Link>
                   <Link href={`${user ? '/' : '/register'}`} className="cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
-                    <span className="text-base no-underline font-medium text-white tracking-wide">Get Started</span>
+                    <span className="text-base no-underline font-medium text-white tracking-wide">Đăng ký</span>
                   </Link>
                     </>
                   )}

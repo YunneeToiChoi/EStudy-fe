@@ -1,15 +1,23 @@
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 const words = [
     {
-      text: "Create",
+      text: "Tạo",
       className:" text-3xl max-xl:text-2xl",
     },
     {
-      text: "your",
+      text: "Tài",
       className:" text-3xl max-xl:text-2xl",
     },
     {
-      text: "Account",
+      text: "Khoản",
+      className: "text-3xl max-xl:text-2xl",
+    },
+    {
+      text: "Của",
+      className: "text-3xl max-xl:text-2xl text-blue-500 dark:text-blue-500",
+    },
+    {
+      text: "Bạn",
       className: "text-3xl max-xl:text-2xl text-blue-500 dark:text-blue-500",
     },
   ]

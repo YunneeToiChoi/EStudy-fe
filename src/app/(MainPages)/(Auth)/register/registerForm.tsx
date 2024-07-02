@@ -126,7 +126,7 @@ export default function RegisterForm(){
               name='phone'
               render={({ field }) => (
                 <FormItem>
-                  <p className=" text-base font-medium mt-5 mb-1">Your phone numbers</p>
+                  <p className=" text-base font-medium mt-5 mb-1">Số điện thoại</p>
                   <FormControl>
                     <Input placeholder='Nhập số điện thoại'{...field} />
                   </FormControl>
@@ -139,7 +139,7 @@ export default function RegisterForm(){
               name='username'
               render={({ field }) => (
                 <FormItem>
-                  <p className="text-base font-medium mt-5 mb-1">Username</p>
+                  <p className="text-base font-medium mt-5 mb-1">Tên đăng nhập</p>
                   <FormControl>
                     <Input placeholder='Nhập tên đăng nhập' {...field} />
                   </FormControl>
@@ -152,7 +152,7 @@ export default function RegisterForm(){
               name='password'
               render={({ field }) => (
                 <FormItem>
-                  <p className="text-base font-medium mt-5 mb-1">Password</p>
+                  <p className="text-base font-medium mt-5 mb-1">Mật khẩu</p>
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
@@ -173,7 +173,7 @@ export default function RegisterForm(){
               name='confirmPassword'
               render={({ field }) => (
                 <FormItem>
-                  <p className="text-base font-medium mt-5 mb-1">Confirm Password</p>
+                  <p className="text-base font-medium mt-5 mb-1">Xác nhận mật khẩu</p>
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Xác nhận mật khẩu' type={confirmPasswordVisible ? 'text' : 'password'} {...field} />
