@@ -12,7 +12,7 @@ export default function Profile() {
   const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
 
   useEffect(() => {
-    if (!user) {
+    if (!user||!infoUser) {
       navigate.push("/login");
     }
   }, [user, navigate, infoUser]);

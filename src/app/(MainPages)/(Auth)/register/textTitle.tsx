@@ -1,24 +1,24 @@
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 const words = [
     {
-      text: "Tạo",
-      className:" text-3xl max-xl:text-2xl",
+      text: "Bắt",
+      className:" text-3xl max-xl:text-2xl text-blue-500 dark:text-blue-500",
     },
     {
-      text: "Tài",
-      className:" text-3xl max-xl:text-2xl",
+      text: "đầu",
+      className:" text-3xl max-xl:text-2xl text-blue-500 dark:text-blue-500",
     },
     {
-      text: "Khoản",
+      text: "hành",
       className: "text-3xl max-xl:text-2xl",
     },
     {
-      text: "Của",
-      className: "text-3xl max-xl:text-2xl text-blue-500 dark:text-blue-500",
+      text: "trình",
+      className: "text-3xl max-xl:text-2xl",
     },
     {
-      text: "Bạn",
-      className: "text-3xl max-xl:text-2xl text-blue-500 dark:text-blue-500",
+      text: "mới !",
+      className: "text-3xl max-xl:text-2xl",
     },
   ]
 export default function TextTitle(){

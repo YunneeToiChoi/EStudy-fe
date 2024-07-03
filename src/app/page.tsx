@@ -1,3 +1,4 @@
+"use client"
 
 import Image from 'next/image';
 import  Link  from 'next/link';
@@ -5,12 +6,14 @@ import  Link  from 'next/link';
 
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import GetPoplarCourses from "@/app/components/partialView/getPopularCourse"
+import { useSelector } from "react-redux";
 
 const words = `Trang web của chúng tôi cung cấp các khóa học trực tuyến chất lượng cao và dịch vụ thi thử, giúp bạn dễ dàng nâng cao kiến thức và kỹ năng chuyên môn mọi lúc, mọi nơi. Đăng ký ngay hôm nay để tiếp cận hàng loạt khóa học đa dạng, từ cơ bản đến nâng cao, được thiết kế bởi các chuyên gia hàng đầu trong ngành. Trải nghiệm dịch vụ thi thử chuyên nghiệp để đánh giá và cải thiện hiệu suất học tập của bạn một cách hiệu quả nhất !
 `;
 
 export default function Home() {
-
+  const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
+  const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
 
   return (
     <div className='max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto'>
@@ -19,8 +22,8 @@ export default function Home() {
           <span className=' font-semibold text-5xl text-black tracking-wide'>Welcome to the</span>
           <span className='font-semibold text-5xl text-primary-bg-color tracking-wide'>Learning English</span>
           <span ><TextGenerateEffect words={words} /></span>
-          <Link href="/register" className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
-            <span  className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">BẮT ĐẦU</span>
+          <Link href={user||infoUser ? "\profile":"/register"} className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
+            <span  className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">{user||infoUser ? "KHOÁ HỌC CỦA TÔI":"BẮT ĐẦU"} </span>
           </Link>
         </div>
         <Image
