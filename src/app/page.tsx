@@ -20,7 +20,7 @@ export default function Home() {
           <span className='font-semibold text-5xl text-primary-bg-color tracking-wide'>Learning English</span>
           <span ><TextGenerateEffect words={words} /></span>
           <Link href="/register" className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
-            <span  className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">Get Started</span>
+            <span  className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">BẮT ĐẦU</span>
           </Link>
         </div>
         <Image
