@@ -221,7 +221,7 @@ export default function LoginForm() {
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                         onClick={() => setPasswordVisible(!passwordVisible)}
                       >
-                        {passwordVisible ? '🙈' : '👁️'}
+                        {passwordVisible ? '🙈' : '🐵'}
                       </span>
                     </div>
                   </FormControl>

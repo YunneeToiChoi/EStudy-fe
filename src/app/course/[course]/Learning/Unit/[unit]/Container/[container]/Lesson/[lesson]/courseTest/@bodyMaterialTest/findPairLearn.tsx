@@ -124,18 +124,19 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
   return (
     <div className="grid wide grid-wide-course-learn pt-11">
       {currentQuestion && (
-        <div className="grid grid-cols-4 grid-rows-4 gap-2 mb-10">
+        <div className="grid max-w-[900px] m-auto grid-cols-4 grid-rows-4 gap-2 mb-10">
           {currentQuestion.map((item: any, index: number) => (
             <div
               key={index}
               onClick={(e) => { e.preventDefault(); handleCardClick(item, index); }}
-              className={`p-5 w-full transition duration-300 h-full flex items-center justify-center  cursor-pointer
+              className={`p-5 w-full transition duration-300 h-[200px] flex items-center justify-center text-wrap cursor-pointer
                 ${item.type === 'title' ? 'paircard__box-volcabulary' : 'text-nav-hover-text-color'}
                 ${correctPairs.has(item.vocabId) && !(feedback && feedback.indices.includes(index)) ? 'invisible' : ''}
                 ${selectedPair.some(pair => pair.index === index) ? 'bg-gray-300' : 'bg-white'}
                 ${feedback && feedback.indices.includes(index) ? (feedback.correct ? '!bg-green-500' : '!bg-red-500') : ''}`}
             >
-              {item.content}
+              <span className='w-full break-words'> {item.content}</span>
+             
             </div>
           ))}
         </div>

@@ -32,7 +32,7 @@ export default function Profile() {
               <Image
               width={100}
               height={100}
-              src={infoUser.userImage}
+              src={infoUser?.userImage}
               alt=""
               className="rounded-full w-36"
             />
@@ -44,7 +44,7 @@ export default function Profile() {
           </div>
         </div>
         <div className=" flex items-center justify-center mt-11">
-          <h1 className=" text-3xl font-bold text-primary-bg-color">Xin chào {infoUser.userName} !</h1>
+          <h1 className=" text-3xl font-bold text-primary-bg-color">Xin chào {infoUser?.userName} !</h1>
         </div>
         <ul className="tag-search__transition">
           <li className="tag-search__transition-item">

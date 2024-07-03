@@ -95,7 +95,7 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
       {currentQuestion && (
         <div className="content__box bg-white p-10 my-4 rounded-xl shadow-xl">
           <h3 className="multichoice__header">
-            {currentQuestion.questionText}
+            {currentQuestion.questionParagraph }
           </h3>
           <p className="multichoice__hint">
             hint: {currentQuestion.questionTranslate}

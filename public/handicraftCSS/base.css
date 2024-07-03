@@ -3063,3 +3063,28 @@
 }
 
 }
+.trans3d {
+    transform-style: preserve-3d;
+    perspective: 1000px; /* Add perspective for 3D effect */
+}
+.toTateY-180 {
+    transform: rotateY(180deg);
+}
+.toTateX-0 {
+    transform: rotateX(0deg);
+}
+.backface {
+    backface-visibility: hidden;
+}
+.flashcard {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+.flashcard-front {
+    z-index: 2; /* Ensure front face is above the back face initially */
+}
+.flashcard-back {
+    transform: rotateY(180deg);
+}

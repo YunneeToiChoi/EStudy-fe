@@ -29,17 +29,17 @@ const UpdateAccount = () => {
   const [newPasswordVisible, setNewPasswordVisible] = useState(false);
   const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState(infoUser.userImage);
+  const [selectedAvatar, setSelectedAvatar] = useState(infoUser?.userImage);
   const [selectedBanner, setSelectedBanner] = useState('https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg');
 
 
   const formInfoUser = useForm<infoUserType>({
     resolver: zodResolver(InfoUserBody),
     defaultValues: {
-      username: infoUser.userName,
-      email: infoUser.userEmail,
-      phoneNumber: infoUser.phoneNumber,
-      description: infoUser.userDescription
+      username: infoUser?.userName,
+      email: infoUser?.userEmail,
+      phoneNumber: infoUser?.phoneNumber,
+      description: infoUser?.userDescription
     }
   });
 
@@ -220,7 +220,7 @@ const UpdateAccount = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder={infoUser.userName}  {...field} />
+                    <Input placeholder={infoUser?.userName}  {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -233,7 +233,7 @@ const UpdateAccount = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder={infoUser.userEmail} {...field} />
+                    <Input placeholder={infoUser?.userEmail} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -246,7 +246,7 @@ const UpdateAccount = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                  <Textarea placeholder={infoUser.userDescription ? infoUser.userDescription:'Chia sẻ những điều thú vị về bạn' }  {...field} />
+                  <Textarea placeholder={infoUser?.userDescription ? infoUser?.userDescription:'Chia sẻ những điều thú vị về bạn' }  {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -259,7 +259,7 @@ const UpdateAccount = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder={infoUser.phoneNumber} {...field} />
+                    <Input placeholder={infoUser?.phoneNumber} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

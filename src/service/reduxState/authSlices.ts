@@ -49,15 +49,21 @@ const authSlice = createSlice({
         },
         logOutSuccess: (state) => {
             state.login.isFetching = false;
+            state.getAllInfoUser.isFetching = false;
             state.login.data = null;
+            state.getAllInfoUser.data=null;
             state.login.error = false;
+            state.getAllInfoUser.error = false;
         },
         logOutFailed: (state) =>{
             state.login.isFetching = false;
             state.login.error = true;
+            state.getAllInfoUser.isFetching = false;
+            state.getAllInfoUser.error = true;
         },
         logOutStart: (state) =>{
             state.login.isFetching = true;
+            state.getAllInfoUser.isFetching = true;
         },
         getAllInfoUserStart: (state) =>{
             state.getAllInfoUser.isFetching = true;
