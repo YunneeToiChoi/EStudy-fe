@@ -5,11 +5,11 @@ import { Bounce, toast } from 'react-toastify';
 import {getAllListenSpeech} from "@/service/api/apiQuestionRequest";
 import "react-toastify/dist/ReactToastify.css";
 
-interface listeningComprehensionProps {
+interface ListeningComprehensionProps {
   params: any;
 }
 
-export const listeningComprehension: React.FC<listeningComprehensionProps> = ({ params }) => {
+export const ListeningComprehension: React.FC<ListeningComprehensionProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
@@ -156,12 +156,12 @@ export const listeningComprehension: React.FC<listeningComprehensionProps> = ({ 
                </div>
                <div className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isMeanVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                  <span className=' w-full h-full block px-5 py-3'>
-                 I'm glad your store carries the new EPG8 smartphone. I've
-                 been waiting a long time to get it. <br />Yes, there's
+                 Im glad your store carries the new EPG8 smartphone. Ive
+                 been waiting a long time to get it. <br />Yes, theres
                  been a lot of interest in this phone. <br />What colors
                  does it come in? <br />Three: white, black, and gold.
                  However, since the phone has been in such high demand, our
-                 store doesn't have all three colors in stock now.
+                 store doesnt have all three colors in stock now.
                  <br />Oh. What colors do you have? <br />
                  </span>
                </div>

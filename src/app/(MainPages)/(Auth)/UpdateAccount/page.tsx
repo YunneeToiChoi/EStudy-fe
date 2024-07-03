@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useDispatch, useSelector} from "react-redux";
 import { InfoUser,UpdateImage,editPassword,getAllInfoUser} from "@/service/api/apiAuthRequest";
 import { useRouter } from 'next/navigation';
@@ -273,11 +274,11 @@ const UpdateAccount = () => {
       </div>
       <div className={`${activeTab === 1 ? 'flex flex-col' : 'hidden'}`}>
   <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Ảnh đại diện</p>
-  <img
+  <Image
     src={selectedAvatar}
     alt=""
-    width="300"
-    height="300"
+    width={300}
+    height={300}
     id="previewImg"
     className='rounded-full shadow-2xl m-auto mb-8'
   />

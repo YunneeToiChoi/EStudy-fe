@@ -56,19 +56,19 @@ export const ReadingQuiz: React.FC<ReadingQuizProps> = ({ params }) => {
           <p>
           WXO Radio Turns 50!
           <br />
-          On February 3 WXO Radio will celebrate its fiftieth anniversary. That's half a century of stimulating _____(135). Over the years, we _____(136) our listeners breaking news, thought-provoking stories, and popular music from around the world. Now we invite you to celebrate with us during an open house from 5:00 P.M. to 6.30 P.M. on February 3 at our Eighth Street studio. Take a tour and see some of the behind-the-scenes magic. Watch a demonstration of our digital audio equipment. _____(137). The open house is free, but registration is required. We hope you can join us for this _____(138) occasion.
+          On February 3 WXO Radio will celebrate its fiftieth anniversary. Thats half a century of stimulating _____(135). Over the years, we _____(136) our listeners breaking news, thought-provoking stories, and popular music from around the world. Now we invite you to celebrate with us during an open house from 5:00 P.M. to 6.30 P.M. on February 3 at our Eighth Street studio. Take a tour and see some of the behind-the-scenes magic. Watch a demonstration of our digital audio equipment. _____(137). The open house is free, but registration is required. We hope you can join us for this _____(138) occasion.
           </p>
           <div className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
                 Dịch nghĩa <i className="fa-solid fa-chevron-down"></i>
               </div>
               <div className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranscriptVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className=' w-full h-full block px-5 py-3'>
-                I'm glad your store carries the new EPG8 smartphone. I've
-                been waiting a long time to get it. <br />Yes, there's
+                Im glad your store carries the new EPG8 smartphone. Ive
+                been waiting a long time to get it. <br />Yes, theres
                 been a lot of interest in this phone. <br />What colors
                 does it come in? <br />Three: white, black, and gold.
                 However, since the phone has been in such high demand, our
-                store doesn't have all three colors in stock now.
+                store doesnt have all three colors in stock now.
                 <br />Oh. What colors do you have? <br />
                 </span>
               </div>

@@ -14,7 +14,7 @@ import {PictureQuiz} from './picListenQuiz';
 import {FreAskedQuestions} from './freAskedQuestions';
 import {CrazyWordQuiz} from './crazyWordQuiz';
 import {ReadingQuiz} from './readingQuiz';
-import {listeningComprehension} from './listeningComprehension';
+import {ListeningComprehension} from './listeningComprehension';
 import ListLessonComponent from "../getLesson";
 import { BreadcrumbWithCustomSeparator } from '@/components/handicraft/params/paramsCourseLearn';
 
@@ -85,7 +85,7 @@ export default function BodyMaterial({ params }: { params: { course: string, uni
       Component = ReadingQuiz;
       break;
     case 'LISTEN_SPEECH':
-      Component = listeningComprehension;
+      Component = ListeningComprehension;
       break;
     default:
       Component = DefaultComponent;
