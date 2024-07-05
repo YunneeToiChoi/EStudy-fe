@@ -16,7 +16,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { LoginBody, LoginBodyType } from '@/schemaValidate/auth.schema';
 import TextTitle from './textTitle';
-import { Bounce,Flip, toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import CountdownTimer from '@/app/components/partialView/CountdownTimer';
 
@@ -52,7 +52,7 @@ export default function LoginForm() {
     const storedEmail = sessionStorage.getItem('registeredEmail');
     const countdownEndTime = Number(sessionStorage.getItem('countdownEndTime'));
     const currentTime = new Date().getTime();
-    const idToast =  toast.loading('Login in ...', {
+    const idToast =  toast.loading('Đang đăng nhập ...', {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -65,12 +65,8 @@ export default function LoginForm() {
     });
     const toastRes = await loginUser(newUser, dispatch);
     if (toastRes?.status != 200 && toastRes?.status) {
-      clearSessionData();
-      sessionStorage.setItem('registeredEmail', email);
-      setShowCountdown(false);
-      setShowResendCode(false);
       toast.update(idToast, { 
-        render:toastRes?.data + '!',
+        render: 'Đăng nhập thất bại !',
          type: "error", 
          isLoading: false ,
          position: "bottom-right",
@@ -85,8 +81,12 @@ export default function LoginForm() {
       if (toastRes?.data == "User is not verification") {
         if(!(storedEmail === email && countdownEndTime > currentTime))
           {
+            clearSessionData();
+            sessionStorage.setItem('registeredEmail', email);
+            setShowCountdown(false);
+            setShowResendCode(false);
             handleTimeout();
-            toast.info('Click resend to resend the authentication link', {
+            toast.info('Bấm gửi lại để nhận lại đường dẫn xác thực!', {
             position: "bottom-right",
             autoClose: 10000,
             hideProgressBar: false,
@@ -99,7 +99,7 @@ export default function LoginForm() {
           });
         }
         else{
-          toast.info('The latest link has been sent, please check the latest message in your email !', {
+          toast.info('Đường dẫn đã được gửi, hãy kiểm tra email của bạn !', {
             position: "bottom-right",
             autoClose: 10000,
             hideProgressBar: false,
@@ -118,7 +118,7 @@ export default function LoginForm() {
       
     } else {
       toast.update(idToast, {
-        render:'Login SuccessFull!',
+        render:'Đăng nhập thành công !',
         type: "success",
         isLoading: false,
         position: "bottom-right",
@@ -144,7 +144,7 @@ export default function LoginForm() {
     const emailUser = {
       userEmail : sessionStorage.getItem('registeredEmail')
   }
-  const idToast =  toast.loading('Sending your email...', {
+  const idToast =  toast.loading('Đang gửi ...', {
     position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -157,7 +157,7 @@ export default function LoginForm() {
   });
     const res = await reSendEmail(emailUser);
     toast.update(idToast, {
-      render:res+' ! The path is only available for 10 minutes',
+      render:'Gửi link thành công ! Đường dẫn sẽ có hiệu lực trong vòng 10 phút',
       type: "success",
       isLoading: false,
       position: "bottom-right",
@@ -182,7 +182,7 @@ export default function LoginForm() {
   }
 
   const handleForgotPassword =async ()=>{
-    const idToast =  toast.loading('Sending your email...', {
+    const idToast =  toast.loading('Đang gửi ...', {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -199,7 +199,7 @@ export default function LoginForm() {
     const resForgot = await forgotPassword(emailUser);
     if(resForgot?.status ===200){
       toast.update(idToast, {
-        render:resForgot?.message + '!',
+        render:'Gửi thành công !',
         type: "success",
         isLoading: false,
         position: "bottom-right",
@@ -215,7 +215,7 @@ export default function LoginForm() {
     }
     else{
       toast.update(idToast, {
-        render:resForgot?.message + '!',
+        render:resForgot?.message + 'Gửi thất bại !',
         type: "error",
         isLoading: false,
         position: "bottom-right",
