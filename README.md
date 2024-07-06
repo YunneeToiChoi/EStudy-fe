@@ -208,6 +208,42 @@ https://elearning.engineer/api/Question_API/Get_AllQuestionReading [Tag = READIN
 https://elearning.engineer/api/Question_API/Get_AllQuestionReadingWithOutParagraph [Tag = READING_NOPARA ] (fetch)
 [lessonId]
 
+## EXAM
+-------------------------------Get_AllExams-----------------------------
+[HttpGet]
+https://elearning.engineer/api/Exam_API/Get_AllExams
+
+-------------------------------Get_ExamDetailById-----------------------------
+[HttpPost]
+https://elearning.engineer/api/Exam_API/Get_ExamDetailById
+[examId,userId] string het
+Nếu user exam có thi rồi, thì sẽ show ra box score 
+
+-------------------------------Get_ExamDetailById-----------------------------
+[HttpPost]
+https://elearning.engineer/api/Exam_API/Get_ExamDetailById
+[examId,userId] string het
+Nếu user exam có thi rồi, thì sẽ show ra box score và datetime
+Nếu chưa thi là null -> kh hiện box score 
+
+-------------------------------Get_AudioExam ----------------------------- ( AUDIO Cho cả bài thi )
+[HttpPost]
+https://elearning.engineer/api/Exam_API/Get_AudioExam
+[examId] 
+
+-------------------------------Get_ExamPart1   cho tới PART 7  ----------------------------- ( click part sẽ gửi )
+[HttpPost]
+https://elearning.engineer/api/Exam_API/Get_ExamPart1    -> 7
+[examId,tagName] ( tag name fix cứng là PART 1 -> PART 7 )
+có show ra STT câu hỏi luôn
+
+-------------------------------SubmitExam  ----------------------------- ( THoát trang giữa chừng , hết time, submit sẽ gửi lên đây )
+[HttpPost]
+https://elearning.engineer/api/Exam_API/SubmitExam
+[examId,userId,score]  score int
+
+
+
 ## Getting Started
 
 First, run the development server:
