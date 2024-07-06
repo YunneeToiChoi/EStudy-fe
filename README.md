@@ -213,11 +213,11 @@ https://elearning.engineer/api/Question_API/Get_AllQuestionReadingWithOutParagra
 [HttpGet]
 https://elearning.engineer/api/Exam_API/Get_AllExams
 
--------------------------------Get_ExamDetailById-----------------------------
+
+-------------------------------OutstandingExamsUserNotTest-----------------------------
 [HttpPost]
-https://elearning.engineer/api/Exam_API/Get_ExamDetailById
-[examId,userId] string het
-Nếu user exam có thi rồi, thì sẽ show ra box score 
+https://elearning.engineer/api/Exam_API/OutstandingExamsUserNotTest ( tất cả đề thi mà ng dùng chưa thi )
+[userId]
 
 -------------------------------Get_ExamDetailById-----------------------------
 [HttpPost]
