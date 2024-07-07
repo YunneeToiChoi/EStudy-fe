@@ -1,24 +1,27 @@
+import styles from '/public/handicraftCSS/loading.module.css';
 
-import "/public/handicraftCSS/loading.css";
-export default function LoadingEvent(){
-    return(
-        <div className=" bg-white flex w-full h-full fixed top-0 left-0 z-50 bg-fixed right-0 bottom-0">
-        <div className="m-auto">
-        <div className="loader">
-  <p className="text">
-  <span className="letter letter1">L</span>
-  <span className="letter letter2">o</span>
-  <span className="letter letter3">a</span>
-  <span className="letter letter4">d</span>
-  <span className="letter letter5">i</span>
-  <span className="letter letter6">n</span>
-  <span className="letter letter7">g</span>
-  <span className="letter letter8">.</span>
-  <span className="letter letter9">.</span>
-  <span className="letter letter10">.</span>
-  </p>
-</div>
+export default function LoadingEvent() {
+  return (
+    <div className="bg-white flex w-full h-full fixed top-0 left-0 z-50 bg-fixed right-0 bottom-0">
+      <div className="m-auto">
+        <div className={styles.loader}>
+          <svg viewBox="0 0 80 80">
+            <circle r="32" cy="40" cx="40" id="test"></circle>
+          </svg>
         </div>
+
+        <div className={`${styles.loader} ${styles.triangle}`}>
+          <svg viewBox="0 0 86 80">
+            <polygon points="43 8 79 72 7 72"></polygon>
+          </svg>
         </div>
-    )
+
+        <div className={styles.loader}>
+          <svg viewBox="0 0 80 80">
+            <rect height="64" width="64" y="8" x="8"></rect>
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
 }
