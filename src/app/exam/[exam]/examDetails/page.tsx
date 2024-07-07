@@ -11,7 +11,7 @@ import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 
-export default function examDetail({ params }: { params: {exam: string } })
+export default function ExamDetail({ params }: { params: {exam: string } })
 {
   const user = useSelector((state:any) => state.persistedReducer.auth.login.data);
   const { exam: idExam } = params;
@@ -68,7 +68,8 @@ export default function examDetail({ params }: { params: {exam: string } })
               Thời gian làm bài: 120 phút | 7 phần thi | 200 câu hỏi 
             </p>
             <p className="testOnline__description">
-              556491 người đã luyện tập đề thi này
+              {state.data.totalUsers} người đã luyện tập đề thi này
+              và có {state.data.totalAmountTest} lượt làm đề thi
             </p>
             <p className="testOnline__aleart">
               Chú ý: để được quy đổi sang scaled score (ví dụ trên thang
@@ -87,7 +88,7 @@ export default function examDetail({ params }: { params: {exam: string } })
                </thead>
                <tbody>{
                userExam?.map((detail:any)=>(
-                <tr>
+                <tr key={detail.userExamId} >
                 <td className="py-2 px-4 border-b border-gray-200 flex items-center">
                   {detail.dateTime}
                   <span className="ml-2 text-xs bg-green-500 text-white rounded-full px-2 py-1">Full test</span>
