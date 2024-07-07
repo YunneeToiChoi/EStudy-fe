@@ -55,7 +55,7 @@ export default function ExamDetail({ params }: { params: {exam: string } })
   
 
   return(
-    <div className="flashcard__content pt-8">
+    <div className="flashcard__content pt-8 pb-48">
     <div className="">
       <div className=" flex w-full">
         <div className=" m-auto max-w-[800px]">
@@ -95,7 +95,9 @@ export default function ExamDetail({ params }: { params: {exam: string } })
                 </td>
                 <td className="py-2 px-4 border-b border-gray-200">(Điểm: {detail.score})</td>
                 <td className="py-2 px-4 border-b border-gray-200">0:02:17</td>
+                <Link href={`/exam/${detail.userExamId}/examRevision`}>
                 <td className="py-2 px-4 border-b border-gray-200 text-blue-500 hover:underline cursor-pointer">Xem chi tiết</td>
+                </Link>
               </tr>
               ))}
                 </tbody>

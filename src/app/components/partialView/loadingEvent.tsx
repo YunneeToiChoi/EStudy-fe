@@ -2,7 +2,7 @@ import styles from '/public/handicraftCSS/loading.module.css';
 
 export default function LoadingEvent() {
   return (
-    <div className="bg-white flex w-full h-full fixed top-0 left-0 z-50 bg-fixed right-0 bottom-0">
+    <div className="bg-white flex w-full h-full z-20 fixed top-0 left-0 bg-fixed right-0 bottom-0">
       <div className="m-auto">
         <div className={styles.loader}>
           <svg viewBox="0 0 80 80">
