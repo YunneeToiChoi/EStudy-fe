@@ -220,9 +220,16 @@ https://elearning.engineer/api/Question_API/Get_AllQuestionReadingWithOutParagra
 [HttpGet]
 https://elearning.engineer/api/Exam_API/Get_AllExams(complete)
 
+
+-------------------------------OutstandingExamsUserNotTest-----------------------------
+[HttpPost]
+https://elearning.engineer/api/Exam_API/Get_ExamDetailById
+[examId,userId] string het
+Nếu user exam có thi rồi, thì sẽ show ra box score 
+
 -------------------------------Get_ExamDetailById-----------------------------
 [HttpPost]
-https://elearning.engineer/api/Exam_API/Get_ExamDetailById(complete)
+https://elearning.engineer/api/Exam_API/Get_ExamDetailById
 [examId,userId] string het
 Nếu user exam có thi rồi, thì sẽ show ra box score và datetime
 Nếu chưa thi là null -> kh hiện box score 
@@ -238,19 +245,10 @@ https://elearning.engineer/api/Exam_API/Get_ExamPart1    -> 7(complete)
 [examId,tagName] ( tag name fix cứng là PART 1 -> PART 7 )
 có show ra STT câu hỏi luôn
 
--------------------------------SubmitExam  ----------------------------- ( THoát trang giữa chừng , hết time, submit sẽ gửi lên đây )
+-------------------------------SubmitExam  ----------------------------- ( THoát trang giữa chừng , hết time, submit sẽ gửi lên đây ), 
 [HttpPost]
-https://elearning.engineer/api/Exam_API/SubmitExam(complete)
+https://elearning.engineer/api/Exam_API/SubmitExam
 [examId,userId,score]  score int
-
-
-
-
-
-
-
-
-
 
 
 
