@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { fetchAllParts, getAudioExam, getCompleteExam } from '@/service/api/apiExamRequest'; 
 import ExamDialog from "@/app/components/examSubmit/examSubmit";
 import ExamExitDialog from "@/app/components/examSubmit/examExit";

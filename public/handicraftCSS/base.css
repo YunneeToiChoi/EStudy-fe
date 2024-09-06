@@ -309,13 +309,6 @@
     margin: 10px 0px;
 }
 
-.pay__link{
-    text-decoration: none;
-    color: var(--tag-text-color);
-    display: block;
-    margin: 20px 0px;
-}
-
 .pay__link:hover{
     color: black;
     transition: 0.2s;
@@ -637,10 +630,6 @@
     margin-top: 30px;
 }
 
-.multichoice__option{
-    margin-bottom: 25px;
-}
-
 .multichoice__link{
     display: block;
     padding: 20px 10px;
@@ -670,6 +659,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
 
 .multichoice__auto-container{
@@ -685,15 +675,16 @@
 .multichoice__list-box{
     display: flex;
     margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 .multichoice__list-number{
     padding: 6px 10px;
     border: 1px solid;
-    margin-right: 10px;
     text-decoration: none;
     border-radius: 5px;
     color: black;
+    margin: 10px 0px;
 }
 
 .multichoice__list-number:hover{
@@ -1106,21 +1097,12 @@
 .answer__checkbox:checked ~ .answer{
     display: block;
 }
-.content__header{
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 50px 0px 30px;
-}
 
 .content__text{
     font-size: 1rem;
     margin-bottom: 50px;
 }
 
-.course__header{
-    text-align: left;
-    font-weight: 600;
-}
 
 .course{
     margin: 60px 0px;
@@ -1129,6 +1111,7 @@
     margin-top: 100px;
     padding: 0px 16px;
     font-size: 2rem;
+    margin: 50px 0px 30px;
     font-weight: 600;
 }
 
@@ -1152,6 +1135,7 @@
     color: var(--nav-hover-text-color) !important;
     background-color: var(--tag-search-bg-color);
     font-weight: 500;
+    opacity: 1;
 }
 
 .tag-search__link{
@@ -1160,6 +1144,7 @@
     font-size: 1rem;
     text-decoration: none;
     color: black;
+    opacity: 0.6;
 }
 
 .tag-search__link:hover{
@@ -1233,9 +1218,9 @@
 .tag-search__transition-link{
     text-decoration: none;
     color: var(--tag-search-transition-color);
-    font-size: 1.2rem;
     padding: 16px;
     border-bottom: 2px solid transparent;
+    font-size: 1rem !important;
 }
 
 .tag-search__transition-link--chosen{
@@ -1528,22 +1513,10 @@
     font-size: 1.2rem;
 }
 
-.multichoice__list-box{
-    flex-wrap: wrap;
 
-}
 
-.multichoice__list-number{
-    margin: 10px 0px;
-}
 
-.tag-search__link{
-    opacity: 0.6;
-}
 
-.tag-search__link--chosen{
-    opacity: 1;
-}
 /* Prefix Class:
         - c -Mobile
         - m -Tablet
@@ -2190,7 +2163,6 @@
     text-decoration: none;
     color: var(--nav-text-color);
     font-weight: 500;
-    color: white;
 }
 
 .nav__link:hover{
@@ -2522,10 +2494,8 @@
 
 /* Course Register CSS */
 .course-register{
-    margin-top: 120px;
-}
-.course-register{
     position: relative;
+    margin-top: 120px;
 }
 
 .course-register__container{
@@ -2764,10 +2734,6 @@
     margin: 10px 0px;
 }
 
-.tag-search__transition-link{
-    font-size: 1rem !important;
-}
-
 .active__course-input--about{
     height: 100px;
 }
@@ -2800,11 +2766,8 @@
 .pay__link{
     color: var(--nav-hover-text-color);
     text-decoration: none;
-}
-
-.pay__link:hover{
-    color: black;
-    transition: 0.2s;
+    display: block;
+    margin: 20px 0px;
 }
 
 .pay__for{
