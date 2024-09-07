@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { loginUser,reSendEmail,forgotPassword} from "@/service/api/apiAuthRequest";
+import { loginUser,forgotPassword} from "@/service/api/apiAuthRequest";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -261,7 +261,7 @@ export default function LoginForm() {
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setPasswordVisible(!passwordVisible)} role='button'
+                        onClick={() => setPasswordVisible(!passwordVisible)}
                       >
                         {passwordVisible ? '🐵':'🙈' }
                       </span>
