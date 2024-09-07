@@ -271,7 +271,10 @@ export default function LoginForm() {
                 </FormItem>)}
             />
             {
-              showTextForgot&& (<a onClick={handleForgotPassword}
+              showTextForgot && (<a onClick={handleForgotPassword} 
+                onKeyUp={handleForgotPassword}
+                role="button" 
+                tabIndex={0}
               className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
             >
               Forgot Password ?
@@ -287,6 +290,9 @@ export default function LoginForm() {
           <a
             className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base text-center no-underline pb-4"
             onClick={resetCountdown}
+            onKeyUp={resetCountdown}
+            role="button" 
+            tabIndex={0}
           >
             Resend Link
           </a>
