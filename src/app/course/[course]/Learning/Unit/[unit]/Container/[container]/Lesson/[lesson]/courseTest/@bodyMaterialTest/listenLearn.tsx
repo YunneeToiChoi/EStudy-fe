@@ -124,11 +124,12 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
             {currentChunk && (
               <audio ref={audioRef}  className="spell__audio my-10" controls>
                 <source src={currentChunk.url} type="audio/mpeg" />
+                <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
               </audio>
             )}
             <div className="grid h-full w-full grid-cols-3 grid-rows-3">
               {currentChunk?.listVocab?.map((vocab: any, index: number) => (
-                <div 
+                <button
                   key={index} 
                   className={`p-5 w-full transition duration-300 h-full flex flex-col items-center justify-center cursor-pointer hover:bg-slate-200 border-[1px] border-slate-200 min-h-[160px]
                     ${feedbackIndices.includes(index) ? (feedback === 'correct' ? '' : '!bg-red-500') : ''} ${highlightedIndex === index ? '!bg-green-500' : ''}`}
@@ -137,7 +138,7 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
                   <p className="spell__text">{vocab.vocabTitle}</p>
                   <br />
                   <p className="spell__text">({vocab.vocabMean})</p>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -166,9 +167,9 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
             <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
             <div className="multichoice__list-box cursor-pointer">
               {ListChunk && ListChunk.map((_: any, index: number) => (
-                <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
+                <button key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
                   {index + 1}
-                </div>
+                </button>
               ))}
             </div>
           </div>
