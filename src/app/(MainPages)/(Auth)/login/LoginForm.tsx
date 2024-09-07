@@ -141,9 +141,6 @@ export default function LoginForm() {
   };
 
   const resetCountdown = async () => {
-    const emailUser = {
-      userEmail : sessionStorage.getItem('registeredEmail')
-  }
   const idToast =  toast.loading('Đang gửi ...', {
     position: "bottom-right",
     autoClose: 5000,
@@ -155,7 +152,6 @@ export default function LoginForm() {
     theme: "dark",
     transition: Bounce,
   });
-    const res = await reSendEmail(emailUser);
     toast.update(idToast, {
       render:'Gửi link thành công ! Đường dẫn sẽ có hiệu lực trong vòng 10 phút',
       type: "success",
@@ -265,7 +261,7 @@ export default function LoginForm() {
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
+                        onClick={() => setPasswordVisible(!passwordVisible)} role='button'
                       >
                         {passwordVisible ? '🐵':'🙈' }
                       </span>

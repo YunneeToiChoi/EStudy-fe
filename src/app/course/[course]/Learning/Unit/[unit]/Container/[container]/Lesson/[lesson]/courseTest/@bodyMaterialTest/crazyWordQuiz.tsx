@@ -18,9 +18,9 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.Reading?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.question?.Reading?.data?.lessonTag?.lessonTag);
   
-  const [isMeanVisible, setMeanVisible] = useState(false);
-  const [isTranslationVisible, setTranslationVisible] = useState(false);
-  const [isAnswerChecked, setAnswerChecked] = useState(false); 
+  const [meanVisible, setMeanVisible] = useState(false);
+  const [translationVisible, setTranslationVisible] = useState(false);
+  const [answerChecked, setAnswerChecked] = useState(false); 
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -76,11 +76,11 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
   const currentQuestion = ListQuestion ? ListQuestion[currentPage] : null;
 
   const handleMeanToggle = () => {
-    setMeanVisible(!isMeanVisible);
+    setMeanVisible(!meanVisible);
   };
 
   const handleTranslationToggle = () => {
-    setTranslationVisible(!isTranslationVisible);
+    setTranslationVisible(!translationVisible);
   };
 
   const handleAnswerCheck = () => {
@@ -123,14 +123,14 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
               onClick={handleAnswerCheck}
             >
               <i className="fa-regular fa-circle-check"></i>
-              Kiểm tra đáp án
+              <span>Kiểm tra đáp án</span>
             </button>
             <button
               className="py-2 px-4 bg-white text-base text-nav-hover-text-color rounded-sm shadow-md hover:shadow-xl transition duration-500 hover:-translate-y-1 ease-in-out cursor-pointer flex gap-2 w-fit items-center"
               onClick={resetState}
             >
               <i className="fa-regular fa-circle-xmark"></i>
-              Xoá hết
+              <span>Xoá hết</span>
             </button>
           </div>
           <div className='flex mt-7 min-h-[200px] w-full gap-6'>
@@ -138,10 +138,10 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
                 <span className='w-full block px-5 py-3'>
                 {currentQuestion.questionParagraph}
                 </span>
-              <div className="transcript cursor-pointer" onClick={handleMeanToggle}>
+              <div className="transcript cursor-pointer" onClick={handleMeanToggle} role="button">
                 Dịch nghĩa <i className="fa-solid fa-chevron-down"></i>
               </div>
-              <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isMeanVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
+              <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${meanVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className='w-full h-full block px-5 py-3'>
                 {currentQuestion.paragraph_Mean}
                 </span>
@@ -158,7 +158,7 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
                 onChange={handleAnswerChange}
               />
               <label
-                className={`pl-2 cursor-pointer ${isAnswerChecked && (currentQuestion.correctAnswer === 'A' ? 'text-green-500' : selectedAnswer === 'A' ? 'text-red-500' : '')}`}
+                className={`pl-2 cursor-pointer ${answerChecked && (currentQuestion.correctAnswer === 'A' ? 'text-green-500' : selectedAnswer === 'A' ? 'text-red-500' : '')}`}
                 htmlFor="A"
               >
                 A. {currentQuestion.optionA}
@@ -172,7 +172,7 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
                 onChange={handleAnswerChange}
               />
               <label
-                className={`pl-2 cursor-pointer ${isAnswerChecked && (currentQuestion.correctAnswer === 'B' ? 'text-green-500' : selectedAnswer === 'B' ? 'text-red-500' : '')}`}
+                className={`pl-2 cursor-pointer ${answerChecked && (currentQuestion.correctAnswer === 'B' ? 'text-green-500' : selectedAnswer === 'B' ? 'text-red-500' : '')}`}
                 htmlFor="B"
               >
                 B. {currentQuestion.optionB}
@@ -186,7 +186,7 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
                 onChange={handleAnswerChange}
               />
               <label
-                className={`pl-2 cursor-pointer ${isAnswerChecked && (currentQuestion.correctAnswer === 'C' ? 'text-green-500' : selectedAnswer === 'C' ? 'text-red-500' : '')}`}
+                className={`pl-2 cursor-pointer ${answerChecked && (currentQuestion.correctAnswer === 'C' ? 'text-green-500' : selectedAnswer === 'C' ? 'text-red-500' : '')}`}
                 htmlFor="C"
               >
                 C. {currentQuestion.optionC}
@@ -200,17 +200,17 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
                 onChange={handleAnswerChange}
               />
               <label
-                className={`pl-2 cursor-pointer ${isAnswerChecked && (currentQuestion.correctAnswer === 'D' ? 'text-green-500' : selectedAnswer === 'D' ? 'text-red-500' : '')}`}
+                className={`pl-2 cursor-pointer ${answerChecked && (currentQuestion.correctAnswer === 'D' ? 'text-green-500' : selectedAnswer === 'D' ? 'text-red-500' : '')}`}
                 htmlFor="D"
               >
                 D. {currentQuestion.optionD}
               </label>
-              {isAnswerChecked && (
+              {answerChecked && (
                 <div>
                   <div className="transcript cursor-pointer" onClick={handleTranslationToggle}>
                     Giải thích đáp án <i className="fa-solid fa-chevron-down"></i>
                   </div>
-                  <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranslationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
+                  <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${translationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                     <div className='w-full h-full block px-5 py-3'>
                     <span>Đáp án đúng : <strong>{currentQuestion.correctAnswer}</strong></span>
                     {currentQuestion.a_Mean&&currentQuestion.b_Mean&&currentQuestion.c_Mean&&currentQuestion.d_Mean &&(

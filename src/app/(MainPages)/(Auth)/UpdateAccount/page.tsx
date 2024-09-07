@@ -240,7 +240,7 @@ const UpdateAccount = () => {
         <li className="flex">
           <div
             className={` cursor-pointer no-underline p-[16px] border-b-[2px] text-base ${activeTab === 0 ? 'text-nav-hover-text-color border-b-nav-hover-text-color' : 'hover:text-nav-hover-text-color hover:border-b-nav-hover-text-color'}`}
-            onClick={() => handleTabClick(0)}
+            onClick={() => handleTabClick(0)} role='button'
           >
             Thông tin cơ bản
           </div>
@@ -248,7 +248,7 @@ const UpdateAccount = () => {
         <li className="flex">
           <div
             className={` cursor-pointer no-underline p-[16px] border-b-[2px] text-base ${activeTab === 1 ? 'text-nav-hover-text-color border-b-nav-hover-text-color' : 'hover:text-nav-hover-text-color hover:border-b-nav-hover-text-color'}`}
-            onClick={() => handleTabClick(1)}
+            onClick={() => handleTabClick(1)} role='button'
           >
             Đổi ảnh đại diện
           </div>
@@ -256,7 +256,7 @@ const UpdateAccount = () => {
         <li className="flex">
           <div
             className={` cursor-pointer no-underline p-[16px] border-b-[2px] text-base ${activeTab === 2 ? 'text-nav-hover-text-color border-b-nav-hover-text-color' : 'hover:text-nav-hover-text-color hover:border-b-nav-hover-text-color'}`}
-            onClick={() => handleTabClick(2)}
+            onClick={() => handleTabClick(2)} role='button'
           >
             Đổi mật khẩu
           </div>
@@ -343,6 +343,7 @@ const UpdateAccount = () => {
   </div>
   <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
     Chọn ảnh đại diện
+    {' '}
     <input
       type="file"
       className="hidden"
@@ -360,6 +361,7 @@ const UpdateAccount = () => {
   />
   <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
     Chọn banner
+    {' '}
     <input
       type="file"
       className="hidden"
@@ -388,7 +390,7 @@ const UpdateAccount = () => {
                       <Input placeholder='Nhập mật khẩu cũ' type={oldPasswordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setOldPasswordVisible(!oldPasswordVisible)}
+                        onClick={() => setOldPasswordVisible(!oldPasswordVisible)} role='button'
                       >
                         {oldPasswordVisible ? '🙈' : '👁️'}
                       </span>
@@ -408,7 +410,7 @@ const UpdateAccount = () => {
                       <Input placeholder='Nhập mật khẩu mới' type={newPasswordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setNewPasswordVisible(!newPasswordVisible)}
+                        onClick={() => setNewPasswordVisible(!newPasswordVisible)} role='button'
                       >
                         {newPasswordVisible ? '🙈' : '👁️'}
                       </span>
@@ -428,7 +430,7 @@ const UpdateAccount = () => {
                       <Input placeholder='Xác nhận mật khẩu' type={confirmPasswordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
+                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)} role='button'
                       >
                         {confirmPasswordVisible ? '🙈' : '👁️'}
                       </span>

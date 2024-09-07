@@ -1,6 +1,6 @@
 "use client"
 import  Link  from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useDispatch} from "react-redux";
 import { useRouter } from 'next/navigation';
 import { registerUser } from  "@/service/api/apiAuthRequest";
@@ -174,7 +174,7 @@ export default function RegisterForm(){
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
+                        onClick={() => setPasswordVisible(!passwordVisible)} role='button'
                       >
                         {passwordVisible ? '🐵':'🙈' }
                       </span>
@@ -195,7 +195,7 @@ export default function RegisterForm(){
                       <Input placeholder='Xác nhận mật khẩu' type={confirmPasswordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
+                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)} role='button'
                       >
                         {confirmPasswordVisible ? '🐵':'🙈'}
                       </span>
