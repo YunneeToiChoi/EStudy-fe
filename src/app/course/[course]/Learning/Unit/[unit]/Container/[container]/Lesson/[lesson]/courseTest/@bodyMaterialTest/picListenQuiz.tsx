@@ -251,12 +251,12 @@ export const PictureQuiz: React.FC<PictureQuizProps> = ({ params }) => {
                   className="answer__checkbox"
                 />
                 <div className={isAnswerChecked ? 'block' : 'hidden'}>
-                  <div
+                  <button
                     className="transcript cursor-pointer"
                     onClick={handleTranslationToggle}
                   >
                     Dịch nghĩa <i className="fa-solid fa-chevron-down"></i>
-                  </div>
+                  </button>
                   <div
                     className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${
                       isTranslationVisible
