@@ -134,7 +134,7 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
       {currentQuestion && (
         <div className="grid max-w-[800px] m-auto grid-cols-4 gap-2 mb-10 max-md:grid-cols-3 max-[660px]:grid-cols-2 max-[480px]:grid-cols-1">
           {currentQuestion.map((item: any, index: number) => (
-            <div
+            <button
               key={index}
               onClick={(e) => { e.preventDefault(); handleCardClick(item, index); }}
               className={`p-5 text-center aspect-square transition duration-300 flex items-center justify-center text-wrap cursor-pointer
@@ -145,7 +145,7 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
             >
               <span className='w-full break-words'> {item.content}</span>
              
-            </div>
+            </button>
           ))}
         </div>
       )}
@@ -165,13 +165,13 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
       </div>
       <div className="content__box">
         <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
-        <div className="multichoice__list-box cursor-pointer">
+        <button className="multichoice__list-box cursor-pointer">
           {ListChunk && ListChunk.map((_: any, index: any) => (
             <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
               {index + 1}
             </div>
           ))}
-        </div>
+        </button>
       </div>
     </div>
   );
