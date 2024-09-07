@@ -261,7 +261,7 @@ export default function LoginForm() {
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
                       <span
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
+                        onClick={() => setPasswordVisible(!passwordVisible)} role='button'
                       >
                         {passwordVisible ? '🐵':'🙈' }
                       </span>
@@ -271,11 +271,11 @@ export default function LoginForm() {
                 </FormItem>)}
             />
             {
-              showTextForgot&& (<h1 onClick={handleForgotPassword}
-              className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm  pb-4"
+              showTextForgot&& (<a onClick={handleForgotPassword}
+              className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
             >
               Forgot Password ?
-            </h1>
+            </a>
             )}
             <button type='submit' className="w-40 m-auto bg-primary-bg-color text-white  text-lg font-medium my-6 hover:bg-primary-bg-color-hover transition duration-150 ease-in-out text-center  no-underline py-2 rounded-[6px] border-none">
               Đăng nhập
@@ -284,12 +284,12 @@ export default function LoginForm() {
         </Form>
         {showCountdown && !showResendCode && <CountdownTimer duration={calculateTimeLeft()} onTimeout={handleTimeout} />}
         {showResendCode && (
-          <h1
-            className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base text-center pb-4"
+          <a
+            className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base text-center no-underline pb-4"
             onClick={resetCountdown}
           >
             Resend Link
-          </h1>
+          </a>
         )}
         <div className=' m-auto w-4/5 flex items-center justify-center gap-3'>
           <hr className=' w-full'></hr>
