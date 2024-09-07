@@ -148,6 +148,7 @@ export const PictureQuiz: React.FC<PictureQuizProps> = ({ params }) => {
             </div>
             <audio ref={audioRef} className="spell__audio my-10" controls>
               <source src={currentQuestion.questionAudio} type="audio/mpeg" />
+              <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
             </audio>
             <div className="flex w-full gap-6">
               <div className="w-1/2">
@@ -308,7 +309,7 @@ export const PictureQuiz: React.FC<PictureQuizProps> = ({ params }) => {
         <div className="multichoice__list-box cursor-pointer">
           {ListQuestion &&
             ListQuestion.map((_: any, index: any) => (
-              <div
+              <button
                 key={index}
                 onClick={() => handlePageClick(index)}
                 className={`multichoice__list-number ${
@@ -316,7 +317,7 @@ export const PictureQuiz: React.FC<PictureQuizProps> = ({ params }) => {
                 }`}
               >
                 {index + 1}
-              </div>
+              </button>
             ))}
         </div>
       </div>

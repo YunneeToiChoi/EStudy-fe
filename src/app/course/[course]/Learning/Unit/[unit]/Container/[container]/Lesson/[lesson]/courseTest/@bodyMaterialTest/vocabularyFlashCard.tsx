@@ -124,6 +124,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                     <h2 className="vocabulary__content-header text-2xl font-semibold">{card.vocabTitle}</h2>
                     <button onClick={()=>playAudio(card.audioUrlUk,card.vocabTitle)} className="vocabulary__speaker pl-8">
                     <audio id={card.vocabTitle} data-lang="en" preload='none'>
+                    <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
                     </audio>
                       <i className="fa-solid fa-volume-high vocabulary__content-icon"></i>
                     </button>
@@ -170,7 +171,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                   Chú ý: bạn đã học xong số lượng từ cần ôn tập trong hôm nay. Bạn có thể dừng lại việc ôn tập và quay lại vào hôm sau. TUY NHIÊN, nếu bây giờ bạn vẫn muốn ôn tập tiếp, các từ bạn đang học sẽ xuất hiện NGẪU NHIÊN ở dưới.
                 </p>
               </div>
-              <div key={currentCard.vocabId} className="bg-white rounded-lg shadow-xl my-7 h-[365px] w-[650px] relative cursor-pointer mx-auto" onClick={handleRotate}>
+              <button key={currentCard.vocabId} className="bg-white rounded-lg shadow-xl my-7 h-[365px] w-[650px] relative cursor-pointer mx-auto" onClick={handleRotate}>
                 <div className={`flashcard ease-in-out h-full ${isRotated ? 'toTateY-180' : ''}`}>
                   <div className="absolute h-full py-4 px-8 top-0 bottom-0 right-0 left-0 flex w-full z-[2] flex-col justify-center items-center backface toTateX-0">
                     <div className="vocab__flashcard-container">
@@ -191,27 +192,27 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
               <div className="content__box">
                 <div className="vocabulary__container rate__container">
                   <div className="vocab__flashcard-container--rate">
-                    <div className="vocab__rate-category vocab__rate-category--easy" onClick={handleNextCard}>
+                    <button className="vocab__rate-category vocab__rate-category--easy" onClick={handleNextCard}>
                       <i className="fa-regular fa-face-smile"></i>
                       <p className="vocab__rate-text">Dễ</p>
-                    </div>
-                    <div className="vocab__rate-category vocab__rate-category--medium" onClick={handleNextCard}>
+                    </button>
+                    <button className="vocab__rate-category vocab__rate-category--medium" onClick={handleNextCard}>
                       <i className="fa-regular fa-face-meh"></i>
                       <p className="vocab__rate-text">Trung bình</p>
-                    </div>
-                    <div className="vocab__rate-category vocab__rate-category--hard" onClick={handleNextCard}>
+                    </button>
+                    <button className="vocab__rate-category vocab__rate-category--hard" onClick={handleNextCard}>
                       <i className="fa-regular fa-face-tired"></i>
                       <p className="vocab__rate-text">Khó</p>
-                    </div>
-                    <div className="vocab__rate-category" onClick={handleNextCard}>
+                    </button>
+                    <button className="vocab__rate-category" onClick={handleNextCard}>
                       <i className="fa-solid fa-forward-step"></i>
                       <p className="vocab__rate-text">Đã biết, loại khỏi</p>
                       <p>danh sách ôn tập</p>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>

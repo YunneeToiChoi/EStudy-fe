@@ -58,9 +58,9 @@ export const ReadingQuiz: React.FC<ReadingQuizProps> = ({ params }) => {
           <br />
           On February 3 WXO Radio will celebrate its fiftieth anniversary. Thats half a century of stimulating _____(135). Over the years, we _____(136) our listeners breaking news, thought-provoking stories, and popular music from around the world. Now we invite you to celebrate with us during an open house from 5:00 P.M. to 6.30 P.M. on February 3 at our Eighth Street studio. Take a tour and see some of the behind-the-scenes magic. Watch a demonstration of our digital audio equipment. _____(137). The open house is free, but registration is required. We hope you can join us for this _____(138) occasion.
           </p>
-          <div className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
+          <button className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
                 Dịch nghĩa <i className="fa-solid fa-chevron-down"></i>
-              </div>
+              </button>
               <div className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranscriptVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className=' w-full h-full block px-5 py-3'>
                 Im glad your store carries the new EPG8 smartphone. Ive
@@ -108,9 +108,9 @@ export const ReadingQuiz: React.FC<ReadingQuizProps> = ({ params }) => {
               className="answer__checkbox"
             />
              <div className={isAnswerChecked ? 'block':'hidden'}>
-              <div className="transcript cursor-pointer" onClick={handleTranslationToggle}>
+              <button className="transcript cursor-pointer" onClick={handleTranslationToggle}>
                 Giải thích đáp án <i className="fa-solid fa-chevron-down"></i>
-              </div>
+              </button>
               <div className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranslationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
               <span className=' w-full h-full block px-5 py-3'>
               Tôi rất vui vì cửa hàng của bạn có bán chiếc điện thoại EPG8 mới. Tôi đã chờ đợi rất lâu để có được nó. <br />Vâng, có rất nhiều người quan tâm đến chiếc điện thoại này. <br />Nó có những màu nào? <br />Ba màu: trắng, đen và vàng. Tuy nhiên, vì điện thoại này rất được ưa chuộng, cửa hàng của chúng tôi hiện không có đủ ba màu. <br />Ồ. Vậy bạn có màu nào? <br />
