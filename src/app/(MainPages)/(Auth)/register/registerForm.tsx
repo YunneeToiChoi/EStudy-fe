@@ -172,12 +172,12 @@ export default function RegisterForm(){
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button type='button'
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setPasswordVisible(!passwordVisible)} role='button'
+                        onClick={() => setPasswordVisible(!passwordVisible)} 
                       >
                         {passwordVisible ? '🐵':'🙈' }
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -193,12 +193,12 @@ export default function RegisterForm(){
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Xác nhận mật khẩu' type={confirmPasswordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button type='button'
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)} role='button'
+                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
                       >
                         {confirmPasswordVisible ? '🐵':'🙈'}
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />
