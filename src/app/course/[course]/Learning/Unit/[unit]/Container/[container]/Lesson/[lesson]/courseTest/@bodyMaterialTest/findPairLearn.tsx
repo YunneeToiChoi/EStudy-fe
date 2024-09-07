@@ -165,13 +165,13 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
       </div>
       <div className="content__box">
         <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
-        <button className="multichoice__list-box cursor-pointer">
+        <div className="multichoice__list-box cursor-pointer">
           {ListChunk && ListChunk.map((_: any, index: any) => (
-            <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
+            <button key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
               {index + 1}
-            </div>
+            </button>
           ))}
-        </button>
+        </div>
       </div>
     </div>
   );
