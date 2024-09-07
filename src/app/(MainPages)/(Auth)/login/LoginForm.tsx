@@ -64,7 +64,7 @@ export default function LoginForm() {
       transition: Bounce,
     });
     const toastRes = await loginUser(newUser, dispatch);
-    if (toastRes?.status != 200 && toastRes?.status) {
+    if (toastRes?.status != 200 || !toastRes?.status) {
       sessionStorage.setItem('registeredEmail', email);
       toast.update(idToast, { 
         render: 'Đăng nhập thất bại !',
@@ -211,7 +211,7 @@ export default function LoginForm() {
     }
     else{
       toast.update(idToast, {
-        render:resForgot?.message + 'Gửi thất bại !',
+        render: 'Gửi thất bại !',
         type: "error",
         isLoading: false,
         position: "bottom-right",
@@ -259,12 +259,12 @@ export default function LoginForm() {
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                         onClick={() => setPasswordVisible(!passwordVisible)} role='button'
                       >
                         {passwordVisible ? '🐵':'🙈' }
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />
