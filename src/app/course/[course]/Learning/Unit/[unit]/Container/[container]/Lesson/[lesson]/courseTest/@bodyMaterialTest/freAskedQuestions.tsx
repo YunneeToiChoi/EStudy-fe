@@ -144,6 +144,7 @@ export const FreAskedQuestions: React.FC<FreAskedQuestionsProps> = ({ params }) 
           </div>
           <audio ref={audioRef} className="spell__audio my-10" controls>
             <source src={currentQuestion.questionAudio} type="audio/mpeg" />
+            <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
           </audio>
           <div className='flex w-full gap-6'>
             <div className="w-full">
@@ -195,9 +196,9 @@ export const FreAskedQuestions: React.FC<FreAskedQuestionsProps> = ({ params }) 
                 className="answer__checkbox"
               />
               <div className={isAnswerChecked ? 'block' : 'hidden'}>
-              <div className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
+              <button className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
                 Transcript <i className="fa-solid fa-chevron-down"></i>
-              </div>
+              </button>
               <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranscriptVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className='w-full h-full block px-5 py-3'>
                  <div className='my-2'>{currentQuestion.questionParagraph}</div>
@@ -208,9 +209,9 @@ export const FreAskedQuestions: React.FC<FreAskedQuestionsProps> = ({ params }) 
                  </div>
                 </span>
               </div>
-                <div className="transcript cursor-pointer" onClick={handleTranslationToggle}>
+                <button className="transcript cursor-pointer" onClick={handleTranslationToggle}>
                   Giải thích đáp án <i className="fa-solid fa-chevron-down"></i>
-                </div>
+                </button>
                 <div className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranslationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                   <span className=' w-full h-full block px-5 py-3'>
                     Đáp án đúng: {currentQuestion.correctAnswer}<br />
@@ -254,13 +255,13 @@ export const FreAskedQuestions: React.FC<FreAskedQuestionsProps> = ({ params }) 
         <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
         <div className="multichoice__list-box cursor-pointer">
           {ListQuestion && ListQuestion.map((_: any, index: any) => (
-            <div
+            <button
               key={index}
               onClick={() => handlePageClick(index)}
               className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}
             >
               {index + 1}
-            </div>
+            </button>
           ))}
         </div>
       </div>

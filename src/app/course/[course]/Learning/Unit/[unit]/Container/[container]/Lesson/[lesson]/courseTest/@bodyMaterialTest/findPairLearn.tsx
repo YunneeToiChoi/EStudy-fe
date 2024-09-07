@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVocabFindPair } from "@/service/api/apiVocabRequest";
 import { useSearchParams } from 'next/navigation';
