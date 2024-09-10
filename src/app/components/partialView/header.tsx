@@ -94,7 +94,7 @@ export default function Header() {
               <div className='flex gap-4 px-2'>
                   {user ? (
                     <>
-                    <DropdownMenuDemo UserName={user.user.userName} UserImage={user.user.userImage}></DropdownMenuDemo>
+                    <DropdownMenuDemo UserName={user.user?.userName} UserImage={user.user?.userImage}></DropdownMenuDemo>
                     </>
                   ) : (
                     <>
