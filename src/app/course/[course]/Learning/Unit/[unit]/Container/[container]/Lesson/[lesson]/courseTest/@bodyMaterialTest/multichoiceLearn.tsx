@@ -96,30 +96,30 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
           </p>
           <div className="multichoice__box">
             <div className="multichoice__answer">
-              <div
+              <button
                 className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'A' ? (isAnswerCorrect('A') ? ' bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('A') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('A')}
               >
                 {currentQuestion.optionA}  {selectedAnswer === 'A' ?'('+currentQuestion. optionMeanA +')':''}
-              </div>
-              <div
+              </button>
+              <button
                 className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'B' ? (isAnswerCorrect('B') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('B') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('B')}
               >
                 {currentQuestion.optionB}  {selectedAnswer === 'B' ?'('+currentQuestion. optionMeanB +')':''}
-              </div>
-              <div
+              </button>
+              <button
                 className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'C' ? (isAnswerCorrect('C') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('C') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('C')}
               >
                 {currentQuestion.optionC}  {selectedAnswer === 'C' ?'('+currentQuestion. optionMeanC +')':''}
-              </div>
-              <div
+              </button>
+              <button
                 className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'D' ? (isAnswerCorrect('D') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('D') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('D')}
               >
                 {currentQuestion.optionD} {selectedAnswer === 'D' ?'('+currentQuestion. optionMeanD +')':''}
-              </div>
+              </button>
             </div>
           </div>
         </div>
@@ -142,9 +142,9 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
         <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
         <div className="multichoice__list-box cursor-pointer">
           {ListQuestion && ListQuestion.map((_: any, index: any) => (
-            <div key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
+            <button key={index} onClick={() => handlePageClick(index)} className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}>
               {index + 1}
-            </div>
+            </button>
           ))}
         </div>
       </div>

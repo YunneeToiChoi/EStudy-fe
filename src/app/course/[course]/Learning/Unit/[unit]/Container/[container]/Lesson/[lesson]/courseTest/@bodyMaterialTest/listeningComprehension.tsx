@@ -140,20 +140,21 @@ export const ListeningComprehension: React.FC<ListeningComprehensionProps> = ({ 
           </div>
           <audio ref={audioRef}  className="spell__audio my-10" controls>
                 <source src={currentQuestion.questionAudio} type="audio/mpeg" />
+                <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
               </audio>
           <div className='flex mt-7 min-h-[200px] w-full gap-6'>
             <div className="w-1/2 bg-slate-100 p-7">
-              <div className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
+              <button className="transcript cursor-pointer" onClick={handleTranscriptToggle}>
                 Transcript <i className="fa-solid fa-chevron-down"></i>
-              </div>
+              </button>
               <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranscriptVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className='w-full h-full block px-5 py-3'>
                 {currentQuestion.questionParagraph}
                 </span>
               </div>
-              <div className="transcript cursor-pointer" onClick={handleMeanToggle}>
+              <button className="transcript cursor-pointer" onClick={handleMeanToggle}>
                 Dịch nghĩa <i className="fa-solid fa-chevron-down"></i>
-              </div>
+              </button>
               <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isMeanVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className='w-full h-full block px-5 py-3'>
                   {currentQuestion.paragraph_Mean}
@@ -220,9 +221,9 @@ export const ListeningComprehension: React.FC<ListeningComprehensionProps> = ({ 
               </label>
               {isAnswerChecked && (
                 <div>
-                  <div className="transcript cursor-pointer" onClick={handleTranslationToggle}>
+                  <button className="transcript cursor-pointer" onClick={handleTranslationToggle}>
                     Giải thích đáp án <i className="fa-solid fa-chevron-down"></i>
-                  </div>
+                  </button>
                   <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranslationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                     <div className='w-full h-full block px-5 py-3'>
                     <span>Đáp án đúng : <strong>{currentQuestion.correctAnswer}</strong></span>
@@ -268,13 +269,13 @@ export const ListeningComprehension: React.FC<ListeningComprehensionProps> = ({ 
         <div className="multichoice__list-box cursor-pointer">
           {ListQuestion &&
             ListQuestion.map((_:any, index:any) => (
-              <div
+              <button
                 key={index}
                 onClick={() => handlePageClick(index)}
                 className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}
               >
                 {index + 1}
-              </div>
+              </button>
             ))}
         </div>
       </div>

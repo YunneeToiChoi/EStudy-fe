@@ -138,9 +138,9 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
                 <span className='w-full block px-5 py-3'>
                 {currentQuestion.questionParagraph}
                 </span>
-              <div className="transcript cursor-pointer" onClick={handleMeanToggle} role="button">
+              <button className="transcript cursor-pointer" onClick={handleMeanToggle}>
                 Dịch nghĩa <i className="fa-solid fa-chevron-down"></i>
-              </div>
+              </button>
               <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${meanVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                 <span className='w-full h-full block px-5 py-3'>
                 {currentQuestion.paragraph_Mean}
@@ -207,9 +207,9 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
               </label>
               {answerChecked && (
                 <div>
-                  <div className="transcript cursor-pointer" onClick={handleTranslationToggle}>
+                  <button className="transcript cursor-pointer" onClick={handleTranslationToggle}>
                     Giải thích đáp án <i className="fa-solid fa-chevron-down"></i>
-                  </div>
+                  </button>
                   <div className={`bg-tag-search-text-color transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${translationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                     <div className='w-full h-full block px-5 py-3'>
                     <span>Đáp án đúng : <strong>{currentQuestion.correctAnswer}</strong></span>
@@ -257,13 +257,13 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
         <div className="multichoice__list-box cursor-pointer">
           {ListQuestion &&
             ListQuestion.map((_:any, index:any) => (
-              <div
+              <button
                 key={index}
                 onClick={() => handlePageClick(index)}
                 className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}
               >
                 {index + 1}
-              </div>
+              </button>
             ))}
         </div>
       </div>

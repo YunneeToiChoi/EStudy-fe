@@ -183,9 +183,9 @@ export const ReadingNoPara: React.FC<ReadingNoParaProps> = ({ params }) => {
                 className="answer__checkbox"
               />
               <div className={isAnswerChecked ? 'block' : 'hidden'}>
-                <div className="transcript cursor-pointer" onClick={handleTranslationToggle}>
+                <button className="transcript cursor-pointer" onClick={handleTranslationToggle}>
                   Giải thích đáp án <i className="fa-solid fa-chevron-down"></i>
-                </div>
+                </button>
                 <div className={` bg-tag-search-text-color  transition-all duration-500 ease-in-out overflow-hidden rounded-xl ${isTranslationVisible ? 'max-h-[1000px] border-[1px] border-black' : 'max-h-0 border-0'}`}>
                   <span className=' w-full h-full block px-5 py-3'>
                     <strong>- Đáp án đúng:</strong> {currentQuestion.correctAnswer}
@@ -223,13 +223,13 @@ export const ReadingNoPara: React.FC<ReadingNoParaProps> = ({ params }) => {
         <h3 className="multichoice__list-text">Danh sách bài tập:</h3>
         <div className="multichoice__list-box cursor-pointer">
           {ListQuestion && ListQuestion.map((_: any, index: any) => (
-            <div
+            <button
               key={index}
               onClick={() => handlePageClick(index)}
               className={`multichoice__list-number ${index === currentPage ? 'multichoice__list-number--chosen' : ''}`}
             >
               {index + 1}
-            </div>
+            </button>
           ))}
         </div>
       </div>

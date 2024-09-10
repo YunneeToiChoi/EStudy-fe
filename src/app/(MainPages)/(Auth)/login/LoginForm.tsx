@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { loginUser,reSendEmail,forgotPassword} from "@/service/api/apiAuthRequest";
+import { loginUser,forgotPassword} from "@/service/api/apiAuthRequest";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -64,7 +64,7 @@ export default function LoginForm() {
       transition: Bounce,
     });
     const toastRes = await loginUser(newUser, dispatch);
-    if (toastRes?.status != 200 && toastRes?.status) {
+    if (toastRes?.status != 200 || !toastRes?.status) {
       sessionStorage.setItem('registeredEmail', email);
       toast.update(idToast, { 
         render: 'Đăng nhập thất bại !',
@@ -211,7 +211,7 @@ export default function LoginForm() {
     }
     else{
       toast.update(idToast, {
-        render:resForgot?.message + 'Gửi thất bại !',
+        render: 'Gửi thất bại !',
         type: "error",
         isLoading: false,
         position: "bottom-right",
@@ -259,23 +259,26 @@ export default function LoginForm() {
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Nhập mật khẩu' type={passwordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button type='button'
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setPasswordVisible(!passwordVisible)} role='button'
+                        onClick={() => setPasswordVisible(!passwordVisible)}
                       >
                         {passwordVisible ? '🐵':'🙈' }
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>)}
             />
             {
-              showTextForgot&& (<h1 onClick={handleForgotPassword}
-              className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm  pb-4"
+              showTextForgot && (<a onClick={handleForgotPassword} 
+                onKeyUp={handleForgotPassword}
+                role="button" 
+                tabIndex={0}
+              className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
             >
               Forgot Password ?
-            </h1>
+            </a>
             )}
             <button type='submit' className="w-40 m-auto bg-primary-bg-color text-white  text-lg font-medium my-6 hover:bg-primary-bg-color-hover transition duration-150 ease-in-out text-center  no-underline py-2 rounded-[6px] border-none">
               Đăng nhập
@@ -284,12 +287,15 @@ export default function LoginForm() {
         </Form>
         {showCountdown && !showResendCode && <CountdownTimer duration={calculateTimeLeft()} onTimeout={handleTimeout} />}
         {showResendCode && (
-          <h1
-            className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base text-center pb-4"
+          <a
+            className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base text-center no-underline pb-4"
             onClick={resetCountdown}
+            onKeyUp={resetCountdown}
+            role="button" 
+            tabIndex={0}
           >
             Resend Link
-          </h1>
+          </a>
         )}
         <div className=' m-auto w-4/5 flex items-center justify-center gap-3'>
           <hr className=' w-full'></hr>

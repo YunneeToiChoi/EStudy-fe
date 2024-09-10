@@ -238,28 +238,28 @@ const UpdateAccount = () => {
       <h3 className="text-3xl">Cập nhật thông tin cá nhân</h3>
       <ul className="ml-[10px] mt-[20px] list-none flex border-b-[1px] border-b-[#e0e0e0] bg-transparent max-w-full relative">
         <li className="flex">
-          <div
+          <button
             className={` cursor-pointer no-underline p-[16px] border-b-[2px] text-base ${activeTab === 0 ? 'text-nav-hover-text-color border-b-nav-hover-text-color' : 'hover:text-nav-hover-text-color hover:border-b-nav-hover-text-color'}`}
-            onClick={() => handleTabClick(0)} role='button'
+            onClick={() => handleTabClick(0)}
           >
             Thông tin cơ bản
-          </div>
+          </button>
         </li>
         <li className="flex">
-          <div
+          <button
             className={` cursor-pointer no-underline p-[16px] border-b-[2px] text-base ${activeTab === 1 ? 'text-nav-hover-text-color border-b-nav-hover-text-color' : 'hover:text-nav-hover-text-color hover:border-b-nav-hover-text-color'}`}
-            onClick={() => handleTabClick(1)} role='button'
+            onClick={() => handleTabClick(1)}
           >
             Đổi ảnh đại diện
-          </div>
+          </button>
         </li>
         <li className="flex">
-          <div
+          <button
             className={` cursor-pointer no-underline p-[16px] border-b-[2px] text-base ${activeTab === 2 ? 'text-nav-hover-text-color border-b-nav-hover-text-color' : 'hover:text-nav-hover-text-color hover:border-b-nav-hover-text-color'}`}
-            onClick={() => handleTabClick(2)} role='button'
+            onClick={() => handleTabClick(2)}
           >
             Đổi mật khẩu
-          </div>
+          </button>
         </li>
       </ul>
       <div className={`${activeTab === 0 ? 'block' : 'hidden'}`}>
@@ -388,12 +388,12 @@ const UpdateAccount = () => {
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Nhập mật khẩu cũ' type={oldPasswordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setOldPasswordVisible(!oldPasswordVisible)} role='button'
+                        onClick={() => setOldPasswordVisible(!oldPasswordVisible)}
                       >
                         {oldPasswordVisible ? '🙈' : '👁️'}
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -408,12 +408,12 @@ const UpdateAccount = () => {
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Nhập mật khẩu mới' type={newPasswordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setNewPasswordVisible(!newPasswordVisible)} role='button'
+                        onClick={() => setNewPasswordVisible(!newPasswordVisible)}
                       >
                         {newPasswordVisible ? '🙈' : '👁️'}
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -428,12 +428,12 @@ const UpdateAccount = () => {
                   <FormControl>
                   <div className="relative">
                       <Input placeholder='Xác nhận mật khẩu' type={confirmPasswordVisible ? 'text' : 'password'} {...field} />
-                      <span
+                      <button
                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)} role='button'
+                        onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)} 
                       >
                         {confirmPasswordVisible ? '🙈' : '👁️'}
-                      </span>
+                      </button>
                     </div>
                   </FormControl>
                   <FormMessage />

@@ -261,18 +261,19 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
                         {audio && (
                             <audio className="testExam__audio" controls>
                                 <source src={audio} type="audio/mpeg" />
+                                <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" />
                                 Your browser does not support the audio element.
                             </audio>
                         )}
                         <ul className="tag-search__list">
                             {['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Part 6', 'Part 7','Part 8'].map((part, index) => (
                                 <li key={part} className="tag-search__item">
-                                    <div
+                                    <button
                                         onClick={() => setSelectedPart(index + 1)}
                                         className={`tag-search__link cursor-pointer ${selectedPart === index + 1 ? 'tag-search__link--chosen' : ''}`}
                                     >
                                         {part}
-                                    </div>
+                                    </button>
                                 </li>
                             ))}
                         </ul>
@@ -292,13 +293,13 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
                                 <h3 className="testOnline__part-header">{part.partName}</h3>
                                 <div className="multichoice__list-box gap-3">
                                     {part.questions.map((question: any) => (
-                                        <div
+                                        <button type="button"
                                             key={question.questionId}
                                             onClick={() => handleQuestionClick(question.questionId, index)}
                                             className={`py-[6px] px-[10px] border-[1px] rounded-sm hover:bg-primary-bg-color hover:text-white hover:border-primary-bg-color hover:cursor-pointer transition duration-300 ease-in-out ${isQuestionMarked(question.questionId) ? 'bg-primary-bg-color text-white' : ''}`}
                                         >
                                             {question.number}
-                                        </div>
+                                        </button>
                                     ))}
                                 </div>
                             </div>
