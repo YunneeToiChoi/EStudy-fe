@@ -13,6 +13,10 @@
 /.next/
 /out/
 
+.env
+
+ngrok.exe
+
 # production
 /build
 

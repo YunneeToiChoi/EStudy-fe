@@ -1,11 +1,12 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { loginUser,forgotPassword} from "@/service/api/apiAuthRequest";
+import { loginUser,forgotPassword, loginWithFacebook} from "@/service/api/apiAuthRequest";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { initializeFacebookSDK } from '@/lib/utils/facebookSDK';
 import {
   Form,
   FormControl,
@@ -37,6 +38,12 @@ export default function LoginForm() {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   useEffect(() => {
+    initializeFacebookSDK();
+    if (window.FB) {
+      console.log('Facebook SDK đã được khởi tạo.');
+    } else {
+      console.error('Facebook SDK không được khởi tạo.');
+    }
     const countdownEndTime = sessionStorage.getItem('countdownEndTime');
     if (countdownEndTime && new Date().getTime() < Number(countdownEndTime)) {
       setShowCountdown(true);
@@ -64,7 +71,8 @@ export default function LoginForm() {
       transition: Bounce,
     });
     const toastRes = await loginUser(newUser, dispatch);
-    if (toastRes?.status != 200 || !toastRes?.status) {
+    if (toastRes?.status != 200) {
+      console.log(toastRes);
       sessionStorage.setItem('registeredEmail', email);
       toast.update(idToast, { 
         render: 'Đăng nhập thất bại !',
@@ -135,6 +143,37 @@ export default function LoginForm() {
       navigate.push('/');
     }
   };
+
+  const handleFacebookLogin = () => {
+    window.FB?.login((response: any) => {
+      if (response.authResponse) {
+        const accessToken = response.authResponse.accessToken;
+  
+        // Gọi hàm async bên trong hàm đồng bộ
+        handleFacebookLoginAsync(accessToken);
+      } else {
+        toast.error('Người dùng hủy đăng nhập hoặc không hoàn tất xác thực.');
+      }
+    }, { scope: 'public_profile,email' });
+  };
+  
+  // Hàm async xử lý việc đăng nhập với Facebook
+  const handleFacebookLoginAsync = async (accessToken: string) => {
+    try {
+      const res = await loginWithFacebook(accessToken, dispatch);
+      if (res?.token) {
+        toast.success('Đăng nhập Facebook thành công!');
+        localStorage.setItem('jwtToken', res.token);
+        navigate.push('/');
+      } else {
+        toast.error('Đăng nhập Facebook thất bại!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Đăng nhập Facebook thất bại!');
+    }
+  };
+
 
   const handleTimeout = () => {
     setShowResendCode(true);
@@ -287,28 +326,26 @@ export default function LoginForm() {
         </Form>
         {showCountdown && !showResendCode && <CountdownTimer duration={calculateTimeLeft()} onTimeout={handleTimeout} />}
         {showResendCode && (
-          <a
-            className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base text-center no-underline pb-4"
+          <button
+            className="text-black hover:text-blue-700 transition duration-300 cursor-pointer font-medium text-base flex m-auto text-center no-underline pb-4"
             onClick={resetCountdown}
             onKeyUp={resetCountdown}
-            role="button" 
-            tabIndex={0}
           >
             Resend Link
-          </a>
+          </button>
         )}
         <div className=' m-auto w-4/5 flex items-center justify-center gap-3'>
           <hr className=' w-full'></hr>
           <span className=' text-lg font-normal text-slate-300'>Or</span>
           <hr className='w-full'></hr>
         </div>
-        <Link href="" className=" flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center">
+        <button onClick={handleFacebookLogin} onKeyUp={handleFacebookLogin}  className=" flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center">
           <i className="fa-brands fa-facebook text-2xl text-blue-500"></i>
-          <span>Đăng nhập với Facebook</span></Link>
+          <span>Đăng nhập với Facebook</span></button>
         <br />
-        <Link href="" className="flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center">
+        <button className="flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center">
           <i className="fa-brands fa-google text-2xl text-red-500"></i>
-          <span>Đăng nhập với Google</span></Link>
+          <span>Đăng nhập với Google</span></button>
         <br />
         <div className='flex items-center gap-1 justify-center mt-[20px] no-underline text-black text-base '>
           <span>Bạn chưa là một thành viên?</span>
