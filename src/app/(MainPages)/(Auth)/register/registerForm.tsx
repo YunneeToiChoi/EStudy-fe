@@ -1,11 +1,14 @@
 "use client"
 import  Link  from 'next/link';
-import React, { useState} from 'react';
+import React, { useState,useEffect} from 'react';
 import { useDispatch} from "react-redux";
 import { useRouter } from 'next/navigation';
 import { registerUser } from  "@/service/api/apiAuthRequest";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { initializeFacebookSDK } from '@/lib/utils/facebookSDK';
+import {handleFacebookLogin} from "@/service/socialConnect/authFacebookService"
+import {handleGoogleLogin} from "@/service/socialConnect/authGoogleService"
 import {
   Form,
   FormControl,
@@ -25,6 +28,15 @@ export default function RegisterForm(){
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
+    useEffect(() => {
+      initializeFacebookSDK();
+      if (window.FB) {
+        console.log('Facebook SDK đã được khởi tạo.');
+      } else {
+        console.error('Facebook SDK không được khởi tạo.');
+      }
+    }, []);
 
     const form = useForm<RegisterBodyType>({
       resolver: zodResolver(RegisterBody),
@@ -215,15 +227,15 @@ export default function RegisterForm(){
             <span className=' text-lg font-normal text-slate-300'>Or</span>
             <hr className='w-full'></hr>
           </div>
-        <Link href="" className=" flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center"
+        <button onClick={()=>handleFacebookLogin(dispatch,navigate)} onKeyUp={()=>handleFacebookLogin(dispatch,navigate)} className=" flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center"
         >
           <i className="fa-brands fa-facebook text-2xl text-blue-500"></i>
-          <span>Đăng kí với Facebook</span></Link>
+          <span>Đăng kí với Facebook</span></button>
             <br />
-            <Link href="" className="flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center"
+            <button onClick={()=>handleGoogleLogin(dispatch,navigate)} onKeyUp={()=>handleGoogleLogin(dispatch,navigate)} data-onsuccess="onSignIn" className="flex justify-center items-center gap-3 hover:bg-slate-100 transition duration-500 ease-in-out text-slate-400 mt-3 w-full px-3 py-2 border-[2px] border-slate-300 rounded no-underline text-base font-normal text-center"
               >
                 <i className="fa-brands fa-google text-2xl text-red-500"></i>
-                <span>Đăng kí với Google</span></Link>
+                <span>Đăng kí với Google</span></button>
         <br />
         <div className='flex items-center gap-1 justify-center mt-[20px] no-underline text-black text-base '>
           <span>Bạn đã có tài khoản?</span>

@@ -44,9 +44,20 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'scontent.fsgn2-6.fna.fbcdn.net',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com', // Add this line
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
 };
-
 
 export default nextConfig;

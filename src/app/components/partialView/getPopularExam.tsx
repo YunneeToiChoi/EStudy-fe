@@ -11,7 +11,6 @@ export default function GetPopularExams() {
   const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
   const dispatch = useDispatch();
   const listExam = useSelector((state: any) => state.ThunkReducer.exam.popularExam?.data?.outstandingExams);
- console.log(listExam);
     useEffect(() => {
         if (!listExam) {
             const data = { 

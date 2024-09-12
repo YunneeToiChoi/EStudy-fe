@@ -29,21 +29,6 @@ export const loginUser = async (user:any, dispatch:any) => {//truyen req user(us
   }
 };
 
-export const loginWithFacebook = async (accessToken:any, dispatch:any) => {
-  dispatch(loginStart());
-  try {
-    const res = await request.post('/Auth_API/facebook-login', {accessToken: accessToken});
-    dispatch(loginSuccess(res));
-    if(res.status==200){
-      getAllInfoUser({userId:res?.user?.userId},dispatch)
-    }
-    return res;
-  } catch (err:any) {
-    dispatch(loginFailed());
-    return err?.response;
-  }
-};
-
 export const registerUser = async (user:any, dispatch:any) => {
   dispatch(registerStart());
   try {
@@ -60,12 +45,7 @@ export const logOut = async (dispatch:any) => {
   try {
     const token = localStorage.getItem('jwtToken');
     if (token) {
-      console.log('Token found:', token);
       localStorage.removeItem('jwtToken');
-      // Thực hiện hành động nếu token tồn tại
-    } else {
-      console.log('No token found');
-      // Thực hiện hành động nếu không có token
     }
     dispatch(logOutSuccess());
   } catch (err) {

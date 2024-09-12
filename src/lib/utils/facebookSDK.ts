@@ -24,10 +24,10 @@ export function initializeFacebookSDK(callback?: Callback): void {
   window.fbAsyncInit = function () {
     console.log('Facebook SDK đang được khởi tạo...');
     window.FB.init({
-      appId: '982086357265897', // Đảm bảo appId là chính xác
+      appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
       cookie: true,
       xfbml: true,
-      version: 'v13.0' // Cập nhật phiên bản SDK nếu cần
+      version: 'v13.0'
     });
 
     if (typeof callback === 'function') {
