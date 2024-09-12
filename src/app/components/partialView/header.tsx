@@ -7,7 +7,7 @@ import Image from "next/image";
 import { DropdownMenuDemo } from "./propDown";
 
 export default function Header() {
-  const user = useSelector((state:any) => state.persistedReducer.auth.login.data);
+  const user = useSelector((state:any) => state.persistedReducer.auth.getAllInfoUser.data);
   const [scrollPosition, setScrollPosition] = useState(0);
   const pathname = usePathname(); 
 

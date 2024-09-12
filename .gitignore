@@ -13,8 +13,6 @@
 /.next/
 /out/
 
-.env
-
 ngrok.exe
 
 # production
@@ -32,6 +30,7 @@ yarn-error.log*
 # local env files
 .env*.local
 
+.env
 # vercel
 .vercel
 
