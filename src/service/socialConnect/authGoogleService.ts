@@ -1,4 +1,4 @@
-import { toast } from 'react-toastify';
+import { Bounce,toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import {
   loginStart,
@@ -30,17 +30,47 @@ export const handleGoogleLogin = async (dispatch: any, navigate: any) => {
           if(decoded){
             dispatch(loginSuccess(decoded));
             getAllInfoUser({userId:decoded.nameid},dispatch)
-            toast.success('Đăng nhập Google thành công!');
+            toast.success('Đăng nhập Google thành công!', {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              transition: Bounce,
+            });
             navigate.push("/");
           }
         } catch (error) {
           dispatch(loginFailed());
           console.error('Lỗi khi giải mã token:', error);
-          toast.error('Lỗi khi giải mã token!');
+          toast.error('Lỗi khi giải mã token!', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          });
         }
       } else {
         dispatch(loginFailed());
-        toast.error('Đăng nhập Google thất bại!');
+        toast.error('Đăng nhập Google thất bại!', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       }
       window.removeEventListener('message', handlePopupMessage);
     }
