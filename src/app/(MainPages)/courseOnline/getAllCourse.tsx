@@ -22,7 +22,7 @@ export default function GetAllCourses() {
 
     if (isLoading) {
       return  <GetLoadingCourse></GetLoadingCourse>
-  }
+    }
 
     return(
       <div className="relative p-16">

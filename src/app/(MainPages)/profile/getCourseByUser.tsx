@@ -10,23 +10,23 @@ import { getAllCoursesByUser } from "@/service/api/apiCourseRequest";
 export default function GetCoursesByUser() {
 
     const dispatch = useDispatch();
-    const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
+    const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const checkNoCourse =useSelector((state: any) => state.ThunkReducer.courses.AllCourseByUsers?.data);
     const listCourses = useSelector((state: any) => state.ThunkReducer.courses.AllCourseByUsers?.data?.courses);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        if (user?.user?.userId) {
+        if (user?.userId) {
             const UserId = {
-                userId: user.user.userId
+                userId: user?.userId
             }
             getAllCoursesByUser(UserId, dispatch).then(() => {
                 setIsLoading(false);
             });
         }
-    }, [dispatch, user]);
-
-    if (isLoading) {
+    }, [dispatch]);
+    
+    if (isLoading && !checkNoCourse) {
         return  <GetLoadingCourse></GetLoadingCourse>
     }
 

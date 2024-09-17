@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { useDispatch } from "react-redux";
@@ -10,7 +7,6 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -30,7 +26,7 @@ interface examDialogProps {
 const ExamDialog: React.FC<examDialogProps> = ({examId}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   
 
   const submit = async () => {
@@ -55,7 +51,7 @@ const ExamDialog: React.FC<examDialogProps> = ({examId}) => {
 
     const data = {
         examId: examId,
-        userId: user.user.userId,
+        userId: user.userId,
         score: 0,
         answer: answersToSend,
         userTime:time

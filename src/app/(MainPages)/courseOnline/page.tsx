@@ -16,8 +16,10 @@ export default function CourseOnline()
       <div className=" pt-10 max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl m-auto">
       <div className="">
         <div className="">
-          <h1 className=" text-4xl font-semibold">Khóa học<span className=" text-primary-bg-color"><FlipWords className="text-primary-bg-color" words={wordss} /></span></h1>
-          <div className="mb-[50px]">
+          <h1 className=" text-4xl font-semibold">Khóa học<span className=" text-primary-bg-color">
+            <FlipWords className="text-primary-bg-color" words={wordss} />
+            </span></h1>
+          <div className="mb-[50px] mt-11">
           <TextGenerateEffect words={words} />
           </div>
         </div>

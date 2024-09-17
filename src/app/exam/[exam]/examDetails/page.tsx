@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function ExamDetail({ params }: { params: {exam: string } })
 {
-  const user = useSelector((state:any) => state.persistedReducer.auth.login.data);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const { exam: idExam } = params;
   const examId = idExam;
   const router = useRouter();
@@ -23,7 +23,6 @@ export default function ExamDetail({ params }: { params: {exam: string } })
 
   useEffect(() => {
     if(!user){
-      console.log("dsadAS")
       toast.info('Hãy đăng nhập tài khoản !', {
         position: "bottom-right",
         autoClose: 5000,
@@ -38,7 +37,7 @@ export default function ExamDetail({ params }: { params: {exam: string } })
       router.push("/login");
     }
     else{
-    getDetailExam({examId,userId:user.user.userId}, dispatch);
+    getDetailExam({examId,userId:user?.userId}, dispatch);
     }
   }, [dispatch, examId, router.push]);
 

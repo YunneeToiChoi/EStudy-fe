@@ -11,7 +11,7 @@ interface Params {
 const useCheckoutUnitHook = (params: Params) => {
   const dispatch = useDispatch();
   const navigate = useRouter();
-  const user = useSelector((state: any) => state.persistedReducer.auth?.login?.data?.user);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const listCourses = useSelector((state: any) => state.ThunkReducer.courses.AllCourseByUsers?.data?.courses);
   const ListUnits = useSelector((state: any) => state.ThunkReducer.unit.units?.data?.units);
 

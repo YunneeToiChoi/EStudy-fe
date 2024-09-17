@@ -5,9 +5,6 @@ import "/public/handicraftCSS/base.css";
 import "/public/handicraftCSS/iconFontA.css";
 import ReduxProvider from "./provider";
 
-import Header from "./components/partialView/header";
-import Footer from "./components/partialView/footer";
-
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,9 +24,7 @@ export default function RootLayout({
         <div className="bg-primary-bg-color fixed top-[-500px] bottom-0 left-[-200px] rounded-br-full w-[1100px]"></div>
         <div className="ParentLayout backdrop-blur-xl fixed top-0 bottom-0 right-0 left-0 bg-white/90 overflow-scroll overflow-x-hidden">
           <ReduxProvider>
-              <Header />
               {children}
-              <Footer />
           </ReduxProvider>
         </div>
         <ToastContainer

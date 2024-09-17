@@ -10,9 +10,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
-
-import {getCompleteExam } from '@/service/api/apiExamRequest'; 
-
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 

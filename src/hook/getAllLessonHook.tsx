@@ -6,10 +6,10 @@ const useGetAllLessons = (params: any) => {
   const { course: idCourse } = params;
   const courseId = Number(idCourse);
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.persistedReducer.auth?.login?.data);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const CourseId = useSelector((state: any) => state.ThunkReducer.unit.units?.data?.units);
 
-  const userId = user?.user.userId;
+  const userId = user?.userId;
 
   const apiRequest = useMemo(() => ({
     courseId: courseId,
