@@ -15,7 +15,6 @@ export default function SuccessOrderByMomo() {
   const partnerCode = searchParams.get('partnerCode');
   useEffect(() => {
     const checkParamsAndFetch = async () => {
-      // Kiểm tra xem partnerCode và orderId có tồn tại không
       if (partnerCode && searchParams.get('orderId')) {
         setIsValidParams(true);
        const res = await RequestApiNotifySuccess(window.location.href, dispatch)

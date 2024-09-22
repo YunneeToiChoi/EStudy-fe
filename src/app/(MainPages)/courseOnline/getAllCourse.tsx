@@ -10,7 +10,7 @@ import GetLoadingCourse from "@/app/components/course/loadingCourse"
 import addDotsToCurrency from "@/lib/utils/currency"
 export default function GetAllCourses() {
   const [isLoading, setIsLoading] = useState(true);
-   const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
+   const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const dispatch = useDispatch();
     const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCoursesResponse);
     useEffect(() => {
