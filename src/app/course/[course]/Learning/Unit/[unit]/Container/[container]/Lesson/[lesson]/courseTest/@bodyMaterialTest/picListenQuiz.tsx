@@ -15,7 +15,6 @@ export const PictureQuiz: React.FC<PictureQuizProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.allQuestionOfLesson);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.lessonTag?.lessonTag);
 
@@ -29,10 +28,11 @@ export const PictureQuiz: React.FC<PictureQuizProps> = ({ params }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    const idLesson = { lessonId: params.lesson };
     getAllQuestionOfLesson(idLesson, dispatch).finally(() => {
       setIsLoading(false);
     });
-  }, [dispatch, tagCheck]);
+  }, [dispatch, params.lesson]);
 
   useEffect(() => {
     if (audioRef.current) {

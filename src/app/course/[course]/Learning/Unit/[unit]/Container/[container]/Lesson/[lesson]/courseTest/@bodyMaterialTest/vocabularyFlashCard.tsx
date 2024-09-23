@@ -13,7 +13,6 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
-  const idLesson = { lessonId: Number(params.lesson) };
   const ListFlashcard = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabByLesson?.data?.data);
   const tagCheck= useSelector((state: any) => state.ThunkReducer?.vocab?.VocabByLesson?.data?.lessonTag?.lessonTag);
 
@@ -24,10 +23,11 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const idLesson = { lessonId: Number(params.lesson) };
     getVocabOfLesson(idLesson, dispatch).finally(() => {
       setTimeout(() => setIsLoading(false), 1000);
     }); 
-  }, [dispatch]);
+  }, [dispatch,params.lesson]);
 
   useEffect(() => {
     if (ListFlashcard && ListFlashcard.length > 0) {
@@ -45,7 +45,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
       const shuffledCards = shuffleArray(ListFlashcard);
       setRemainingCards(shuffledCards);
     }
-  }, [tag]);
+  }, [tag,ListFlashcard]);
 
   const shuffleArray = (array: any[]) => {
     const shuffledArray = [...array];

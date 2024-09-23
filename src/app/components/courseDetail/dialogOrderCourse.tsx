@@ -42,7 +42,7 @@ interface OrderDialogProps {
 const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastPrice }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state: any) => state.persistedReducer?.auth?.login?.data?.user);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<OrderCourseBodyType>({

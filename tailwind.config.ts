@@ -56,6 +56,7 @@ const config = {
         'primary-bg-color': '#4540E1',
         'primary-bg-color-hover':'#3E3AD4',
         'primary-bg-orange-color': '#F96041',
+        'primary-upload-document':'#3092fa',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

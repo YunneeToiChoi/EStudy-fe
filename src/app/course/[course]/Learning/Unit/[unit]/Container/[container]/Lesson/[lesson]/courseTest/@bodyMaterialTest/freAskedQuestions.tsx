@@ -15,7 +15,6 @@ export const FreAskedQuestions: React.FC<FreAskedQuestionsProps> = ({ params }) 
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.listen?.ListenQuestRes?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.listen?.ListenQuestRes?.data?.lessonTag?.lessonTag);
 
@@ -29,10 +28,11 @@ export const FreAskedQuestions: React.FC<FreAskedQuestionsProps> = ({ params }) 
 
   useEffect(() => {
     setIsLoading(true);
+    const idLesson = { lessonId: params.lesson };
     getAllListenQuestRes(idLesson, dispatch).finally(() => {
       setTimeout(() => setIsLoading(false), 1000);
     }); 
-  }, [dispatch, tagCheck]);
+  }, [dispatch, params.lesson]);
 
   useEffect(() => {
     if (audioRef.current) {

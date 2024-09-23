@@ -14,7 +14,6 @@ export const ListeningComprehension: React.FC<ListeningComprehensionProps> = ({ 
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.listen?.ListenSpeech?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.listen?.ListenSpeech?.data?.lessonTag?.lessonTag);
   
@@ -29,10 +28,11 @@ export const ListeningComprehension: React.FC<ListeningComprehensionProps> = ({ 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    const idLesson = { lessonId: params.lesson };
     getAllListenSpeech(idLesson, dispatch).finally(() => {
       setTimeout(() => setIsLoading(false), 1000);
     }); 
-  }, [dispatch, tagCheck]);
+  }, [dispatch, params.lesson]);
 
   useEffect(() => {
     if (audioRef.current) {

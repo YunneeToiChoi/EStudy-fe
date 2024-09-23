@@ -6,21 +6,21 @@ const useGetAllUnits = (params: any) => {
   const { course: idCourse } = params;
   const courseId = Number(idCourse);
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.persistedReducer.auth?.login?.data);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const unitsFromState = useSelector((state: any) => state.ThunkReducer.unit?.units?.data?.units);
   
-  const userId = user?.user.userId;
+  const userId = user?.userId;
 
   const apiRequest = useMemo(() => ({
     courseId: courseId,
     userId: userId
-  }), [courseId, userId,dispatch]);
+  }), [courseId, userId]);
 
   useEffect(() => {
     if (!unitsFromState || !unitsFromState.some((unit: any) => unit.courseId === courseId)) {
       GetAllUnitsByCourse(apiRequest, dispatch);
     }
-  }, [dispatch,courseId]);
+  }, [dispatch,courseId,apiRequest,unitsFromState]);
 
   return unitsFromState;
 };

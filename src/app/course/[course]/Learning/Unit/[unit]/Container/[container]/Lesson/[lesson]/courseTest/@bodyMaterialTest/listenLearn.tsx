@@ -12,7 +12,6 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListChunk = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabListen?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabListen?.data?.lessonTag?.lessonTag);
 
@@ -26,8 +25,9 @@ export const ListenLearn: React.FC<ListenLearnProps> = ({ params }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    const idLesson = { lessonId: params.lesson };
     getVocabListen(idLesson, dispatch).finally(() => setIsLoading(false));
-  }, [dispatch,tagCheck]);
+  }, [dispatch,params.lesson]);
 
   useEffect(() => {
     if (audioRef.current && ListChunk && ListChunk[currentPage]) {

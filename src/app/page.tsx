@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import  Link  from 'next/link';
-
+import Header from "./components/partialView/header";
+import Footer from "./components/partialView/footer";
 
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import GetPoplarCourses from "@/app/components/partialView/getPopularCourse"
@@ -17,13 +18,15 @@ export default function Home() {
   const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
 
   return (
-    <div className='max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl px-3 m-auto'>
+    <div>
+      <Header />
+      <div className='max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl px-3 m-auto'>
       <div className="flex gap-5 max-md:flex-col max-md:mx-6 items-center">
         <div className='w-3/6 max-md:w-full flex flex-col justify-start gap-3'>
           <span className=' font-semibold text-5xl text-black tracking-wide'>Welcome to the</span>
           <span className='font-semibold text-5xl text-primary-bg-color tracking-wide'>Learning English</span>
           <span ><TextGenerateEffect words={words} /></span>
-          <Link href={user||infoUser ? "\profile":"/register"} className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
+          <Link href={user||infoUser ? "/profile":"/register"} className='mt-7 ml-16 w-fit group cursor-pointer px-[20px] py-[8px] bg-primary-bg-color rounded-md hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
             <span  className=" group-hover:text-primary-bg-color text-base no-underline font-medium text-white tracking-wide">{user||infoUser ? "KHOÁ HỌC CỦA TÔI":"BẮT ĐẦU"} </span>
           </Link>
         </div>
@@ -46,6 +49,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      </div>
+      <Footer/>
     </div>
+    
   );
 }

@@ -15,7 +15,6 @@ export const ReadingNoPara: React.FC<ReadingNoParaProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.NoPara?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.question?.NoPara?.data?.lessonTag?.lessonTag);
   console.log(tagCheck)
@@ -28,10 +27,11 @@ export const ReadingNoPara: React.FC<ReadingNoParaProps> = ({ params }) => {
 
   useEffect(() => {
     setIsLoading(true);
+    const idLesson = { lessonId: params.lesson };
     getAllQesNoPara(idLesson, dispatch).finally(() => {
       setTimeout(() => setIsLoading(false), 1000);
     }); 
-  }, [dispatch, tagCheck]);
+  }, [dispatch, params.lesson]);
 
 
   const handlePrevious = () => {
