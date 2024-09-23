@@ -11,7 +11,6 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.allQuestionOfLesson);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.question?.questions?.data?.lessonTag?.lessonTag);
 
@@ -23,10 +22,11 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const idLesson = { lessonId: params.lesson };
     getAllQuestionOfLesson(idLesson, dispatch).finally(() => {
       setTimeout(() => setIsLoading(false), 1000);
     }); 
-  }, [dispatch, tagCheck]);
+  }, [dispatch, params.lesson]);
 
   useEffect(() => {
     setSelectedAnswer(null);

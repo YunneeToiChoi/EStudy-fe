@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import Image from 'next/image';
 import  { useRef } from 'react';
 import {
   Dialog,
@@ -63,7 +63,7 @@ export const BoxRevision: React.FC<InfoQuestionProps> = ({ examName, ObjectAnswe
         <audio ref={audioRef}  className="spell__audio my-10" controls>
             <source src={examAudio} type="audio/mpeg" />
         </audio>
-        {questionImage && <img src={questionImage} alt="Question Image" className="mb-4" />}
+        {questionImage && <Image width={1000} height={1000} quality={100} src={questionImage} alt="Question Image" ></Image>}
         {questionParagraph !== "Null" && (
          <p className="mb-4">{questionParagraph}</p>
         )}

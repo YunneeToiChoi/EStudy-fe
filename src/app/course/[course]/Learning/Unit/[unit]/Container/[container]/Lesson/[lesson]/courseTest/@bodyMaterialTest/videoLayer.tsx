@@ -11,21 +11,18 @@ interface VideoLayerProps {
 }
 
 export const VideoLayer: React.FC<VideoLayerProps> = ({ params }) => {
-    const searchParams = useSearchParams();
-    const tag = searchParams.get('TAG');
     const dispatch = useDispatch();
-    const idLesson = { lessonId: params.lesson };
     const Video = useSelector((state: any) => state.ThunkReducer?.video?.videos?.data?.data);
-    const tagCheck = useSelector((state: any) => state.ThunkReducer?.video?.videos?.data?.lessonTag?.lessonTag);
     const videoRef = useRef<HTMLIFrameElement | null>(null);
 
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        const idLesson = { lessonId: params.lesson };
         getVideoByLesson(idLesson, dispatch).finally(() => {
             setTimeout(() => setIsLoading(false), 1000);
         }); 
-    }, [dispatch, idLesson, tagCheck]);
+    }, [dispatch, params.lesson]);
 
     if (isLoading) {
         return <LoadingContent />;

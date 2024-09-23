@@ -39,7 +39,7 @@ export default function ExamDetail({ params }: { params: {exam: string } })
     else{
     getDetailExam({examId,userId:user?.userId}, dispatch);
     }
-  }, [dispatch, examId, router.push]);
+  }, [dispatch, examId, router,user]);
 
   const ExamDetail = useSelector((state: any) => state.ThunkReducer.exam.detailExam?.data?.exams);
 

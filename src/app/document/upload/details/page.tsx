@@ -47,29 +47,26 @@ export default function UploadDetail() {
   );
 
   useEffect(() => {
-    GetCategoryOfDocuments(dispatch);
-    GetCourseOfDocuments({ userId: userId }, dispatch);
-  }, [dispatch]);
-
-  useEffect(() => {
-  if (storedDocuments) {
-    const parsedDocuments = JSON.parse(storedDocuments);
-    setDocuments(parsedDocuments);
-    setDocumentDetails(parsedDocuments.map((doc: DocumentInfo) => ({
-      idDocuments: doc.idDocument, 
-      userId: userId,             
-      categoryId: null,               
-      courseId: null,                
-      title: doc.fileName,
-      description: "",
-      price: "",
-      isPublic: false,
-    })));
-  }
-  else{
-    router.push("/document/upload");
-  }
-}, [storedDocuments]);
+    if (storedDocuments) {
+      const parsedDocuments = JSON.parse(storedDocuments);
+      setDocuments(parsedDocuments);
+      setDocumentDetails(parsedDocuments.map((doc: DocumentInfo) => ({
+        idDocuments: doc.idDocument, 
+        userId: userId,             
+        categoryId: null,               
+        courseId: null,                
+        title: doc.fileName,
+        description: "",
+        price: "",
+        isPublic: false,
+      })));
+      GetCategoryOfDocuments(dispatch);
+      GetCourseOfDocuments({ userId: userId }, dispatch);
+    }
+    else{
+      router.push("/document/upload");
+    }
+  }, [dispatch,userId,storedDocuments,router]);
 
 const formatPrice = (value: string) => {
   const num = parseFloat(value);

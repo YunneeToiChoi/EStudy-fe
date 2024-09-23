@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import Image from 'next/image';
 interface SelectedAnswers {
     [key: string]: {
         QuestionId: string;
@@ -66,7 +66,7 @@ const Part1 = ({ questionRefs, onAnswerChange }: Part1Props) => {
                     }}
                     className="question-item"
                 >
-                    <img src={item.questionImage} alt={`Question ${item.number}`} />
+                    <Image width={400} height={400} quality={100} src={item.questionImage} className='m-auto' alt={`Question ${item.number}`} />
                     <div className=' flex gap-4 mt-5'>
                         <span className='aspect-square w-8 h-8 flex items-center justify-center as bg-blue-200 text-black font-medium text-lg rounded-full'>{item.number}</span>
                         <div className="flex flex-col text-lg">

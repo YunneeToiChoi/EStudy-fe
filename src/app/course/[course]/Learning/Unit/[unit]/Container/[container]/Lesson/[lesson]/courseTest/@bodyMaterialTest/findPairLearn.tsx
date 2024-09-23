@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getVocabFindPair } from "@/service/api/apiVocabRequest";
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import LoadingContent from "@/app/components/partialView/loadingContent";
-
 interface FindPairProps {
   params: any;
 }
@@ -12,7 +11,6 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListChunk = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabFindPair?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabFindPair?.data?.lessonTag?.lessonTag);
 
@@ -24,19 +22,7 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
   const [feedback, setFeedback] = useState<{ indices: number[], correct: boolean } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    getVocabFindPair(idLesson, dispatch).finally(() => {
-      setTimeout(() => setIsLoading(false), 2000);
-    }); 
-  }, [dispatch, tagCheck]);
-
-  useEffect(() => {
-    if (ListChunk && ListChunk.length > 0) {
-      updateCurrentChunk(currentPage);
-    }
-  }, [ListChunk, currentPage]);
-
-  const updateCurrentChunk = (pageIndex: number) => {
+  const updateCurrentChunk = useCallback((pageIndex: number) => {
     if (ListChunk && ListChunk.length > 0) {
       const chunk = ListChunk[pageIndex];
       const combinedVocab: any[] = [];
@@ -54,7 +40,20 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
       });
       setCurrentChunk(shuffleArray(combinedVocab));
     }
-  };
+  }, [ListChunk]);
+
+  useEffect(() => {
+    const idLesson = { lessonId: params.lesson };
+    getVocabFindPair(idLesson, dispatch).finally(() => {
+      setTimeout(() => setIsLoading(false), 2000);
+    }); 
+  }, [dispatch,params.lesson]);
+
+  useEffect(() => {
+    if (ListChunk && ListChunk.length > 0) {
+      updateCurrentChunk(currentPage);
+    }
+  }, [ListChunk, currentPage, updateCurrentChunk]);
 
   const shuffleArray = (array: any[]) => {
     const shuffledArray = [...array];

@@ -24,7 +24,7 @@ export default function GetCoursesByUser() {
                 setIsLoading(false);
             });
         }
-    }, [dispatch]);
+    }, [dispatch,user?.userId]);
     
     if (isLoading && !checkNoCourse) {
         return  <GetLoadingCourse></GetLoadingCourse>

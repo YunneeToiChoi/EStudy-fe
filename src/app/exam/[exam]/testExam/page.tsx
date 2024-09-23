@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef,useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { fetchAllParts, getAudioExam, getCompleteExam } from '@/service/api/apiExamRequest'; 
@@ -33,7 +33,6 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
     const part6 = useSelector((state: any) => state.ThunkReducer.exam.part6?.data?.part6Responses);
     const part7 = useSelector((state: any) => state.ThunkReducer.exam.part7?.data?.part7Response);
     const part8 = useSelector((state: any) => state.ThunkReducer.exam.part8?.data?.part8Response);
-    const parts = [part1, part2, part3, part4, part5, part6, part7,part8];
     const [partQuestions, setPartQuestions] = useState<any[]>([]);
     const [selectedPart, setSelectedPart] = useState<number>(1);
     const [storageUpdated, setStorageUpdated] = useState<boolean>(false);
@@ -50,9 +49,10 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
     useEffect(() => {
         fetchAllParts(examId, dispatch);
         getAudioExam(examId, dispatch);
-    }, [dispatch]);
+    }, [dispatch,examId]);
 
     useEffect(() => {
+        const parts = [part1, part2, part3, part4, part5, part6, part7,part8];
         const partData = parts.map((part, index) => ({
             partName: `Part ${index + 1}`,
             questions: part ? part.map((q: any) => ({
@@ -79,6 +79,71 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
         });
         sessionStorage.setItem('answerTest', JSON.stringify(answerTest));
     };
+
+    const submitByCountDown = useCallback(async () => {
+        const idToast = toast.loading('Đang xác nhận...', {
+            position: "bottom-right",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+        });
+    
+        const storedAnswers = JSON.parse(sessionStorage.getItem('answerTest') || '{}');
+        const answersToSend = Object.keys(storedAnswers).map(key => ({
+            QuestionId: parseInt(key),
+            Answer: storedAnswers[key].Answer,
+            State: storedAnswers[key].State
+        }));
+    
+        const data = {
+            examId: examId,
+            userId: user.user.userId,
+            score: 0,
+            answer: answersToSend,
+            userTime: 0
+        };
+    
+        const response = await getCompleteExam(data, dispatch);
+        sessionStorage.removeItem('answerTest');
+        sessionStorage.removeItem('countdown');
+        if (response === 200) {
+            toast.update(idToast, {
+                render: 'Nộp bài thành công!',
+                type: "success",
+                isLoading: false,
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        } else {
+            toast.update(idToast, {
+                render: 'Nộp bài thất bại!',
+                type: "error",
+                isLoading: false,
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        navigate.push(`/exam/${examId}/examDetails`);
+    }, [examId, dispatch, user, navigate]);
 
     useEffect(() => {
         const updateIsQuestionMarked = () => {
@@ -109,7 +174,7 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
         if (countdownComplete) {
             submitByCountDown();
         }
-    }, [countdownComplete]);
+    }, [countdownComplete,submitByCountDown]);
 
     useEffect(() => {
         const handleBeforeUnload = (e: BeforeUnloadEvent) => {
@@ -182,71 +247,6 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
     const isQuestionMarked = (questionId: string) => {
         const storedAnswers = JSON.parse(sessionStorage.getItem('answerTest') || '{}');
         return storedAnswers[questionId]?.Answer !== '';
-    };
-
-    const submitByCountDown = async () => {
-        const idToast = toast.loading('Đang xác nhận...', {
-            position: "bottom-right",
-            autoClose: false,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-        });
-
-        const storedAnswers = JSON.parse(sessionStorage.getItem('answerTest') || '{}');
-        const answersToSend = Object.keys(storedAnswers).map(key => ({
-            QuestionId: parseInt(key),
-            Answer: storedAnswers[key].Answer,
-            State: storedAnswers[key].State
-        }));
-
-        const data = {
-            examId: examId,
-            userId: user.user.userId,
-            score: 0,
-            answer: answersToSend,
-            userTime: 0
-        };
-
-        const response = await getCompleteExam(data, dispatch);
-        sessionStorage.removeItem('answerTest');
-        sessionStorage.removeItem('countdown');
-        if (response === 200) {
-            toast.update(idToast, {
-                render: 'Nộp bài thành công!',
-                type: "success",
-                isLoading: false,
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            });
-        } else {
-            toast.update(idToast, {
-                render: 'Nộp bài thất bại!',
-                type: "error",
-                isLoading: false,
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
-            });
-        }
-        navigate.push(`/exam/${examId}/examDetails`);
     };
 
     return (
