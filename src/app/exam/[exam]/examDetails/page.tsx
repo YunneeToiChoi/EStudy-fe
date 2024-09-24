@@ -90,7 +90,6 @@ export default function ExamDetail({ params }: { params: {exam: string } })
                 <tr key={detail.userExamId} >
                 <td className="py-2 px-4 border-b border-gray-200 flex items-center">
                   {detail.dateTime}
-                  <span className="ml-2 text-xs bg-green-500 text-white rounded-full px-2 py-1">Full test</span>
                 </td>
                 <td className="py-2 px-4 border-b border-gray-200">(Điểm: {detail.score})</td>
                 <td className="py-2 px-4 border-b border-gray-200">{detail.userTime}</td>

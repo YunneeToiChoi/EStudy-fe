@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import { editDocument } from "@/service/api/apiDocumentRequest";
 import { GetCategoryOfDocuments } from "@/service/api/apiDocumentRequest";
 import { GetCourseOfDocuments } from "@/service/api/apiDocumentRequest";
+import { Bounce, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 interface DocumentInfo {
   idDocument: number;
   fileName: string;
@@ -34,6 +36,7 @@ interface DocumentDetails {
 export default function UploadDetail() {
   const router = useRouter();
   const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const [documents, setDocuments] = useState<DocumentInfo[]>([]);
   const [documentDetails, setDocumentDetails] = useState<DocumentDetails[]>([]);
   const [errors, setErrors] = useState<{ [key: number]: { [key: string]: string } }>({});
@@ -47,7 +50,21 @@ export default function UploadDetail() {
   );
 
   useEffect(() => {
-    if (storedDocuments) {
+    if(!user){
+      toast.error("Please login to upload document", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+      router.push('/login');
+    }
+    else if (storedDocuments) {
       const parsedDocuments = JSON.parse(storedDocuments);
       setDocuments(parsedDocuments);
       setDocumentDetails(parsedDocuments.map((doc: DocumentInfo) => ({
@@ -64,9 +81,20 @@ export default function UploadDetail() {
       GetCourseOfDocuments({ userId: userId }, dispatch);
     }
     else{
+      toast.error("No documents have been uploaded yet!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
       router.push("/document/upload");
     }
-  }, [dispatch,userId,storedDocuments,router]);
+  }, [dispatch,userId,user,storedDocuments,router]);
 
 const formatPrice = (value: string) => {
   const num = parseFloat(value);

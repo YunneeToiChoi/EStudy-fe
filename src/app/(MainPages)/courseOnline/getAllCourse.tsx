@@ -52,22 +52,24 @@ export default function GetAllCourses() {
                     </div>
                   </div>
                   {
-                      course.courseSale > 0 ? 
-                      (
-                        <div className="flex items-center">                  
-                         <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.lastPrice)}đ</span>
-                        <span className=" text-xl line-through px-3">{addDotsToCurrency(course.coursePrice)}đ</span>
-                        <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-{course.courseSale}%</span>
-                        </div>   
-
-                      ): (
-                        <div className="flex flex-col items-center"> 
-                        <span className=" text-xl font-semibold text-price-color">{addDotsToCurrency(course.lastPrice)}đ</span>
-                        <span className=" py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">Không hỗ trợ giảm giá</span>
-                        </div>
-                       
-                      )
-                    }
+                    <div className={`flex ${course.courseSale > 0 ? "items-center" : "flex-col items-center"}`}>
+                      {course.coursePrice <= 0 ? (
+                        <span className="text-xl font-semibold text-green-500">Free</span>
+                      ) : (
+                        <>
+                          <span className="text-xl font-semibold text-price-color">{addDotsToCurrency(course.lastPrice)}đ</span>
+                          {course.courseSale > 0 ? (
+                            <>
+                              <span className="text-xl line-through px-3">{addDotsToCurrency(course.coursePrice)}đ</span>
+                              <span className="py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">-{course.courseSale}%</span>
+                            </>
+                          ) : (
+                            <span className="py-[3px] px-[6px] text-white font-bold text-sm bg-primary-bg-orange-color rounded-xl my-[10px]">Không hỗ trợ giảm giá</span>
+                          )}
+                        </>
+                      )}
+                    </div>
+}
                   </div>
               </Link>
                 )

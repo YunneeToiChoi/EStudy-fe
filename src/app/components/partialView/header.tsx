@@ -67,7 +67,7 @@ export default function Header() {
               <ul className="list-none flex items-center max-lg:hidden gap-6">
                 <li className={user ? "group":"hidden"}>
                   <Link href="/profile" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
-                    Khoá học của tôi
+                    Tài liệu chia sẻ
                   </Link>
                 </li>
                 <li className="group">
@@ -87,23 +87,32 @@ export default function Header() {
                 </li>
               </ul>
             </div>
+            {userInfo ?(
+              <Link href={"/document/upload"} className=' py-2 px-4 flex justify-center hover:cursor-pointer text-white items-center gap-2 rounded-xl group cursor-pointer bg-primary-bg-color hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
+                <i className="fa-solid fa-cloud-arrow-up text-white group-hover:text-primary-bg-color text-xl"></i>  
+                <p className=' text-lg font-medium group-hover:text-primary-bg-color '>Upload</p>
+              </Link>
+            ):(
+              <></>
+            )}
             <div>
-              <div className='flex gap-4 px-2'>
-                  {userInfo ? (
-                    <>
-                    <DropdownMenuDemo UserName={userInfo.user?.userName} UserImage={userInfo.user?.userImage}></DropdownMenuDemo>
-                    </>
-                  ) : (
-                    <>
-                  <Link href="/login" className="cursor-pointer hover:scale-110 px-[20px] py-[8px] border-[1px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-500 shadow-md ease-in-out">
-                    <span className="text-base no-underline font-medium text-primary-bg-color tracking-wide">Đăng Nhập</span>
-                  </Link>
-                  <Link href={`${userInfo ? '/' : '/register'}`} className="cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
-                    <span className="text-base no-underline font-medium text-white tracking-wide">Đăng ký</span>
-                  </Link>
-                    </>
-                  )}
-              </div>
+            <div className=' relative flex gap-4 px-2'>
+                {userInfo ? (
+                  <>
+                  <span className=' absolute bottom-[-5px] right-1 w-5 h-5 flex justify-center items-center bg-white shadow-md rounded-full z-10 animate-bounce'><i className="fa-solid fa-caret-down text-black text-sm"></i></span>
+                  <DropdownMenuDemo UserName={userInfo.user?.userName} UserImage={userInfo.user?.userImage}></DropdownMenuDemo>
+                  </>
+                ) : (
+                  <>
+                <Link href="/login" className="cursor-pointer hover:scale-110 px-[20px] py-[8px] border-[1px] border-primary-bg-color rounded-md max-lg:hidden hover:bg-slate-100 duration-500 shadow-md ease-in-out">
+                  <span className="text-base no-underline font-medium text-primary-bg-color tracking-wide">Đăng Nhập</span>
+                </Link>
+                <Link href={`${userInfo ? '/' : '/register'}`} className="cursor-pointer hover:scale-110 px-[20px] py-[8px] bg-primary-bg-color rounded-md max-lg:hidden hover:bg-primary-bg-color-hover duration-500 shadow-md ease-in-out">
+                  <span className="text-base no-underline font-medium text-white tracking-wide">Đăng ký</span>
+                </Link>
+                  </>
+                )}
+            </div>
             </div>
           </div>
         </div>

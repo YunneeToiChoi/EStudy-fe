@@ -41,7 +41,10 @@ import {
     getPart8Failed,
     getExamRevisionStart,
     getExamRevisionSuccess,
-    getExamRevisionFailed
+    getExamRevisionFailed,
+    getUserExamStart,
+    getUserExamSuccess,
+    getUserExamFailed,
 } from "@/service/reduxState/examSlices";
 
 export const getAllExams = async (dispatch:any) => {
@@ -136,3 +139,13 @@ export const getExamRevision = async (userExamId: string, dispatch: any) => {
         dispatch(getExamRevisionFailed(err.response?.data));
     }
 };
+
+export const getUserExam = async (userId:any, dispatch: any) => {
+    dispatch(getUserExamStart());
+    try {
+        const res = await request.post('/Exam_API/Get_UserExams',userId);
+        dispatch(getUserExamSuccess(res));
+    } catch (err: any) {
+        dispatch(getUserExamFailed(err.response?.data));
+    }
+}

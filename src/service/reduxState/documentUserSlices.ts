@@ -18,6 +18,21 @@ const documentSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        allDocuments:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
+        userDoc:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
+        courseDoc:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -60,6 +75,45 @@ const documentSlice = createSlice({
             state.editDocument.error = true;
             state.msg = action.payload;
         },
+        getAllDocumentsStart: (state) =>{
+            state.allDocuments.isFetching = true;
+        },
+        getAllDocumentsSuccess: (state,action) => {
+            state.allDocuments.isFetching = false;
+            state.allDocuments.data = action.payload;
+            state.allDocuments.error = false;
+        },
+        getAllDocumentsFailed: (state,action) =>{
+            state.allDocuments.isFetching = false;
+            state.allDocuments.error = true;
+            state.msg = action.payload;
+        },
+        getUserDocumentsStart: (state) =>{
+            state.userDoc.isFetching = true;
+        },
+        getUserDocumentsSuccess: (state,action) => {
+            state.userDoc.isFetching = false;
+            state.userDoc.data = action.payload;
+            state.userDoc.error = false;
+        },
+        getUserDocumentsFailed: (state,action) =>{
+            state.userDoc.isFetching = false;
+            state.userDoc.error = true;
+            state.msg = action.payload;
+        },
+        getCourseDocumentsStart: (state) =>{
+            state.courseDoc.isFetching = true;
+        },
+        getCourseDocumentsSuccess: (state,action) => {
+            state.courseDoc.isFetching = false;
+            state.courseDoc.data = action.payload;
+            state.courseDoc.error = false;
+        },
+        getCourseDocumentsFailed: (state,action) =>{
+            state.courseDoc.isFetching = false;
+            state.courseDoc.error = true;
+            state.msg = action.payload;
+        },
     }
 });
 
@@ -73,6 +127,15 @@ export const {
     editDocumentStart,
     editDocumentSuccess,
     editDocumentFailed,
+    getAllDocumentsStart,
+    getAllDocumentsSuccess,
+    getAllDocumentsFailed,
+    getUserDocumentsStart,
+    getUserDocumentsSuccess,
+    getUserDocumentsFailed,
+    getCourseDocumentsStart,
+    getCourseDocumentsSuccess,
+    getCourseDocumentsFailed,
 } = documentSlice.actions;
 
 export default documentSlice.reducer;

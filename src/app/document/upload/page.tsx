@@ -1,6 +1,7 @@
   "use client"
+  import { useRouter } from "next/navigation";
   import { useState, useEffect } from 'react';
-  import { useDispatch, useSelector } from "react-redux";
+  import { useSelector } from "react-redux";
   import LoadingDocument from '@/app/components/partialView/loadingDocument';
   import { Bounce, toast } from 'react-toastify';
   import "react-toastify/dist/ReactToastify.css";
@@ -10,8 +11,8 @@
 
 
   export default function UploadDocument() {
-    const userId = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user?.userId);
-    const dispatch = useDispatch();
+    const router = useRouter();
+    const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const [isDragging, setIsDragging] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
@@ -20,10 +21,26 @@
     const [files, setFiles] = useState<any[]>(JSON.parse(sessionStorage.getItem("sessionFiles") || "[]"));
 
     useEffect(() => {
+      if(!user){
+        toast.error("Please login to upload document", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+        router.push('/login');
+      }
+    },[user,router])
+
+    useEffect(() => {
       const storedFiles = JSON.parse(sessionStorage.getItem("sessionFiles") || "[]");
       setFiles(storedFiles);
       
-      // Check if all files have completed: true
       const allCompleted = storedFiles.length > 0 && storedFiles.every((file: any) => file.completed === true);
       setIsSubmit(allCompleted);
     }, [isUploading,isSubmit]);
@@ -98,7 +115,7 @@
       };
     
       try {
-        const document = await UploadFiles(file, userId, onUploadProgress);
+        const document = await UploadFiles(file, user?.userId, onUploadProgress);
     
         if (document && document.documentId) {
           const updatedFiles = JSON.parse(sessionStorage.getItem("sessionFiles") || "[]").map((f: any) =>

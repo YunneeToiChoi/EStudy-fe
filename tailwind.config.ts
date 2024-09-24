@@ -53,7 +53,7 @@ const config = {
         'alert-text-color': '#1f5e39',
         'alert-flashcard-color': '#d8f0e2',
         'economy-price-text-color': '#e43a45',
-        'primary-bg-color': '#4540E1',
+        'primary-bg-color': '#3092fa',
         'primary-bg-color-hover':'#3E3AD4',
         'primary-bg-orange-color': '#F96041',
         'primary-upload-document':'#3092fa',
