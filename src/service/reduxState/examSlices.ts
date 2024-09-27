@@ -7,6 +7,11 @@ const examSlice = createSlice({
             isFetching: false,
             error: false,
         },
+        userExam: {
+            data: null,
+            isFetching: false,
+            error: false,
+        },
         popularExam: {
             data: null,
             isFetching: false,
@@ -270,7 +275,20 @@ const examSlice = createSlice({
             state.examRevision.isFetching = false;
             state.examRevision.error = true;
             state.msg = action.payload;
-        }
+        },
+        getUserExamStart: (state) => {
+            state.userExam.isFetching = true;
+        },
+        getUserExamSuccess: (state, action) => {
+            state.userExam.isFetching = false;
+            state.userExam.data = action.payload;
+            state.userExam.error = false;
+        },
+        getUserExamFailed: (state, action) => {
+            state.userExam.isFetching = false;
+            state.userExam.error = true;
+            state.msg = action.payload;
+        },
     },
 });
 
@@ -317,6 +335,9 @@ export const {
     getExamRevisionStart,
     getExamRevisionSuccess,
     getExamRevisionFailed,
+    getUserExamStart,
+    getUserExamSuccess,
+    getUserExamFailed,
 } = examSlice.actions;
 
 export default examSlice.reducer;

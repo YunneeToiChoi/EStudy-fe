@@ -14,13 +14,13 @@ const useGetAllUnits = (params: any) => {
   const apiRequest = useMemo(() => ({
     courseId: courseId,
     userId: userId
-  }), [courseId, userId,dispatch]);
+  }), [courseId, userId]);
 
   useEffect(() => {
     if (!unitsFromState || !unitsFromState.some((unit: any) => unit.courseId === courseId)) {
       GetAllUnitsByCourse(apiRequest, dispatch);
     }
-  }, [dispatch,courseId]);
+  }, [dispatch,courseId,apiRequest,unitsFromState]);
 
   return unitsFromState;
 };

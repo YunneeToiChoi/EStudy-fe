@@ -40,7 +40,7 @@ export default function Home() {
       </div>
       <div className=" max-w-full mt-20">
         <div className="">
-          <h2 className=" font-semibold text-3xl text-center text-[#17165B]">Đề thi TOEIC</h2>
+          <h2 className=" font-semibold text-3xl text-center text-primary-bg-color">Đề thi TOEIC</h2>
           <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-14 mt-16">
             <GetPopularExams></GetPopularExams>
           </div>

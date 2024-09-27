@@ -1,151 +1,82 @@
-"use client"
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import LoadingDocument from '@/app/components/partialView/loadingDocument';
-import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
-import { FlipWords } from '@/components/ui/flip-words';
-import { Bounce, toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+  "use client"
+  import { useRouter } from "next/navigation";
+  import { useState, useEffect } from 'react';
+  import { useSelector } from "react-redux";
+  import LoadingDocument from '@/app/components/partialView/loadingDocument';
+  import { Bounce, toast } from 'react-toastify';
+  import "react-toastify/dist/ReactToastify.css";
+  import Link from 'next/link';
 
-const wordss = ["lecture notes", "summaries", "mandatory assignments", "practice materials"];
-const words = `Share study materials, achieve high scores on the TOEIC exam together and open up many new opportunities`;
+  import { UploadFiles } from '@/service/api/apiDocumentRequest';
 
-interface UploadedFile {
-  file: File;
-  progress: number;
-  completed: boolean;
-}
 
-export default function UploadDocument() {
-  const [files, setFiles] = useState<UploadedFile[]>([]);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
-  const [hidden1, setHidden1] = useState(false);
-  const [hidden2, setHidden2] = useState(false);
+  export default function UploadDocument() {
+    const router = useRouter();
+    const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
+    const [isDragging, setIsDragging] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [hidden1, setHidden1] = useState(false);
+    const [hidden2, setHidden2] = useState(false);
+    const [files, setFiles] = useState<any[]>(JSON.parse(sessionStorage.getItem("sessionFiles") || "[]"));
 
-  useEffect(() => {
-    if (isDragging) {
-      setHidden2(false);
-      setTimeout(() => setHidden1(true), 100);  
-    } else {
-      setHidden1(false);
-      setTimeout(() => setHidden2(true), 100);
+    useEffect(() => {
+      if(!user){
+        toast.error("Please login to upload document", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+        router.push('/login');
+      }
+    },[user,router])
+
+    useEffect(() => {
+      const storedFiles = JSON.parse(sessionStorage.getItem("sessionFiles") || "[]");
+      setFiles(storedFiles);
       
-    }
-  }, [isDragging]);
-
-const typeValidation = (type: string) => {
-  return (
-    type === "application/pdf" ||
-    type === "application/msword" ||
-    type ===
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-  );
-};
-
-const handleFileUpload = async (file: File) => {
-  if (isUploading) {
-    return;
-  }
-
-  setIsUploading(true); 
-
-  const isFileAlreadyUploaded = files.some(
-    (f) =>
-      f.file.name === file.name &&
-      f.file.size === file.size &&
-      f.file.lastModified === file.lastModified
-  );
-
-  if (isFileAlreadyUploaded) {
-    toast.error("File đã tồn tại!", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      transition: Bounce,
-    });
-    setIsUploading(false);
-    return;
-  }
-
-  const newFile: UploadedFile = {
-    file,
-    progress: 0,
-    completed: false,
-  };
-
-  setFiles((prevFiles) => [newFile, ...prevFiles]);
-
-  const simulateUploadProgress = async (file: UploadedFile) => {
-    return new Promise<void>((resolve) => {
-      const interval = setInterval(() => {
-        setFiles((prevFiles) => {
-          const updatedFiles = prevFiles.map((f) => {
-            if (f.file.name === file.file.name) {
-              const newProgress = f.progress + 10;
-              if (newProgress >= 100) {
-                clearInterval(interval);
-                console.log("Upload complete:", file.file.name);
-                return { ...f, progress: 100, completed: true };
-              }
-              console.log("Progress:", newProgress, "File:", file.file.name);
-              return { ...f, progress: newProgress };
-            }
-            return f;
-          });
-          console.log("Updated files list:", updatedFiles);
-          return updatedFiles;
-        });
-      }, 500);
+      const allCompleted = storedFiles.length > 0 && storedFiles.every((file: any) => file.completed === true);
+      setIsSubmit(allCompleted);
+    }, [isUploading,isSubmit]);
+    
+    useEffect(() => {
+      if (isDragging) {
+        setHidden2(false);
+        setTimeout(() => setHidden1(true), 100);
+      } else {
+        setHidden1(false);
+        setTimeout(() => setHidden2(true), 100);
+      }
+    }, [isDragging]);
   
-      setTimeout(() => {
-        clearInterval(interval);
-        setFiles((prevFiles) => {
-          return prevFiles.map((f) => {
-            if (f.file.name === file.file.name && !f.completed) {
-              return { ...f, progress: 100, completed: true };
-            }
-            return f;
-          });
-        });
-        resolve();
-      }, 5000);
-    });
-  };
-
-  await simulateUploadProgress(newFile);
-  setTimeout(() => setIsUploading(false), 1000);
-};
-
-const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-  console.log("sdsada")
-  e.preventDefault();
-  e.stopPropagation();
-  setIsDragging(true);
-};
-
-const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
-  e.preventDefault();
-  e.stopPropagation();
-  setIsDragging(false);
-};
-
-const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-  e.preventDefault();
-  e.stopPropagation();
-  setIsDragging(false);
-  if (e.dataTransfer.files) {
-    Array.from(e.dataTransfer.files).forEach((file) => {
-      if (typeValidation(file.type)) {
-          handleFileUpload(file);
-      } else {
-        toast.error('File không đúng định dạng!', {
+    const typeValidation = (type: string) => {
+      return (
+        type === "application/pdf" ||
+        type === "application/msword" ||
+        type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      );
+    };
+  
+    const handleFileUpload = async (file: File) => {
+      if (isUploading) return;
+    
+      setIsUploading(true);
+    
+      const storedFiles = sessionStorage.getItem("sessionFiles");
+      const parsedFiles = storedFiles ? JSON.parse(storedFiles) : [];
+    
+      const isFileAlreadyUploaded = parsedFiles.some(
+        (f: any) => f.fileName === file.name && f.fileSize === file.size && f.fileLastModified === file.lastModified
+      );
+    
+      if (isFileAlreadyUploaded) {
+        toast.error("File đã tồn tại!", {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -156,19 +87,48 @@ const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
           theme: "colored",
           transition: Bounce,
         });
+        setIsUploading(false);
+        return;
       }
-    });
-  }
-};
-
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  console.log(e.target.files);
-  if (e.target.files) {
-    Array.from(e.target.files).forEach((file) => {
-      if (typeValidation(file.type)) {
-        handleFileUpload(file);
-      } else {
-        toast.error("File không đúng định dạng!", {
+    
+      const newFile = {
+        fileName: file.name,
+        fileSize: file.size,
+        fileLastModified: file.lastModified,
+        idDocument: -1,
+        progress: 0,
+        completed: false,
+      };
+    
+      parsedFiles.push(newFile);
+      sessionStorage.setItem("sessionFiles", JSON.stringify(parsedFiles));
+      setFiles(parsedFiles);
+    
+      const onUploadProgress = (progressEvent: any) => {
+        const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+    
+        const updatedFiles = JSON.parse(sessionStorage.getItem("sessionFiles") || "[]").map((f: any) =>
+          f.fileName === file.name ? { ...f, progress } : f
+        );
+        sessionStorage.setItem("sessionFiles", JSON.stringify(updatedFiles));
+        setFiles(updatedFiles);
+      };
+    
+      try {
+        const document = await UploadFiles(file, user?.userId, onUploadProgress);
+    
+        if (document && document.documentId) {
+          const updatedFiles = JSON.parse(sessionStorage.getItem("sessionFiles") || "[]").map((f: any) =>
+            f.fileName === file.name ? { ...f, completed: true, idDocument: document.documentId, progress: 100 } : f
+          );
+          sessionStorage.setItem("sessionFiles", JSON.stringify(updatedFiles));
+          setFiles(updatedFiles);
+        } else {
+          throw new Error("Upload failed");
+        }
+      } catch (error) {
+        console.error(`File upload failed: ${file.name}`);
+        toast.error(`File upload failed: ${file.name}`, {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -179,56 +139,95 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           theme: "colored",
           transition: Bounce,
         });
+    
+        handleFileDelete(-1, file.name);
       }
-    });
-    e.target.value = '';
-  }
-};
-
-const handleFileDelete = (fileName: string) => {
-  setFiles((prevFiles) =>
-    prevFiles.filter((file) => file.file.name !== fileName)
-  );
-};
-  return (
-    <>
-      <header className=' w-full sticky z-20 top-0 bg-[#f6f7fb] flex justify-center items-center px-4 py-2'>
-        <div>
-          <Link className='flex gap-2 items-center' href="/">
-            <Image
-              className="nav__img"
-              src="/img/.svg/logo_document.svg"
-              alt="Logo"
-              width={60}
-              height={60}
-              quality={100}
-            />
-            <h1 className='text-[25px] font-semibold tracking-wide'>
-              E-<span className='text-primary-upload-document'>Study</span>
-            </h1>
-          </Link>
-        </div>
-      </header>
-      <div className=' w-full min-h-screen bg-white'>
-        <div className='bg-[#f6f7fb] py-4'>
-          <div className=" flex flex-col justify-center content-center">
-            <h1 className=" text-3xl font-semibold text-center">Share your
-              <span className=" text-primary-bg-color">
-                <FlipWords className="text-primary-upload-document" words={wordss} />
-              </span>
-            </h1>
-            <div className=" text-center font-normal mt-4">
-              <TextGenerateEffect words={words} />
-            </div>
-          </div>
-        </div>
-        <div className=' mx-60 px-4 py-8 '>
-          <div className='max-w-[800px] m-auto'>
+    
+      setTimeout(() => setIsUploading(false), 1000);
+      setIsSubmit(true);
+    };
+    
+    const handleFileDelete = (idDocument: number, fileName?: string) => {
+      const updatedFiles = files.filter((file) => file.idDocument !== idDocument && file.fileName !== fileName);
+      setFiles(updatedFiles);
+    
+      if (updatedFiles.length === 0) {
+        sessionStorage.removeItem("sessionFiles");
+        setIsSubmit(false);
+      } else {
+        sessionStorage.setItem("sessionFiles", JSON.stringify(updatedFiles));
+      }
+    };
+    
+  
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(true);
+    };
+  
+    const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(false);
+    };
+  
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(false);
+      if (e.dataTransfer.files) {
+        Array.from(e.dataTransfer.files).forEach((file) => {
+          if (typeValidation(file.type)) {
+            handleFileUpload(file);
+          } else {
+            toast.error('File không đúng định dạng!', {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              transition: Bounce,
+            });
+          }
+        });
+      }
+    };
+  
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        Array.from(e.target.files).forEach((file) => {
+          if (typeValidation(file.type)) {
+            handleFileUpload(file);
+          } else {
+            toast.error("File không đúng định dạng!", {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              transition: Bounce,
+            });
+          }
+        });
+        e.target.value = '';
+      }
+    };
+  
+    return (
+        <>
+         <div className='max-w-[800px] m-auto'>
             <ul className=' flex gap-4 justify-between items-center mb-6'>
               <li className=' flex-1'>
                 <div className=' text-center'>
                   <div className=' flex gap-2 justify-center items-center'>
-                    <i className="fa-solid fa-circle-dot text-primary-upload-document opacity-60"></i>
+                    <i className="fa-solid fa-circle-dot text-primary-upload-document"></i>
                     <span className=' text-lg font-bold text-primary-upload-document'>Upload</span>
                   </div>
                 </div>
@@ -237,16 +236,15 @@ const handleFileDelete = (fileName: string) => {
               <li className=' flex-1'>
                 <div className=' text-center'>
                   <div className=' flex gap-2 justify-center items-center'>
-                    <i className="fa-solid fa-check text-primary-upload-document text-xl"></i>
+                  <i className="fa-solid fa-circle-dot text-slate-300"></i>
                     <span className=' text-lg font-bold text-slate-300'>Details</span>
                   </div>
                 </div>
                 <div className=' w-full py-1 rounded-md bg-slate-300'></div>
               </li>
-              <li className=' flex-1'>
+              <li className=' flex-1'>  
                 <div className=' text-center'>
                   <div className=' flex gap-2 justify-center items-center'>
-                    <i className="fa-solid fa-circle-dot text-slate-300"></i>
                     <span className=' text-lg font-bold text-slate-300'>Done</span>
                   </div>
                 </div>
@@ -254,78 +252,67 @@ const handleFileDelete = (fileName: string) => {
               </li>
             </ul>
           </div>
-            <label>
-            <div className={`relative w-full hover:cursor-pointer group p-11 rounded-3xl bg-[#f1f7fe] shadow-xl shadow-blue-300/50 ${isUploading ? 'pointer-events-none opacity-50' : ''}`}>
-            <div onDrop={handleDrop}
-             onDragOver={handleDragOver}
-             onDragLeave={handleDragLeave}
-              className={`flex justify-center p-8 border-dashed border-[3px] border-[#aad2ff] rounded-3xl items-center ${isUploading ? 'pointer-events-none' : ''}`}>
-              <div className={`flex text-5xl duration-200 font-extrabold text-primary-upload-document text-center justify-center items-center flex-col min-h-64 gap-6 scale-100 pointer-events-none ${hidden1 ? '' : 'hidden'}`}>
-                DROP HERE
-              </div>
-              <div className={`flex flex-col justify-start min-h-64 gap-6 items-center duration-200 ${!hidden2 ? 'invisible opacity-0 scale-110 pointer-events-none' : ''} ${hidden1 ?'hidden':''}`}>
-                <div className=" flex flex-col m-auto justify-center items-center gap-2">
-                  <i className="fa-solid fa-cloud-arrow-up text-5xl group-hover:opacity-100 group-hover:duration-300 ease-linear opacity-50 text-primary-upload-document"></i>
-                  <span className=' text-4xl font-bold'>Drag & Drop files</span>
+          <label>
+              <div className={`relative w-full hover:cursor-pointer group p-11 rounded-3xl bg-[#f1f7fe] shadow-xl shadow-blue-300/50 ${isUploading ? 'pointer-events-none opacity-50' : ''}`}>
+              <div onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+                className={`flex justify-center p-8 border-dashed border-[3px] border-[#aad2ff] rounded-3xl items-center ${isUploading ? 'pointer-events-none' : ''}`}>
+                <div className={`flex text-5xl duration-200 font-extrabold text-primary-upload-document text-center justify-center items-center flex-col min-h-64 gap-6 scale-100 pointer-events-none ${hidden1 ? '' : 'hidden'}`}>
+                  DROP HERE
                 </div>
-                <div className=' flex flex-col justify-center items-center gap-3'>
-                  <span className="name-file text-slate-400 text-center leading-[24px]">Or if you prefer</span>
-                  <div className="bg-primary-upload-document rounded-3xl flex justify-center hover:shadow-md duration-150 items-center hover:bg-blue-500 transition hover:duration-150 delay-75 ease-linear">
-                    <input
-                      type="file"
-                      className="hidden"
-                      onChange={handleFileChange}
-                      multiple
-                    />
-                    <h1 className=" px-6 py-2 text-center font-medium text-lg text-white">Browse my files</h1>
+                <div className={`flex flex-col justify-start min-h-64 gap-6 items-center duration-200 ${!hidden2 ? 'invisible opacity-0 scale-110 pointer-events-none' : ''} ${hidden1 ?'hidden':''}`}>
+                  <div className=" flex flex-col m-auto justify-center items-center gap-2">
+                    <i className="fa-solid fa-cloud-arrow-up text-5xl group-hover:opacity-100 group-hover:duration-300 ease-linear opacity-50 text-primary-upload-document"></i>
+                    <span className=' text-4xl font-bold'>Drag & Drop files</span>
                   </div>
-                  <span className="name-file text-slate-400 text-center leading-[24px]">Supported files: pdf, doc, docx</span>
+                  <div className=' flex flex-col justify-center items-center gap-3'>
+                    <span className="name-file text-slate-400 text-center leading-[24px]">Or if you prefer</span>
+                    <div className="bg-primary-upload-document rounded-3xl flex justify-center hover:shadow-md duration-150 items-center hover:bg-blue-500 transition hover:duration-150 delay-75 ease-linear">
+                      <input
+                        type="file"
+                        className="hidden"
+                        onChange={handleFileChange}
+                        multiple
+                      />
+                      <h1 className=" px-6 py-2 text-center font-medium text-lg text-white">Browse my files</h1>
+                    </div>
+                    <span className="name-file text-slate-400 text-center leading-[24px]">Supported files: pdf, doc, docx</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </label>
+          </label>
           <div>
           <ul className='w-full mt-11'>
-            {files.map((file, index) => (
-                <li key={index} className='flex flex-col gap-2 my-4'>
-                <div className='flex w-full gap-4 items-center'>
-                    {file.completed ? (
-                    <i className="fa-solid fa-circle-check text-green-500 text-xl"></i>
-                    ) : (
-                    <i className="fa-solid fa-file-invoice text-slate-300 text-2xl"></i>
-                    )}
-                    <span className='text-base font-bold text-black'>{file.file.name}</span>
-                    {file.completed ? (
-                    <i  onClick={() => handleFileDelete(file.file.name)} className="fa-solid fa-trash-can text-slate-400 ml-auto hover:cursor-pointer"></i>
-                    ) : (
-                    <LoadingDocument />
-                    )}
-                </div>
-                <div className='flex w-full gap-2 items-center'>
-                    <span className='text-sm font-normal text-slate-300'>
-                    {(file.file.size / (1024 * 1024)).toFixed(2)} MB
-                    </span>
-                    <div className='relative flex-1 py-[3px] rounded-md bg-slate-300 overflow-hidden'>
-                    <div className='absolute top-0 left-0 h-full bg-slate-300 w-full'></div>
-                    <div
-                        className={`absolute top-0 left-0 h-full bg-green-500`}
-                        style={{
-                        width: `${file.progress}%`,
-                        transition: 'width 0.5s ease',
-                        }}
-                    ></div>
-                    </div>
-                    <span className='text-sm font-normal text-slate-300'>
-                    {file.completed ? '100%' : `${file.progress}%`}
-                    </span>
-                </div>
-                </li>
-            ))}
+          {files.map((file, index) => (
+            <li key={index} className='flex flex-col shadow-lg rounded-2xl border-[1px] border-slate-300 gap-2 p-6 my-4'>
+              <div className='flex w-full gap-4 items-center'>
+                {file.completed ? (
+                  <i className="fa-solid fa-circle-check text-green-500 text-xl"></i>
+                ) : (
+                  <i className="fa-solid fa-file-invoice text-slate-300 text-2xl"></i>
+                )}
+                <span className='text-base font-bold text-black'>{file.fileName}</span>
+                <span className='text-sm font-normal text-slate-300'>
+                  {(file?.fileSize / (1024 * 1024)).toFixed(2)} MB
+                </span>
+                {file.completed ? (
+                  <i onClick={() => handleFileDelete(file.idDocument)} className="fa-solid fa-trash-can text-slate-400 ml-auto hover:cursor-pointer"></i>
+                ) : (
+                  <LoadingDocument />
+                )}
+              </div>
+            </li>
+          ))}
         </ul>
           </div>
-        </div>
-      </div>
-    </>
-  );
-}
+          {isSubmit&&(
+              <Link href="/document/upload/details" className=' ml-auto justify-center items-center w-fit flex gap-2 px-5 py-3 bg-primary-upload-document text-base text-white font-medium  rounded-3xl shadow-lg '>
+              <span className=' font-semibold '>Upload Document</span>
+              <i className="fa-solid fa-arrow-right text-white text-xl"></i>
+              </Link>
+          )}
+        </>
+    );
+  }

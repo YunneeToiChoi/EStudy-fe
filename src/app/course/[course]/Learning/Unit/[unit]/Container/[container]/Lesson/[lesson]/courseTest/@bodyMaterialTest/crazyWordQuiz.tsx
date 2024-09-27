@@ -14,7 +14,6 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
   const searchParams = useSearchParams();
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
-  const idLesson = { lessonId: params.lesson };
   const ListQuestion = useSelector((state: any) => state.ThunkReducer?.question?.Reading?.data?.data);
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.question?.Reading?.data?.lessonTag?.lessonTag);
   
@@ -28,10 +27,11 @@ export const CrazyWordQuiz: React.FC<CrazyWordQuizProps> = ({ params }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    const idLesson = { lessonId: params.lesson }
     getAllReadingQuest(idLesson, dispatch).finally(() => {
       setTimeout(() => setIsLoading(false), 1000);
     }); 
-  }, [dispatch, tagCheck]);
+  }, [dispatch,params.lesson]);
 
   useEffect(() => {
     if (audioRef.current) {

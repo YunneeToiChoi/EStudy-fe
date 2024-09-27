@@ -1,25 +1,32 @@
-"use client"
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
-import GetCoursesByUser from "./getCourseByUser"
-import { useEffect } from 'react';
+import GetCoursesByUser from "./getCourseByUser";
+import GetExamByUser from './getExamByUser';
+import GetDocByUser from './getDocByUser';
+import { useEffect, useState } from 'react';
 
 export default function Profile() {
   const navigate = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
-  const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
+  const infoUser = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
+  const [currentPage, setCurrentPage] = useState('courses');
 
   useEffect(() => {
-    if (!user||!infoUser) {
+    if (!user || !infoUser) {
       navigate.push("/login");
     }
   }, [user, navigate, infoUser]);
 
-    return(
-        <div className="grid wide">
-        <div className="img__container">
+  const handlePageChange = (page: string) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <div className="grid wide">
+          <div className="img__container">
           <div className="avatar__container">
             <Image
               src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg"
@@ -40,33 +47,34 @@ export default function Profile() {
               ><i className="fa-solid fa-pencil"></i
             ></Link>
               </div>
-              </div>
+            </div>
           </div>
         </div>
-        <div className=" flex items-center justify-center mt-11">
-          <h1 className=" text-3xl font-bold text-primary-bg-color">Xin chào {infoUser?.userName} !</h1>
-        </div>
-        <ul className="tag-search__transition">
-          <li className="tag-search__transition-item">
-            <Link
-              href=""
-              className="tag-search__transition-link tag-search__transition-link--chosen"
-              >Khóa học</Link>
-          </li>
-          <li className="tag-search__transition-item">
-            <Link href="" className="tag-search__transition-link">Kết quả luyện thi</Link>
-          </li>
-          <li className="tag-search__transition-item">
-            <Link href="" className="tag-search__transition-link">Posts</Link>
-          </li>
-        </ul>
-        <div className="course__registed-container">
-          <p style={{display:'none'}} className="course__registed--dont-have-course">
-            Bạn chưa đăng ký học khoá học nào!
-          </p>
-          <h3 className="course__registed-header">Các khóa đã kích hoạt</h3>
-          <GetCoursesByUser></GetCoursesByUser>
-        </div>
+      <div className="flex items-center justify-center mt-11">
+        <h1 className="text-3xl font-bold text-primary-bg-color">Xin chào {infoUser?.userName}!</h1>
       </div>
-    )
+      <ul className="tag-search__transition">
+        <li className="tag-search__transition-item">
+          <button onClick={() => handlePageChange('courses')} className={`tag-search__transition-link ${currentPage === 'courses' ? 'tag-search__transition-link--chosen' : ''}`}>
+            Khóa học
+          </button>
+        </li>
+        <li className="tag-search__transition-item">
+          <button onClick={() => handlePageChange('results')} className={`tag-search__transition-link ${currentPage === 'results' ? 'tag-search__transition-link--chosen' : ''}`}>
+            Kết quả luyện thi
+          </button>
+        </li>
+        <li className="tag-search__transition-item">
+          <button onClick={() => handlePageChange('document')} className={`tag-search__transition-link ${currentPage === 'posts' ? 'tag-search__transition-link--chosen' : ''}`}>
+            Document
+          </button>
+        </li>
+      </ul>
+      <div className="course__registed-container">
+        {currentPage === 'courses' && <GetCoursesByUser />}
+        {currentPage === 'results' && <GetExamByUser/>}
+        {currentPage === 'document' && <GetDocByUser/>}
+      </div>
+    </div>
+  );
 }
