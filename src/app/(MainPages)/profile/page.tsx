@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
 import GetCoursesByUser from "./getCourseByUser";
 import GetExamByUser from './getExamByUser';
+import GetDocByUser from './getDocByUser';
 import { useEffect, useState } from 'react';
 
 export default function Profile() {
@@ -72,7 +73,7 @@ export default function Profile() {
       <div className="course__registed-container">
         {currentPage === 'courses' && <GetCoursesByUser />}
         {currentPage === 'results' && <GetExamByUser/>}
-        {currentPage === 'document' && <p>Các bài viết sẽ được hiển thị ở đây.</p>}
+        {currentPage === 'document' && <GetDocByUser/>}
       </div>
     </div>
   );
