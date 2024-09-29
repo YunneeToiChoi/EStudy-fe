@@ -22,14 +22,14 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
   return `${idUser}${idCourse}${currentDate}`.split('').sort(() => Math.random() - 0.5).join('');
 };
 
- const handlePayment = async (courseDetail:any,resOrder:any,lastPrice:any,idUser:any,dispatch:any,navigate:any) => {
-  const reqId:string = await handleRandomReqID(idUser,courseDetail.courseId.toString());
+ const handlePayment = async (ID:any,name:string,resOrder:any,lastPrice:any,idUser:any,dispatch:any,navigate:any) => {
+  const reqId:string = await handleRandomReqID(idUser,ID.toString());
   const dataPaymentMomo = {
     subPartnerCode: "",
     requestId: reqId,
     amount: lastPrice,
     orderId: String(resOrder.orderId),
-    orderInfo: `Thanh toán khoá học: ${courseDetail.courseName}`,
+    orderInfo: `Thanh toán: ${name}`,
     redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
     ipnUrl: process.env.NEXT_PUBLIC_MOMO_IPNURL,
     requestType: "captureWallet",
@@ -38,13 +38,24 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
   };
   RequestApiPaymentMomo(dataPaymentMomo, dispatch, navigate);
 };
+export const RequestApiOrderPlan = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
+  dispatch(OrderStart()); 
+  try{
+    const res = await request.post('/SubscriptionPlan_API/Order_Plan',dataOrder);
+    dispatch(OrderSuccess(res));
+    await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+  }catch (err:any) {
+    dispatch(OrderFailed());
+    return err.response;
+  }
+}
 
-export const RequestApiOrder = async (dataOrder:any,dispatch:any,lastPrice:any,courseDetail:any,idUser:string,navigate:any) => {
+export const RequestApiOrderCourse = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
     dispatch(OrderStart()); 
     try{
       const res = await request.post('/Order_API/Buy_Course',dataOrder);
       dispatch(OrderSuccess(res));
-      await handlePayment(courseDetail,res,lastPrice,idUser,dispatch,navigate);
+      await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
     }catch (err:any) {
       dispatch(OrderFailed());
       return err.response;

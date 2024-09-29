@@ -6,6 +6,7 @@ import Header from "./components/partialView/header";
 import Footer from "./components/partialView/footer";
 
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import PlanUser from './components/partialView/planUser';
 import GetPoplarCourses from "@/app/components/partialView/getPopularCourse"
 import GetPopularExams from './components/partialView/getPopularExam';
 import { useSelector } from "react-redux";
@@ -39,14 +40,10 @@ export default function Home() {
         />
       </div>
       <div className=" max-w-full mt-20">
-        <div className="">
-          <h2 className=" font-semibold text-3xl text-center text-primary-bg-color">Đề thi TOEIC</h2>
-          <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-14 mt-16">
-            <GetPopularExams></GetPopularExams>
-          </div>
-          <div className="relative my-[150px] w-screen rounded-3xl left-1/2 transform -translate-x-1/2 bg-[#F5F5FD]  p-16">
-            <GetPoplarCourses></GetPoplarCourses>
-          </div>
+        <div className='w-full flex flex-col gap-20'>
+          <GetPopularExams></GetPopularExams>
+          <GetPoplarCourses></GetPoplarCourses>
+          <PlanUser />
         </div>
       </div>
       </div>

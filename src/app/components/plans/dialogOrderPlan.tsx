@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { useDispatch } from "react-redux";
@@ -16,42 +14,26 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage
-  } from '@/components/ui/form'
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 
-import { OrderCourseBody, OrderCourseBodyType } from '@/schemaValidate/orderCourse.schema'
 
-import { RequestApiOrderCourse } from "@/service/api/apiOrderRequest";
+import { RequestApiOrderPlan } from "@/service/api/apiOrderRequest";
 
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 interface OrderDialogProps {
-  courseId: number;
-  CoursesDetail: any;
-  lastPrice: number;
+  planId: number;
+  planName: string;
+  planDuration: number;
+  PlanPrice: number;
 }
 
-const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastPrice }) => {
+const OrderDialog: React.FC<OrderDialogProps> = ({ planId, planName,planDuration,PlanPrice }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const form = useForm<OrderCourseBodyType>({
-    resolver: zodResolver(OrderCourseBody),
-    defaultValues: {
-      address: '',
-      email: ''
-    }
-  });
+
 
   const checkUser = () => {
     if (!user) {
@@ -70,15 +52,11 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
     }
   }
 
-  const handleOrder = async (values: OrderCourseBodyType) => {
+  const handleOrder = async () => {
     setIsSubmitting(true); 
-    const { address, email } = values;
     const dataOrder = {
-      UserId: user.userId,
-      CourseId: courseId,
-      Address: address,
-      TotalAmount: CoursesDetail.coursePrice,
-      Email: email,
+      userId: user.userId,
+      planId: planId,
     };
    const idToast=toast.loading('Đang chuyển hướng đến trang Momo....', {
       position: "bottom-right",
@@ -91,7 +69,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
       theme: "dark",
       transition: Bounce,
     });
-    const res = await RequestApiOrderCourse(dataOrder, dispatch,lastPrice, CoursesDetail.courseId, CoursesDetail.courseName, user.userId, router.push);
+    const res = await RequestApiOrderPlan(dataOrder, dispatch,PlanPrice,planId,planName, user.userId, router.push);
     if(res?.status ==400){
       toast.update(idToast, { 
         render:'Chuyển hướng thất bại !',
@@ -134,57 +112,14 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
         <AlertDialogHeader>
           <AlertDialogTitle>Thanh toán khoá học</AlertDialogTitle>
           <AlertDialogDescription>
-          Mua khoá học: {CoursesDetail.courseName}
+          Mua khoá học: {planName}
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleOrder)} noValidate>
-            <div className="grid gap-4 py-4">
-              <div className="grid items-center gap-4">
-                <Label htmlFor="phone" className="text-left">
-                  Email
-                </Label>
-                <FormField
-                  control={form.control}
-                  name='email'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input className="col-span-3" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="grid items-center gap-4">
-                <Label htmlFor="address" className="text-left">
-                  Address
-                </Label>
-                <FormField
-                  control={form.control}
-                  name='address'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input className="col-span-3" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <AlertDialogFooter>
-            <AlertDialogCancel className=' bg-slate-300 w-full text-black block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent'>Cancel</AlertDialogCancel>
+        <AlertDialogCancel className=' bg-slate-300 w-full text-black block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent'>Cancel</AlertDialogCancel>
             <AlertDialogAction
              className="bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent" 
-             type="submit" 
-             disabled={isSubmitting}
+             onClick={handleOrder}
             > ĐẶT HÀNG NGAY</AlertDialogAction>
-            </AlertDialogFooter>
-          </form>
-        </Form>
       </AlertDialogContent>
     </AlertDialog>
   )

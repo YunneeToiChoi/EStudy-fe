@@ -72,14 +72,23 @@ export const handleGoogleLogin = async (dispatch: any, navigate: any) => {
           transition: Bounce,
         });
       }
+
+      // Gỡ bỏ listener sau khi đăng nhập xong
+      window.removeEventListener("message", handlePopupMessage);
     }
   };
 
+  // Thêm event listener
   window.addEventListener("message", handlePopupMessage);
+
   await new Promise<void>((resolve) => {
     const checkPopupClosed = setInterval(() => {
       if (popup?.closed) {
         clearInterval(checkPopupClosed);
+
+        // Gỡ bỏ event listener khi popup đóng
+        window.removeEventListener("message", handlePopupMessage);
+
         resolve();
       }
     }, 500);

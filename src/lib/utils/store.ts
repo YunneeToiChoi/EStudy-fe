@@ -11,6 +11,7 @@ import videoSlices from "@/service/reduxState/videoSlices";
 import listenSlices from "@/service/reduxState/listenSlices";
 import examSlices from "@/service/reduxState/examSlices";
 import documentSlices from "@/service/reduxState/documentUserSlices";
+import plansSlices from "@/service/reduxState/plansSlices";
 import {
   persistStore,
   persistReducer,
@@ -41,6 +42,7 @@ const ThunkReducer = combineReducers({
   listen: listenSlices,
   exam: examSlices,
   document:documentSlices,
+  plan: plansSlices,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

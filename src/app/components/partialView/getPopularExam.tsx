@@ -23,7 +23,11 @@ export default function GetPopularExams() {
 
     return(
     <>
-      {listExam?.map((exam:any) =>{
+    {listExam && listExam?.length > 0 ?(
+      <>
+         <h2 className=" font-semibold text-3xl text-center text-primary-bg-color">Đề thi TOEIC</h2>
+     <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-14 mt-16">
+     {listExam?.map((exam:any) =>{
                 return(
                     <div key={exam.examId} className='shadow-xl hover:shadow-2xl transition duration-300 ease-in bg-white/55 rounded-lg px-4'>
                     <Link
@@ -74,6 +78,11 @@ export default function GetPopularExams() {
                   </div>
                 )
               })}
+      </div>
+      </>
+    ):(
+      <></>
+    )}
     </>
     )
 }
