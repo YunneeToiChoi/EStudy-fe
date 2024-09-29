@@ -65,7 +65,7 @@ export default function Profile() {
           </button>
         </li>
         <li className="tag-search__transition-item">
-          <button onClick={() => handlePageChange('document')} className={`tag-search__transition-link ${currentPage === 'posts' ? 'tag-search__transition-link--chosen' : ''}`}>
+          <button onClick={() => handlePageChange('document')} className={`tag-search__transition-link ${currentPage === 'document' ? 'tag-search__transition-link--chosen' : ''}`}>
             Document
           </button>
         </li>
