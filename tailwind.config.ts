@@ -54,7 +54,7 @@ const config = {
         'alert-flashcard-color': '#d8f0e2',
         'economy-price-text-color': '#e43a45',
         'primary-bg-color': '#3092fa',
-        'primary-bg-color-hover':'#3E3AD4',
+        'primary-bg-color-hover':'#63c8ff',
         'primary-bg-orange-color': '#F96041',
         'primary-upload-document':'#3092fa',
         primary: {
@@ -109,5 +109,6 @@ const config = {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
+
 
 export default config

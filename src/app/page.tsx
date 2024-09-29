@@ -6,7 +6,6 @@ import Header from "./components/partialView/header";
 import Footer from "./components/partialView/footer";
 
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import PlanUser from './components/partialView/planUser';
 import GetPoplarCourses from "@/app/components/partialView/getPopularCourse"
 import GetPopularExams from './components/partialView/getPopularExam';
 import { useSelector } from "react-redux";
@@ -43,7 +42,6 @@ export default function Home() {
         <div className='w-full flex flex-col gap-20'>
           <GetPopularExams></GetPopularExams>
           <GetPoplarCourses></GetPoplarCourses>
-          <PlanUser />
         </div>
       </div>
       </div>

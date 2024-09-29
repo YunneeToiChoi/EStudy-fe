@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Link from 'next/link';
 import Image from "next/image";   
 import { DropdownMenuDemo } from "./propDown";
+import {NavigationMenuHeader} from "./menuHeader";
 
 export default function Header() {
   const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
@@ -63,39 +64,23 @@ export default function Header() {
                 </h1>
               </Link>
             </div>
-            <div>
-              <ul className="list-none flex items-center max-lg:hidden gap-6">
-                <li className={user ? "group":"hidden"}>
-                  <Link href="/profile" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
-                    Tài liệu chia sẻ
-                  </Link>
-                </li>
-                <li className="group">
-                  <Link href="/courseOnline" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
-                    Khóa học online
-                  </Link>
-                </li>
-                <li className="group">
-                  <Link href="/examOnline" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
-                    Đề thi online
-                  </Link>
-                </li>
-                <li className="group">
-                  <Link href="/activeCourse" className="group-hover:text-primary-bg-color group-hover:duration-75 delay-75 transition ease-linear no-underline font-medium text-black text-lg tracking-normal">
-                    Kích hoạt khóa học
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            {userInfo ?(
+            <div className='flex gap-5'>
+              <NavigationMenuHeader />
+              {userInfo &&
               <Link href={"/document/upload"} className=' py-2 px-4 flex justify-center hover:cursor-pointer text-white items-center gap-2 rounded-xl group cursor-pointer bg-primary-bg-color hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
                 <i className="fa-solid fa-cloud-arrow-up text-white group-hover:text-primary-bg-color text-xl"></i>  
                 <p className=' text-lg font-medium group-hover:text-primary-bg-color '>Upload</p>
-              </Link>
-            ):(
-              <></>
-            )}
-            <div>
+              </Link>}
+            </div>
+            <div className='flex gap-4 items-center'>
+              {userInfo?(
+                 <Link href="/premium" legacyBehavior passHref>
+          <div className='bg-black text-base font-medium rounded-3xl text-white px-4 py-1 hover:cursor-pointer shadow-lg duration-200 ease-in-out hover:text-black hover:bg-transparent'>
+              <p className='text-center'>Gói tháng</p>
+            </div>
+          </Link>
+              ):(<></>)}
+           
             <div className=' relative flex gap-4 px-2'>
                 {userInfo ? (
                   <>
