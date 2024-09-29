@@ -14,8 +14,6 @@ export default function GetExamByUser() {
     const checkNoExam =useSelector((state: any) => state.ThunkReducer.exam.userExam?.data);
     const listExam = useSelector((state: any) => state.ThunkReducer.exam.userExam?.data?.exams);
     const [isLoading, setIsLoading] = useState(true);
-    console.log(listExam)
-    console.log(checkNoExam)
 
     useEffect(() => {
         if (user?.userId) {
@@ -40,10 +38,9 @@ export default function GetExamByUser() {
         return `${hours} giờ ${minutes} phút ${seconds} giây`;
       }
 
-
     return(
       <div className="relative text-sm">
-         {listExam==null||checkNoExam?.status!=200 ? (<div> Học viên chưa tham gia kì thi thử nào .</div>):(
+         {listExam==null||checkNoExam?.status!=200||listExam.length<=0 ? (<div> Học viên chưa tham gia kì thi thử nào .</div>):(
               <>
                <table className="min-w-full my-6 bg-white border border-gray-200">
                <thead>

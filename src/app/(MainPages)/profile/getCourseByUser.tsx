@@ -33,7 +33,7 @@ export default function GetCoursesByUser() {
 
     return(
       <div className="relative">
-        {checkNoCourse?.status==404||listCourses==null ? (
+        {checkNoCourse?.status==404||listCourses==null||listCourses.length<=0 ? (
         <div>Học viên chưa mua khoá học nào</div>)
         :(
           <>
