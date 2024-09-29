@@ -20,6 +20,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="facebook-domain-verification" content="6l69qszvnj9huduqiyudvp41qduh6e" />
+      </head>
       <body className={roboto.className}>
         <div className="bg-primary-bg-color fixed top-[-500px] bottom-0 left-[-200px] rounded-br-full w-[1100px]"></div>
         <div className="ParentLayout backdrop-blur-xl fixed top-0 bottom-0 right-0 left-0 bg-white/90 overflow-scroll overflow-x-hidden">
