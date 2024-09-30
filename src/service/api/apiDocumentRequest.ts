@@ -93,7 +93,7 @@ export const getUserDocuments = async (userId: any, dispatch: any) => {
 export const getCourseDocuments = async (courseId: any, dispatch: any) => {
     dispatch(getCourseDocumentsStart());
     try {
-        const res = await request.post('/UserDocumentAPI/GetDocByCour', {courseId: courseId});
+        const res = await request.post('UserDocumentAPI/GetDocByCourse', courseId);
         dispatch(getCourseDocumentsSuccess(res));
     } catch (err:any) {
         dispatch(getCourseDocumentsFailed(err.response?.data));

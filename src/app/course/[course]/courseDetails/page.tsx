@@ -12,6 +12,8 @@ import { useEffect} from 'react';
 import OrderDialog from "@/app/components/courseDetail/dialogOrderCourse"
 import  addDotsToCurrency  from "@/lib/utils/currency";
 
+import GetDocByCourse from "./courseDocument"
+
 export default function CourseDetail({ params }: { params: {course: string } })
 {
   const { course: idCourse } = params;
@@ -95,7 +97,7 @@ export default function CourseDetail({ params }: { params: {course: string } })
       </div>
     </div>
     <div className=" bg-exam-bg-color mt-10 rounded-xl overflow-hidden">
-      <div className="max-w-[1200px] m-auto grid">
+      <div className="max-w-[1200px] m-auto">
         <ul className=" ml-[10px] mt-[20px] list-none flex flex-wrap border-b-[1px] border-b-[#e0e0e0] bg-transparent max-w-full relative">
           <li className=" flex whitespace-nowrap">
             <Link
@@ -117,48 +119,6 @@ export default function CourseDetail({ params }: { params: {course: string } })
         </ul>
         <div className="grid lg:grid-cols-2 gap-20 md:grid-cols-2">
           <div className="">
-            <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
-              <h2 className=" text-2xl my-4">
-                Bạn sẽ đạt được gì sau khoá học?
-              </h2>
-              <p className=" text-base my-4">
-                1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-              <p className="text-base my-4">
-                2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-              <p className="text-base my-4">
-                3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-              <p className="text-base my-4">
-                4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-            </div>
-            <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
-              <h2 className=" text-2xl my-4">
-                Bạn sẽ đạt được gì sau khoá học?
-              </h2>
-              <p className=" text-base my-4">
-                1️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-              <p className="text-base my-4">
-                2️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-              <p className="text-base my-4">
-                3️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-              <p className="text-base my-4">
-                4️⃣ Đạt mục tiêu tối thiểu 7.0 trong IELTS Reading General
-                Training
-              </p>
-            </div>
             <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
               <h2 className=" text-2xl my-4">
                 Bạn sẽ đạt được gì sau khoá học?
@@ -274,6 +234,7 @@ export default function CourseDetail({ params }: { params: {course: string } })
           </div>
         </div>
         </div>
+        <GetDocByCourse courseId={params.course}></GetDocByCourse>
       </div>
     </div>
   </div>
