@@ -96,23 +96,31 @@ export default function UploadDetail() {
     }
   }, [dispatch,userId,user,storedDocuments,router]);
 
-const formatPrice = (value: string) => {
-  const num = parseFloat(value);
-  if (isNaN(num)) return '';
-  return num.toLocaleString('vi-VN', { style: 'decimal', minimumFractionDigits: 0 });
-};
+  const formatPrice = (value: string) => {
+    // Chuyển giá trị thành số và định dạng lại với dấu chấm
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  };
 
 const handleDetailChange = (index: number, field: keyof DocumentDetails, value: string | boolean | number) => {
   if (field === 'price') {
+    // Chỉ giữ lại các ký tự số
     const numericValue = value.toString().replace(/[^0-9]/g, '');
-    value = formatPrice(numericValue);
+
+    // Cập nhật giá trị với định dạng có dấu chấm
+    const formattedValue = formatPrice(numericValue);
+
+    setDocumentDetails((prev) => {
+      const newDetails = [...prev];
+      newDetails[index] = { ...newDetails[index], [field]: formattedValue };
+      return newDetails;
+    });
+  } else {
+    setDocumentDetails((prev) => {
+      const newDetails = [...prev];
+      newDetails[index] = { ...newDetails[index], [field]: value };
+      return newDetails;
+    });
   }
-  
-  setDocumentDetails((prev) => {
-    const newDetails = [...prev];
-    newDetails[index] = { ...newDetails[index], [field]: value };
-    return newDetails;
-  });
 
   setErrors((prev) => ({
     ...prev,
@@ -123,42 +131,52 @@ const handleDetailChange = (index: number, field: keyof DocumentDetails, value: 
   }));
 };
 
-  const validateData = () => {
-    const newErrors: { [key: number]: { [key: string]: string } } = {};
-    let isValid = true;
+const validateData = () => {
+  const newErrors: { [key: number]: { [key: string]: string } } = {};
+  let isValid = true;
 
-    documentDetails.forEach((details, index) => {
-      const fieldErrors: { [key: string]: string } = {};
+  documentDetails.forEach((details, index) => {
+    console.log("Current details:", details); // Log giá trị hiện tại
+    const fieldErrors: { [key: string]: string } = {};
 
-      if (!details.courseId) {
-        fieldErrors.course = "Course is required";
-        isValid = false;
-      }
-      if (!details.categoryId) {
-        fieldErrors.category = "Category is required";
-        isValid = false;
-      }
-      if (!details.title) {
-        fieldErrors.title = "Title is required";
-        isValid = false;
-      }
-      if (!details.description) {
-        fieldErrors.description = "Description is required";
-        isValid = false;
-      }
-      if (!details.price && !details.isPublic) {
-        fieldErrors.price = "Price is required";
-        isValid = false;
-      }
+    if (!details.courseId) {
+      fieldErrors.course = "Course is required";
+      isValid = false;
+    }
+    if (!details.categoryId) {
+      fieldErrors.category = "Category is required";
+      isValid = false;
+    }
+    if (!details.title) {
+      fieldErrors.title = "Title is required";
+      isValid = false;
+    } else if (details.title.length > 20) {
+      fieldErrors.title = "Title must be less than 20 characters";
+      isValid = false;
+    }
+    if (!details.description) {
+      fieldErrors.description = "Description is required";
+      isValid = false;
+    } else if (details.description.length > 100) {
+      fieldErrors.description = "Description must be less than 100 characters";
+      isValid = false;
+    }
+    if (!details.price && !details.isPublic) {
+      fieldErrors.price = "Price is required";
+      isValid = false;
+    } else if (parseInt(details.price) < 10.000 && !details.isPublic) {
+      fieldErrors.price = "Price must be at least 10.000";
+      isValid = false;
+    }
 
-      if (Object.keys(fieldErrors).length > 0) {
-        newErrors[index] = fieldErrors;
-      }
-    });
+    if (Object.keys(fieldErrors).length > 0) {
+      newErrors[index] = fieldErrors;
+    }
+  });
 
-    setErrors(newErrors);
-    return isValid;
-  };
+  setErrors(newErrors);
+  return isValid;
+};
 
   const handleSubmit = async () => {
     if (validateData()) {
@@ -174,7 +192,7 @@ const handleDetailChange = (index: number, field: keyof DocumentDetails, value: 
                 courseId: documentDetails[index].courseId ? parseInt(documentDetails[index].courseId.toString(), 10) : null,
                 state: documentDetails[index].isPublic,
                 title: documentDetails[index].title,
-                price: documentDetails[index].isPublic ? -1 : parseFloat(documentDetails[index].price),
+                price: documentDetails[index].isPublic ? -1 : parseFloat(documentDetails[index].price.replace(/\./g, '')),
                 description: documentDetails[index].description,
               },
               dispatch

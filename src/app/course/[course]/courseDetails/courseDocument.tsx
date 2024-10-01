@@ -24,7 +24,7 @@ const GetDocByCourse: React.FC<DocumentCourseProps> = ({ courseId }) => {
         setIsLoading(false);
       });
     }
-  }, [dispatch]);
+  }, [dispatch,courseId]);
 
   const handleNext = () => {
     if (scrollContainerRef.current) {
@@ -65,8 +65,8 @@ const GetDocByCourse: React.FC<DocumentCourseProps> = ({ courseId }) => {
               style={{ scrollBehavior: 'smooth', overflow: 'hidden' }}
             >
               {listDocuments.map((document: any) => (
-                <div className="flex-shrink-0">
-                  <DocumentCard key={document.documentId} document={document} />
+                <div key={document.documentId} className="flex-shrink-0">
+                  <DocumentCard document={document} />
                 </div>
               ))}
             </div>
