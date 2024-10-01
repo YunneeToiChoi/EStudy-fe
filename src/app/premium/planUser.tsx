@@ -14,7 +14,7 @@ export default function PlanUser() {
     if (!listPlans) {
       getAllPlans(dispatch);
     }
-  }, [dispatch]);
+  }, [dispatch,listPlans]);
 
   // Danh sách màu sắc
   const colors = [
