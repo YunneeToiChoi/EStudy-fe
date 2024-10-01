@@ -595,4 +595,37 @@ FE:
 2:npm run build : để install tệp .next
 3:để chạy nhập npm start( chạy như môi trường production)  hoặc npm run dev ( chạy trên môt trường dev)
 
+# FireBase cors
+1. Tạo 1 file cors ( cors.json) bất kì nơi nào trong máy và nhập
+[
+  {
+    "origin": ["*"],--áp dụng cho toàn bộ port nếu muốn chỉ domain nào dùng đc thì import vào đây
+    "method": ["GET", "POST", "PUT"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": ["Content-Type", "Authorization"]
+  }
+]
+
+2. mở Terminal haowjc cmd ở vị trí tệp chwua file cors.json nhập lệnh
+ npm install -g firebase-tools --> Tự đọc và setup
+
+3. nhập lệnh này để  ( tài khoản nào group)
+firebase login
+
+4. Sau đó tải google cloud CLI r tự setup
+
+5. Sau đó chạy lệnh này để ste cors cho firebase ( để chạy đc header gsutil thì phải tải gg clound CLI)
+gsutil cors set cors.json gs://YOUR_PROJECT_ID.appspot.com -- ID lấy trong console firebase
+
+6. Nhập lệnh này để kiểm tra cors
+gsutil cors get gs://YOUR_PROJECT_ID.appspot.com
+
+
+# PDF LIBRARY
+- dùng core react-pdf-viewer và pdfjs-dist 
+-- "@react-pdf-viewer/core": "^3.12.0","pdfjs-dist": "^3.4.120",
+.doc: https://react-pdf-viewer.dev/docs/options/
+
+
+
 
