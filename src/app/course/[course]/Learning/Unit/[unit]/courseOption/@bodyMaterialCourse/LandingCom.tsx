@@ -1,19 +1,18 @@
 "use client";
 import React from "react";
-import { Boxes } from "@/components/ui/background-boxes";
-import { cn } from "@/lib/utils";
-
-export function BackgroundBoxesDemo() {
+import CommentComponent from "@/app/components/comment/commentActive"
+import ShowListComment from "@/app/components/comment/commentList";
+interface CommentComponent
+{
+  params:any
+}
+const LangComment: React.FC<CommentComponent> = ({ params }) =>  {
   return (
-    <div className="h-96 relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
-      <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-
-      <Boxes />
-      <h1 className={cn("md:text-4xl text-xl text-white relative z-20")}>
-        Chào mừng đến với khoá học!
-      </h1>
-      <p className="text-center mt-2 text-neutral-300 relative z-20">
-      </p>
-    </div>
+    <section className=" pt-4 pb-20">
+    <CommentComponent params={params}></CommentComponent>
+    <ShowListComment dataId={Number(params.course)} type='course'></ShowListComment>
+    </section>
+   
   );
 }
+export default LangComment;

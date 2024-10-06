@@ -56,7 +56,7 @@ export default function ViewPdf() {
                             <Viewer
                                 initialPage={0}
                                 fileUrl={fileUrl} 
-                                renderPage={renderPage} 
+                                // renderPage={renderPage} 
                                 defaultScale={SpecialZoomLevel.PageFit}
                                 withCredentials={false}
                                 enableSmoothScroll={true}

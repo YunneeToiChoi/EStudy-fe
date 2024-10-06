@@ -6,7 +6,7 @@ import ListUnitsComponent from "../getUnit";
 import Container from "./containersUnit";
 import ExtentCourse from './extentCourse';
 import LoadingBody from "@/app/components/partialView/loadingBody";
-import {BackgroundBoxesDemo} from "./LandingCom"
+import LangComment from "./LandingCom"
 export default function BodyCourseOption({ params }: { params: { course: string, unit: string } }) {
   const units = useSelector((state: any) => state.ThunkReducer.unit?.units?.data?.units);
   const ContentsUnit = useSelector((state: any) => state.ThunkReducer.contentUnits?.ContentUnit?.data);
@@ -15,7 +15,7 @@ export default function BodyCourseOption({ params }: { params: { course: string,
   );
 
   if (params.unit === "LandingCourse") {
-    return <BackgroundBoxesDemo></BackgroundBoxesDemo>
+    return <LangComment params={params}></LangComment>
   }{
     if (!isValidUnit||!ContentsUnit ) {
       return <LoadingBody></LoadingBody>

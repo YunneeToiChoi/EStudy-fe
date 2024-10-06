@@ -86,6 +86,7 @@ export default function GetDocByUser() {
      doc.description?.toLowerCase().includes(searchQuery.toLowerCase())) &&
     (filterType === "free" ? doc.isPublic : filterType === "paid" ? !doc.isPublic : true)
   );
+  console.log(filtered);
 
   // Sorting
   if (sortOption === "price-asc") {
@@ -171,7 +172,7 @@ export default function GetDocByUser() {
       </div>
 
       <div className="p-4">
-        {checkNoDocument?.status === 404 || (currentDocuments.length === 0) ? (
+        {checkNoDocument?.status === 404 || (currentDocuments.length == 0) ? (
           <div className="text-center mt-10 text-gray-500">Chưa có tài liệu nào</div>
         ) : (
           <>

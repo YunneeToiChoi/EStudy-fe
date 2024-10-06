@@ -13,6 +13,7 @@ import OrderDialog from "@/app/components/courseDetail/dialogOrderCourse"
 import  addDotsToCurrency  from "@/lib/utils/currency";
 
 import GetDocByCourse from "./courseDocument"
+import ShowListComment from "@/app/components/comment/commentList"
 
 export default function CourseDetail({ params }: { params: {course: string } })
 {
@@ -117,8 +118,8 @@ export default function CourseDetail({ params }: { params: {course: string } })
             <Link href="" className=" text-tag-search-transition-color no-underline text-xl p-4 border-b-2 border-b-transparent transition hover:text-primary-bg-color duration-300 ease-in-out hover:border-b-primary-bg-color">Đánh giá (630)</Link>
           </li>
         </ul>
-        <div className="grid lg:grid-cols-2 gap-20 md:grid-cols-2">
-          <div className="">
+        <div className="grid lg:grid-cols-2 gap-11 md:grid-cols-2">
+        <div className="">
             <div className=" p-4 shadow-md border-[1px] border-course-border-color my-5 rounded-[10px]">
               <h2 className=" text-2xl my-4">
                 Bạn sẽ đạt được gì sau khoá học?
@@ -235,6 +236,10 @@ export default function CourseDetail({ params }: { params: {course: string } })
         </div>
         </div>
         <GetDocByCourse courseId={params.course}></GetDocByCourse>
+        <div className=" m-auto max-w-6xl px-4 my-5">
+        <h1 className='text-3xl font-extrabold mb-3'> Comment</h1>
+        <ShowListComment dataId={Number(params.course)} type='course'></ShowListComment>
+        </div>
       </div>
     </div>
   </div>
