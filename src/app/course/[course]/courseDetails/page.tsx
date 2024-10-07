@@ -13,7 +13,7 @@ import OrderDialog from "@/app/components/courseDetail/dialogOrderCourse"
 import  addDotsToCurrency  from "@/lib/utils/currency";
 
 import GetDocByCourse from "./courseDocument"
-import ShowListComment from "@/app/components/comment/commentList"
+import ShowListComment from "@/app/components/comment/commentShow"
 
 export default function CourseDetail({ params }: { params: {course: string } })
 {

@@ -50,9 +50,12 @@ export function ComboboxDemo({ onCourseSelect, listCourse }: ComboboxDemoProps) 
           aria-expanded={open}
           className="w-full justify-between items-center border-[1px] border-slate-200 p-[10px] focus:ring-1 focus:ring-primary-upload-document"
         >
-          {value
+          <p className=" max-w-96 overflow-hidden text-ellipsis truncate">
+               {value
             ? courses.find((course) => course.courseId === parseInt(value))?.courseName
             : "Choose your course..."}
+          </p>
+       
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full">

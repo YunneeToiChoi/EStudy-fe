@@ -8,7 +8,7 @@ import DocumentCard from "@/app/components/document/DocumentCard";
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import {NavigationMenuHeader} from "@/app/components/partialView/menuHeader";
 interface Category {
   id: number;
   name: string;
@@ -20,6 +20,7 @@ interface Course {
 }
 
 export default function GetDocByUser() {
+  const userInfo = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser.data);
   const dispatch = useDispatch();
   const checkNoDocument = useSelector((state: any) => state.ThunkReducer.document.allDocuments?.data);
   const listDocuments = useSelector((state: any) => state.ThunkReducer.document.allDocuments?.data?.document);
@@ -135,6 +136,15 @@ export default function GetDocByUser() {
             E-<span className='text-primary-bg-color'>Study</span>
           </h1>
         </Link>
+        <div className="flex gap-2"> 
+          <NavigationMenuHeader />
+        {userInfo &&
+              <Link href={"/document/upload"} className=' py-2 px-4 flex justify-center hover:cursor-pointer text-white items-center gap-2 rounded-xl group cursor-pointer bg-primary-bg-color hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
+                <i className="fa-solid fa-cloud-arrow-up text-white group-hover:text-primary-bg-color text-xl"></i>  
+                <p className=' text-lg font-medium group-hover:text-primary-bg-color '>Upload</p>
+              </Link>}
+        </div>
+       
         <div className="relative w-full max-w-md">
           <input
             type="text"

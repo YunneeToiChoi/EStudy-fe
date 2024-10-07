@@ -100,10 +100,10 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ params }) => {
       <div className='flex items-center gap-1'>
       <img
                   className="mr-2 w-11 h-11 rounded-full"
-                  src={userInfo.userImage}
-                  alt={userInfo.userId}
+                  src={userInfo?.userImage}
+                  alt={userInfo?.userId}
         />
-      <h1 className='text-lg text-primary-bg-color font-semibold'>{userInfo.userName}</h1>
+      <h1 className='text-lg text-primary-bg-color font-semibold'>{userInfo?.userName}</h1>
       </div>
       <div className="py-2 px-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <label htmlFor="comment" className="sr-only">Your comment</label>

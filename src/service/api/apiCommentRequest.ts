@@ -54,8 +54,9 @@ export const getCommentReply = async (data: any, dispatch: any) => {
             replyId: reply.replyId,
             replyContent: reply.replyContent,
             replyDate: reply.replyDate,
-            user: reply.user, // bao gồm thông tin người dùng
+            user: reply.user, 
             images:reply.images,
+            parentReplyId:reply?.parentReplyId,
         }));
 
         dispatch(getRatingReplySuccess({ ratingId: data.ratingId, data: repliesData }));
