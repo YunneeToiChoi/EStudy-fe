@@ -41,7 +41,7 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
 export const RequestApiOrderPlan = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
   dispatch(OrderStart()); 
   try{
-    const res = await request.post('/SubscriptionPlan_API/Order_Plan',dataOrder);
+    const res = await request.post('/Order_API/Order_Plan',dataOrder);
     dispatch(OrderSuccess(res));
     await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
   }catch (err:any) {

@@ -7,12 +7,13 @@ import OrderDialog from "./dialogOrderPlan";
 
 export default function PlanUser() {
   const dispatch = useDispatch();
-  const listPlans = useSelector((state: any) => state.ThunkReducer.plan.getAllPlan.data?.data);
+  const listPlans = useSelector((state: any) => state.ThunkReducer.plan.getAllPlan.data?.plans);
+  const userId= useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user?.userId);
   console.log(listPlans);
 
   useEffect(() => {
     if (!listPlans) {
-      getAllPlans(dispatch);
+      getAllPlans(userId,dispatch);
     }
   }, [dispatch,listPlans]);
 

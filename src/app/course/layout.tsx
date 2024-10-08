@@ -7,7 +7,6 @@ const CourseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     <>
     <Header />
     {children}
-    <Footer />
     </>
   );
 };

@@ -8,7 +8,6 @@ import { DropdownMenuDemo } from "./propDown";
 import {NavigationMenuHeader} from "./menuHeader";
 
 export default function Header() {
-  const user = useSelector((state: any) => state.persistedReducer.auth.login.data);
   const userInfo = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser.data);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [currentPathname, setCurrentPathname] = useState<string>('');

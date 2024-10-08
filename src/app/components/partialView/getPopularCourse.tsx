@@ -22,7 +22,6 @@ export default function GetPoplarCourses() {
             getPopularCourse(data, dispatch);
         }
     }, [dispatch, listCourses, user]);
-    console.log(listCourses?.length)
     return(
       <div>
          {listCourses && listCourses?.length > 0 ? (

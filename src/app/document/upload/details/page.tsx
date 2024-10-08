@@ -150,15 +150,15 @@ const validateData = () => {
     if (!details.title) {
       fieldErrors.title = "Title is required";
       isValid = false;
-    } else if (details.title.length > 20) {
-      fieldErrors.title = "Title must be less than 20 characters";
+    } else if (details.title.length > 100) {
+      fieldErrors.title = "Title must be less than 100 characters";
       isValid = false;
     }
     if (!details.description) {
       fieldErrors.description = "Description is required";
       isValid = false;
-    } else if (details.description.length > 100) {
-      fieldErrors.description = "Description must be less than 100 characters";
+    } else if (details.description.length > 1000) {
+      fieldErrors.description = "Description must be less than 1000 characters";
       isValid = false;
     }
     if (!details.price && !details.isPublic) {
@@ -179,6 +179,17 @@ const validateData = () => {
 };
 
   const handleSubmit = async () => {
+    const idToast =  toast.loading('Đang gửi ...', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
     if (validateData()) {
       const errors:any = [];
       try {
@@ -204,13 +215,51 @@ const validateData = () => {
   
         if (errors.length === 0) {
           sessionStorage.removeItem("sessionFiles");
+          toast.update(idToast, {
+            render:'Gửi thành công !',
+            type: "success",
+            isLoading: false,
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+             });
           router.push("/document/upload/success");
         } else {
           const errorMessage = errors.filter(Boolean).map((error:any, index:any) => `Document ${index + 1}: ${error}`).join("\n");
-          alert(`Some documents failed to upload:\n${errorMessage}`);
+          toast.update(idToast, { 
+            render: 'Gửi thất bại !',
+             type: "error", 
+             isLoading: false ,
+             position: "bottom-right",
+             autoClose: 5000,
+             hideProgressBar: false,
+             closeOnClick: true,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "colored",
+             transition: Bounce,});
         }
       } catch (error) {
-        console.error("Error submitting documents:", error);
+        toast.update(idToast, { 
+          render: 'Gửi thất bại !',
+           type: "error", 
+           isLoading: false ,
+           position: "bottom-right",
+           autoClose: 5000,
+           hideProgressBar: false,
+           closeOnClick: true,
+           pauseOnHover: true,
+           draggable: true,
+           progress: undefined,
+           theme: "colored",
+           transition: Bounce,});
       }
     }
   };
