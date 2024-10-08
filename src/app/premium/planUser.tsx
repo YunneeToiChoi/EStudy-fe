@@ -46,9 +46,15 @@ export default function PlanUser() {
                    <p className="text-white text-sm mb-4">
                      Thanh toán một lần, không gia hạn tự động.
                    </p>
-                   <div>
-                   <OrderDialog planId={plan.planId} planDuration={plan.planDuration} planName={plan.planName} PlanPrice={plan.planPrice} PlanDes={plan.planDescription}></OrderDialog>
-                   </div>
+                   {
+                    plan?.state==true ? (<p className=" text-lg font-bold text-black">
+                      Đã đăng ký
+                    </p>):(
+                       <div>
+                       <OrderDialog planId={plan.planId} planDuration={plan.planDuration} planName={plan.planName} PlanPrice={plan.planPrice} PlanDes={plan.planDescription}></OrderDialog>
+                       </div>
+                    )
+                   }
                  </li>
               );
             })}
