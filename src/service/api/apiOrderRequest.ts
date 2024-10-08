@@ -36,17 +36,23 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
     extraData: "",
     lang: "vi",
   };
-  RequestApiPaymentMomo(dataPaymentMomo, dispatch, navigate);
+  const paymentResult = await RequestApiPaymentMomo(dataPaymentMomo, dispatch, navigate);
+  if (paymentResult==null) {
+    return true; 
+  } else {
+    return false; 
+  }
 };
 export const RequestApiOrderPlan = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
   dispatch(OrderStart()); 
   try{
     const res = await request.post('/Order_API/Order_Plan',dataOrder);
     dispatch(OrderSuccess(res));
-    await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+    const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+    return paymentSuccess;
   }catch (err:any) {
     dispatch(OrderFailed());
-    return err.response;
+    return err;
   }
 }
 
@@ -55,10 +61,11 @@ export const RequestApiOrderCourse = async (dataOrder:any,dispatch:any,lastPrice
     try{
       const res = await request.post('/Order_API/Buy_Course',dataOrder);
       dispatch(OrderSuccess(res));
-      await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+      const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+      return paymentSuccess;
     }catch (err:any) {
       dispatch(OrderFailed());
-      return err.response;
+      return err;
     }
   }
   
@@ -72,7 +79,7 @@ export const RequestApiOrderCourse = async (dataOrder:any,dispatch:any,lastPrice
       }
     }catch (err:any) {
       dispatch(MomoFailed())
-      return err.response;
+      return err
     }
   }
 

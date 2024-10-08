@@ -71,36 +71,54 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ planId, planName,planDuration
       theme: "dark",
       transition: Bounce,
     });
-    const res = await RequestApiOrderPlan(dataOrder, dispatch,PlanPrice,planId,planName, user.userId, router.push);
-    if(res?.status ==400){
-      toast.update(idToast, { 
-        render:'Chuyển hướng thất bại !',
-         type: "error", 
-         isLoading: false ,
-         position: "bottom-right",
-         autoClose: 5000,
-         hideProgressBar: false,
-         closeOnClick: true,
-         pauseOnHover: true,
-         draggable: true,
-         progress: undefined,
-         theme: "colored",
-         transition: Bounce,});
-    }
-    else{
-      toast.update(idToast, { 
-        render:'Chuyển hướng thành công !',
-         type: "success", 
-         isLoading: false ,
-         position: "bottom-right",
-         autoClose: 5000,
-         hideProgressBar: false,
-         closeOnClick: true,
-         pauseOnHover: true,
-         draggable: true,
-         progress: undefined,
-         theme: "colored",
-         transition: Bounce,});
+    try {
+      const paymentSuccess = await RequestApiOrderPlan(dataOrder, dispatch,PlanPrice,planId,planName, user.userId, router.push);
+      if (paymentSuccess) {
+        toast.update(idToast, {
+          render: 'Chuyển hướng thành công!',
+          type: "success",
+          isLoading: false,
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      } else {
+        toast.update(idToast, {
+          render: 'Chuyển hướng thất bại!',
+          type: "error",
+          isLoading: false,
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      }
+    } catch (err) {
+      toast.update(idToast, {
+        render: 'Chuyển hướng thất bại!',
+        type: "error",
+        isLoading: false,
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
     setIsSubmitting(false); 
   };
