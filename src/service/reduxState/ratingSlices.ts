@@ -1,79 +1,132 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Hàm đệ quy để xử lý replies
+const processRepliesRecursively = (replies:any) => {
+    return replies.map((reply:any) => ({
+        ...reply,
+        replies: processRepliesRecursively(reply.replies || []), // Đệ quy để lấy replies của replies
+    }));
+};
+
+const updateRepliesRecursively = (data:any, ratingId:any, newReplies:any) => {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].ratingId === ratingId) {
+            // Nếu tìm thấy rating, thêm replies mới vào
+            data[i].replies.push(...newReplies);
+            return true; // Dừng lại khi đã cập nhật
+        }
+        // Nếu chưa tìm thấy, đệ quy vào replies con
+        if (updateRepliesRecursively(data[i].replies, ratingId, newReplies)) {
+            return true; // Dừng lại nếu đã cập nhật
+        }
+    }
+    return false; // Trả về false nếu không tìm thấy
+};
+
+const findRatingAndUpdateReplies = (data:any, ratingId:any, newReplies:any) => {
+    for (let i = 0; i < data.length; i++) {
+        // Nếu tìm thấy ratingId, cập nhật replies
+        if (data[i].ratingId === ratingId) {
+            data[i].replies.push(...newReplies); // Thêm replies mới vào
+            return true; // Dừng lại khi đã cập nhật
+        }
+        // Nếu chưa tìm thấy, đệ quy vào replies con
+        if (findRatingAndUpdateReplies(data[i].replies, ratingId, newReplies)) {
+            return true; // Dừng lại nếu đã cập nhật
+        }
+    }
+    return false; // Trả về false nếu không tìm thấy
+};
+
 const ratingSlice = createSlice({
     name: "ratings",
-    initialState:{
-        ratingCourse:{
-            data:null,
+    initialState: {
+        rating: {
+            data: [],
             isFetching: false,
-            error:false,
+            error: false,
         },
-        ratingDocument:{
-            data:null,
+        ratingPost: {
+            data: null,
             isFetching: false,
-            error:false,
+            error: false,
         },
-        ratingPost:{
-            data:null,
-            isFetching: false,
-            error:false,
-        },
-        msg:"",
+        msg: "",
     },
-    reducers:{
-        getRatingCourseStart: (state) =>{
-            state.ratingCourse.isFetching = true;
+    reducers: {
+        getRatingStart: (state) => {
+            state.rating.isFetching = true;
         },
-        getRatingCourseSuccess: (state,action) => {
-            state.ratingCourse.isFetching = false;
-            state.ratingCourse.data = action.payload;
-            state.ratingCourse.error = false;
+        getRatingSuccess: (state:any, action) => {
+            state.rating.isFetching = false;
+
+            const ratings = action.payload;
+        
+            // Kiểm tra xem ratings có phải là mảng hay không
+            if (!Array.isArray(ratings)) {
+                console.error('Payload is not an array:', ratings);
+                return;
+            }
+        
+            // Xử lý các rating mới
+            ratings.forEach((newRating) => {
+                // Tạo replies mới từ newRating
+                const newReplies = processRepliesRecursively(newRating.replies || []);
+        
+                // Cố gắng cập nhật replies cho ratingId này
+                const updated = findRatingAndUpdateReplies(state.rating.data, newRating.ratingId, newReplies);
+        
+                // Nếu không tìm thấy ratingId, thêm rating mới vào
+                if (!updated) {
+                    state.rating.data.push({
+                        ...newRating,
+                        replies: newReplies, // Khởi tạo replies với các replies đã xử lý
+                    });
+                }
+            });
+        
+            state.rating.error = false;
         },
-        getRatingCourseFailed: (state,action) =>{
-            state.ratingCourse.isFetching = false;
-            state.ratingCourse.error = true;
+        getRatingFailed: (state, action) => {
+            state.rating.isFetching = false;
+            state.rating.error = true;
             state.msg = action.payload;
         },
-        getRatingDocumentStart: (state) =>{
-            state.ratingDocument.isFetching = true;
-        },
-        getRatingDocumentSuccess: (state,action) => {
-            state.ratingDocument.isFetching = false;
-            state.ratingDocument.data = action.payload;
-            state.ratingDocument.error = false;
-        },
-        getRatingDocumentFailed: (state,action) =>{
-            state.ratingDocument.isFetching = false;
-            state.ratingDocument.error = true;
-            state.msg = action.payload;
-        },
-        getRatingPostStart: (state) =>{
+        getRatingPostStart: (state) => {
             state.ratingPost.isFetching = true;
         },
-        getRatingPostSuccess: (state,action) => {
+        getRatingPostSuccess: (state, action) => {
             state.ratingPost.isFetching = false;
             state.ratingPost.data = action.payload;
             state.ratingPost.error = false;
         },
-        getRatingPostFailed: (state,action) =>{
+        getRatingPostFailed: (state, action) => {
             state.ratingPost.isFetching = false;
             state.ratingPost.error = true;
             state.msg = action.payload;
         },
-
-    }
+        resetRatingState: (state) => {
+            state.rating.data = [];
+            state.rating.isFetching = false;
+            state.rating.error = false;
+            state.ratingPost.data = null;
+            state.ratingPost.isFetching = false;
+            state.ratingPost.error = false;
+            state.msg = '';
+        }
+    },
 });
 
+// Xuất các actions
 export const {
-    getRatingCourseStart,
-    getRatingCourseFailed,
-    getRatingCourseSuccess,
-    getRatingDocumentStart,
-    getRatingDocumentFailed,
-    getRatingDocumentSuccess,
+    getRatingStart,
+    getRatingFailed,
+    getRatingSuccess,
     getRatingPostStart,
     getRatingPostFailed,
     getRatingPostSuccess,
+    resetRatingState
 } = ratingSlice.actions;
 
+// Xuất reducer
 export default ratingSlice.reducer;

@@ -1,66 +1,106 @@
 import * as request from "@/lib/utils/request";
-
 import {
-    getRatingCourseStart,
-    getRatingCourseFailed,
-    getRatingCourseSuccess,
-    getRatingDocumentStart,
-    getRatingDocumentFailed,
-    getRatingDocumentSuccess,
+    getRatingStart,
+    getRatingFailed,
+    getRatingSuccess,
     getRatingPostStart,
     getRatingPostFailed,
     getRatingPostSuccess,
-}from "@/service/reduxState/ratingSlices"
-import {  getRatingReplyStart, getRatingReplySuccess, getRatingReplyFailed} from "@/service/reduxState/replySlices";
+    resetRatingState
+} from "@/service/reduxState/ratingSlices";
 
-export const getCommentCourse = async (courseId:any, dispatch:any) => {
-    dispatch(getRatingCourseStart());
+// Hàm lấy đánh giá cha
+export const getCommentParent = async (courseId: any, dispatch: any) => {
+    dispatch(getRatingStart());
     try {
         const res = await request.post('RatingAPI/RatingOfCourse', courseId);
-        dispatch(getRatingCourseSuccess(res));
-    } catch (err:any) {
-        dispatch(getRatingCourseFailed(err.response?.data));
+        const modifiedData = res.data.map((rating: any) => ({
+            ratingId: rating.ratingId,
+            parentId: rating.ratingId,
+            userId: rating.userId,
+            userImage: rating.userImage,
+            userName: rating.userName,
+            ratingValue: rating.ratingValue,
+            ratingReview: rating.ratingReview,
+            ratingRatingDate: rating.ratingRatingDate,
+            ratingImageUrls: rating.ratingImageUrls,
+            childAmount: rating.childAmount,
+            replyExist: rating.replyExist
+        }));
+        dispatch(getRatingSuccess(modifiedData));
+    } catch (err: any) {
+        dispatch(getRatingFailed(err));
     }
 };
 
-export const getCommentDocument = async (documentId:any, dispatch:any) => {
-    dispatch(getRatingDocumentStart());
+export const fetchAllReplies = async (rating: any, dispatch: any) => {
+    const pageNumber = rating.pageNumber; // Số trang hiện tại
+    const pageSize = 5;
+
+    const requestData = rating.parentId != rating.ratingId
+    ? {
+        ratingId: rating.parentId,
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+        parentId: rating.ratingId,
+      }
+    : {
+        ratingId: rating.ratingId,
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      };
+
     try {
-        const res = await request.post('RatingAPI/RatingOfDocument', documentId);
-        dispatch(getRatingDocumentSuccess(res));
-    } catch (err:any) {
-        dispatch(getRatingDocumentFailed(err.response?.data));
+        // Lấy replies từ API
+        const replies = await getCommentReply(requestData, dispatch);
+        // Dispatch action để cập nhật Redux state với các replies mới
+        dispatch(getRatingSuccess([{
+            ratingId: rating.ratingId,
+            replies: replies // Truyền các replies mới vào payload
+        }]));
+
+    } catch (error) {
+        console.error("Error fetching replies:", error);
     }
 };
 
-export const getCommentPost = async (data:any, dispatch:any) => {
+
+
+// Hàm lấy reply cho từng trang
+export const getCommentReply = async (data: any, dispatch: any) => {
+    try {
+
+        const res = await request.post('RatingAPI/ShowReply', data);
+        // Dữ liệu reply trả về từ API
+        const repliesData = res?.replies.map((reply: any) => ({
+            parentId: reply.ratingId,
+            userId: reply.user.userId,
+            userImage: reply.user.userImage,
+            userName: reply.user.userName,
+            ratingId: reply.replyId,
+            ratingReview: reply.replyContent,
+            ratingRatingDate: reply.replyDate,
+            ratingImageUrls: reply.images.map((img: any) => img.imageUrl),
+            childAmount: reply.childAmount,
+            replyExist: reply.replyExist,
+        }));
+        return repliesData; // Trả về dữ liệu replies
+    } catch (err: any) {
+        throw err;
+    }
+};
+
+export const resetRating = async (dispatch: any) => {
+    dispatch(resetRatingState());
+};
+
+// Hàm gửi đánh giá hoặc phản hồi
+export const getCommentPost = async (data: any, dispatch: any) => {
     dispatch(getRatingPostStart());
     try {
         const res = await request.post('RatingAPI/SubmitRatingOrReply', data);
         dispatch(getRatingPostSuccess(res));
-    } catch (err:any) {
-        dispatch(getRatingPostFailed(err.response?.data));
-    }
-};
-
-export const getCommentReply = async (data: any, dispatch: any) => {
-    dispatch(getRatingReplyStart());
-    try {
-        const res = await request.post('RatingAPI/ShowReply', data);
-
-        // Chúng ta cần dispatch với cấu trúc dữ liệu phù hợp
-        const repliesData = res.replies.map((reply:any) => ({
-            ratingId: reply.ratingId,
-            replyId: reply.replyId,
-            replyContent: reply.replyContent,
-            replyDate: reply.replyDate,
-            user: reply.user, 
-            images:reply.images,
-            parentReplyId:reply?.parentReplyId,
-        }));
-
-        dispatch(getRatingReplySuccess({ ratingId: data.ratingId, data: repliesData }));
     } catch (err: any) {
-        dispatch(getRatingReplyFailed(err.response?.data)); 
+        dispatch(getRatingPostFailed(err.response?.data));
     }
 };
