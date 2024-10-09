@@ -13,7 +13,6 @@ import examSlices from "@/service/reduxState/examSlices";
 import documentSlices from "@/service/reduxState/documentUserSlices";
 import plansSlices from "@/service/reduxState/plansSlices";
 import ratingSlice from "@/service/reduxState/ratingSlices";
-import replyReducer from "@/service/reduxState/replySlices";
 import {
   persistStore,
   persistReducer,
@@ -46,7 +45,6 @@ const ThunkReducer = combineReducers({
   document:documentSlices,
   plan: plansSlices,
   rating: ratingSlice,
-  replies: replyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
