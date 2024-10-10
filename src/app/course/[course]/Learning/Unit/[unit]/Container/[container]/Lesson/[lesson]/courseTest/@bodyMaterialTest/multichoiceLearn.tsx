@@ -97,25 +97,25 @@ export const MultiChoiceLearn: React.FC<MultiChoiceProps> = ({ params }) => {
           <div className="multichoice__box">
             <div className="multichoice__answer">
               <button
-                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'A' ? (isAnswerCorrect('A') ? ' bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('A') ? ' bg-red-600' : '')}`}
+                className={`multichoice__link w-full cursor-pointer transition duration-300 ${selectedAnswer === 'A' ? (isAnswerCorrect('A') ? ' bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('A') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('A')}
               >
                 {currentQuestion.optionA}  {selectedAnswer === 'A' ?'('+currentQuestion. optionMeanA +')':''}
               </button>
               <button
-                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'B' ? (isAnswerCorrect('B') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('B') ? ' bg-red-600' : '')}`}
+                className={`multichoice__link w-full  cursor-pointer transition duration-300 ${selectedAnswer === 'B' ? (isAnswerCorrect('B') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('B') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('B')}
               >
                 {currentQuestion.optionB}  {selectedAnswer === 'B' ?'('+currentQuestion. optionMeanB +')':''}
               </button>
               <button
-                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'C' ? (isAnswerCorrect('C') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('C') ? ' bg-red-600' : '')}`}
+                className={`multichoice__link w-full  cursor-pointer transition duration-300 ${selectedAnswer === 'C' ? (isAnswerCorrect('C') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('C') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('C')}
               >
                 {currentQuestion.optionC}  {selectedAnswer === 'C' ?'('+currentQuestion. optionMeanC +')':''}
               </button>
               <button
-                className={`multichoice__link cursor-pointer transition duration-300 ${selectedAnswer === 'D' ? (isAnswerCorrect('D') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('D') ? ' bg-red-600' : '')}`}
+                className={`multichoice__link w-full cursor-pointer transition duration-300 ${selectedAnswer === 'D' ? (isAnswerCorrect('D') ? 'bg-green-500' : ' bg-red-600') : (incorrectAnswers.includes('D') ? ' bg-red-600' : '')}`}
                 onClick={() => handleAnswerClick('D')}
               >
                 {currentQuestion.optionD} {selectedAnswer === 'D' ?'('+currentQuestion. optionMeanD +')':''}

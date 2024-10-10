@@ -171,16 +171,16 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                   Chú ý: bạn đã học xong số lượng từ cần ôn tập trong hôm nay. Bạn có thể dừng lại việc ôn tập và quay lại vào hôm sau. TUY NHIÊN, nếu bây giờ bạn vẫn muốn ôn tập tiếp, các từ bạn đang học sẽ xuất hiện NGẪU NHIÊN ở dưới.
                 </p>
               </div>
-              <button key={currentCard.vocabId} className="bg-white rounded-lg shadow-xl my-7 h-[365px] w-[650px] relative cursor-pointer mx-auto" onClick={handleRotate}>
-                <div className={`flashcard ease-in-out h-full ${isRotated ? 'toTateY-180' : ''}`}>
-                  <div className="absolute h-full py-4 px-8 top-0 bottom-0 right-0 left-0 flex w-full z-[2] flex-col justify-center items-center backface toTateX-0">
+              <div key={currentCard.vocabId} className="bg-white rounded-lg shadow-xl my-7 h-[365px] w-[650px] relative cursor-pointer mx-auto" onClick={handleRotate}>
+                <div className={`flashcard ease-in-out ${isRotated ? 'toTateY-180' : ''}`}>
+                  <div className="absolute z-10 h-[350px] py-4 px-8 top-[5px] bottom-[5px] right-0 left-0 flex w-full flex-col justify-center items-center backface toTateX-0">
                     <div className="vocab__flashcard-container">
                       <div >
                         <span className="vocab__text">{currentCard.vocabTitle} ({currentCard.vocabType})</span>
                       </div>
                     </div>
                   </div>
-                  <div className="absolute h-full py-4 px-8 top-0 bottom-0 right-0 left-0 flex w-full justify-center items-center backface toTateY-180">
+                  <div className="absolute z-10 h-[350px] py-4 px-8 top-[5px] bottom-[5px] right-0 left-0 flex w-full justify-center items-center backface toTateY-180">
                     <div className="vocab__flashcard-translate-left">
                       <b>Định nghĩa:</b>
                       <p>{currentCard.mean}</p>
@@ -192,7 +192,7 @@ export const VocabularyFlashCard: React.FC<VocabFlashcardProps> = ({ params }) =
                     </div>
                   </div>
                 </div>
-              </button>
+              </div>
               <div className="content__box">
                 <div className="vocabulary__container rate__container">
                   <div className="vocab__flashcard-container--rate">
