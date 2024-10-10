@@ -33,6 +33,11 @@ const documentSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        previewDoc:{
+            data: null,
+            isFetching: false,
+            error: false,
+        },
         msg:"",
     },
     reducers:{
@@ -114,6 +119,19 @@ const documentSlice = createSlice({
             state.courseDoc.error = true;
             state.msg = action.payload;
         },
+        previewDocStart: (state) =>{
+            state.previewDoc.isFetching = true;
+        },
+        previewDocSuccess: (state,action) => {
+            state.previewDoc.isFetching = false;
+            state.previewDoc.data = action.payload;
+            state.previewDoc.error = false;
+        },
+        previewDocFailed: (state,action) =>{
+            state.previewDoc.isFetching = false;
+            state.previewDoc.error = true;
+            state.msg = action.payload;
+        },
     }
 });
 
@@ -136,6 +154,9 @@ export const {
     getCourseDocumentsStart,
     getCourseDocumentsSuccess,
     getCourseDocumentsFailed,
+    previewDocStart,
+    previewDocSuccess,
+    previewDocFailed,
 } = documentSlice.actions;
 
 export default documentSlice.reducer;
