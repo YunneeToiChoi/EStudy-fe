@@ -11,14 +11,15 @@ interface DetailDocsProps {
 const ViewPdf: React.FC<DetailDocsProps> = ({ params }) =>{
     const dispatch = useDispatch();
     const infoDetails = useSelector((state:any)=>state.ThunkReducer.document.previewDoc.data)
+    const fileUrl = infoDetails?.fileUrl;
+
     const idDocument=params.doc;
     useEffect(() => {
         if (idDocument) {
           previewDoc(idDocument, dispatch)
         }
-      }, [dispatch,idDocument]);
+      }, [dispatch,idDocument,[fileUrl]]);
       
-    const [fileUrl] = useState(infoDetails.fileUrl);
     const [currentPage, setCurrentPage] = useState(0);
 
     const handlePageChange = useCallback((currentPage: number) => {
