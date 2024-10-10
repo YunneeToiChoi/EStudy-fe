@@ -21,7 +21,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
     currency: 'VND',
   }).format(document.price);
   return (
-    <Link key={document.documentId} href={`/document/${document.documentId}`} className="group w-fit m-auto">
+    <Link key={document.documentId} href={`/docs/${document.documentId}/preview`} className="group w-fit m-auto">
       <div className="bg-white shadow-md border-2 border-slate-300 w-fit overflow-hidden transition transform hover:scale-105 hover:shadow-lg mx-auto">
         <div className="relative h-40 w-48 overflow-hidden bg-gray-100">
           <Image

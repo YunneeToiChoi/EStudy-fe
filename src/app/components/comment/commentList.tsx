@@ -93,7 +93,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
                 <span>{new Date(rating.ratingRatingDate).toLocaleDateString()}</span>
               </p>
             </div>
-            {rating.ratingValue !== 0 && (
+            {rating.ratingValue !== 0 && rating.ratingValue && (
               <Box sx={{ "& > legend": { mt: 2 } }}>
                 <Rating name="read-only" value={rating.ratingValue} readOnly />
               </Box>

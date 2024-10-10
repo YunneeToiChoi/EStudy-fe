@@ -18,6 +18,9 @@ import {
     getCourseDocumentsStart,
     getCourseDocumentsSuccess,
     getCourseDocumentsFailed,
+    previewDocStart,
+    previewDocSuccess,
+    previewDocFailed,
 } from "@/service/reduxState/documentUserSlices";
 
 export const UploadFiles = async (file: File, userId: any, onUploadProgress: (progressEvent: any) => void) => {
@@ -97,5 +100,15 @@ export const getCourseDocuments = async (courseId: any, dispatch: any) => {
         dispatch(getCourseDocumentsSuccess(res));
     } catch (err:any) {
         dispatch(getCourseDocumentsFailed(err.response?.data));
+    }
+};
+
+export const previewDoc = async (docId: any, dispatch: any) => {
+    dispatch(previewDocStart());
+    try {
+        const res = await request.get(`UserDocumentAPI/DocumentDetail/${docId}`);
+        dispatch(previewDocSuccess(res));
+    } catch (err:any) {
+        dispatch(previewDocFailed(err.response?.data));
     }
 };

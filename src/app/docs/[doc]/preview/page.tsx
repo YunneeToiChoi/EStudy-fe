@@ -1,16 +1,30 @@
 "use client";
-import React, { Fragment, useState, useCallback } from 'react'; 
+import React, { Fragment,useEffect, useState, useCallback } from 'react'; 
+import { useDispatch,useSelector } from 'react-redux';
 import { Worker, Viewer, RenderPageProps, SpecialZoomLevel } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import { FaDownload } from 'react-icons/fa';
-
-export default function ViewPdf() {
-    const [fileUrl] = useState("https://firebasestorage.googleapis.com/v0/b/estudy-426108.appspot.com/o/UserDocuments%2F8b53f27b-6bb2-494e-937d-f19d861e9c5e%2FTUAN%2005%20-%20CHUONG%202_PHAN%20TICH%20YEU%20CAU_MO%20HINH%20HOA%20ERD%20%281%29.pdf?alt=media");
+import { previewDoc } from '@/service/api/apiDocumentRequest';
+interface DetailDocsProps {
+    params: { doc: string };
+}
+const ViewPdf: React.FC<DetailDocsProps> = ({ params }) =>{
+    const dispatch = useDispatch();
+    const infoDetails = useSelector((state:any)=>state.ThunkReducer.document.previewDoc.data)
+    const idDocument=params.doc;
+    useEffect(() => {
+        if (idDocument) {
+          previewDoc(idDocument, dispatch)
+        }
+      }, [dispatch,idDocument]);
+      
+    const [fileUrl] = useState(infoDetails.fileUrl);
     const [currentPage, setCurrentPage] = useState(0);
 
     const handlePageChange = useCallback((currentPage: number) => {
         setCurrentPage(currentPage);
     }, []);
+
 
     const renderPage = (props: RenderPageProps) => {
         // Kiểm tra xem trang hiện tại có phải là trang đầu hoặc trang lẻ không
@@ -56,7 +70,7 @@ export default function ViewPdf() {
                             <Viewer
                                 initialPage={0}
                                 fileUrl={fileUrl} 
-                                // renderPage={renderPage} 
+                                renderPage={renderPage} 
                                 defaultScale={SpecialZoomLevel.PageFit}
                                 withCredentials={false}
                                 enableSmoothScroll={true}
@@ -69,3 +83,5 @@ export default function ViewPdf() {
         </Fragment>
     );
 }
+
+export default ViewPdf;
