@@ -264,7 +264,7 @@ const UpdateAccount = () => {
       </ul>
       <div className={`${activeTab === 0 ? 'block' : 'hidden'}`}>
         <p className="text-base my-[10px]">
-          Email: chiemhoctot@gmail.com (STUDY4 không hỗ trợ đổi email. Vui lòng liên hệ chúng tôi nếu bạn đã mua khóa học và muốn đổi account.)
+        (STUDY4 không hỗ trợ đổi email. Vui lòng liên hệ chúng tôi nếu bạn đã mua khóa học và muốn đổi account.)
         </p>
         <Form {...formInfoUser}>
           <form
