@@ -5,7 +5,7 @@ import { loginUser,forgotPassword} from "@/service/api/apiAuthRequest";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, UseFormGetValues } from 'react-hook-form';
 import { initializeFacebookSDK } from '@/lib/utils/facebookSDK';
 import { loadGoogleSdk } from '@/lib/utils/googleSDK';
 import {handleFacebookLogin} from "@/service/socialConnect/authFacebookService"
@@ -187,7 +187,8 @@ export default function LoginForm() {
     sessionStorage.removeItem('countdownEndTime');
   }
 
-  const handleForgotPassword =async ()=>{
+  const handleForgotPassword =async (values: UseFormGetValues<LoginBodyType>)=>{
+    console.log(values)
     const idToast =  toast.loading('Đang gửi ...', {
       position: "bottom-right",
       autoClose: 5000,
@@ -200,7 +201,7 @@ export default function LoginForm() {
       transition: Bounce,
     });
     const emailUser = {
-      userEmail : sessionStorage.getItem('registeredEmail')
+      userEmail : values().email,
   }
     const resForgot = await forgotPassword(emailUser);
     if(resForgot?.status ===200){
@@ -280,8 +281,8 @@ export default function LoginForm() {
                   <FormMessage />
                 </FormItem>)}
             />
-          <a onClick={handleForgotPassword} 
-                onKeyUp={handleForgotPassword}
+          <a onClick={()=>handleForgotPassword(form.getValues)} 
+                onKeyUp={()=>handleForgotPassword(form.getValues)}
                 role="button" 
                 tabIndex={0}
               className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
