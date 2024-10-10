@@ -14,7 +14,7 @@ export default function GetPopularExams() {
     useEffect(() => {
         if (!listExam) {
             const data = { 
-                userId: user?.userId,
+                userId: user?.userId||"",
                 amountOutstanding: 4
             }
             getPopularExam(data, dispatch);
