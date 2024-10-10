@@ -66,7 +66,7 @@ export const GetCourseOfDocuments = async (userId:any,dispatch: any) => {
 export const editDocument = async ( data: any, dispatch: any) => {
     dispatch(editDocumentStart());
     try {
-        const res = await request.post('UserDocumentAPI/Detail', data);
+        const res = await request.post('UserDocumentAPI/UploadDetail', data);
         dispatch(editDocumentSuccess(res));
     } catch (err:any) {
         dispatch(editDocumentFailed(err.response?.data));

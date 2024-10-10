@@ -12,7 +12,7 @@ export default function GetAllCourses() {
   const [isLoading, setIsLoading] = useState(true);
    const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const dispatch = useDispatch();
-    const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCoursesResponse);
+    const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCourses);
     useEffect(() => {
             const UserId = { userId: user?.userId||""};
             console.log(UserId);
