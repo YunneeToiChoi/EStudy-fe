@@ -16,7 +16,7 @@ export default function GetPoplarCourses() {
     useEffect(() => {
         if (!listCourses) {
             const data = { 
-                userId: user?.userId,
+                userId: user?.userId||"",
                 amountOutstanding: 4
             }
             getPopularCourse(data, dispatch);

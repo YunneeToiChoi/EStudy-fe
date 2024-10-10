@@ -14,7 +14,8 @@ export default function GetAllCourses() {
     const dispatch = useDispatch();
     const listCourses = useSelector((state: any) => state.ThunkReducer.courses.UnregisteredCourses?.data?.unregisteredCoursesResponse);
     useEffect(() => {
-            const UserId = { userId: user?.userId };
+            const UserId = { userId: user?.userId||""};
+            console.log(UserId);
             getUnregisterCourse(UserId, dispatch).then(()=>{
               setIsLoading(false);
             })

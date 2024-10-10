@@ -36,6 +36,7 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
     extraData: "",
     lang: "vi",
   };
+  console.log(dataPaymentMomo)
   const paymentResult = await RequestApiPaymentMomo(dataPaymentMomo, dispatch, navigate);
   if (paymentResult==null) {
     return true; 
