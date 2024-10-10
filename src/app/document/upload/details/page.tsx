@@ -43,7 +43,7 @@ export default function UploadDetail() {
   const userId = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user?.userId);
   const storedDocuments = sessionStorage.getItem("sessionFiles");
   const listCate = useSelector(
-    (state: any) => state.ThunkReducer.document.cateOfDocuments.data?.category
+    (state: any) => state.ThunkReducer.document.cateOfDocuments.data?.categories
   );
   const listCourse = useSelector(
     (state: any) => state.ThunkReducer.document.courseOfDocuments.data?.course

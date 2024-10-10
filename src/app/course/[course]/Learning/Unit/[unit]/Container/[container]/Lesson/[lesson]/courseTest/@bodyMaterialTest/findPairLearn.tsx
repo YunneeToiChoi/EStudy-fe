@@ -12,7 +12,6 @@ export const FindPairLearn: React.FC<FindPairProps> = ({ params }) => {
   const tag = searchParams.get('TAG');
   const dispatch = useDispatch();
   const ListChunk = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabFindPair?.data?.data);
-  console.log(ListChunk)
   const tagCheck = useSelector((state: any) => state.ThunkReducer?.vocab?.VocabFindPair?.data?.lessonTag?.lessonTag?.tagId);
 
   const [currentPage, setCurrentPage] = useState(0);

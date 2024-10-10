@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useSelector,useDispatch } from 'react-redux';
@@ -7,7 +7,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import {getCommentPost} from '@/service/api/apiCommentRequest'
-import { usePusher } from '@/app/pusherProvider';
+
 interface CommentComponentProps {
   params: {
     course: string; // courseId mà bạn sẽ truyền vào
@@ -15,7 +15,6 @@ interface CommentComponentProps {
 }
 
 const CommentComponent: React.FC<CommentComponentProps> = ({ params }) => {
-  const pusher = usePusher();
   const dispatch =useDispatch();
   const userInfo = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const [value, setValue] = useState<number | null>(0);
@@ -23,30 +22,6 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ params }) => {
   const [previewUrl, setPreviewUrl] = useState<string[]>([]);
   const [commentText, setCommentText] = useState<string>('');
   const [charCount, setCharCount] = useState<number>(0);
-  
-  useEffect(() => {
-    const channel = pusher.subscribe(`rating_channel`); // Đảm bảo tên channel phù hợp
-
-    // Lắng nghe sự kiện new-rating
-    channel.bind('new-rating', (data: any) => {
-      console.log("New rating received:", data);
-      toast.success('Đã nhận được đánh giá mới!', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    });
-
-    // Dọn dẹp khi component unmount
-    return () => {
-      channel.unbind_all(); // Hủy tất cả các sự kiện trên channel
-      pusher.unsubscribe(`course-${params.course}`); // Hủy đăng ký kênh
-    };
-  }, [pusher, params.course]); // Chạy lại khi pusher hoặc params.course thay đổi
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;

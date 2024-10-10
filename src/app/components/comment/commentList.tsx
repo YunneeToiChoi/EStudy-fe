@@ -6,7 +6,7 @@ import Rating from "@mui/material/Rating";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import CommentInput from './commentReply';
-import { comment } from "postcss";
+import { usePusher } from '@/app/pusherProvider';
 
 interface ShowListCommentProps {
   dataId: number;
@@ -14,6 +14,7 @@ interface ShowListCommentProps {
 }
 
 const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
+  const pusher = usePusher();
   const dispatch = useDispatch();
   const [comments, setComments] = useState<any[]>([]);
   const [showMore, setShowMore] = useState(false);
@@ -26,6 +27,20 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
     state.ThunkReducer.rating.rating.data
   );
   
+  useEffect(() => {
+    const channel = pusher.subscribe(`rating_channel`); // Đảm bảo tên channel phù hợp
+    console.log(channel)
+    // Lắng nghe sự kiện new-rating
+    channel.bind('new-rating', (data: any) => {
+      console.log("New rating received:", data);
+    });
+
+    // Dọn dẹp khi component unmount
+    return () => {
+      channel.unbind_all(); // Hủy tất cả các sự kiện trên channel
+      pusher.unsubscribe(`rating_channel`); // Hủy đăng ký kênh
+    };
+  }, [pusher]); // Chạy lại khi pusher hoặc params.course thay đổi
 
   useEffect(() => {
     const fetchComments = async () => {

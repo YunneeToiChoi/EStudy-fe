@@ -37,7 +37,6 @@ export default function LoginForm() {
   const navigate = useRouter();
   const [showCountdown, setShowCountdown] = useState(false);
   const [showResendCode, setShowResendCode] = useState(false);
-  const [showTextForgot, setShowTextForgot] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   useEffect(() => {
@@ -125,9 +124,6 @@ export default function LoginForm() {
             transition: Bounce,
           });
         }
-      }
-      else{
-        setShowTextForgot(true);
       }
       
     } else {
@@ -284,8 +280,7 @@ export default function LoginForm() {
                   <FormMessage />
                 </FormItem>)}
             />
-            {
-              showTextForgot && (<a onClick={handleForgotPassword} 
+          <a onClick={handleForgotPassword} 
                 onKeyUp={handleForgotPassword}
                 role="button" 
                 tabIndex={0}
@@ -293,7 +288,6 @@ export default function LoginForm() {
             >
               Forgot Password ?
             </a>
-            )}
             <button type='submit' className="w-40 m-auto bg-primary-bg-color text-white  text-lg font-medium my-6 hover:bg-primary-bg-color-hover transition duration-150 ease-in-out text-center  no-underline py-2 rounded-[6px] border-none">
               Đăng nhập
             </button>
