@@ -50,7 +50,7 @@ export const PusherProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         js.crossOrigin = 'anonymous';
         js.onload = () => {
           console.log('Pusher SDK đã được tải.');
-          const pusherInstance = new window.Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_ID, {
+          const pusherInstance = new window.Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
             cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
             encrypted: true,
           });
