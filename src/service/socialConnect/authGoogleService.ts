@@ -22,7 +22,7 @@
 
     // Function to handle message event
     const handlePopupMessage = (event: MessageEvent) => {
-      if (event.origin === 'https://localhost:44300') {
+      if (event.origin === process.env.NEXT_PUBLIC_DOMAIN_BE) {
         const { token } = event.data;
         if (token) {
           try {
