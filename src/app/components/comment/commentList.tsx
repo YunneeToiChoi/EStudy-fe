@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCommentParent,fetchAllReplies} from "@/service/api/apiCommentRequest";
+import { getCommentParent,
+        fetchAllReplies,
+        getCommentParentRealtime, 
+        getCommentReplyRealtime} 
+from "@/service/api/apiCommentRequest";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import "react-photo-view/dist/react-photo-view.css";
@@ -19,7 +23,6 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
   const [comments, setComments] = useState<any[]>([]);
   const [showMore, setShowMore] = useState(false);
   const [replyTo, setReplyTo] = useState<string | null>(null);
-  const commentRef = useRef<HTMLDivElement>(null);
   const [pageNumbers, setPageNumbers] = useState<{ [ratingId: string]: number }>({});
   const [remainingReplies, setRemainingReplies] = useState<{ [ratingId: string]: number }>({});
 
@@ -28,19 +31,23 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
   );
   
   useEffect(() => {
-    const channel = pusher.subscribe(`rating_channel`); // Đảm bảo tên channel phù hợp
-    console.log(channel)
-    // Lắng nghe sự kiện new-rating
-    channel.bind('new-rating', (data: any) => {
-      console.log("New rating received:", data);
+    const channelName = type === "course" ? `course_${dataId}` : `document_${dataId}`;
+    const channel = pusher.subscribe(channelName);  
+    
+
+    channel.bind('new-rating',async (data: any) => {
+      await getCommentParentRealtime(data,dispatch)
     });
 
-    // Dọn dẹp khi component unmount
+    channel.bind('new-reply', async (data: any) => {
+      await getCommentReplyRealtime(data,dispatch)
+    });
+  
     return () => {
-      channel.unbind_all(); // Hủy tất cả các sự kiện trên channel
-      pusher.unsubscribe(`rating_channel`); // Hủy đăng ký kênh
+      channel.unbind_all();
+      pusher.unsubscribe(channelName);
     };
-  }, [pusher]); // Chạy lại khi pusher hoặc params.course thay đổi
+  }, [pusher, dataId, type,dispatch]);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -144,11 +151,12 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
       {/* Phần input để trả lời bình luận */}
       {replyTo === rating.ratingId && (
         <CommentInput 
-          ratingId={rating.ratingId} 
+          ratingId={rating.rootId} 
           isReply={true} 
           onSubmit={handleReply} 
           ratingEntityType="Course"
           dataId={dataId}
+          parentReplyId={rating.ratingId}
         />
       )}
 

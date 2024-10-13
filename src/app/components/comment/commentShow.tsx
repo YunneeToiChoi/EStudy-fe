@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCommentParent,fetchAllReplies,resetRating} from "@/service/api/apiCommentRequest";
+import { getCommentParent,fetchAllReplies,resetRating,getCommentParentRealtime,getCommentReplyRealtime} from "@/service/api/apiCommentRequest";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { usePusher } from '@/app/pusherProvider';
 
 interface ShowListCommentProps {
   dataId: number;
@@ -12,6 +13,7 @@ interface ShowListCommentProps {
 }
 
 const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
+  const pusher = usePusher();
   const dispatch = useDispatch();
   const [comments, setComments] = useState<any[]>([]);
   const [showMore, setShowMore] = useState(false);
@@ -21,6 +23,25 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
   const fetchedComments = useSelector((state: any) =>
     state.ThunkReducer.rating.rating.data
   );
+
+  useEffect(() => {
+    const channelName = type === "course" ? `course_${dataId}` : `document_${dataId}`;
+    const channel = pusher.subscribe(channelName);  
+    
+
+    channel.bind('new-rating',async (data: any) => {
+      await getCommentParentRealtime(data,dispatch)
+    });
+
+    channel.bind('new-reply', async (data: any) => {
+      await getCommentReplyRealtime(data,dispatch)
+    });
+  
+    return () => {
+      channel.unbind_all();
+      pusher.unsubscribe(channelName);
+    };
+  }, [pusher, dataId, type,dispatch]);
   
   useEffect(() => {
     return () => {
