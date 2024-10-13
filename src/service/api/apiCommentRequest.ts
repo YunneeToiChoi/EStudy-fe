@@ -16,7 +16,7 @@ export const getCommentParent = async (courseId: any, dispatch: any) => {
         const res = await request.post('RatingAPI/RatingOfCourse', courseId);
         const modifiedData = res.data.map((rating: any) => ({
             ratingId: rating.ratingId,
-            parentId: rating.ratingId,
+            rootId: rating.ratingId,
             userId: rating.userId,
             userImage: rating.userImage,
             userName: rating.userName,
@@ -25,7 +25,9 @@ export const getCommentParent = async (courseId: any, dispatch: any) => {
             ratingRatingDate: rating.ratingRatingDate,
             ratingImageUrls: rating.ratingImageUrls,
             childAmount: rating.childAmount,
-            replyExist: rating.replyExist
+            replyExist: rating.replyExist,
+            isRoot: true, 
+            replies: [],
         }));
         dispatch(getRatingSuccess(modifiedData));
     } catch (err: any) {
@@ -34,12 +36,13 @@ export const getCommentParent = async (courseId: any, dispatch: any) => {
 };
 
 export const fetchAllReplies = async (rating: any, dispatch: any) => {
-    const pageNumber = rating.pageNumber; // Số trang hiện tại
+    dispatch(getRatingStart());
+    const pageNumber = rating.pageNumber;
     const pageSize = 5;
 
-    const requestData = rating.parentId != rating.ratingId
+    const requestData = rating.ratingId != rating.rootId
     ? {
-        ratingId: rating.parentId,
+        ratingId: rating.rootId,
         pageNumber: pageNumber,
         pageSize: pageSize,
         parentId: rating.ratingId,
@@ -60,6 +63,7 @@ export const fetchAllReplies = async (rating: any, dispatch: any) => {
         }]));
 
     } catch (error) {
+        dispatch(getRatingFailed(error));
         console.error("Error fetching replies:", error);
     }
 };
@@ -73,7 +77,8 @@ export const getCommentReply = async (data: any, dispatch: any) => {
         const res = await request.post('RatingAPI/ShowReply', data);
         // Dữ liệu reply trả về từ API
         const repliesData = res?.replies.map((reply: any) => ({
-            parentId: reply.ratingId,
+            rootId:reply.ratingId,
+            parentId: reply.parentReplyId,
             userId: reply.user.userId,
             userImage: reply.user.userImage,
             userName: reply.user.userName,
@@ -104,3 +109,53 @@ export const getCommentPost = async (data: any, dispatch: any) => {
         dispatch(getRatingPostFailed(err.response?.data));
     }
 };
+
+export const getCommentParentRealtime = async (data: any, dispatch: any) => {
+    dispatch(getRatingStart());
+    try{
+        const repliesData = [{
+            rootId:data.ReferenceId,
+            ratingId: data.ReferenceId,
+            userId: data.UserId,
+            // userImage: data.user.userImage,
+            // userName: data.user.userName,
+            ratingReview: data.Content,
+            // ratingRatingDate: data.replyDate,
+            ratingImageUrls: data.RatingImages,
+            isRoot: true, 
+            replies: [],
+        }];
+        dispatch(getRatingSuccess( repliesData));
+    }
+    catch(error){
+        dispatch(getRatingFailed(error));
+        console.error("Error fetching real-time replies:", error);
+    }
+}
+
+export const getCommentReplyRealtime = async (data: any, dispatch: any) => {
+    console.log(data)
+    dispatch(getRatingStart());
+    try{
+        const parentId = data.ParentId || data.RootId;
+        const repliesData = [{
+            rootId:data.RootId,
+            ratingId: data.ReferenceId,
+            userId: data.UserId,
+            parentId: data.ParentId,
+            // userImage: data.user.userImage,
+            // userName: data.user.userName,
+            ratingReview: data.Content,
+            // ratingRatingDate: data.replyDate,
+            ratingImageUrls: data.RatingImages,
+        }];
+        dispatch(getRatingSuccess([{
+            ratingId: parentId,
+            replies: repliesData // Truyền các replies mới vào payload
+        }]));
+    }
+    catch(error){
+        dispatch(getRatingFailed(error));
+        console.error("Error fetching real-time replies:", error);
+    }
+}

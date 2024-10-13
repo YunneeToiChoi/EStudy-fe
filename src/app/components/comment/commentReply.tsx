@@ -95,7 +95,7 @@ const CommentInput: React.FC<CommentInputProps> = ({ ratingId, isReply, parentRe
       formData.append('documentId', String(dataId));
     }
 
-    if (isReply && parentReplyId) {
+    if (isReply && parentReplyId && !(ratingId==parentReplyId)) {
       formData.append('parentReply', parentReplyId); // ID của bình luận đang được trả lời
     }
 

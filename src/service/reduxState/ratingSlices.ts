@@ -57,9 +57,9 @@ const ratingSlice = createSlice({
         getRatingStart: (state) => {
             state.rating.isFetching = true;
         },
-        getRatingSuccess: (state:any, action) => {
+        getRatingSuccess: (state: any, action) => {
             state.rating.isFetching = false;
-
+        
             const ratings = action.payload;
         
             // Kiểm tra xem ratings có phải là mảng hay không
@@ -70,18 +70,33 @@ const ratingSlice = createSlice({
         
             // Xử lý các rating mới
             ratings.forEach((newRating) => {
-                // Tạo replies mới từ newRating
-                const newReplies = processRepliesRecursively(newRating.replies || []);
+                // Nếu là comment cha (isRoot = true), thêm ngay vào Redux store
+                if (newRating.isRoot) {
+                    const existingRating = state.rating.data.find(
+                        (rating: any) => rating.ratingId === newRating.ratingId
+                    );
         
-                // Cố gắng cập nhật replies cho ratingId này
-                const updated = findRatingAndUpdateReplies(state.rating.data, newRating.ratingId, newReplies);
+                    if (!existingRating) {
+                        state.rating.data.push({
+                            ...newRating,
+                            replies: [], // Khởi tạo replies rỗng nếu là comment cha
+                        });
+                    }
+                } else {
+                    // Nếu không phải comment cha, xử lý replies như bình thường
+                    const newReplies = processRepliesRecursively(newRating.replies || []);
+                    const updated = findRatingAndUpdateReplies(
+                        state.rating.data,
+                        newRating.ratingId,
+                        newReplies
+                    );
         
-                // Nếu không tìm thấy ratingId, thêm rating mới vào
-                if (!updated) {
-                    state.rating.data.push({
-                        ...newRating,
-                        replies: newReplies, // Khởi tạo replies với các replies đã xử lý
-                    });
+                    if (!updated) {
+                        state.rating.data.push({
+                            ...newRating,
+                            replies: newReplies, // Khởi tạo replies đã xử lý nếu không tìm thấy
+                        });
+                    }
                 }
             });
         
