@@ -4,11 +4,11 @@ import { getAllPlans } from "@/service/api/apiPlansRequest";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OrderDialog from "./dialogOrderPlan";
-
+import addDotsToCurrency from "@/lib/utils/currency"
 export default function PlanUser() {
   const dispatch = useDispatch();
-  const listPlans = useSelector((state: any) => state.ThunkReducer.plan.getAllPlan.data?.plans);
-  const userId= useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user?.userId);
+  const listPlans = useSelector((state: any) => state.ThunkReducer.plan.getAllPlan.data?.data);
+  const userId= useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user?.userId)||"";
   console.log(listPlans);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function PlanUser() {
                    <p className="text-white mb-4">
                       {plan.planDescription}
                    </p>
-                   <p className="text-4xl font-bold text-white">{plan.planPrice} VND </p>
+                   <p className="text-4xl font-bold text-white">{addDotsToCurrency(plan.planPrice)} VND </p>
                    <p className="text-xl font-bold text-black mb-4">cho {plan.planDuration} ngày</p>
                    <p className="text-white text-sm mb-4">
                      Thanh toán một lần, không gia hạn tự động.
