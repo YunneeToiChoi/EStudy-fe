@@ -7,7 +7,7 @@ import OrderDialog from "./dialogOrderPlan";
 import addDotsToCurrency from "@/lib/utils/currency"
 export default function PlanUser() {
   const dispatch = useDispatch();
-  const listPlans = useSelector((state: any) => state.ThunkReducer.plan.getAllPlan.data?.data);
+  const listPlans = useSelector((state: any) => state.ThunkReducer.plan.getAllPlan.data?.plans);
   const userId= useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user?.userId)||"";
   console.log(listPlans);
 
