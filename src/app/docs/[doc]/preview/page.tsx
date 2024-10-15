@@ -8,7 +8,7 @@ import { previewDoc } from '@/service/api/apiDocumentRequest';
 import Image from 'next/image';
 import { fullScreenPlugin } from '@react-pdf-viewer/full-screen';
 import '@react-pdf-viewer/full-screen/lib/styles/index.css';
-
+import OrderDialog from "./dialogOrderDocument"
 interface DetailDocsProps {
     params: { doc: string };
 }
@@ -78,7 +78,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                     </div>
                     <div className="text-center my-4">
                         <p className="text-4xl font-extrabold my-4">
-                            You're Reading a Preview
+                            You&rsquo;re Reading a Preview
                         </p>
                         <p className="text-xl font-bold">
                             Buy document to download
@@ -189,10 +189,8 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
 
                     <div className="flex-1">
                         <div className="h-full border border-gray-300 rounded-lg bg-white shadow-lg">
-                            <div className="flex sticky z-10 top-11 py-6 px-16 shadow-lg w-full justify-between items-center bg-gray-100">
-                                <button className="flex items-center px-4 py-2 bg-primary-bg-color text-white rounded-lg hover:bg-primary-bg-color-hover transition duration-200">
-                                    <FaDownload className="mr-2" /> Download now
-                                </button>
+                            <div className="flex py-6 px-16 shadow-2xl w-full justify-between items-center bg-gray-100">
+                                <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic}></OrderDialog>
                                 {totalPages && (
                             <div className="text-center">
                                 Page {currentPage} of {totalPages}
