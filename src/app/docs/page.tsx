@@ -6,9 +6,6 @@ import GetLoadingCourse from "@/app/components/course/loadingCourse";
 import { getAllDocuments } from "@/service/api/apiDocumentRequest";
 import DocumentCard from "@/app/components/document/DocumentCard";
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import {NavigationMenuHeader} from "@/app/components/partialView/menuHeader";
 interface Category {
   id: number;
   name: string;
@@ -20,7 +17,6 @@ interface Course {
 }
 
 export default function GetDocByUser() {
-  const userInfo = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser.data);
   const dispatch = useDispatch();
   const checkNoDocument = useSelector((state: any) => state.ThunkReducer.document.allDocuments?.data);
   const listDocuments = useSelector((state: any) => state.ThunkReducer.document.allDocuments?.data?.document);
@@ -35,7 +31,7 @@ export default function GetDocByUser() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterType, setFilterType] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("");
-
+  
   const debounce = (func: Function, delay: number) => {
     let timeoutId: NodeJS.Timeout;
     return (...args: any) => {
@@ -121,41 +117,8 @@ export default function GetDocByUser() {
   const totalPages = Math.ceil(filteredDocuments.length / itemsPerPage);
 
   return (
-    <div className="container mx-auto px-4 flex flex-col">
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-10 flex items-center justify-between p-4">
-        <Link className='flex gap-2 items-center' href="/">
-          <Image
-            className="nav__img"
-            src="/img/.svg/logo.svg"
-            alt="Logo"
-            width={80}
-            height={80}
-            quality={100}
-          />
-          <h1 className='text-2xl font-semibold tracking-wide'>
-            E-<span className='text-primary-bg-color'>Study</span>
-          </h1>
-        </Link>
-        <div className="flex gap-2"> 
-          <NavigationMenuHeader />
-        {userInfo &&
-              <Link href={"/document/upload"} className=' py-2 px-4 flex justify-center hover:cursor-pointer text-white items-center gap-2 rounded-xl group cursor-pointer bg-primary-bg-color hover:bg-white border-[1px] border-transparent hover:border-primary-bg-color duration-75 shadow-md ease-linear'>
-                <i className="fa-solid fa-cloud-arrow-up text-white group-hover:text-primary-bg-color text-xl"></i>  
-                <p className=' text-lg font-medium group-hover:text-primary-bg-color '>Upload</p>
-              </Link>}
-        </div>
-       
-        <div className="relative w-full max-w-md">
-          <input
-            type="text"
-            className="border border-gray-300 rounded-md py-2 px-4 w-full"
-            placeholder="Tìm kiếm tài liệu..."
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-        </div>
-      </header>
-
-      <div className="flex flex-wrap gap-4 mb-6 justify-center items-center mt-40">
+    <div>
+      <div className="flex flex-wrap gap-4 mb-6 justify-center items-center mt-11">
         <select className="border border-gray-300 rounded-md py-2 px-4 w-full max-w-xs" value={selectedCourse || ''} onChange={(e) => setSelectedCourse(e.target.value ? String(e.target.value) : null)}>
           <option value="">Tất cả khóa học</option>
           {courses.map((course) => (
@@ -180,7 +143,14 @@ export default function GetDocByUser() {
           <option value="title-asc">A-Z</option>
         </select>
       </div>
-
+      <div className="m-auto py-5 w-full max-w-md">
+        <input
+          type="text"
+          className="border border-gray-300 rounded-md py-2 px-4 w-full"
+          placeholder="Tìm kiếm tài liệu..."
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+      </div>
       <div className="p-4">
         {checkNoDocument?.status === 404 || (currentDocuments.length == 0) ? (
           <div className="text-center mt-10 text-gray-500">Chưa có tài liệu nào</div>
