@@ -32,29 +32,28 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
     }, [dispatch, idDocument]);
 
     const handlePageChange = useCallback((currentPage: number) => {
-        setCurrentPage(currentPage + 1); // Page numbers are 1-based
+        setCurrentPage(currentPage + 1); 
     }, []);
 
     const handleDocumentLoad = (e: DocumentLoadEvent) => {
-        setTotalPages(e.doc.numPages); // Set total pages
+        setTotalPages(e.doc.numPages); 
     };
 
     const renderPage = (props: RenderPageProps) => {
         const { pageIndex } = props;
         const isDocumentPublic = infoDetails?.documentPublic;
         const canViewAll = isDocumentPublic;
-        const totalPages = props.doc.numPages; // Lấy số trang của tài liệu
+        const totalPages = props.doc.numPages; 
     
-        // Kiểm tra điều kiện hiển thị dựa trên số trang
         let canViewPage = false;
         if (canViewAll) {
-            canViewPage = true; // Nếu tài liệu công khai, cho xem toàn bộ
+            canViewPage = true; 
         } else if (totalPages < 3) {
-            canViewPage = false; // Nếu ít hơn 3 trang, ẩn hết
+            canViewPage = false; 
         } else if (totalPages < 5) {
-            canViewPage = pageIndex === 0; // Nếu ít hơn 5 trang, chỉ cho xem trang đầu tiên
+            canViewPage = pageIndex === 0; 
         } else {
-            canViewPage = pageIndex < 2; // Nếu từ 5 trang trở lên, cho xem 2 trang đầu
+            canViewPage = pageIndex < 2; 
         }
     
         if (!canViewPage) {
@@ -84,9 +83,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                             Buy document to download
                         </p>
                     </div>
-                    <button className="z-10 flex items-center px-4 py-2 cursor-pointer bg-primary-bg-color text-white rounded-lg hover:bg-primary-bg-color-hover transition duration-200">
-                        <FaDownload className="mr-2" /> Buy document
-                    </button>
+                    <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic} documentUrl={infoDetails?.fileUrl} parent={false}></OrderDialog>
                 </div>
             );
         }
@@ -125,15 +122,6 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                             </div>
                             <div className='flex items-center justify-between'>
                             <h1 className="text-2xl font-bold">{infoDetails?.title}</h1>
-                            {
-                                infoDetails?.documentPublic == true ? (
-                                    <p className=" text-white text-base font-medium py-1 px-2 rounded-xl bg-primary-bg-color-hover">Free</p>
-                                ):(
-                                    <p className="ml-2 underline text-primary-bg-color text-sm font-semibold ">
-                                    {formattedPrice}
-                                  </p>
-                                )
-                            }
                             </div>
                             <p className="text-base text-slate-400 my-5">
                                 Uploaded by <span className="text-primary-bg-color">{infoDetails?.user?.userName}</span> on{' '}
@@ -144,6 +132,18 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                                         year: 'numeric',
                                     })}
                                 </span>
+                                <br></br>
+                                <div className=' flex items-center mt-3'>
+                             {
+                                infoDetails?.documentPublic == true ? (
+                                    <p className=" text-white text-base font-medium py-1 px-2 rounded-xl bg-primary-bg-color-hover">Free</p>
+                                ):(
+                                    <p>
+                                    <span className='text-black font-bold'>Price:</span> <span className='ml-2 underline text-primary-bg-color text-sm font-semibold'>{formattedPrice}</span>
+                                  </p>
+                                )
+                            }
+                                </div>
                             </p>
                             <div className="mb-5 rounded-xl p-5 bg-blue-100">
                                 <div className="my-2 flex items-center gap-2">
@@ -190,7 +190,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                     <div className="flex-1">
                         <div className="h-full border border-gray-300 rounded-lg bg-white shadow-lg">
                             <div className="flex py-6 px-16 shadow-2xl w-full justify-between items-center bg-gray-100">
-                                <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic}></OrderDialog>
+                                <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic} documentUrl={infoDetails?.fileUrl} parent={true}></OrderDialog>
                                 {totalPages && (
                             <div className="text-center">
                                 Page {currentPage} of {totalPages}

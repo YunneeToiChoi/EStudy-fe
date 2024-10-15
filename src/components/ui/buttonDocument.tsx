@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "flex items-center px-4 py-2 bg-primary-bg-color text-white rounded-lg hover:bg-primary-bg-color-hover transition duration-200"
+  "flex z-10 items-center px-4 py-2 bg-primary-bg-color text-white rounded-lg hover:bg-primary-bg-color-hover transition duration-200"
 )
 
 export interface ButtonProps
