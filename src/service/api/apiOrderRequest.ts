@@ -22,15 +22,34 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
   return `${idUser}${idCourse}${currentDate}`.split('').sort(() => Math.random() - 0.5).join('');
 };
 
- const handlePayment = async (ID:any,name:string,resOrder:any,lastPrice:any,idUser:any,dispatch:any,navigate:any) => {
-  const reqId:string = await handleRandomReqID(idUser,ID.toString());
+ const handlePayment = async (ID:any,name:string,resOrder:any,lastPrice:any,idUser:any,dispatch:any,navigate:any,type:string) => {
+  const reqId: string = await handleRandomReqID(idUser, ID.toString());
+
+  // Xác định redirectUrl dựa trên type
+  let redirectUrl: string;
+
+  switch (type) {
+    case 'course':
+      redirectUrl = process.env.NEXT_PUBLIC_CLIENT_COURSE_ENDPOINT || '';
+      break;
+    case 'document':
+      redirectUrl = process.env.NEXT_PUBLIC_CLIENT_DOCUMENT_ENDPOINT || '';
+      break;
+    case 'plan':
+      redirectUrl = process.env.NEXT_PUBLIC_CLIENT_PLAN_ENDPOINT || '';
+      break;
+    default:
+      redirectUrl = process.env.NEXT_PUBLIC_CLIENT_ENDPOINT || ''; 
+      break;
+  }
+
   const dataPaymentMomo = {
     subPartnerCode: "",
     requestId: reqId,
     amount: lastPrice,
     orderId: String(resOrder.orderId),
     orderInfo: `Thanh toán: ${name}`,
-    redirectUrl: process.env.NEXT_PUBLIC_CLIENT_ENDPOINT,
+    redirectUrl: redirectUrl,
     ipnUrl: process.env.NEXT_PUBLIC_MOMO_IPNURL,
     requestType: "captureWallet",
     extraData: "",
@@ -49,7 +68,7 @@ export const RequestApiOrderPlan = async (dataOrder:any,dispatch:any,lastPrice:a
   try{
     const res = await request.post('/Order_API/Order_Plan',dataOrder);
     dispatch(OrderSuccess(res));
-    const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+    const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate,"plan");
     return paymentSuccess;
   }catch (err:any) {
     dispatch(OrderFailed());
@@ -62,7 +81,20 @@ export const RequestApiOrderCourse = async (dataOrder:any,dispatch:any,lastPrice
     try{
       const res = await request.post('/Order_API/Buy_Course',dataOrder);
       dispatch(OrderSuccess(res));
-      const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate);
+      const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate,"course");
+      return paymentSuccess;
+    }catch (err:any) {
+      dispatch(OrderFailed());
+      return err;
+    }
+  }
+
+  export const RequestApiOrderDocument = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
+    dispatch(OrderStart()); 
+    try{
+      const res = await request.post('/Order_API/Order_Document',dataOrder);
+      dispatch(OrderSuccess(res));
+      const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate,"document");
       return paymentSuccess;
     }catch (err:any) {
       dispatch(OrderFailed());
