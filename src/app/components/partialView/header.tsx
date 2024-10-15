@@ -26,7 +26,7 @@ export default function Header() {
       if (currentScrollPosition > 0) {
         header.classList.add('shadow-md', 'bg-white');
       } else {
-        if (!currentPathname.startsWith('/course/') && !currentPathname.startsWith('/exam/')) {
+        if (!currentPathname.startsWith('/course/') && !currentPathname.startsWith('/exam/')&&!currentPathname.startsWith('/docs')) {
           header.classList.remove('shadow-md', 'bg-white');
         }
       }
@@ -41,7 +41,7 @@ export default function Header() {
     return () => {
       container?.removeEventListener('scroll', handleScroll);
     };
-  }, [currentPathname]); // Sử dụng currentPathname thay vì pathname
+  }, [currentPathname]); 
 
   return (
     <div className='header sticky z-20 top-0 left-0 right-0 transition duration-500 ease-in-out'>
