@@ -38,6 +38,11 @@ const documentSlice = createSlice({
             isFetching: false,
             error: false,
         },
+        downloadDoc:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -132,6 +137,19 @@ const documentSlice = createSlice({
             state.previewDoc.error = true;
             state.msg = action.payload;
         },
+        downLoadDocStart: (state) =>{
+            state.downloadDoc.isFetching = true;
+        },
+        downLoadDocSuccess: (state,action) => {
+            state.downloadDoc.isFetching = false;
+            state.downloadDoc.data = action.payload;
+            state.downloadDoc.error = false;
+        },
+        downLoadDocFailed: (state,action) =>{
+            state.downloadDoc.isFetching = false;
+            state.downloadDoc.error = true;
+            state.msg = action.payload;
+        },
     }
 });
 
@@ -157,6 +175,9 @@ export const {
     previewDocStart,
     previewDocSuccess,
     previewDocFailed,
+    downLoadDocStart,
+    downLoadDocSuccess,
+    downLoadDocFailed,
 } = documentSlice.actions;
 
 export default documentSlice.reducer;

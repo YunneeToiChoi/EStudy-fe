@@ -21,6 +21,9 @@ import {
     previewDocStart,
     previewDocSuccess,
     previewDocFailed,
+    downLoadDocFailed,
+    downLoadDocStart,
+    downLoadDocSuccess
 } from "@/service/reduxState/documentUserSlices";
 
 export const UploadFiles = async (file: File, userId: any, onUploadProgress: (progressEvent: any) => void) => {
@@ -110,5 +113,16 @@ export const previewDoc = async (docId: any, dispatch: any) => {
         dispatch(previewDocSuccess(res));
     } catch (err:any) {
         dispatch(previewDocFailed(err.response?.data));
+    }
+};
+
+export const downLoadDoc = async (data:any, dispatch: any) => {
+    dispatch(downLoadDocStart());
+    try {
+        const res = await request.post("/UserDocumentAPI/DownloadDocument",data);
+        dispatch(downLoadDocSuccess(res));
+        return res;
+    } catch (err:any) {
+        dispatch(downLoadDocFailed(err.response?.data));
     }
 };

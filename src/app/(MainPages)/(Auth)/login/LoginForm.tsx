@@ -30,14 +30,25 @@ export default function LoginForm() {
     defaultValues: {
       email: '',
       password: ''
-    }
+    },
+    mode: 'onChange',
   });
 
+  const {
+    formState: { errors, isValid },
+  } = form;
   const dispatch = useDispatch();
   const navigate = useRouter();
   const [showCountdown, setShowCountdown] = useState(false);
   const [showResendCode, setShowResendCode] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
+  useEffect(() => {
+    if (!isValid && Object.keys(errors).length > 0) {
+      setConfirmPasswordVisible(true);
+    }
+  }, [isValid, errors,confirmPasswordVisible]);
 
   useEffect(() => {
     initializeFacebookSDK();
@@ -77,7 +88,7 @@ export default function LoginForm() {
     });
     const toastRes = await loginUser(newUser, dispatch);
     if (toastRes?.status != 200) {
-      console.log(toastRes);
+      setConfirmPasswordVisible(true);
       sessionStorage.setItem('registeredEmail', email);
       toast.update(idToast, { 
         render: 'Đăng nhập thất bại !',
@@ -281,14 +292,18 @@ export default function LoginForm() {
                   <FormMessage />
                 </FormItem>)}
             />
-          <a onClick={()=>handleForgotPassword(form.getValues)} 
+            {
+              confirmPasswordVisible==true &&(
+                <a onClick={()=>handleForgotPassword(form.getValues)} 
                 onKeyUp={()=>handleForgotPassword(form.getValues)}
                 role="button" 
                 tabIndex={0}
-              className="text-black mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
+              className="text-black w-fit mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
             >
               Forgot Password ?
             </a>
+              )
+            }
             <button type='submit' className="w-40 m-auto bg-primary-bg-color text-white  text-lg font-medium my-6 hover:bg-primary-bg-color-hover transition duration-150 ease-in-out text-center  no-underline py-2 rounded-[6px] border-none">
               Đăng nhập
             </button>

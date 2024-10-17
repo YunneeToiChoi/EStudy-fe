@@ -82,9 +82,7 @@ export const InfoUser = async (user:any, dispatch:any) => {
 
 export const UpdateImage = async (user:any) => {
   try {
-    const res = await request.post('/Auth_API/User_UpdateImage', user, { headers: {
-      'Content-Type': 'multipart/form-data'
-    }});
+    const res = await request.post('/Auth_API/User_UpdateImage', user);
     return res;
   } catch (err:any) {
     return err?.response;
