@@ -20,7 +20,7 @@ import { RequestApiOrderDocument } from "@/service/api/apiOrderRequest";
 import Image from 'next/image';
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
+import { downLoadDoc } from '@/service/api/apiDocumentRequest';
 interface OrderDialogProps {
   documentId: number;
   documentName: string;
@@ -73,8 +73,14 @@ const OrderDialog: React.FC<OrderDialogProps> = ({
   };
 
   // Hàm thực hiện tải xuống file PDF
-  const handleDownload = () => {
-    const pdfUrl = documentUrl;
+  const handleDownload = async () => {
+    const data={
+      documentId:documentId,
+      userId:user?.userId
+    }
+    const res=await downLoadDoc(data,dispatch)
+    console.log(res)
+    const pdfUrl = res.fileUrl;
     const link = document.createElement('a');
     link.href = pdfUrl;
     link.target = '_blank'; 
