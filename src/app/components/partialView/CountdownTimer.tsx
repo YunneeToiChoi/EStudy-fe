@@ -11,6 +11,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ duration, onTimeout }) 
     const currentTime = new Date().getTime();
     return endTime - currentTime;
   };
+  
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 

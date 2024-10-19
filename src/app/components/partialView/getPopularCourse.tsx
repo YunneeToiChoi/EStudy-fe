@@ -25,7 +25,7 @@ export default function GetPoplarCourses() {
     return(
       <div>
          {listCourses && listCourses?.length > 0 ? (
-                  <div className="relative my-[150px] w-screen rounded-3xl left-1/2 transform -translate-x-1/2 bg-[#F5F5FD]  p-16">
+                  <div>
                   <h2 className="  font-semibold text-3xl text-center text-primary-bg-color ">Khóa học online nổi bật</h2>
                  <div className=" mt-16 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-14">
                  {listCourses?.map((course:any) =>{

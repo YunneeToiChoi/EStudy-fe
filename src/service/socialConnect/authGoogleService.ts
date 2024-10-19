@@ -9,6 +9,10 @@
   import { jwtDecode } from "jwt-decode";
 
   export const handleGoogleLogin = async (dispatch: any, navigate: any) => {
+    const clearSessionData =()=> {
+      sessionStorage.removeItem('registeredEmail');
+      sessionStorage.removeItem('countdownEndTime');
+    }
     const googleOAuthUrl = 'https://accounts.google.com/o/oauth2/v2/auth'; // Sử dụng v2
     const params = new URLSearchParams({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
@@ -41,6 +45,7 @@
                 theme: "colored",
                 transition: Bounce,
               });
+              clearSessionData();
               navigate.push("/");
             }
           } catch (error) {

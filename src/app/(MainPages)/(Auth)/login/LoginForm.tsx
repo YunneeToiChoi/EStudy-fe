@@ -174,7 +174,7 @@ export default function LoginForm() {
     transition: Bounce,
   });
     toast.update(idToast, {
-      render:'Gửi link thành công ! Đường dẫn sẽ có hiệu lực trong vòng 10 phút',
+      render:'Gửi link thành công ! Đường dẫn sẽ có hiệu lực trong vòng 1 phút',
       type: "success",
       isLoading: false,
       position: "bottom-right",
@@ -187,7 +187,7 @@ export default function LoginForm() {
       theme: "colored",
       transition: Bounce,
     });
-    const endTime = new Date().getTime() + 600000;
+    const endTime = new Date().getTime() + 60000;
     sessionStorage.setItem('countdownEndTime', endTime.toString());
     setShowCountdown(true);
     setShowResendCode(false);
