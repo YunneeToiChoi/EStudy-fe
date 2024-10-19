@@ -5,6 +5,7 @@ import GetLoadingCourse from "@/app/components/course/loadingCourse";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCoursesByUser } from "@/service/api/apiCourseRequest";
+import { getUserPlans,checkExpirePlan } from '@/service/api/apiPlansRequest';
 
 export default function GetCoursesByUser() {
     const dispatch = useDispatch();
@@ -18,14 +19,31 @@ export default function GetCoursesByUser() {
     const itemsPerPage = 3; // Số lượng khóa học trên mỗi trang
 
     useEffect(() => {
-        if (user?.userId) {
-            const UserId = {
-                userId: user?.userId
+        const fetchData = async () => {
+            if (user?.userId) {
+                const UserId = {
+                    userId: user.userId
+                };
+                try {
+                    // Gọi API để lấy các khóa học của người dùng
+                    await getAllCoursesByUser(UserId, dispatch);
+    
+                    // Gọi API lấy kế hoạch của người dùng
+                    const plans = await getUserPlans(UserId,dispatch);
+                    console.log('User Plans:', plans);
+    
+                    // Kiểm tra xem có kế hoạch nào đã hết hạn không
+                    const isExpired = await checkExpirePlan(UserId,dispatch);
+                    console.log('Plan Expired:', isExpired);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                } finally {
+                    setIsLoading(false);
+                }
             }
-            getAllCoursesByUser(UserId, dispatch).then(() => {
-                setIsLoading(false);
-            });
-        }
+        };
+    
+        fetchData();
     }, [dispatch, user?.userId]);
 
     if (isLoading && !checkNoCourse) {
@@ -48,7 +66,8 @@ export default function GetCoursesByUser() {
                     <div className="mt-16 grid grid-cols-3 gap-14">
                         {currentItems.map((course: any) => {
                             return (
-                                <Link key={course.courseId} href={`/course/${course.courseId}/Learning/Unit/LandingCourse/courseOption`} className="group h-full">
+                                <Link key={course.courseId} href={`/course/${course.courseId}/Learning/Unit/LandingCourse/courseOption`} className="group h-full relative">
+                                    {course?.planName && <div className=' absolute z-10 bg-slate-200 shadow-xl text-black text-md font-bold top-0 right-0 px-4 py-2 rounded-bl-xl'>{course?.planName} </div>}
                                     <div className="shadow-md flex flex-col items-center group-hover:shadow-lg transition duration-500 delay-75 ease-in-out bg-white p-4 rounded-xl mb-5 h-full">
                                         <div className='mb-5 w-full h-72 group relative overflow-hidden rounded-[10px] '>
                                             <Image

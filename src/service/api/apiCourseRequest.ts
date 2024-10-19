@@ -73,13 +73,24 @@ export const getDetailCourse = async (idCourse:any,dispatch:any) => {
   }
 }
 
-export const getAllCoursesByUser = async (idUser:any,dispatch:any)=>{
+export const getAllCoursesByUser = async (idUser: any, dispatch: any) => {
   dispatch(getAllCourseByUsersStart());
   try {
     const res = await request.post('/UserCourses_API/Get_AllCoursesByUser', idUser);
-     dispatch(getAllCourseByUsersSuccess(res))
-  }
-  catch (err:any) {
+    
+    const { courses, planCourseId } = res;
+    const updatedCourses = courses.map((course:any) => {
+      const plan = planCourseId.find((plan:any) => plan.courseId === course.courseId);
+      if (plan) {
+        return { ...course, planName: plan.planName };
+      }
+      return course;
+    });
+    const updatedResponse = {   courses: updatedCourses };
+
+    dispatch(getAllCourseByUsersSuccess(updatedResponse));
+    console.log(updatedResponse);
+  } catch (err: any) {
     dispatch(getAllCourseByUsersFailed(err.response));
   }
 };

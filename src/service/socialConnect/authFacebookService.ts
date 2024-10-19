@@ -13,6 +13,10 @@ export const handleFacebookLoginAsync = async (
     dispatch: any,
     navigate: any
   ) => {
+    const clearSessionData =()=> {
+      sessionStorage.removeItem('registeredEmail');
+      sessionStorage.removeItem('countdownEndTime');
+    }
       try {
         const res = await request.post('/Auth_API/facebook-login', {accessToken: accessToken});
         dispatch(loginSuccess(res));
@@ -29,6 +33,7 @@ export const handleFacebookLoginAsync = async (
             theme: "colored",
             transition: Bounce,
           });
+          clearSessionData();
           navigate.push('/');
         } else {
           toast.error('Đăng nhập Facebook thất bại!', {

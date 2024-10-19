@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCommentParent,
         fetchAllReplies,
+        resetRating,
         getCommentParentRealtime, 
         getCommentReplyRealtime} 
 from "@/service/api/apiCommentRequest";
@@ -30,6 +31,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
     state.ThunkReducer.rating.rating.data
   );
   
+  
   useEffect(() => {
     const channelName = type === "course" ? `course_${dataId}` : `document_${dataId}`;
     const channel = pusher.subscribe(channelName);  
@@ -37,10 +39,12 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
 
     channel.bind('new-rating',async (data: any) => {
       await getCommentParentRealtime(data,dispatch)
+      console.log(data)
     });
 
     channel.bind('new-reply', async (data: any) => {
       await getCommentReplyRealtime(data,dispatch)
+      console.log(data)
     });
   
     return () => {
@@ -48,6 +52,13 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
       pusher.unsubscribe(channelName);
     };
   }, [pusher, dataId, type,dispatch]);
+
+  useEffect(() => {
+    return () => {
+        resetRating(dispatch);
+    };
+}, [dispatch]);
+
 
   useEffect(() => {
     const fetchComments = async () => {

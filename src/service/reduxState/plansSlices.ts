@@ -7,6 +7,16 @@ const plansSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        getUserPlan:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
+        checkExpirePlan:{
+            data:null,
+            error:false,
+            isFetching: false,
+        },
         msg:"",
     },
     reducers:{
@@ -22,7 +32,33 @@ const plansSlice = createSlice({
         getAllPlanFailed: (state) =>{
             state.getAllPlan.isFetching = false;
             state.getAllPlan.error = true;
-        }
+        },
+        getUserPlanStart: (state) =>{
+            state.getUserPlan.isFetching = true;
+        },
+        getUserPlanSuccess: (state,action) => {
+            state.getUserPlan.isFetching = false;
+            state.getUserPlan.data = action.payload;
+            state.getUserPlan.error = false;
+            state.msg = "";
+        },
+        getUserPlanFailed: (state) =>{
+            state.getUserPlan.isFetching = false;
+            state.getUserPlan.error = true;
+        },
+        checkExpirePlanStart: (state) =>{
+            state.checkExpirePlan.isFetching = true;
+        },
+        checkExpirePlanSuccess: (state,action) => {
+            state.checkExpirePlan.isFetching = false;
+            state.checkExpirePlan.data = action.payload;
+            state.checkExpirePlan.error = false;
+            state.msg = "";
+        },
+        checkExpirePlanFailed: (state) =>{
+            state.checkExpirePlan.isFetching = false;
+            state.checkExpirePlan.error = true;
+        },
     }
 });
 
@@ -30,6 +66,12 @@ export const {
     getAllPlanStart,
     getAllPlanSuccess,
     getAllPlanFailed,
+    getUserPlanStart,
+    getUserPlanSuccess,
+    getUserPlanFailed,
+    checkExpirePlanStart,
+    checkExpirePlanSuccess,
+    checkExpirePlanFailed,
 } = plansSlice.actions;
 
 export default plansSlice.reducer;

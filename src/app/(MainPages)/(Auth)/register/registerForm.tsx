@@ -110,7 +110,7 @@ export default function RegisterForm(){
               theme: "light",
               transition: Bounce,
               });
-              toast.info('Đường dẫn sẽ hết hiệu lực sau 10 phút', {
+              toast.info('Đường dẫn sẽ hết hiệu lực sau 1 phút', {
                 position: "bottom-right",
                 autoClose: 10000,
                 hideProgressBar: false,
@@ -239,7 +239,7 @@ export default function RegisterForm(){
         <br />
         <div className='flex items-center gap-1 justify-center mt-[20px] no-underline text-black text-base '>
           <span>Bạn đã có tài khoản?</span>
-          <Link href="/register" className="hover:underline transition duration-300 ease-in-out hover:text-primary-bg-color"
+          <Link href="/login" className="hover:underline transition duration-300 ease-in-out hover:text-primary-bg-color"
           > Đăng nhập ngay</Link>
         </div>
         </div>

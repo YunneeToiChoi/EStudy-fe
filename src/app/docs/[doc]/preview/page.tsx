@@ -214,7 +214,6 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                                     renderPage={renderPage}
                                     defaultScale={SpecialZoomLevel.PageFit}
                                     onPageChange={(e) => {
-                                        console.log('Current Page Index:', e.currentPage); // Kiểm tra chỉ số trang
                                         handlePageChange(e.currentPage);
                                     }}
                                     onDocumentLoad={handleDocumentLoad}
