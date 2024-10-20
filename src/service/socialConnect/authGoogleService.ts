@@ -13,16 +13,8 @@
       sessionStorage.removeItem('registeredEmail');
       sessionStorage.removeItem('countdownEndTime');
     }
-    const googleOAuthUrl = 'https://accounts.google.com/o/oauth2/v2/auth'; // Sử dụng v2
-    const params = new URLSearchParams({
-      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
-      redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
-      response_type: 'code',
-      scope: 'openid profile email'
-    });
-
     dispatch(loginStart());
-    const popup = window.open(`${googleOAuthUrl}?${params.toString()}`, '_blank', 'width=500,height=600');
+    const popup = window.open(`${process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI}`, '_blank', 'width=500,height=600');
 
     // Function to handle message event
     const handlePopupMessage = (event: MessageEvent) => {
