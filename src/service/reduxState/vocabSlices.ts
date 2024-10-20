@@ -32,6 +32,7 @@ const vocabSlice = createSlice({
         getVocabByLessonFailed: (state,action) =>{
             state.VocabByLesson.isFetching = false;
             state.VocabByLesson.error = true;
+            state.VocabByLesson.data = null;
             state.msg = action.payload;
         },
         getVocabFindPairStart: (state) =>{
@@ -45,6 +46,7 @@ const vocabSlice = createSlice({
         getVocabFindPairFailed: (state,action) =>{
             state.VocabFindPair.isFetching = false;
             state.VocabFindPair.error = true;
+            state.VocabFindPair.data=null
             state.msg = action.payload;
         },
         getVocabListenStart: (state) =>{
@@ -59,6 +61,7 @@ const vocabSlice = createSlice({
             state.VocabListen.isFetching = false;
             state.VocabListen.error = true;
             state.msg = action.payload;
+            state.VocabListen.data = null;
         },
     }
 });

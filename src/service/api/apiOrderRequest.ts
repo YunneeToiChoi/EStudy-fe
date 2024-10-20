@@ -63,6 +63,33 @@ const handleRandomReqID = async (idUser: string, idCourse: string): Promise<stri
     return false; 
   }
 };
+
+export const RequestApiOrderRenewPlan = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
+  dispatch(OrderStart()); 
+  try{
+    const res = await request.post('/Order_API/Renew_Plan',dataOrder);
+    dispatch(OrderSuccess(res));
+    const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate,"plan");
+    return paymentSuccess;
+  }catch (err:any) {
+    dispatch(OrderFailed());
+    return err;
+  }
+}
+
+export const RequestApiOrderRenewCourse = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
+  dispatch(OrderStart()); 
+  try{
+    const res = await request.post('/Order_API/Renew_Course',dataOrder);
+    dispatch(OrderSuccess(res));
+    const paymentSuccess = await handlePayment(ID,name,res,lastPrice,idUser,dispatch,navigate,"course");
+    return paymentSuccess;
+  }catch (err:any) {
+    dispatch(OrderFailed());
+    return err;
+  }
+}
+
 export const RequestApiOrderPlan = async (dataOrder:any,dispatch:any,lastPrice:any,ID:any,name:string,idUser:string,navigate:any) => {
   dispatch(OrderStart()); 
   try{

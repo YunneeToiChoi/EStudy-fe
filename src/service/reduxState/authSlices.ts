@@ -26,13 +26,14 @@ const authSlice = createSlice({
         },
         loginSuccess: (state,action) => {
             state.login.isFetching = false;
-            state.login.data = action.payload;//nhan du lieu dc truyen vao apirequest
+            state.login.data = action.payload;
             state.login.error = false;
             state.msg = "";
         },
         loginFailed: (state) =>{
             state.login.isFetching = false;
             state.login.error = true;
+            state.login.data = null;
         },
         registerStart: (state) =>{
             state.register.isFetching = true;
@@ -77,6 +78,7 @@ const authSlice = createSlice({
             state.getAllInfoUser.isFetching = false;
             state.getAllInfoUser.error = true;
             state.msg = action.payload;
+            state.getAllInfoUser.data = null;
         }
     }
 });

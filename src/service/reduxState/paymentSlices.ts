@@ -26,6 +26,7 @@ const PaymentSlice = createSlice({
         MomoFailed: (state) =>{
             state.Momo.isFetching = false;
             state.Momo.error = true;
+            state.Momo.data= null;
         },
         NotifyMomoStart: (state) =>{
             state.NotifyMomo.isFetching = true;
@@ -38,7 +39,7 @@ const PaymentSlice = createSlice({
         NotifyMomoFailed: (state,action) =>{
             state.NotifyMomo.isFetching = false;
             state.NotifyMomo.error = true;
-            state.NotifyMomo.data= action.payload;
+            state.NotifyMomo.data= null;
         },
     }
 });

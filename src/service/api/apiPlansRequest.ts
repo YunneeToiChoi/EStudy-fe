@@ -11,6 +11,7 @@ import {
     checkExpirePlanFailed,
 } from "@/service/reduxState/plansSlices"
 
+import {getAllCoursesByUser} from "./apiCourseRequest";
  export const getAllPlans = async (userId:string,dispatch:any) => {
     dispatch(getAllPlanStart());
     try {
@@ -39,4 +40,23 @@ export const checkExpirePlan = async (data:any, dispatch:any) => {
   } catch (err:any) {
     dispatch(checkExpirePlanFailed(err.response.data));
   }
-}
+} 
+
+export const CancelPlan = async (data: any, dispatch: any) => {
+  dispatch(checkExpirePlanStart()); // Bắt đầu quá trình hủy
+  try {
+    const res = await request.del('/UserSubs_API/Cancel_Plan',  {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data, 
+    }); 
+    dispatch(checkExpirePlanSuccess(res)); // Thành công
+    await getUserPlans(data, dispatch);
+    await getAllCoursesByUser(data, dispatch);
+    return true;
+  } catch (err: any) {
+    dispatch(checkExpirePlanFailed(err.response?.data)); // Xử lý lỗi
+    return false;
+  }
+};

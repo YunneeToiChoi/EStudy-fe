@@ -25,13 +25,14 @@ const plansSlice = createSlice({
         },
         getAllPlanSuccess: (state,action) => {
             state.getAllPlan.isFetching = false;
-            state.getAllPlan.data = action.payload;//nhan du lieu dc truyen vao apirequest
+            state.getAllPlan.data = action.payload;
             state.getAllPlan.error = false;
             state.msg = "";
         },
         getAllPlanFailed: (state) =>{
             state.getAllPlan.isFetching = false;
             state.getAllPlan.error = true;
+            state.getAllPlan.data = null;
         },
         getUserPlanStart: (state) =>{
             state.getUserPlan.isFetching = true;
@@ -45,6 +46,7 @@ const plansSlice = createSlice({
         getUserPlanFailed: (state) =>{
             state.getUserPlan.isFetching = false;
             state.getUserPlan.error = true;
+            state.getUserPlan.data = null;
         },
         checkExpirePlanStart: (state) =>{
             state.checkExpirePlan.isFetching = true;
@@ -58,6 +60,7 @@ const plansSlice = createSlice({
         checkExpirePlanFailed: (state) =>{
             state.checkExpirePlan.isFetching = false;
             state.checkExpirePlan.error = true;
+            state.checkExpirePlan.data = null;
         },
     }
 });

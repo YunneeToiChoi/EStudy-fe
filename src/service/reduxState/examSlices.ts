@@ -91,6 +91,7 @@ const examSlice = createSlice({
         getAllExamFailed: (state:any, action:any) => {
             state.allExam.isFetching = false;
             state.allExam.error = true;
+            state.allExam.data = null;
             state.msg = action.payload;
         },
         getDetailExamStart: (state:any) => {
@@ -105,6 +106,7 @@ const examSlice = createSlice({
             state.detailExam.isFetching = false;
             state.detailExam.error = true;
             state.msg = action.payload;
+            state.detailExam.data = null;
         },
         getAudioExamStart: (state:any) => {
             state.audioExam.isFetching = true;
@@ -118,6 +120,7 @@ const examSlice = createSlice({
             state.audioExam.isFetching = false;
             state.audioExam.error = true;
             state.msg = action.payload;
+            state.audioExam.data = null;
         },
         getCompleteExamStart: (state:any) => {
             state.completeExam.isFetching = true;
@@ -131,6 +134,7 @@ const examSlice = createSlice({
             state.completeExam.isFetching = false;
             state.completeExam.error = true;
             state.msg = action.payload;
+            state.completeExam.data = null;
         },
         getPopularExamStart: (state:any) => {
             state.popularExam.isFetching = true;
@@ -144,6 +148,7 @@ const examSlice = createSlice({
             state.popularExam.isFetching = false;
             state.popularExam.error = true;
             state.msg = action.payload;
+            state.popularExam.data = null;
         },
         getPart1Start: (state:any) => {
             state.part1.isFetching = true;
@@ -274,6 +279,7 @@ const examSlice = createSlice({
         getExamRevisionFailed: (state, action) => {
             state.examRevision.isFetching = false;
             state.examRevision.error = true;
+            state.examRevision.data = null;
             state.msg = action.payload;
         },
         getUserExamStart: (state) => {
@@ -287,6 +293,7 @@ const examSlice = createSlice({
         getUserExamFailed: (state, action) => {
             state.userExam.isFetching = false;
             state.userExam.error = true;
+            state.userExam.data = null;
             state.msg = action.payload;
         },
     },

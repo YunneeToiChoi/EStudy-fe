@@ -89,7 +89,6 @@ export const getAllCoursesByUser = async (idUser: any, dispatch: any) => {
     const updatedResponse = {   courses: updatedCourses };
 
     dispatch(getAllCourseByUsersSuccess(updatedResponse));
-    console.log(updatedResponse);
   } catch (err: any) {
     dispatch(getAllCourseByUsersFailed(err.response));
   }

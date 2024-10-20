@@ -42,6 +42,7 @@ const questionSlice = createSlice({
         getQuestionsFailed: (state,action) =>{
             state.questions.isFetching = false;
             state.questions.error = true;
+            state.questions.data = null;
             state.msg = action.payload;
         },
         getFillWordStart: (state) =>{
@@ -55,6 +56,7 @@ const questionSlice = createSlice({
         getFillWordFailed: (state,action) =>{
             state.fillWord.isFetching = false;
             state.fillWord.error = true;
+            state.fillWord.data = null;
             state.msg = action.payload;
         },
         getDoubleChoiceStart: (state) =>{
@@ -68,6 +70,7 @@ const questionSlice = createSlice({
         getDoubleChoiceFailed: (state,action) =>{
             state.doubleChoice.isFetching = false;
             state.doubleChoice.error = true;
+            state.doubleChoice.data = null;
             state.msg = action.payload;
         },
         getReadingStart: (state) =>{
@@ -81,6 +84,7 @@ const questionSlice = createSlice({
         getReadingFailed: (state,action) =>{
             state.Reading.isFetching = false;
             state.Reading.error = true;
+            state.Reading.data = null;
             state.msg = action.payload;
         },
         getNoParaStart: (state) =>{
@@ -94,6 +98,7 @@ const questionSlice = createSlice({
         getNoParaFailed: (state,action) =>{
             state.NoPara.isFetching = false;
             state.NoPara.error = true;
+            state.NoPara.data = null;
             state.msg = action.payload;
         },
     }

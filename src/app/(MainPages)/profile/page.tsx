@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import GetCoursesByUser from "./getCourseByUser";
 import GetExamByUser from './getExamByUser';
 import GetDocByUser from './getDocByUser';
+import GetPlanByUser from './getPlansByUser';
 import { useEffect, useState } from 'react';
 
 export default function Profile() {
@@ -52,6 +53,9 @@ export default function Profile() {
         </div>
       <div className="flex items-center justify-center mt-11">
         <h1 className="text-3xl font-bold text-primary-bg-color">Xin chào {infoUser?.userName}!</h1>
+      </div>
+      <div className=' my-5 w-full flex gap-4 items-center justify-center'>
+        <GetPlanByUser></GetPlanByUser>
       </div>
       <ul className="tag-search__transition">
         <li className="tag-search__transition-item">

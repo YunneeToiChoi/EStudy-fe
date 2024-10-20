@@ -22,6 +22,7 @@ const unitSlice = createSlice({
         getUnitFailed: (state,action) =>{
             state.units.isFetching = false;
             state.units.error = true;
+            state.units.data = null;
             state.msg = action.payload;
         },
     }

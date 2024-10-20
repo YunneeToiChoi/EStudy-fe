@@ -23,7 +23,7 @@ export default function BodyCourseOption({ params }: { params: { course: string,
       if (params.unit === "LandingCourse") {
         return <LangComment params={params} />;
       } else if (params.unit === "ExtendCourse") {
-        return <ExtentCourse />;
+        return <ExtentCourse params={params} />;
       } else {
         return <Container params={params} contentsUnit={ContentsUnit} />;
       }
