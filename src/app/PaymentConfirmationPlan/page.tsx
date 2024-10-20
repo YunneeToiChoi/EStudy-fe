@@ -32,7 +32,7 @@ export default function SuccessOrderByMomo() {
           theme: "light",
           transition: Bounce,
         });
-        navigate.push('/premium');
+        navigate.push('/profile');
       }
       else{
         toast.error('Thanh toán thất bại !', {

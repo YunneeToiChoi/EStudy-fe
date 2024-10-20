@@ -42,6 +42,7 @@ const courseSlice = createSlice({
         getCourseFailed: (state,action) =>{
             state.course.isFetching = false;
             state.course.error = true;
+            state.course.data= null;
             state.msg = action.payload;
         },
         getCourseDetailStart: (state) =>{
@@ -55,6 +56,7 @@ const courseSlice = createSlice({
         getCourseDetailFailed: (state,action) =>{
             state.CourseDetail.isFetching = false;
             state.CourseDetail.error = true;
+            state.CourseDetail.data= null;
             state.msg = action.payload;
         },
         getAllCourseByUsersStart: (state)=>{
@@ -68,6 +70,7 @@ const courseSlice = createSlice({
             state.AllCourseByUsers.isFetching = false;
             state.AllCourseByUsers.error = true;
             state.msg = action.payload;
+            state.AllCourseByUsers.data = null;
         },
         getUnregisteredCoursesStart: (state)=>{
             state.UnregisteredCourses.isFetching = true;
@@ -80,6 +83,7 @@ const courseSlice = createSlice({
             state.UnregisteredCourses.isFetching = false;
             state.UnregisteredCourses.error = true;
             state.msg = action.payload;
+            state.UnregisteredCourses.data = null;
         },
         getPopularCourseStart: (state)=>{
             state.PopularCourse.isFetching = true;
@@ -92,6 +96,7 @@ const courseSlice = createSlice({
             state.PopularCourse.isFetching = false;
             state.PopularCourse.error = true;
             state.msg = action.payload;
+            state.PopularCourse.data = null;
         },
     }
 });

@@ -6,6 +6,7 @@ import GetLoadingCourse from "@/app/components/course/loadingCourse";
 import { getAllDocuments } from "@/service/api/apiDocumentRequest";
 import DocumentCard from "@/app/components/document/DocumentCard";
 import { motion, AnimatePresence } from 'framer-motion';
+import Header from "@/app/components/partialView/header"
 interface Category {
   id: number;
   name: string;
@@ -118,6 +119,7 @@ export default function GetDocByUser() {
 
   return (
     <div>
+      <Header />
       <div className="flex flex-wrap gap-4 mb-6 justify-center items-center mt-11">
         <select className="border border-gray-300 rounded-md py-2 px-4 w-full max-w-xs" value={selectedCourse || ''} onChange={(e) => setSelectedCourse(e.target.value ? String(e.target.value) : null)}>
           <option value="">Tất cả khóa học</option>

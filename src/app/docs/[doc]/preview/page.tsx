@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { fullScreenPlugin } from '@react-pdf-viewer/full-screen';
 import '@react-pdf-viewer/full-screen/lib/styles/index.css';
 import OrderDialog from "./dialogOrderDocument"
+import Link from 'next/link';
 interface DetailDocsProps {
     params: { doc: string };
 }
@@ -103,7 +104,20 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                 <div className="flex bg-gray-50">
                     <nav className=" max-w-80 bg-white p-4 shadow-md">
-                        <div className="sticky z-10 top-36 left-2">
+                        <div className="sticky z-10 top-0 left-2">
+                        <Link className='flex gap-2 mb-5 items-center' href="/">
+                            <Image
+                            className="nav__img"
+                            src="/img/.svg/logo.svg"
+                            alt="Logo"
+                            width={80}
+                            height={80}
+                            quality={100}
+                            />
+                            <h1 className='text-2xl font-semibold tracking-wide'>
+                            E-<span className='text-primary-bg-color'>Study</span>
+                            </h1>
+                        </Link>
                             <div className="flex mb-8 items-center gap-11 mx-2">
                                 <div className="flex items-center gap-4">
                                     <i className="fa-regular fa-thumbs-up text-sm text-slate-400"></i>
@@ -207,12 +221,12 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                                     )}
                                 </EnterFullScreen>
                             </div>
-                            <div className='h-[calc(100vh-210px)]'>
+                            <div className='h-[calc(100vh-90px)]'>
                             {fileUrl ? (
                                 <Viewer
                                     fileUrl={fileUrl}
                                     renderPage={renderPage}
-                                    defaultScale={SpecialZoomLevel.PageFit}
+                                    
                                     onPageChange={(e) => {
                                         handlePageChange(e.currentPage);
                                     }}

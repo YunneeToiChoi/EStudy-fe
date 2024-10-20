@@ -22,6 +22,7 @@ const videoSlice = createSlice({
         getVideoFailed: (state,action) =>{
             state.videos.isFetching = false;
             state.videos.error = true;
+            state.videos.data = null;
             state.msg = action.payload;
         },
     }

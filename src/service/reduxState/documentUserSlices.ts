@@ -57,6 +57,7 @@ const documentSlice = createSlice({
         getCategoryOfDocumentsFailed: (state,action) =>{
             state.cateOfDocuments.isFetching = false;
             state.cateOfDocuments.error = true;
+            state.cateOfDocuments.data = null;
             state.msg = action.payload;
         },
         getCourseOfDocumentsStart: (state) =>{
@@ -70,6 +71,7 @@ const documentSlice = createSlice({
         getCourseOfDocumentsFailed: (state,action) =>{
             state.courseOfDocuments.isFetching = false;
             state.courseOfDocuments.error = true;
+            state.courseOfDocuments.data = null;
             state.msg = action.payload;
         },
         editDocumentStart: (state) =>{
@@ -84,6 +86,7 @@ const documentSlice = createSlice({
             state.editDocument.isFetching = false;
             state.editDocument.error = true;
             state.msg = action.payload;
+            state.editDocument.data = null;
         },
         getAllDocumentsStart: (state) =>{
             state.allDocuments.isFetching = true;
@@ -97,6 +100,7 @@ const documentSlice = createSlice({
             state.allDocuments.isFetching = false;
             state.allDocuments.error = true;
             state.msg = action.payload;
+            state.allDocuments.data = null;
         },
         getUserDocumentsStart: (state) =>{
             state.userDoc.isFetching = true;
@@ -110,6 +114,7 @@ const documentSlice = createSlice({
             state.userDoc.isFetching = false;
             state.userDoc.error = true;
             state.msg = action.payload;
+            state.userDoc.data = null;
         },
         getCourseDocumentsStart: (state) =>{
             state.courseDoc.isFetching = true;
@@ -123,6 +128,7 @@ const documentSlice = createSlice({
             state.courseDoc.isFetching = false;
             state.courseDoc.error = true;
             state.msg = action.payload;
+            state.courseDoc.data = null;
         },
         previewDocStart: (state) =>{
             state.previewDoc.isFetching = true;
@@ -136,6 +142,7 @@ const documentSlice = createSlice({
             state.previewDoc.isFetching = false;
             state.previewDoc.error = true;
             state.msg = action.payload;
+            state.previewDoc.data = null;
         },
         downLoadDocStart: (state) =>{
             state.downloadDoc.isFetching = true;
@@ -148,6 +155,7 @@ const documentSlice = createSlice({
         downLoadDocFailed: (state,action) =>{
             state.downloadDoc.isFetching = false;
             state.downloadDoc.error = true;
+            state.downloadDoc.data = null;
             state.msg = action.payload;
         },
     }

@@ -23,6 +23,7 @@ const contentUnitsSlice = createSlice({
             state.ContentUnit.isFetching = false;
             state.ContentUnit.error = true;
             state.msg = action.payload;
+            state.ContentUnit.data = null;
         },
     }
 });

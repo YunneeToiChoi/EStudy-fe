@@ -27,6 +27,7 @@ const listenSlice = createSlice({
         getListenQuestResFailed: (state,action) =>{
             state.ListenQuestRes.isFetching = false;
             state.ListenQuestRes.error = true;
+            state.ListenQuestRes.data = null;
             state.msg = action.payload;
         },
         getListenSpeechStart: (state) =>{
@@ -40,6 +41,7 @@ const listenSlice = createSlice({
         getListenSpeechFailed: (state,action) =>{
             state.ListenSpeech.isFetching = false;
             state.ListenSpeech.error = true;
+            state.ListenSpeech.data = null;
             state.msg = action.payload;
         },
     }

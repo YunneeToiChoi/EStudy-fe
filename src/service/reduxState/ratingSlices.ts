@@ -105,6 +105,7 @@ const ratingSlice = createSlice({
         getRatingFailed: (state, action) => {
             state.rating.isFetching = false;
             state.rating.error = true;
+            state.rating.data =[];
             state.msg = action.payload;
         },
         getRatingPostStart: (state) => {
@@ -119,6 +120,7 @@ const ratingSlice = createSlice({
             state.ratingPost.isFetching = false;
             state.ratingPost.error = true;
             state.msg = action.payload;
+            state.ratingPost.data = null;
         },
         resetRatingState: (state) => {
             state.rating.data = [];

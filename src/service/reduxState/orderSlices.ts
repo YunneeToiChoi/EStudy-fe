@@ -22,6 +22,7 @@ const orderSlice = createSlice({
         OrderFailed: (state) =>{
             state.order.isFetching = false;
             state.order.error = true;
+            state.order.data= null;
         },
     }
 });
