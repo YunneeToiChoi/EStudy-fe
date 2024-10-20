@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function ActiveCourse()
 {
-  const user = useSelector((state:any)=> state.persistedReducer.auth.login?.data);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const form = useForm<ActiveCodeType>({
     resolver: zodResolver(ActiveCode),
     defaultValues: {
@@ -41,7 +41,7 @@ export default function ActiveCourse()
     if(user){
       const codeActive=values;
       const dataReq={
-        userId:user.user.userId,
+        userId:user.userId,
         code: codeActive.code
       }
       const res=await ActiveCodeCourse(dataReq);

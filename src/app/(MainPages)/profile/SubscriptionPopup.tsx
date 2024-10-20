@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/buttonInfoPlan";
 import { useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
@@ -9,31 +9,51 @@ import {
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 import { CancelPlan } from '@/service/api/apiPlansRequest';
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { RequestApiOrderRenewPlan } from '@/service/api/apiOrderRequest';
+import { checkExpirePlan } from '@/service/api/apiPlansRequest';
+
 interface ShowPlanDialogProps {
   planId: number;
   planName: string;
-  state:boolean;
+  state: boolean;
 }
 
-const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName,state }) => {
+const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName, state }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const expirePlans = useSelector((state: any) => state.ThunkReducer.plan.checkExpirePlan?.data);
+
+  // Đưa fetchData ra ngoài useEffect
+  const fetchData = async () => {
+    if (user?.userId) {
+      const UserId = {
+        userId: user.userId
+      };
+      try {
+        await checkExpirePlan(UserId, dispatch);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [dispatch]);
 
   const handleOrder = async () => {
-    setIsSubmitting(true); 
     const dataOrder = {
       userId: user.userId,
       planId: planId,
     };
-   const idToast=toast.loading('Đang chuyển hướng đến trang Momo....', {
+    const idToast = toast.loading('Đang chuyển hướng đến trang Momo....', {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -45,7 +65,7 @@ const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName,state 
       transition: Bounce,
     });
     try {
-      const paymentSuccess = await RequestApiOrderRenewPlan(dataOrder, dispatch,10000,planId,planName, user.userId, router.push);
+      const paymentSuccess = await RequestApiOrderRenewPlan(dataOrder, dispatch, 10000, planId, planName, user.userId, router.push);
       if (paymentSuccess) {
         toast.update(idToast, {
           render: 'Chuyển hướng thành công!',
@@ -93,12 +113,11 @@ const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName,state 
         transition: Bounce,
       });
     }
-    setIsSubmitting(false); 
   };
 
   const checkUser = () => {
     if (!user) {
-      toast.info('Hãy đăng nhập tài khoản !', {
+      toast.info('Hãy đăng nhập tài khoản!', {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -110,11 +129,14 @@ const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName,state 
         transition: Bounce,
       });
       router.push("/login");
+    } else {
+      // Gọi lại fetchData khi người dùng đã đăng nhập
+      fetchData();
     }
-  }
+  };
 
   const handleCancelPlan = async () => {
-    const data = { userId: user.userId};
+    const data = { userId: user.userId };
     const cancelSuccess = await CancelPlan(data, dispatch);
 
     if (cancelSuccess) {
@@ -127,47 +149,47 @@ const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName,state 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className={state==true ? `bg-[#fcd436]`:`bg-red-500 text-white`} onClick={checkUser}>{planName}</Button>
+        <Button className={state ? `bg-[#fcd436]` : `bg-red-500 text-white`} onClick={checkUser}>{planName}</Button>
       </AlertDialogTrigger>
       {
-        state==true ?(
+        state ? (
+          <AlertDialogContent className=" p-5 overflow-hidden">
+            <AlertDialogTitle className="text-2xl font-bold mb-2 text-center text-primary-bg-color">
+              Gói {planName} còn hiệu lực
+            </AlertDialogTitle>
+            <div className=" text-center text-gray-600">
+              Thời gian còn lại: <span className=' text-red-500'>
+              <strong>{expirePlans?.days} ngày</strong>{" "}
+              <strong>{expirePlans?.hours} giờ</strong>{" "}
+              <strong>{expirePlans?.minutes} phút</strong>.
+              </span>
+            </div>
+            <div className='flex gap-32 justify-between items-center'>
+              <AlertDialogCancel className='bg-slate-300 w-full text-black block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent'>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                className="bg-red-500 w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+                onClick={handleCancelPlan}
+              >
+                huỷ gói
+              </AlertDialogAction>
+            </div>
+          </AlertDialogContent>
+        ) : (
           <AlertDialogContent className="sm:min-w-[490px] p-5 overflow-hidden">
-          <div className="text-center">
-          <h2 className="text-2xl font-bold mb-2 text-primary-bg-color">
-            Gói {planName} còn hiệu lực
-          </h2>
-          {/* <p className="text-gray-600">
-            Thời gian còn lại: <strong>{expirePlans.days} ngày</strong>,{" "}
-            <strong>{expirePlans.hours} giờ</strong>,{" "}
-            <strong>{expirePlans.minutes} phút</strong>.
-          </p> */}
-        </div>
-          <div className='flex gap-32 justify-between items-center'>
-             <AlertDialogCancel className=' bg-slate-300 w-full text-black block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent'>Cancel</AlertDialogCancel>
-             <AlertDialogAction
-             className="bg-red-500 w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent" 
-             onClick={handleCancelPlan}
-            > huỷ gói
-            </AlertDialogAction>
-          </div>
-
-        </AlertDialogContent>
-        ):(
-          <AlertDialogContent className="sm:min-w-[490px] p-5 overflow-hidden">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold  mb-2 text-primary-bg-color">Gia hạn gói {planName} của bạn</h2>
-            <p className="text-gray-600">Gói của bạn đã hết hạn. Bạn có muốn gia hạn không?</p>
-          </div>
-          <div className='flex gap-32 justify-between items-center'>
-             <AlertDialogCancel className=' bg-red-500 w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent'>huỷ</AlertDialogCancel>
-             <AlertDialogAction
-             className="bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent" 
-             onClick={handleOrder}
-            > Gia hạn
-            </AlertDialogAction>
-          </div>
-             
-        </AlertDialogContent>
+            <AlertDialogTitle className="text-2xl font-bold mb-2 text-center text-primary-bg-color">
+              Gia hạn gói {planName} của bạn
+            </AlertDialogTitle>
+            <div className="text-gray-600 text-center">Gói của bạn đã hết hạn. Bạn có muốn gia hạn không?</div>
+            <div className='flex gap-32 justify-between items-center'>
+              <AlertDialogCancel className='bg-red-500 w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent'>huỷ</AlertDialogCancel>
+              <AlertDialogAction
+                className="bg-primary-bg-color w-full text-white block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
+                onClick={handleOrder}
+              >
+                Gia hạn
+              </AlertDialogAction>
+            </div>
+          </AlertDialogContent>
         )
       }
     </AlertDialog>

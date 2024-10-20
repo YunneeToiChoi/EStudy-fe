@@ -27,7 +27,7 @@ export default function GetPlanByUser(){
             listPlans && listPlans.length > 0 ?(
                 <div className=' flex gap-3 items-center'>
                     {listPlans.map((item:any,index:any) => (
-                       <ShowPlanDialog planId={item.planId} planName={item.planName} state={item.state}></ShowPlanDialog>
+                       <ShowPlanDialog key={item.planId} planId={item.planId} planName={item.planName} state={item.state}></ShowPlanDialog>
                     ))}
                 </div>
             ):(
