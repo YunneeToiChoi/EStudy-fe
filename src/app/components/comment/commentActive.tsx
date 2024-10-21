@@ -61,7 +61,7 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
     // Thêm dữ liệu vào formData
     formData.append('userId', userInfo?.userId);
     formData.append('ratingEntityType', type);
-    formData.append('courseId', String(dataId)); // Đảm bảo đây là string
+    formData.append(type === 'Course' ? 'courseId' : 'documentId', String(dataId));
     formData.append('ratingValue', String(value)); // Chuyển giá trị ratingValue thành string
     formData.append('ratingReview', commentText);
     selectedImage.forEach(file => {
