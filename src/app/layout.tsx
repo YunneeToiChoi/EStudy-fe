@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
         <div className="bg-primary-bg-color fixed top-[-500px] bottom-0 left-[-200px] rounded-br-full w-[1100px]"></div>
-        <div className="ParentLayout backdrop-blur-xl fixed top-0 bottom-0 right-0 left-0 bg-white/90 overflow-scroll overflow-x-hidden">
+        <div className="ParentLayout backdrop-blur-xl fixed top-0 bottom-0 right-0 left-0 bg-white/90 overflow-scroll scrollbar-hide overflow-x-hidden scrollbar-none">
           <ReduxProvider>
               {children}
           </ReduxProvider>

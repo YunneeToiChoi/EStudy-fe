@@ -10,6 +10,7 @@ import { fullScreenPlugin } from '@react-pdf-viewer/full-screen';
 import '@react-pdf-viewer/full-screen/lib/styles/index.css';
 import OrderDialog from "./dialogOrderDocument"
 import Link from 'next/link';
+import ShowListComment from '@/app/components/comment/commentShow';
 interface DetailDocsProps {
     params: { doc: string };
 }
@@ -19,7 +20,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
     const infoDetails = useSelector((state: any) => state.ThunkReducer.document.previewDoc.data);
     const fileUrl = infoDetails?.fileUrl;
     const idDocument = params.doc;
-
+    const [isCommentVisible, setIsCommentVisible] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState<number | null>(null);
     const formattedPrice = new Intl.NumberFormat('vi-VN', {
@@ -38,6 +39,10 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
 
     const handleDocumentLoad = (e: DocumentLoadEvent) => {
         setTotalPages(e.doc.numPages); 
+    };
+
+    const handleToggleComment = () => {
+        setIsCommentVisible((prev) => !prev);
     };
 
     const renderPage = (props: RenderPageProps) => {
@@ -118,8 +123,8 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                             E-<span className='text-primary-bg-color'>Study</span>
                             </h1>
                         </Link>
-                            <div className="flex mb-8 items-center gap-11 mx-2">
-                                <div className="flex items-center gap-4">
+                            <div className="flex mb-8 items-center justify-between mx-4">
+                                <div className="flex items-center gap-2">
                                     <i className="fa-regular fa-thumbs-up text-sm text-slate-400"></i>
                                     <div className="text-sm flex items-center gap-1 text-slate-400">
                                         <span>0</span>
@@ -134,9 +139,10 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='flex items-center justify-between'>
-                            <h1 className="text-2xl font-bold">{infoDetails?.title}</h1>
+                            <div className='flex items-center justify-between '>
+                            <h1 className="text-2xl font-bold overflow-hidden text-ellipsis truncate">{infoDetails?.title}</h1>
                             </div>
+                            <button onClick={handleToggleComment} className=' text-md mt-2 font-bold underline text-primary-bg-color'>Xem đánh giá</button>
                             <p className="text-base text-slate-400 my-5">
                                 Uploaded by <span className="text-primary-bg-color">{infoDetails?.user?.userName}</span> on{' '}
                                 <span className="text-primary-bg-color">
@@ -202,42 +208,60 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                     </nav>
 
                     <div className="flex-1">
-                        <div className="h-full border border-gray-300 rounded-lg bg-white shadow-lg">
-                            <div className="flex py-6 px-16 shadow-2xl w-full justify-between items-center bg-gray-100">
-                                <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic} documentUrl={infoDetails?.fileUrl} parent={true}></OrderDialog>
-                                {totalPages && (
-                            <div className="text-center">
-                                Page {currentPage} of {totalPages}
+                    <div className="flex-1">
+                        {isCommentVisible ? (
+                            <ShowListComment dataId={Number(params.doc)} type="document" />
+                        ) : (
+                            <div className="h-full border border-gray-300 rounded-lg bg-white shadow-lg">
+                                <div className="flex py-6 px-16 shadow-2xl w-full justify-between items-center bg-gray-100">
+                                    <OrderDialog
+                                        documentDes={infoDetails?.documentDescription}
+                                        documentId={infoDetails?.documentId}
+                                        documentName={infoDetails?.title}
+                                        documentPrice={infoDetails?.price}
+                                        documentPublic={infoDetails?.documentPublic}
+                                        documentUrl={infoDetails?.fileUrl}
+                                        parent={true}
+                                    />
+                                    {totalPages && (
+                                        <div className="text-center">
+                                            Page {currentPage} of {totalPages}
+                                        </div>
+                                    )}
+                                    <EnterFullScreen>
+                                        {(props) => (
+                                            <button
+                                                className="flex items-center px-4 py-2 text-slate-400 hover:text-black transition duration-300"
+                                                onClick={props.onClick}
+                                            >
+                                                <FaExpand className="mr-2" /> Full Screen
+                                            </button>
+                                        )}
+                                    </EnterFullScreen>
+                                </div>
+
+                                <div className="h-[calc(100vh-90px)]">
+                                    {fileUrl ? (
+                                        <Viewer
+                                            fileUrl={fileUrl}
+                                            renderPage={renderPage}
+                                            onPageChange={(e) => handlePageChange(e.currentPage)}
+                                            onDocumentLoad={handleDocumentLoad}
+                                            plugins={[fullScreenPluginInstance]}
+                                        />
+                                    ) : (
+                                        <div className="p-4 text-center text-gray-500">
+                                            Đang tải tài liệu...
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="mt-6 pb-11">
+                                    <ShowListComment dataId={Number(params.doc)} type="document" />
+                                </div>
                             </div>
                         )}
-                                <EnterFullScreen>
-                                    {(props) => (
-                                        <button
-                                            className="flex items-center px-4 py-2 text-slate-400 hover:text-black transition duration-300"
-                                            onClick={props.onClick}
-                                        >
-                                            <FaExpand className="mr-2" /> Full Screen
-                                        </button>
-                                    )}
-                                </EnterFullScreen>
-                            </div>
-                            <div className='h-[calc(100vh-90px)]'>
-                            {fileUrl ? (
-                                <Viewer
-                                    fileUrl={fileUrl}
-                                    renderPage={renderPage}
-                                    
-                                    onPageChange={(e) => {
-                                        handlePageChange(e.currentPage);
-                                    }}
-                                    onDocumentLoad={handleDocumentLoad}
-                                    plugins={[fullScreenPluginInstance]}
-                                />
-                            ) : (
-                                <div className="p-4 text-center text-gray-500">Đang tải tài liệu...</div>
-                            )}
-                            </div>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </Worker>
