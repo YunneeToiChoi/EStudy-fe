@@ -15,7 +15,7 @@ import { usePusher } from '@/app/pusherProvider';
 
 interface ShowListCommentProps {
   dataId: number;
-  type: "document" | "course";
+  type: "Document" | "Course";
 }
 
 const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
@@ -33,7 +33,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
   
   
   useEffect(() => {
-    const channelName = type === "course" ? `course_${dataId}` : `document_${dataId}`;
+    const channelName = type === "Course" ? `course_${dataId}` : `document_${dataId}`;
     const channel = pusher.subscribe(channelName);  
     
 
@@ -63,9 +63,9 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
   useEffect(() => {
     const fetchComments = async () => {
       let data;
-      if (type === "document") {
+      if (type === "Document") {
         data = { documentId: dataId };
-      } else if (type === "course") {
+      } else if (type === "Course") {
         data = { courseId: dataId };
       }
       await getCommentParent(data, dispatch);
@@ -165,7 +165,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
           ratingId={rating.rootId} 
           isReply={true} 
           onSubmit={handleReply} 
-          ratingEntityType="Course"
+          ratingEntityType={type}
           dataId={dataId}
           parentReplyId={rating.ratingId}
         />
