@@ -9,12 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 import {getCommentPost} from '@/service/api/apiCommentRequest'
 
 interface CommentComponentProps {
-  params: {
-    course: string; // courseId mà bạn sẽ truyền vào
-  };
+  dataId: number;
+  type: "Document" | "Course";
 }
 
-const CommentComponent: React.FC<CommentComponentProps> = ({ params }) => {
+const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
   const dispatch =useDispatch();
   const userInfo = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const [value, setValue] = useState<number | null>(0);
@@ -61,8 +60,8 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ params }) => {
   
     // Thêm dữ liệu vào formData
     formData.append('userId', userInfo?.userId);
-    formData.append('ratingEntityType', 'Course');
-    formData.append('courseId', params.course); // Đảm bảo đây là string
+    formData.append('ratingEntityType', type);
+    formData.append('courseId', String(dataId)); // Đảm bảo đây là string
     formData.append('ratingValue', String(value)); // Chuyển giá trị ratingValue thành string
     formData.append('ratingReview', commentText);
     selectedImage.forEach(file => {

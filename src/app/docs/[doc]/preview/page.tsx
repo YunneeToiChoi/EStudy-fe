@@ -11,13 +11,18 @@ import '@react-pdf-viewer/full-screen/lib/styles/index.css';
 import OrderDialog from "./dialogOrderDocument"
 import Link from 'next/link';
 import ShowListComment from '@/app/components/comment/commentShow';
+import CommentComponent from '@/app/components/comment/commentActive';
+import ShowListCommentRep from '@/app/components/comment/commentList';
+import { getUserDocuments } from '@/service/api/apiDocumentRequest';
 interface DetailDocsProps {
     params: { doc: string };
 }
 
 const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
     const dispatch = useDispatch();
+    const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const infoDetails = useSelector((state: any) => state.ThunkReducer.document.previewDoc.data);
+    const listDocuments = useSelector((state: any) => state.ThunkReducer.document.userDoc?.data?.userDoc);
     const fileUrl = infoDetails?.fileUrl;
     const idDocument = params.doc;
     const [isCommentVisible, setIsCommentVisible] = useState(false);
@@ -31,7 +36,15 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
         if (idDocument) {
             previewDoc(idDocument, dispatch);
         }
+        if (user?.userId) {
+            const UserId = { userId: user?.userId };
+            getUserDocuments(UserId, dispatch)
+          }
     }, [dispatch, idDocument]);
+
+    const isUserUploaded = listDocuments?.some(
+        (doc: any) => doc.documentId === infoDetails?.documentId
+    );
 
     const handlePageChange = useCallback((currentPage: number) => {
         setCurrentPage(currentPage + 1); 
@@ -142,7 +155,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                             <div className='flex items-center justify-between '>
                             <h1 className="text-2xl font-bold overflow-hidden text-ellipsis truncate">{infoDetails?.title}</h1>
                             </div>
-                            <button onClick={handleToggleComment} className=' text-md mt-2 font-bold underline text-primary-bg-color'>Xem đánh giá</button>
+                            <button onClick={handleToggleComment} className=' text-md mt-2 font-bold underline text-primary-bg-color'>{isCommentVisible ? `Xem Preview`:`Xem đánh giá`}</button>
                             <p className="text-base text-slate-400 my-5">
                                 Uploaded by <span className="text-primary-bg-color">{infoDetails?.user?.userName}</span> on{' '}
                                 <span className="text-primary-bg-color">
@@ -208,9 +221,20 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                     </nav>
 
                     <div className="flex-1">
-                    <div className="flex-1">
                         {isCommentVisible ? (
-                            <ShowListComment dataId={Number(params.doc)} type="document" />
+                            <div className='h-screen py-11 px-5'>
+                                {
+                                    (isUserUploaded===true && infoDetails?.documentPublic===true) ? (
+                                        <>
+                                        <CommentComponent dataId={Number(params.doc)} type='Document' ></CommentComponent>
+                                        <ShowListCommentRep dataId={Number(params.doc)} type='Document'></ShowListCommentRep>
+                                        </>
+                                    ):
+                                    (
+                                        <ShowListComment dataId={Number(params.doc)} type="Document" />
+                                    )
+                                }
+                            </div>
                         ) : (
                             <div className="h-full border border-gray-300 rounded-lg bg-white shadow-lg">
                                 <div className="flex py-6 px-16 shadow-2xl w-full justify-between items-center bg-gray-100">
@@ -255,13 +279,8 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                                         </div>
                                     )}
                                 </div>
-
-                                <div className="mt-6 pb-11">
-                                    <ShowListComment dataId={Number(params.doc)} type="document" />
-                                </div>
                             </div>
                         )}
-                    </div>
                     </div>
                 </div>
             </Worker>
