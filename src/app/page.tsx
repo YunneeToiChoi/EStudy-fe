@@ -18,7 +18,7 @@ export default function Home() {
   const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
 
   return (
-    <div>
+    <div className='w-full h-full'>
       <Header />
       <div className='max-w-[1440px] max-2xl:max-w-7xl max-xl:max-w-5xl px-3 m-auto'>
       <div className="flex gap-5 max-md:flex-col max-md:mx-6 items-center">

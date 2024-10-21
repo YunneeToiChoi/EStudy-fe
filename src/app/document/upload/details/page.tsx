@@ -179,18 +179,18 @@ const validateData = () => {
 };
 
   const handleSubmit = async () => {
-    const idToast =  toast.loading('Đang gửi ...', {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
     if (validateData()) {
+      const idToast =  toast.loading('Đang gửi ...', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
       const errors:any = [];
       try {
         await Promise.all(documents.map(async (doc, index) => {

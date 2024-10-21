@@ -58,7 +58,7 @@ export const BoxRevision: React.FC<InfoQuestionProps> = ({ examName, ObjectAnswe
       <DialogTrigger asChild>
         <div className="text-blue-500 cursor-pointer">[Chi tiết]</div>
       </DialogTrigger>
-      <DialogContent className=" max-h-[600px] overflow-scroll">
+      <DialogContent className=" max-h-[600px] overflow-scroll scrollbar-none">
         <div className=" text-xl font-medium">{examName}</div>
         <audio ref={audioRef}  className="spell__audio my-10" controls>
             <source src={examAudio} type="audio/mpeg" />
@@ -74,7 +74,6 @@ export const BoxRevision: React.FC<InfoQuestionProps> = ({ examName, ObjectAnswe
         {optionC && renderOption(optionC, 'C')}
         {optionD && renderOption(optionD, 'D')}
     </div>
-    {userAnswer && <div>{userAnswer}</div>}
       </DialogContent>
     </Dialog>
   );

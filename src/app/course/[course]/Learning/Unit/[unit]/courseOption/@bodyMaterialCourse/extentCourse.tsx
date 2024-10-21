@@ -22,7 +22,7 @@ interface CommentComponent
 {
   params:any
 }
-const extentCourse: React.FC<CommentComponent> = ({ params }) => {
+const ExtentCourse: React.FC<CommentComponent> = ({ params }) => {
   const dispatch = useDispatch();
   const router = useRouter();   
 
@@ -193,4 +193,4 @@ const extentCourse: React.FC<CommentComponent> = ({ params }) => {
     </div>
   );
 };
-export default extentCourse;
+export default ExtentCourse;

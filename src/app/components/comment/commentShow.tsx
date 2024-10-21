@@ -172,7 +172,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
         
         
       ) : (
-        <p>Chưa có bình luận nào.</p>
+        <p className=" text-center">Chưa có bình luận nào.</p>
       )}
     </>
   );
