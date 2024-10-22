@@ -55,7 +55,22 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-  
+    
+    if (!commentText || value === 0) {
+      toast.error('Please add a comment and a rating before submitting.',{
+        position: "bottom-right",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
     const formData = new FormData(); // Tạo đối tượng FormData
   
     // Thêm dữ liệu vào formData
@@ -160,7 +175,7 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
               </PhotoView>
               <button
                 type="button"
-                className='absolute top-0 right-0 pr-2 pt-2 group'
+                className='absolute top-0 right-0 pr-2 pt-2 group' 
                 onClick={() => handleImageRemove(index)}
               >
                 <i className="fa-solid fa-trash text-slate-300 cursor-pointer group-hover:text-red-600"></i>
@@ -172,8 +187,8 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
 
       <button
         type="submit"
-        disabled={commentText.length === 0} // Disable button if commentText is empty
-        className={`inline-flex w-fit items-center py-2.5 px-4 text-base font-medium text-center text-white bg-primary-bg-color rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 ${commentText.length === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-bg-color-hover'} duration-300 ease-in-out`}
+        disabled={commentText.length === 0 || value===0 && value===null} // Disable button if commentText is empty
+        className={` cursor-pointer inline-flex w-fit items-center py-2.5 px-4 text-base font-medium text-center text-white bg-primary-bg-color rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 ${commentText.length === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-bg-color-hover'} duration-300 ease-in-out`}
       >
         Post comment
       </button>

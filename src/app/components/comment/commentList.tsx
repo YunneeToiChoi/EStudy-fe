@@ -39,12 +39,10 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
 
     channel.bind('new-rating',async (data: any) => {
       await getCommentParentRealtime(data,dispatch)
-      console.log(data)
     });
 
     channel.bind('new-reply', async (data: any) => {
       await getCommentReplyRealtime(data,dispatch)
-      console.log(data)
     });
   
     return () => {
