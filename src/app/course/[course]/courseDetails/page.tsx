@@ -238,7 +238,7 @@ export default function CourseDetail({ params }: { params: {course: string } })
         <GetDocByCourse courseId={params.course}></GetDocByCourse>
         <div className=" m-auto max-w-6xl px-4 my-5">
         <h1 className='text-3xl font-extrabold mb-3'> Comment</h1>
-        <ShowListComment dataId={Number(params.course)} type='course'></ShowListComment>
+        <ShowListComment dataId={Number(params.course)} type='Course'></ShowListComment>
         </div>
       </div>
     </div>
