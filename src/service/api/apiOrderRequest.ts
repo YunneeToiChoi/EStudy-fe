@@ -73,7 +73,7 @@ export const RequestApiOrderRenewPlan = async (dataOrder:any,dispatch:any,lastPr
     return paymentSuccess;
   }catch (err:any) {
     dispatch(OrderFailed());
-    return err;
+    return false;
   }
 }
 
@@ -86,7 +86,7 @@ export const RequestApiOrderRenewCourse = async (dataOrder:any,dispatch:any,last
     return paymentSuccess;
   }catch (err:any) {
     dispatch(OrderFailed());
-    return err;
+    return false;
   }
 }
 
@@ -99,7 +99,7 @@ export const RequestApiOrderPlan = async (dataOrder:any,dispatch:any,lastPrice:a
     return paymentSuccess;
   }catch (err:any) {
     dispatch(OrderFailed());
-    return err;
+    return false;
   }
 }
 
@@ -112,7 +112,7 @@ export const RequestApiOrderCourse = async (dataOrder:any,dispatch:any,lastPrice
       return paymentSuccess;
     }catch (err:any) {
       dispatch(OrderFailed());
-      return err;
+      return false;
     }
   }
 
@@ -125,7 +125,7 @@ export const RequestApiOrderCourse = async (dataOrder:any,dispatch:any,lastPrice
       return paymentSuccess;
     }catch (err:any) {
       dispatch(OrderFailed());
-      return err;
+      return false;
     }
   }
   
