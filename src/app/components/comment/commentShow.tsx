@@ -105,7 +105,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
           <div className="flex w-full flex-col gap-1">
             <div className="flex items-center">
               <p className="pl-2 items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold max-w-60 whitespace-nowrap overflow-hidden truncate text-ellipsis">
-                {rating.userId}
+                {rating.userName}
               </p>
               <p className="text-sm ml-auto text-gray-600 dark:text-gray-400">
                 <span>{new Date(rating.ratingRatingDate).toLocaleDateString()}</span>

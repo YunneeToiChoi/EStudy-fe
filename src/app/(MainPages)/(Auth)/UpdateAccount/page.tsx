@@ -1,5 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDispatch, useSelector} from "react-redux";
@@ -23,16 +25,17 @@ import "react-toastify/dist/ReactToastify.css";
 const UpdateAccount = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const user = useSelector((state:any)=> state.persistedReducer.auth.login.data);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const infoUser=useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
 
   const [activeTab, setActiveTab] = useState(0);
   const [newPasswordVisible, setNewPasswordVisible] = useState(false);
   const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState(infoUser?.userImage);
-  const [selectedBanner, setSelectedBanner] = useState('https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg');
-
+  const [selectedAvatar, setSelectedAvatar] = useState<File | null>(null);
+  const [selectedBanner, setSelectedBanner] = useState<File | null>(null);
+  const [PreviewUrlAvt, setPreviewUrlAvt] = useState(infoUser?.userImage);
+  const [PreviewUrlBanner, setPreviewUrlBanner] = useState(infoUser?.userBanner||'https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg');
 
   const formInfoUser = useForm<infoUserType>({
     resolver: zodResolver(InfoUserBody),
@@ -57,13 +60,16 @@ const UpdateAccount = () => {
     setActiveTab(index);
   };
 
-  const handleImageChange = (event:any, setPreview:any) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreview(reader.result);
-    };
-    reader?.readAsDataURL(file);
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>, setImage: React.Dispatch<React.SetStateAction<File | null>>, setPreview: React.Dispatch<React.SetStateAction<string | "">>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result as string);
+        setImage(file);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleBasicInfoSave = async (values: infoUserType) => {
@@ -80,7 +86,7 @@ const UpdateAccount = () => {
     });
     const { username, email, phoneNumber, description} =values;
     const updatedUser = {
-      userId: user?.user?.userId,
+      userId: user.userId,
       userName: username,
       userEmail: email,
       phoneNumber: phoneNumber,
@@ -101,7 +107,7 @@ const UpdateAccount = () => {
         theme: "colored",
         progress: undefined,
       });
-      await getAllInfoUser({userId: user?.user?.userId},dispatch)
+      await getAllInfoUser({userId: user.userId},dispatch)
     }
     else{
       toast.update(idToast, {
@@ -134,7 +140,7 @@ const UpdateAccount = () => {
     });
     const {newPassword,confirmPassword,oldPassword} =values;
     const data={
-    userId : user?.user?.userId,
+    userId : user.userId,
     oldPassword : oldPassword,
     newPassword : newPassword,
     confirmPassword: confirmPassword
@@ -174,19 +180,19 @@ const UpdateAccount = () => {
   };
 
   const handleImageSave = async () => {
-    const idToast =  toast.loading('Đang kiểm tra...', {
+    const idToast = toast.loading('Đang kiểm tra...', {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
       theme: "dark",
       transition: Bounce,
     });
+
     const formData = new FormData();
-    formData.append('userId', user?.user?.userId);
+    formData.append('userId', user.userId);
     if (selectedAvatar) {
       formData.append('userAvatar', selectedAvatar);
     }
@@ -194,38 +200,22 @@ const UpdateAccount = () => {
       formData.append('userBanner', selectedBanner);
     }
 
-    const response = await UpdateImage(formData);
-
-      if (response.status === 200) {
-        toast.update(idToast ,{
-          render:'Cập nhật ảnh thành công!',
-          type: "success", 
-          isLoading: false ,
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "colored",
-          progress: undefined,
-        });
-      } else {
-        toast.update(idToast, {
-          render:'Cập nhật ảnh thất bại!',
-          type: "error", 
-          isLoading: false ,
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "colored",
-          progress: undefined,
-        });
-      }
-    };
+    const response = await UpdateImage(formData,infoUser.userId,dispatch);
+    if (response.status === 200) {
+      toast.update(idToast, {
+        render: 'Cập nhật ảnh thành công!',
+        type: "success",
+        isLoading: false,
+      });
+      // Optionally, you can fetch updated user data here.
+    } else {
+      toast.update(idToast, {
+        render: 'Cập nhật ảnh thất bại!',
+        type: "error",
+        isLoading: false,
+      });
+    }
+  };
 
   useEffect(() => {
     if (!user) {
@@ -329,48 +319,36 @@ const UpdateAccount = () => {
           </form>
         </Form>
       </div>
-      <div className={`${activeTab === 1 ? 'flex flex-col' : 'hidden'}`}>
-  <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Ảnh đại diện</p>
-  <div className='w-[300px] rounded-full h-[300px] shadow-2xl m-auto mb-8 overflow-hidden'>
-  <Image
-    src={selectedAvatar}
-    alt=""
-    width={1000}
-    height={1000}
-    id="previewImg"
-    className='object-cover  w-full h-full'
-  />
-  </div>
-  <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
-    Chọn ảnh đại diện
-    {' '}
-    <input
-      type="file"
-      className="hidden"
-      onChange={(e) => handleImageChange(e, setSelectedAvatar)}
-    />
-  </label>
-  <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Banner</p>
-  <Image
-    src={selectedBanner}
-    alt=""
-    width={400}
-    height={200}
-    id="previewImg1"
-    className=' w-full shadow-xl  rounded-lg'
-  />
-  <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
-    Chọn banner
-    {' '}
-    <input
-      type="file"
-      className="hidden"
-      onChange={(e) => handleImageChange(e, setSelectedBanner)}
-    />
-  </label>
-  <button onClick={handleImageSave} className="w-full bg-primary-bg-color text-white block text-xl font-medium my-3 text-center no-underline py-3 rounded-[6px]">
-    Lưu
-  </button>
+      <div className={`${activeTab === 1 ? 'block' : 'hidden'}`}>
+        <div className="flex flex-col items-center">
+        <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Ảnh đại diện</p>
+          <PhotoProvider>
+            <PhotoView src={PreviewUrlAvt}>
+              <div className="relative w-[150px] cursor-pointer h-[150px] overflow-hidden rounded-full border border-gray-300 mb-2">
+                {PreviewUrlAvt && <Image alt="Avatar" src={PreviewUrlAvt} layout="fill" objectFit="cover" />}
+              </div>
+            </PhotoView>
+          </PhotoProvider>
+          <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
+          Chọn ảnh đại diện
+          {' '}
+          <input type='file' className='hidden' accept='image/*' onChange={(event) => handleImageChange(event, setSelectedAvatar, setPreviewUrlAvt)} />
+          </label>
+          <p className="text-xl text-center font-medium text-primary-bg-color my-[30px]">Banner</p>
+          <PhotoProvider>
+            <PhotoView src={PreviewUrlBanner}>
+              <div className="relative w-full cursor-pointer h-[300px] overflow-hidden rounded-lg border border-gray-300 mb-2">
+                {PreviewUrlBanner && <Image alt="Banner" src={PreviewUrlBanner} layout="fill" objectFit="cover" />}
+              </div>
+            </PhotoView>
+          </PhotoProvider>
+          <label className=" m-auto my-6 cursor-pointer text-base font-medium text-primary-bg-color w-[180px] p-[10px] rounded-[4px] border-[1px] border-primary-bg-color bg-white hover:bg-gray-100 text-center transition duration-300">
+          Chọn banner
+          {' '}
+          <input type='file' className='hidden' accept='image/*' onChange={(event) => handleImageChange(event, setSelectedBanner, setPreviewUrlBanner)} />
+          </label>
+          <button onClick={handleImageSave}  className="w-full bg-primary-bg-color text-white block text-xl font-medium my-3 text-center no-underline py-3 rounded-[6px]">Lưu ảnh</button>
+        </div>
       </div>
 
       <div className={`${activeTab === 2 ? 'block' : 'hidden'}`}>

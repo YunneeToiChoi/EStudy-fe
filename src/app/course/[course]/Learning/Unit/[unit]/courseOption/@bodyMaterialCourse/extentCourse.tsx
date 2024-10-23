@@ -69,7 +69,7 @@ const ExtentCourse: React.FC<CommentComponent> = ({ params }) => {
         router.push
       );
 
-      if (paymentSuccess) {
+      if (paymentSuccess===true) {
         toast.update(idToast, {
           render: 'Chuyển hướng thành công!',
           type: "success",

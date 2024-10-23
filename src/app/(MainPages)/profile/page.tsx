@@ -30,20 +30,22 @@ export default function Profile() {
           <div className="img__container">
           <div className="avatar__container">
             <Image
-              src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg"
+              src={infoUser?.userBanner ? infoUser?.userBanner : `https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?cs=srgb&dl=pexels-veeterzy-39811.jpg&fm=jpg`}
               width={1000}
               height={100}
               alt=""
               className=" w-full rounded-xl drop-shadow-2xl h-[300px] object-cover"/>
               <div  className='absolute bottom-0 left-0 right-0 translate-y-1/2'>
-              <div className=' m-auto relative w-fit'>
+              <div className=' relative w-fit m-auto'>
+              <div className=' overflow-hidden w-32 h-32 rounded-full shadow-xl'>
               <Image
               width={100}
               height={100}
               src={infoUser?.userImage}
               alt=""
-              className="rounded-full w-36"
+              className=" object-cover w-full h-full"
             />
+             </div>
             <Link href="/UpdateAccount" className=" shadow-lg absolute bottom-0 right-0 w-[40px] h-[40px] flex items-center justify-center rounded-full bg-white transition duration-300 ease-in-out hover:bg-slate-200"
               ><i className="fa-solid fa-pencil"></i
             ></Link>

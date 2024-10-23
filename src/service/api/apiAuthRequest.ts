@@ -74,15 +74,21 @@ export const forgotPassword = async (email:any) => {
 export const InfoUser = async (user:any, dispatch:any) => {
   try {
     const res = await request.post('/Auth_API/EditUserProfile', user);
+    if(res.status==200){
+      getAllInfoUser({userId:user.userId},dispatch)
+    }
     return res;
   } catch (err:any) {
     return err?.response;
   }
 };
 
-export const UpdateImage = async (user:any) => {
+export const UpdateImage = async (user:any,userId:string,dispatch:any) => {
   try {
     const res = await request.post('/Auth_API/User_UpdateImage', user);
+    if(res.status==200){
+      getAllInfoUser({userId:userId},dispatch)
+    }
     return res;
   } catch (err:any) {
     return err?.response;
