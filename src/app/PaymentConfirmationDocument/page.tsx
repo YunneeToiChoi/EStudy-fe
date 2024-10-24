@@ -1,5 +1,6 @@
 "use client"
 import { RequestApiNotifySuccess } from "@/service/api/apiOrderRequest";
+import {getPrivateDoc} from "@/service/api/apiDocumentRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState,useMemo } from "react";
 import { useRouter } from 'next/navigation';
@@ -19,7 +20,6 @@ export default function SuccessOrderByMomo() {
       if (partnerCode && searchParams.get('orderId')) {
         setIsValidParams(true);
        const res = await RequestApiNotifySuccess(window.location.href, dispatch)
-       console.log(res)
        if (res && res?.status === 200) {
         toast.success('Thanh toán thành công !', {
           position: "bottom-center",
@@ -32,6 +32,16 @@ export default function SuccessOrderByMomo() {
           theme: "light",
           transition: Bounce,
         });
+        const orderId = searchParams.get('orderId');
+        const resPdf= await getPrivateDoc(orderId);
+        const { pdfUrl, Title} = resPdf;
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.target = '_blank'; 
+        link.download = `${Title}.pdf`; 
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         navigate.push('/profile');
       }
       else{

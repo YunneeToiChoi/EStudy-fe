@@ -7,6 +7,7 @@ import GetCoursesByUser from "./getCourseByUser";
 import GetExamByUser from './getExamByUser';
 import GetDocByUser from './getDocByUser';
 import GetPlanByUser from './getPlansByUser';
+import GetHisDocByUser from './getHisDocUser';
 import { useEffect, useState } from 'react';
 
 export default function Profile() {
@@ -72,7 +73,12 @@ export default function Profile() {
         </li>
         <li className="tag-search__transition-item">
           <button onClick={() => handlePageChange('document')} className={`tag-search__transition-link ${currentPage === 'document' ? 'tag-search__transition-link--chosen' : ''}`}>
-            Document
+            Tài liệu đăng tải
+          </button>
+        </li>
+        <li className="tag-search__transition-item">
+          <button onClick={() => handlePageChange('documentHis')} className={`tag-search__transition-link ${currentPage === 'documentHis' ? 'tag-search__transition-link--chosen' : ''}`}>
+            Tài liệu đã mua
           </button>
         </li>
       </ul>
@@ -80,6 +86,7 @@ export default function Profile() {
         {currentPage === 'courses' && <GetCoursesByUser />}
         {currentPage === 'results' && <GetExamByUser/>}
         {currentPage === 'document' && <GetDocByUser/>}
+        {currentPage === 'documentHis' && <GetHisDocByUser/>}
       </div>
     </div>
   );
