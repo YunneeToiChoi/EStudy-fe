@@ -43,6 +43,11 @@ const documentSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        historyDoc:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -158,6 +163,20 @@ const documentSlice = createSlice({
             state.downloadDoc.data = null;
             state.msg = action.payload;
         },
+        getHistoryDocStart: (state) =>{
+            state.historyDoc.isFetching = true;
+        },
+        getHistoryDocSuccess: (state,action) => {
+            state.historyDoc.isFetching = false;
+            state.historyDoc.data = action.payload;
+            state.historyDoc.error = false;
+        },
+        getHistoryDocFailed: (state,action) =>{
+            state.historyDoc.isFetching = false;
+            state.historyDoc.error = true;
+            state.msg = action.payload;
+            state.historyDoc.data = null;
+        },
     }
 });
 
@@ -186,6 +205,9 @@ export const {
     downLoadDocStart,
     downLoadDocSuccess,
     downLoadDocFailed,
+    getHistoryDocStart,
+    getHistoryDocSuccess,
+    getHistoryDocFailed,
 } = documentSlice.actions;
 
 export default documentSlice.reducer;

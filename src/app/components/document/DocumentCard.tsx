@@ -22,8 +22,8 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
   }).format(document.price);
   return (
     <Link key={document.documentId} href={`/docs/${document.documentId}/preview`} className="group w-fit m-auto">
-      <div className="bg-white shadow-md border-2 border-slate-300 w-fit overflow-hidden transition transform hover:scale-105 hover:shadow-lg mx-auto">
-        <div className="relative h-40 w-48 overflow-hidden bg-gray-100">
+      <div className="bg-white shadow-md border-2 border-slate-300 w-52 overflow-hidden transition transform hover:scale-105 hover:shadow-lg mx-auto">
+        <div className="relative h-40 w-full overflow-hidden bg-gray-100">
           <Image
             className="object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-110"
             width={1000}

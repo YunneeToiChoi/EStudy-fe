@@ -23,7 +23,10 @@ import {
     previewDocFailed,
     downLoadDocFailed,
     downLoadDocStart,
-    downLoadDocSuccess
+    downLoadDocSuccess,
+    getHistoryDocStart,
+    getHistoryDocSuccess,
+    getHistoryDocFailed,
 } from "@/service/reduxState/documentUserSlices";
 
 export const UploadFiles = async (file: File, userId: any, onUploadProgress: (progressEvent: any) => void) => {
@@ -124,5 +127,27 @@ export const downLoadDoc = async (data:any, dispatch: any) => {
         return res;
     } catch (err:any) {
         dispatch(downLoadDocFailed(err.response?.data));
+    }
+};
+
+export const getPrivateDoc = async (orderId: any) => {
+    try{
+         const res = await request.post("/UserDocumentAPI/GetDocumentId",orderId)
+         if(res.status==200){
+            return res.documents;
+         }
+    }
+    catch(err){
+        return err;
+    }
+}
+
+export const getHistoryDoc = async (userId: any, dispatch: any) => {
+    dispatch(getHistoryDocStart());
+    try {
+        const res = await request.post('/UserDocumentAPI/GetDocumentFromUser', userId);
+        dispatch(getHistoryDocSuccess(res));
+    } catch (err:any) {
+        dispatch(getHistoryDocFailed(err.response?.data));
     }
 };

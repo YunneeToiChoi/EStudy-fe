@@ -23,7 +23,13 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
     const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const infoDetails = useSelector((state: any) => state.ThunkReducer.document.previewDoc.data);
     const listDocuments = useSelector((state: any) => state.ThunkReducer.document.userDoc?.data?.userDoc);
-    const fileUrl = infoDetails?.fileUrl;
+    let fileUrl;
+    if(infoDetails?.documentPublic===true){
+        fileUrl = infoDetails?.fileUrl;
+    }
+    else{
+        fileUrl =infoDetails?.previewUrl;
+    }
     const idDocument = params.doc;
     const [isCommentVisible, setIsCommentVisible] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
