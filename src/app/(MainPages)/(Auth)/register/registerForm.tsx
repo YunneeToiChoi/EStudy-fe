@@ -5,6 +5,7 @@ import { useDispatch} from "react-redux";
 import { useRouter } from 'next/navigation';
 import { registerUser } from  "@/service/api/apiAuthRequest";
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { initializeFacebookSDK } from '@/lib/utils/facebookSDK';
 import {handleFacebookLogin} from "@/service/socialConnect/authFacebookService"
@@ -25,11 +26,14 @@ import "react-toastify/dist/ReactToastify.css";
 export default function RegisterForm(){
     const dispatch = useDispatch();
     const navigate = useRouter();
-
+    const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
     useEffect(() => {
+      if(user){
+        navigate.push('/');
+      }
       initializeFacebookSDK();
       if (window.FB) {
         console.log('Facebook SDK đã được khởi tạo.');

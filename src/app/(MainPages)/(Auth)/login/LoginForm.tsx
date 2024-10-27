@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, UseFormGetValues } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { initializeFacebookSDK } from '@/lib/utils/facebookSDK';
 import { loadGoogleSdk } from '@/lib/utils/googleSDK';
 import {handleFacebookLogin} from "@/service/socialConnect/authFacebookService"
@@ -25,32 +26,17 @@ import "react-toastify/dist/ReactToastify.css";
 import CountdownTimer from '@/app/components/partialView/CountdownTimer';
 
 export default function LoginForm() {
-  const form = useForm<LoginBodyType>({
-    resolver: zodResolver(LoginBody),
-    defaultValues: {
-      email: '',
-      password: ''
-    },
-    mode: 'onChange',
-  });
-
-  const {
-    formState: { errors, isValid },
-  } = form;
   const dispatch = useDispatch();
   const navigate = useRouter();
   const [showCountdown, setShowCountdown] = useState(false);
   const [showResendCode, setShowResendCode] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   useEffect(() => {
-    if (!isValid && Object.keys(errors).length > 0) {
-      setConfirmPasswordVisible(true);
+    if(user){
+      navigate.push('/');
     }
-  }, [isValid, errors,confirmPasswordVisible]);
-
-  useEffect(() => {
     initializeFacebookSDK();
     if (window.FB) {
       console.log('Facebook SDK đã được khởi tạo.');
@@ -65,6 +51,25 @@ export default function LoginForm() {
       setShowCountdown(true);
     }
   }, []);
+  const form = useForm<LoginBodyType>({
+    resolver: zodResolver(LoginBody),
+    defaultValues: {
+      email: '',
+      password: ''
+    },
+    mode: 'onChange',
+  });
+
+  const {
+    formState: { errors, isValid },
+  } = form;
+
+  useEffect(() => {
+    if (!isValid && Object.keys(errors).length > 0) {
+      setConfirmPasswordVisible(true);
+    }
+  }, [isValid, errors,confirmPasswordVisible]);
+
 
   const handleLogin = async (values: LoginBodyType) => {
     const { email, password } = values;

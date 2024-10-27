@@ -195,11 +195,16 @@ export default function CourseDetail({ params }: { params: {course: string } })
           <div className=" p-4 border-b-[1px] border-b-course-border-color">
             <h2 className=" text-2xl text-center my-[10px] font-bold">{courseDetail.courseName}</h2>
             <div className=" flex item-center">
-              <h3 className=" text-3xl text-price-color font-semibold items-center flex">{addDotsToCurrency(lastPrice)}</h3>
+              <h3 className=" text-3xl text-price-color font-semibold items-center flex">{lastPrice>=10000 ? addDotsToCurrency(lastPrice):`Free`}</h3>
+              {
+                lastPrice >=10000 &&(
               <div className=" ml-[10px]"> 
                 <span className=" block text-sm line-through text-exam-text-color">Giá gốc: {coursePrice}đ</span>
                 <span className=" text-sm text-economy-price-text-color font-medium">(-{courseDetail.courseSale}%)</span>
               </div>
+                )
+              }
+              
             </div>
             <OrderDialog courseId={courseId} CoursesDetail={courseDetail} lastPrice={lastPrice}></OrderDialog>
             <Link href="" className=" text-primary-bg-color border-nav-text-color block mt-[10px] p-[10px] rounded-[10px] no-underline text-base text-center border-[1px] border-transparent"
