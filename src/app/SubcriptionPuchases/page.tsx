@@ -60,7 +60,7 @@ export default function SuccessOrderByMomo() {
         try {
           const res = await RequestApiNotifySuccess(momoData, dispatch);
 
-          if (res?.status === 200) {
+          if (res?.statusCode === 200) {
             toast.success("Đăng kí thành công!", {
               position: "bottom-center",
               autoClose: 10000,
