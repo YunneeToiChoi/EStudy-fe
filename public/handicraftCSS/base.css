@@ -55,11 +55,13 @@
         transform: translateY(0%);
     }
 }
-
 .have--bg-color{
     background-color: var(--exam-bg-color);
 }
-
+.PhoneInputInput:focus{
+    border: none; /* Loại bỏ viền khi focus */
+    outline: none!important; /* Loại bỏ outline nếu có */
+  }
 .mgl-10px{
     margin-left: 10px;
 }

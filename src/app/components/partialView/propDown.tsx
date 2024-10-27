@@ -8,6 +8,7 @@ import {
     LogOut,
     SquareTerminal,
     User,
+    WalletCards,
   } from "lucide-react"
    
   import {
@@ -118,11 +119,11 @@ import {
                 <DropdownMenuSubContent>
                   <DropdownMenuItem>
                     <Atom className="mr-2 h-4 w-4"></Atom>
-                    <Link href="https://github.com/YunneeToiChoi/EStudy-fe.git" className=" text-base font-medium">Front-end</Link>
+                    <Link href="https://github.com/YunneeToiChoi/EStudy-fe.git">Front-end</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <SquareTerminal className="mr-2 h-4 w-4"></SquareTerminal>
-                  <Link href="https://github.com/YunneeToiChoi/EStudy-be.git" className=" text-base font-medium">Back-end</Link>
+                  <Link href="https://github.com/YunneeToiChoi/EStudy-be.git">Back-end</Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                 </DropdownMenuSubContent>
@@ -133,9 +134,9 @@ import {
             <LifeBuoy className="mr-2 h-4 w-4" />
             <span>Hỗ trợ</span>
           </DropdownMenuItem>
-          <DropdownMenuItem disabled>
-            <Cloud className="mr-2 h-4 w-4" />
-            <span>API</span>
+          <DropdownMenuItem>
+            <WalletCards className="mr-2 h-4 w-4" />
+            <Link href="/purchases/purchase-history">My Purchases</Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogOut}>

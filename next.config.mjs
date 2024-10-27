@@ -56,6 +56,24 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'vinadesign.vn', // Add this line
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'simg.zalopay.com.vn', // Add this line
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'pngimg.com', // Add this line
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
 };

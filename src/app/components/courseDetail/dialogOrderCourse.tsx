@@ -148,7 +148,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ courseId, CoursesDetail,lastP
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button onClick={checkUser}>ĐĂNG KÝ HỌC NGAY</Button>
+        <Button onClick={checkUser}>{ lastPrice >=10000 ?`ĐĂNG KÝ HỌC NGAY`:`HỌC NGAY`}</Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="sm:max-w-[490px]">
         <AlertDialogHeader>
