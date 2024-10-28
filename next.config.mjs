@@ -70,7 +70,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'pngimg.com', // Add this line
+                hostname: 'th.bing.com', // Add this line
                 port: '',
                 pathname: '/**',
             },

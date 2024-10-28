@@ -121,7 +121,7 @@ export function PopupPurchase() {
               {/* MoMo */}
               <Image
                 alt="MoMo"
-                className="m-auto cursor-pointer shadow-2xl duration-300 ease-in-out"
+                className="m-auto cursor-pointer hover:scale-105 shadow-2xl duration-300 ease-in-out"
                 src="https://paymentsdk.spotifycdn.com/svg/providers/momo.svg"
                 width={80}
                 height={80}
@@ -135,7 +135,7 @@ export function PopupPurchase() {
               {/* VnPay */}
               <Image
                 alt="VnPay"
-                className="m-auto cursor-pointer shadow-2xl duration-300 ease-in-out rounded-xl"
+                className="m-auto cursor-pointer hover:scale-105 shadow-2xl duration-300 ease-in-out rounded-xl"
                 src="https://vinadesign.vn/uploads/thumbnails/800/2023/05/vnpay-logo-vinadesign-25-12-59-16.jpg"
                 width={80}
                 height={80}
@@ -148,7 +148,7 @@ export function PopupPurchase() {
   
               {/* ZaloPay */}
               <div
-                className="w-20 h-20 flex justify-center items-center m-auto cursor-pointer shadow-2xl duration-300 ease-in-out rounded-xl p-2"
+                className="w-20 h-20 flex justify-center hover:scale-105 items-center m-auto cursor-pointer shadow-2xl duration-300 ease-in-out rounded-xl p-2"
                 onClick={() => {
                   setSelectedWallet("zalopay");
                   setWalletType("zalopay");
@@ -165,7 +165,7 @@ export function PopupPurchase() {
   
               {/* Credit Cards */}
               <div
-                className="w-20 h-20 flex flex-col justify-center items-center m-auto cursor-pointer shadow-2xl duration-300 ease-in-out rounded-xl p-2"
+                className="w-20 h-20 flex flex-col justify-center hover:scale-105 items-center m-auto cursor-pointer shadow-2xl duration-300 ease-in-out rounded-xl p-2"
                 onClick={() => {
                   setSelectedWallet("credit");
                   setWalletType("credit");
@@ -173,7 +173,7 @@ export function PopupPurchase() {
               >
                 <Image
                   alt="Credit Cards"
-                  src="https://pngimg.com/uploads/credit_card/credit_card_PNG4.png"
+                  src="https://th.bing.com/th/id/OIP.r-QugNKSpxLaMNDp7bHwUAHaHa?w=626&h=626&dpr=1.3&pid=ImgDetMain"
                   width={100}
                   height={100}
                   quality={100}
@@ -218,13 +218,16 @@ export function PopupPurchase() {
                     />
                   )}
                   {error && <p className="text-red-500 text-sm italic">{error}</p>}
-                  <button
+                  <div className=" w-full text-center">
+                     <button
                     type="button"
                     onClick={toggleContactMethod}
-                    className="text-black text-center hover:text-primary-bg-color w-full mt-4"
+                    className="text-black text-center hover:text-primary-bg-color w-fit mt-4"
                   >
                     {contactMethod === 'phone' ? 'Switch to Email' : 'Switch to Phone Number'}
                   </button>
+                  </div>
+                 
                 </>
               )}
   

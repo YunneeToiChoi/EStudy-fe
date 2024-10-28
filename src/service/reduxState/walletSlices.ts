@@ -13,6 +13,11 @@ const walletSlice = createSlice({
                 isFetching: false,
                 error:false,
             },
+        walletUser:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -42,6 +47,19 @@ const walletSlice = createSlice({
             state.trackingWallet.error = true;
             state.trackingWallet.data= null;
         },
+        walletUserStart: (state) =>{
+            state.walletUser.isFetching = true;
+        },
+        walletUserSuccess: (state,action) => {
+            state.walletUser.isFetching = false;
+            state.walletUser.data= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.walletUser.error = false;
+        },
+        walletUserFailed: (state) =>{
+            state.walletUser.isFetching = false;
+            state.walletUser.error = true;
+            state.walletUser.data= null;
+        },
     }
 });
 
@@ -52,6 +70,9 @@ export const {
     trackingWalletStart,
     trackingWalletSuccess,
     trackingWalletFailed,
+    walletUserStart,
+    walletUserSuccess,
+    walletUserFailed,
 } = walletSlice.actions;
 
 export default walletSlice.reducer;
