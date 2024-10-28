@@ -9,7 +9,7 @@ import { getPopularCourse } from "@/service/api/apiCourseRequest";
 import addDotsToCurrency from "@/lib/utils/currency"
 
 export default function GetPoplarCourses() {
-  const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const dispatch = useDispatch();
   const listCourses = useSelector((state: any) => state.ThunkReducer.courses.PopularCourse?.data?.outstandingCourses);
 

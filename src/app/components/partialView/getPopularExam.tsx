@@ -8,7 +8,7 @@ import { getPopularExam } from "@/service/api/apiExamRequest";
 
 
 export default function GetPopularExams() {
-  const user = useSelector((state: any) => state.persistedReducer.auth.login?.data?.user);
+  const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const dispatch = useDispatch();
   const listExam = useSelector((state: any) => state.ThunkReducer.exam.popularExam?.data?.outstandingExams);
     useEffect(() => {
