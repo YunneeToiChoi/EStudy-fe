@@ -74,6 +74,18 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'api.vietqr.io', // Add this line
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'vietqr.net', // Add this line
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
 };

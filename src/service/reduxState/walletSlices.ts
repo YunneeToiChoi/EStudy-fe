@@ -18,6 +18,11 @@ const walletSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        allBankLink:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -60,6 +65,19 @@ const walletSlice = createSlice({
             state.walletUser.error = true;
             state.walletUser.data= null;
         },
+        allBankLinkStart: (state) =>{
+            state.allBankLink.isFetching = true;
+        },
+        allBankLinkSuccess: (state,action) => {
+            state.allBankLink.isFetching = false;
+            state.allBankLink.data= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.allBankLink.error = false;
+        },
+        allBankLinkFailed: (state) =>{
+            state.allBankLink.isFetching = false;
+            state.allBankLink.error = true;
+            state.allBankLink.data= null;
+        },
     }
 });
 
@@ -73,6 +91,9 @@ export const {
     walletUserStart,
     walletUserSuccess,
     walletUserFailed,
+    allBankLinkStart,
+    allBankLinkSuccess,
+    allBankLinkFailed,
 } = walletSlice.actions;
 
 export default walletSlice.reducer;

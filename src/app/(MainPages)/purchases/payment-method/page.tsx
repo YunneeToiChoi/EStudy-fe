@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RequestWalletOfUser } from "@/service/api/apiWalletRequest";
 import { PopupPurchase } from "./popupMethod";
 import Image from "next/image";
+import {FullScreenDialogBanking}from "./popupBanking";
 export default function PaymentMethodLayout() {
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
   const user = useSelector(
     (state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user
   );
@@ -94,7 +96,8 @@ export default function PaymentMethodLayout() {
         </div>
       ))}
     </div>
-    <PopupPurchase />
+    <PopupPurchase open={open} setOpen={setOpen} />
+    <FullScreenDialogBanking open={open} setOpen={setOpen}></FullScreenDialogBanking>
     </div>
   ) : (
     <div>
@@ -104,7 +107,8 @@ export default function PaymentMethodLayout() {
       </p>
       <div className="text-center py-11 w-full text-sm font-light text-slate-400 border-2 border-dashed border-slate-400 rounded-2xl mt-6">
         No payment method provided
-        <PopupPurchase />
+        <PopupPurchase open={open} setOpen={setOpen}/>
+        <FullScreenDialogBanking open={open} setOpen={setOpen}></FullScreenDialogBanking>
       </div>
     </div>
   );

@@ -9,6 +9,9 @@ import {
     walletUserStart,
     walletUserSuccess,
     walletUserFailed,
+    allBankLinkStart,
+    allBankLinkSuccess,
+    allBankLinkFailed,
 } from "@/service/reduxState/walletSlices"
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -206,3 +209,15 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
         return false;
       }
     }
+
+    export const getAllBankLink = async (dispatch: any) => {
+      dispatch(allBankLinkStart());
+      try {
+        const res = await request.get(`BankLink/GetAllBanks`);
+        
+        dispatch(allBankLinkSuccess(res));
+      } catch (err: any) {
+        dispatch(allBankLinkFailed());
+        return err?.response || { message: "Unknown error occurred" };
+      }
+  };
