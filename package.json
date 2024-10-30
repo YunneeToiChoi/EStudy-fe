@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.13.0",
     "@firebasegen/default": "file:generated/javascript/default",
     "@hookform/resolvers": "^3.3.4",
+    "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.2",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-avatar": "^1.0.4",

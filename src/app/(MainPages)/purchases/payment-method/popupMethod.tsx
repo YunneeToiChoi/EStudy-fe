@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,10 +21,15 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { handleAddWalletMoMo } from "@/service/api/apiWalletRequest";
+interface DialogProps {
+  open: boolean;
+  setOpen:any
+}
 
-export function PopupPurchase() {
+export const PopupPurchase:React.FC<DialogProps>=({open,setOpen}) => {
     const dispatch = useDispatch();
     const router = useRouter();
+    const [localOpen, setLocalOpen] = useState(false); 
     const [selectedWallet, setSelectedWallet] = useState<string | null>(null);
     const [walletType, setWalletType] = useState<string | null>(null);
     const [contactMethod, setContactMethod] = useState<'phone' | 'email'>('phone');
@@ -34,7 +39,18 @@ export function PopupPurchase() {
     const [cardNumber, setCardNumber] = useState("");
     const [error, setError] = useState<string | null>(null);
     const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
-  
+
+    useEffect(() => {
+      if (open) {
+        setLocalOpen(false);
+        handleDialogClose();
+      }
+    }, [open]);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
     const handleDialogClose = () => {
         setSelectedWallet(null);
         setWalletType(null);
@@ -69,7 +85,7 @@ export function PopupPurchase() {
           setError("Please enter a valid phone number.");
           return;
         }
-        contactInfo = formatPhoneNumber(phoneNumber) || ""; 
+        contactInfo = (formatPhoneNumber(phoneNumber) || "").replace(/\s+/g, ""); 
       } else if (contactMethod === 'email') {
         if (!email) {
           setError("Please enter your email.");
@@ -103,7 +119,7 @@ export function PopupPurchase() {
     };
   
     return (
-      <Dialog onOpenChange={(open) => !open && handleDialogClose()}>
+      <Dialog open={localOpen} onOpenChange={setLocalOpen}>
         <DialogTrigger asChild>
           <Button className="w-fit m-auto mt-3 rounded-3xl px-5 py-2 text-base font-normal">
             Add payment method
@@ -162,23 +178,19 @@ export function PopupPurchase() {
                   quality={100}
                 />
               </div>
-  
-              {/* Credit Cards */}
-              <div
+              <Button className=" p-0 border-0 bg-transparent" onClick={handleClickOpen}>
+             <div
                 className="w-20 h-20 flex flex-col justify-center hover:scale-105 items-center m-auto cursor-pointer shadow-2xl duration-300 ease-in-out rounded-xl p-2"
-                onClick={() => {
-                  setSelectedWallet("credit");
-                  setWalletType("credit");
-                }}
               >
                 <Image
-                  alt="Credit Cards"
+                  alt="ATM"
                   src="https://th.bing.com/th/id/OIP.r-QugNKSpxLaMNDp7bHwUAHaHa?w=626&h=626&dpr=1.3&pid=ImgDetMain"
                   width={100}
                   height={100}
                   quality={100}
                 />
               </div>
+            </Button>
             </div>
           )}
   
@@ -228,40 +240,6 @@ export function PopupPurchase() {
                   </button>
                   </div>
                  
-                </>
-              )}
-  
-              {selectedWallet === "credit" && (
-                <>
-                  <label htmlFor="card-name" className="block mb-2 text-sm font-medium">
-                    Cardholder Name
-                  </label>
-                  <Input
-                    id="card-name"
-                    type="text"
-                    placeholder="Enter cardholder name"
-                    value={cardName}
-                    onChange={(e) => {
-                      setCardName(e.target.value);
-                      if (e.target.value) setError(null); // Clear error if value is present
-                    }}
-                    className="w-full mb-2"
-                  />
-                  <label htmlFor="card-number" className="block mb-2 text-sm font-medium">
-                    Card Number
-                  </label>
-                  <Input
-                    id="card-number"
-                    type="text"
-                    placeholder="Enter card number"
-                    value={cardNumber}
-                    onChange={(e) => {
-                      setCardNumber(e.target.value);
-                      if (e.target.value) setError(null); // Clear error if value is present
-                    }}
-                    className="w-full mb-2"
-                  />
-                  {error && <p className="text-red-500 text-sm italic">{error}</p>}
                 </>
               )}
             </div>
