@@ -79,7 +79,7 @@ export const DialogDisbursement: React.FC<DisbursementProps> = ({ wallet, Compon
         <DialogHeader>
           <DialogTitle>Disburse Amount</DialogTitle>
           <DialogDescription>
-            Enter the amount you wish to withdraw. Click "withdraw" to confirm.
+          Enter the amount you wish to withdraw. Click &quot;withdraw&quot; to confirm.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

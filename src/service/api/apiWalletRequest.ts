@@ -221,3 +221,125 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
         return err?.response || { message: "Unknown error occurred" };
       }
   };
+
+  export const addWalletBanking = async (data:any) => {
+    const idToast=toast.loading('Đang kiểm tra yêu cầu....', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    try {
+      const res = await request.post(`/BankLink/LinkBankAccountTingee`,data);
+      if(res.statusCode===200){
+        
+        const walletData = res.walletData;
+        const resultContent = JSON.parse(res.resultContent);
+        const confirmId = resultContent.data.confirmId;
+        const storageData = { ...walletData, confirmId };
+        localStorage.setItem('walletBank', JSON.stringify(storageData));
+        toast.update(idToast, {
+          render:"Gửi yêu cầu thành công!",
+          type: "success",
+          isLoading: false,
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+        toast.info("Đã gửi mã OTP qua SMS", {
+          isLoading: false,
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+        return true;
+      }
+    } catch (err: any) {
+      toast.update(idToast, {
+        render: "Yêu cầu không thành công ! Hãy kiểm tra lại thông tin tài khoản",
+        type: "error",
+        isLoading: false,
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+      return false;
+    }
+};
+
+export const linkBankAuthentication = async (data:any) => {
+  const idToast=toast.loading('Đang kiểm tra yêu cầu....', {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+  });
+  try {
+    const res = await request.post(`/BankLink/ConfirmBankLinkTingee`,data);
+    if(res.statusCode===200){
+      toast.update(idToast, {
+        render:"Xác thực thành công !",
+        type: "success",
+        isLoading: false,
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+      const storedWalletData = localStorage.getItem('walletBank');
+      if (storedWalletData) {
+        localStorage.removeItem('walletBank');
+      }
+      return true;
+    }
+  } catch (err: any) {
+    toast.update(idToast, {
+      render: "Mã OTP sai, hãy kiểm tra lại tin nhắn của bạn!",
+      type: "error",
+      isLoading: false,
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+    return false;
+  }
+};
