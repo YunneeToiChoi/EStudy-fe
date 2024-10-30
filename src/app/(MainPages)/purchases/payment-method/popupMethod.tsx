@@ -45,7 +45,10 @@ export const PopupPurchase:React.FC<DialogProps>=({open,setOpen}) => {
         setLocalOpen(false);
         handleDialogClose();
       }
-    }, [open]);
+      else if(!localOpen){
+        handleDialogClose();
+      }
+    }, [open,localOpen]);
 
     const handleClickOpen = () => {
       setOpen(true);
