@@ -69,13 +69,12 @@ const Part8 = ({ questionRefs, onAnswerChange }: Part8Props) => {
                     }}
                     className="question-item mt-11"
                 >
-                    <div className='flex items-center'>
-                        <div className='flex-1'>
-                            {item.questionImage && <Image width={400} height={400} quality={100} src={item.questionImage} alt={`Question ${item.number}`} />}
+                    <div className='flex gap-8 flex-col'>
+                    <span className='aspect-square w-fit h-fit p-1 flex items-center justify-center as bg-blue-200 text-black font-medium text-lg rounded-full'>{item.number}</span>
+                        <div className='w-full'>
+                            {item.questionImage && <Image className=' m-auto' width={400} height={400} quality={100} src={item.questionImage} alt={`Question ${item.number}`} />}
                         </div>
-                        <div className='w-full flex gap-4 mt-5'>
-                            <span className='aspect-square w-fit h-fit p-1 flex items-center justify-center as bg-blue-200 text-black font-medium text-lg rounded-full'>{item.number}</span>
-
+                        <div className='flex w-full gap-4 mt-5'>
                             <div className="flex flex-col flex-1 text-lg">
                                 <p>{item.questionText}</p>
                                 <label className='flex mt-5 gap-2 w-full  items-center'>

@@ -12,7 +12,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { getCompleteExam, submitPart9 } from '@/service/api/apiExamRequest';
+import { getCompleteExam, submitPart9,submitPart9Question7 } from '@/service/api/apiExamRequest';
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,6 +40,7 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
 
     const storedAnswers = JSON.parse(sessionStorage.getItem('answerTest') || '{}');
     const part9Answers = JSON.parse(sessionStorage.getItem('answerTestPart9') || '{}');
+    const part9AnswersQuestion7 = JSON.parse(sessionStorage.getItem('answerQuestion7') || '{}');
     const time = JSON.parse(sessionStorage.getItem('countdown') || '{}');
 
     const answersToSend = Object.keys(storedAnswers).map(key => ({
@@ -69,11 +70,39 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
     const formData = await preparePart9FormData(part9Answers, userExamId, idToast);
     if (!formData) return; // Handle if there was an error in preparing data
 
+    
+
     // Send request to submit Part 9 answers
     const responsePart9 = await submitPart9(formData);
-    if (responsePart9 !== 200) {
+    if (!(responsePart9 && responsePart9.length > 0)) {
       showErrorToast(idToast);
       return;
+    }
+
+     if (part9AnswersQuestion7.AudioURL) {
+        try {
+            const audioBlob = await fetch(part9AnswersQuestion7.AudioURL).then(res => {
+                if (!res.ok) throw new Error('Failed to fetch audio file for question 7');
+                return res.blob();
+            });
+
+            // Tạo FormData mới cho câu hỏi 7
+            const question7FormData = new FormData();
+            question7FormData.append("audioFile", audioBlob, 'audio_question7.wav'); // Thêm audio file
+            question7FormData.append("followUpQuestion", part9AnswersQuestion7.followUpQuestion); // Thêm câu hỏi theo dõi
+            question7FormData.append("userExamId", userExamId); // Thêm userExamId nếu cần
+
+            // Gọi hàm submitPart9Question7 để gửi dữ liệu
+            const responseQuestion7 = await submitPart9Question7(question7FormData);
+            if (responseQuestion7 !== 200) {
+                showErrorToast(idToast);
+                return;
+            }
+        } catch (error) {
+            console.error('Error fetching audio for question 7:', error);
+            showErrorToast(idToast);
+            return;
+        }
     }
 
     // Clear session storage and notify success
@@ -93,7 +122,7 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
       transition: Bounce,
     });
     
-    await router.push(`/exam/${examId}/examDetails`);
+    router.push(`/exam/${examId}/examDetails`);
   };
 
   const preparePart9FormData = async (part9Answers: any, userExamId: string, idToast: any) => {
@@ -101,6 +130,7 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
     const audioFiles: Blob[] = [];
 
     for (const key of Object.keys(part9Answers)) {
+      if (questionIds.length >= 5) break;
       const answer = part9Answers[key];
       try {
         const audioBlob = await fetch(answer.Answer).then(res => {
@@ -129,6 +159,7 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
     sessionStorage.removeItem('answerTest');
     sessionStorage.removeItem('answerTestPart9');
     sessionStorage.removeItem('countdown');
+    sessionStorage.removeItem('answerQuestion7');
   };
 
   const showErrorToast = (idToast: any) => {
