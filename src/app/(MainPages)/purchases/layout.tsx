@@ -47,19 +47,6 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               Purchase history
             </li>
           </Link>
-
-          <Link href="/purchases/subscriptions">
-            <li
-              className={`px-6 py-2 text-base font-light cursor-pointer transition duration-500 ${
-                isActive('/purchases/subscriptions')
-                  ? ' font-medium border-b-2 border-primary-bg-color'
-                  : 'border-transparent'
-              }`}
-            >
-              Subscription
-            </li>
-          </Link>
-
           <Link href="/purchases/payment-method">
             <li
               className={`px-6 py-2 text-base font-light cursor-pointer transition duration-500 ${

@@ -39,6 +39,9 @@ import {
     getPart8Start,
     getPart8Success,
     getPart8Failed,
+    getPart9Start,
+    getPart9Success,
+    getPart9Failed,
     getExamRevisionStart,
     getExamRevisionSuccess,
     getExamRevisionFailed,
@@ -77,17 +80,26 @@ export const getAudioExam = async (data:any, dispatch:any) => {
     }
 };
 
-export const getCompleteExam = async (data:any, dispatch:any) => {
+export const getCompleteExam = async (data: any, dispatch: any) => {
     dispatch(getCompleteExamStart());
     try {
-        const res = await request.post(`/Exam_API/SubmitExam`,data);
+        const res = await request.post(`/Exam_API/SubmitExam`, data);
         dispatch(getCompleteExamSuccess(res));
-        console.log(res.status)
-        return res.status
-    } catch (err:any) {
+        return res; // Trả về toàn bộ dữ liệu để lấy userExamId
+    } catch (err: any) {
         dispatch(getCompleteExamFailed(err.response?.data));
-        console.log(err?.response?.status)
-        return err?.response?.status
+        return err?.response?.status;
+    }
+};
+
+// Hàm gửi Part 9 lên endpoint EvaluateQuestionBatch
+export const submitPart9 = async (formData: FormData) => {
+    try {
+        const res = await request.post(`/Speaking/EvaluateQuestionBatch`, formData);
+        return res.status;
+    } catch (err: any) {
+        console.log("Error submitting part 9:", err);
+        return err?.response?.status;
     }
 };
 
@@ -111,6 +123,7 @@ export const fetchAllParts = async (examId: string, dispatch: any) => {
         { part: "Part 6", actionStart: getPart6Start, actionSuccess: getPart6Success, actionFailed: getPart6Failed },
         { part: "Part 7", actionStart: getPart7Start, actionSuccess: getPart7Success, actionFailed: getPart7Failed },
         { part: "Part 8", actionStart: getPart8Start, actionSuccess: getPart8Success, actionFailed: getPart8Failed },
+        { part: "Part 9", actionStart: getPart9Start, actionSuccess: getPart9Success, actionFailed: getPart9Failed },
     ];
     parts.forEach(({ actionStart }) => dispatch(actionStart()));
 

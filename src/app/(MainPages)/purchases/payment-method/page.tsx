@@ -1,13 +1,21 @@
 "use client";
 import React, { useEffect,useState } from "react";
+import { DialogDisbursement } from "./popupDisbursement";
 import { useDispatch, useSelector } from "react-redux";
 import { RequestWalletOfUser } from "@/service/api/apiWalletRequest";
 import { PopupPurchase } from "./popupMethod";
 import Image from "next/image";
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import {FullScreenDialogBanking}from "./popupBanking";
+import  addDotsToCurrency  from "@/lib/utils/currency";
+import { RemoveWallet } from "@/service/api/apiWalletRequest";
 export default function PaymentMethodLayout() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
+  const toggleBalanceVisibility = () => {
+    setIsHidden(!isHidden);
+  };
   const user = useSelector(
     (state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user
   );
@@ -24,74 +32,57 @@ export default function PaymentMethodLayout() {
     fetchWallet();
   }, [dispatch, user]);
 
-  const getWalletImage = (walletType: string) => {
-    switch (walletType) {
-      case "linkWallet":
-        return (
-            <Image
-            alt="MoMo"
-            className="m-auto  shadow-2xl duration-300 ease-in-out"
-            src="https://paymentsdk.spotifycdn.com/svg/providers/momo.svg"
-            width={48}
-            height={48}
-            quality={100}
-          />
-        );
-      case "vnpay":
-        return (
-            <Image
-            alt="VnPay"
-            className="m-auto  shadow-2xl duration-300 ease-in-out rounded-xl"
-            src="https://vinadesign.vn/uploads/thumbnails/800/2023/05/vnpay-logo-vinadesign-25-12-59-16.jpg"
-            width={48}
-            height={48}
-            quality={100}
-          />
-        );
-      case "zalopay":
-        return (
-            <div
-            className="w-12 h-12 flex justify-center items-center m-auto  shadow-2xl duration-300 ease-in-out rounded-xl p-2"
-          >
-            <Image
-              alt="ZaLoPay"
-              src="https://simg.zalopay.com.vn/zst/zlp-website/resources/images/new-landing-page/revamped-zalopay-logo.svg"
-              width={100}
-              height={100}
-              quality={100}
-            />
-          </div>
-        );
-      case "Bank":
-        return (
-            <div
-            className="w-12 h-12 flex flex-col justify-center items-center m-auto  shadow-2xl duration-300 ease-in-out rounded-xl p-2"
-          >
-            <Image
-              alt="Bank"
-              src="https://th.bing.com/th/id/OIP.r-QugNKSpxLaMNDp7bHwUAHaHa?w=626&h=626&dpr=1.3&pid=ImgDetMain"
-              width={100}
-              height={100}
-              quality={100}
-            />
-          </div>
-        );
-      default:
-        return "";
+  const handleRemoveWallet = async (wallet:any) => {
+    const data={
+      userId:wallet.userId,
+      walletId:wallet.walletId
     }
-  };
-
+    await RemoveWallet(data,dispatch)
+  }
   const hasWallets = listWallet && listWallet.length > 0;
 
   return hasWallets ? (
     <div>
-         <div className=" grid grid-cols-2 max-w-3xl m-auto gap-11 mb-16">
+        {
+        listWallet && listWallet.length > 0 && (
+          <div className="ml-11 min-h-16 bg-yellow-500 w-fit py-2 pr-11 pl-4 rounded-xl flex items-center gap-2">
+            <p className="text-base text-white font-normal">Total balance:</p>
+            
+            {/* Hiển thị số dư hoặc ****** */}
+              {isHidden 
+                ? (<span className="text-lg font-bold text-white relative pt-2">*********</span>)
+                : (<p className="text-lg font-bold text-white relative">{addDotsToCurrency(listWallet[0].userBlance)}<span className="text-sm font-light absolute top-0 right-[-30px]">VND</span></p>)}
+    
+            {/* Icon con mắt để ẩn/hiện số dư */}
+            <button onClick={toggleBalanceVisibility} className="focus:outline-none ml-6">
+              {isHidden ? (
+                <EyeSlashIcon className="h-6 w-6 text-white" />
+              ) : (
+                <EyeIcon className="h-6 w-6 text-white" />
+              )}
+            </button>
+          </div>
+        )
+      }
+      <div className=" grid mt-8 grid-cols-2 max-w-3xl m-auto gap-11 mb-16">
       {listWallet.map((wallet: any) => (
-        <div key={wallet.walletId} className=" border-[1px] bg-white shadow-2xl border-slate-200 rounded-xl text-center pt-8">
-           {getWalletImage(wallet.type)}
+        <div key={wallet.walletId} className=" overflow-hidden border-[1px] bg-white shadow-2xl border-slate-200 rounded-xl text-center pt-8">
+            <Image
+            alt={wallet.name}
+            className="m-auto w-32 duration-300 ease-in-out"
+            src={wallet.walletImage}
+            width={100}
+            height={100}
+            quality={100}
+          />
            <p className=" mt-4 font-normal">{wallet.cardNumber}</p>
            <div className=" border-t-[1px] border-slate-200 mt-8">
-            <p className="text-red-500 font-medium py-3 cursor-pointer w-fit m-auto">Remove</p>
+            <div className=" flex items-center">
+            <button
+            onClick={()=>handleRemoveWallet(wallet)}
+             className="text-red-500 font-medium py-3 cursor-pointer w-1/2 m-auto duration-300 ease-in-out hover:bg-slate-200">Remove</button>
+            <DialogDisbursement wallet={wallet}></DialogDisbursement>
+            </div>
            </div>
         </div>
       ))}

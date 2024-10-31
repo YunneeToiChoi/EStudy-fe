@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useDispatch} from "react-redux";
 import {
   Dialog,
   DialogContent,
@@ -15,10 +16,10 @@ import { Label } from "@/components/ui/label";
 import { Disbursement } from "@/service/api/apiWalletRequest";
 interface DisbursementProps {
   wallet: any;
-  Component: React.ElementType;
 }
 
-export const DialogDisbursement: React.FC<DisbursementProps> = ({ wallet, Component }) => {
+export const DialogDisbursement: React.FC<DisbursementProps> = ({ wallet }) => {
+  const dispatch = useDispatch();
   const [amount, setAmount] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -35,27 +36,13 @@ export const DialogDisbursement: React.FC<DisbursementProps> = ({ wallet, Compon
   };
 
   const handleSubmit = async () => {
-    const getWalletType = (walletType: string) => {
-        switch (walletType) {
-          case "linkWallet":
-            return "Momo"
-          case "vnpay":
-            return "VnPay"
-          case "zalopay":
-            return "ZaloPay"
-          case "credit_card":
-            return "ATM"
-          default:
-            return "";
-        }
-      };
     const numericAmount = amount ? parseInt(amount.replace(/\./g, '')) : 0;
 
     if (numericAmount < 10000) {
       setError("Please enter a valid amount greater than or same 10.000 VND");
       return;
     }
-     const res= await Disbursement(wallet,numericAmount,getWalletType(wallet.type))
+     const res= await Disbursement(wallet,numericAmount,dispatch)
      if(res===true){
        handleDialogClose(); 
      }
@@ -71,8 +58,8 @@ export const DialogDisbursement: React.FC<DisbursementProps> = ({ wallet, Compon
         }}
       >
       <DialogTrigger asChild>
-        <Button className="bg-transparent w-fit p-0 border-0">
-          <Component />
+        <Button className="text-primary-bg-color bg-transparent border-0 border-l-[1px] border-slate-300 rounded-none hover:bg-slate-200 font-medium py-3 cursor-pointer w-1/2 m-auto" >
+         Disburse
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

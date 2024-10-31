@@ -84,7 +84,7 @@ export const FullScreenDialogBanking: React.FC<DialogProps> = ({ open, setOpen }
       walletId: walletBank.walletId,
     };
 
-    const res= await linkBankAuthentication(data);
+    const res= await linkBankAuthentication(data,dispatch);
     if(res===true){
       handleClose();
     }
@@ -463,7 +463,7 @@ const handleMobileChange = (value: string) => {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <InputOTP maxLength={9} {...field}>
+                            <InputOTP maxLength={8} {...field}>
                               <InputOTPGroup>
                               <InputOTPSlot index={0} />
                               <InputOTPSlot index={1} />
@@ -471,8 +471,8 @@ const handleMobileChange = (value: string) => {
                               <InputOTPSlot index={3} />
                               <InputOTPSlot index={4} />
                               <InputOTPSlot index={5} />
+                              <InputOTPSlot index={6} />
                               <InputOTPSlot index={7} />
-                              <InputOTPSlot index={8} />
                               </InputOTPGroup>
                             </InputOTP>
                           </FormControl>

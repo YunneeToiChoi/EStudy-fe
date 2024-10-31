@@ -72,6 +72,11 @@ const examSlice = createSlice({
             isFetching: false,
             error: false,
         },
+        part9:{
+            data: null,
+            isFetching: false,
+            error: false,
+        },
         examRevision:{
             data: null,
             isFetching: false,
@@ -268,6 +273,20 @@ const examSlice = createSlice({
             state.part8.data = null;
             state.msg = action.payload;
         },
+        getPart9Start: (state:any) => {
+            state.part9.isFetching = true;
+        },
+        getPart9Success: (state:any, action:any) => {
+            state.part9.isFetching = false;
+            state.part9.data = action.payload;
+            state.part9.error = false;
+        },
+        getPart9Failed: (state:any, action:any) => {
+            state.part9.isFetching = false;
+            state.part9.error = true;
+            state.part9.data = null;
+            state.msg = action.payload;
+        },
         getExamRevisionStart: (state) => { 
             state.examRevision.isFetching = true;
         },
@@ -339,6 +358,9 @@ export const {
     getPart8Start,
     getPart8Success,
     getPart8Failed,
+    getPart9Start,
+    getPart9Success,
+    getPart9Failed,
     getExamRevisionStart,
     getExamRevisionSuccess,
     getExamRevisionFailed,
