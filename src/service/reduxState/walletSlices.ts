@@ -23,6 +23,16 @@ const walletSlice = createSlice({
             isFetching: false,
             error:false,
         },
+        historyTransaction:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
+        removeWallet:{
+            data:null,
+            isFetching: false,
+            error:false,
+        },
         msg:"",
     },
     reducers:{
@@ -78,6 +88,32 @@ const walletSlice = createSlice({
             state.allBankLink.error = true;
             state.allBankLink.data= null;
         },
+        historyTransactionStart: (state) =>{
+            state.historyTransaction.isFetching = true;
+        },
+        historyTransactionSuccess: (state,action) => {
+            state.historyTransaction.isFetching = false;
+            state.historyTransaction.data= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.historyTransaction.error = false;
+        },
+        historyTransactionFailed: (state) =>{
+            state.historyTransaction.isFetching = false;
+            state.historyTransaction.error = true;
+            state.historyTransaction.data= null;
+        },
+        removeWalletStart: (state) =>{
+            state.removeWallet.isFetching = true;
+        },
+        removeWalletSuccess: (state,action) => {
+            state.removeWallet.isFetching = false;
+            state.removeWallet.data= action.payload;//nhan du lieu dc truyen vao apirequest
+            state.removeWallet.error = false;
+        },
+        removeWalletFailed: (state) =>{
+            state.removeWallet.isFetching = false;
+            state.removeWallet.error = true;
+            state.removeWallet.data= null;
+        },
     }
 });
 
@@ -94,6 +130,12 @@ export const {
     allBankLinkStart,
     allBankLinkSuccess,
     allBankLinkFailed,
+    historyTransactionStart,
+    historyTransactionSuccess,
+    historyTransactionFailed,
+    removeWalletStart,
+    removeWalletSuccess,
+    removeWalletFailed,
 } = walletSlice.actions;
 
 export default walletSlice.reducer;

@@ -13,6 +13,7 @@ import Part5Component from './part5';
 import Part6Component from './part6';
 import Part7Component from './part7';
 import Part8Component from './part8';
+import Part9Component from './part9';
 import LoadingBody from '@/app/components/partialView/loadingBody';
 import LoadingContent from '@/app/components/partialView/loadingContent';
 import { Bounce, toast } from 'react-toastify';
@@ -33,6 +34,7 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
     const part6 = useSelector((state: any) => state.ThunkReducer.exam.part6?.data?.part6Responses);
     const part7 = useSelector((state: any) => state.ThunkReducer.exam.part7?.data?.part7Response);
     const part8 = useSelector((state: any) => state.ThunkReducer.exam.part8?.data?.part8Response);
+    const part9 = useSelector((state: any) => state.ThunkReducer.exam.part9?.data?.part9Response);
     const [partQuestions, setPartQuestions] = useState<any[]>([]);
     const [selectedPart, setSelectedPart] = useState<number>(1);
     const [storageUpdated, setStorageUpdated] = useState<boolean>(false);
@@ -52,7 +54,7 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
     }, [dispatch,examId]);
 
     useEffect(() => {
-        const parts = [part1, part2, part3, part4, part5, part6, part7,part8];
+        const parts = [part1, part2, part3, part4, part5, part6, part7,part8,part9];
         const partData = parts.map((part, index) => ({
             partName: `Part ${index + 1}`,
             questions: part ? part.map((q: any) => ({
@@ -62,22 +64,34 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
         }));
         setPartQuestions(partData);
         initializeAnswerTest(parts);
-    }, [part1, part2, part3, part4, part5, part6,part7,part8]);
+    }, [part1, part2, part3, part4, part5, part6,part7,part8,part9]);
 
     const initializeAnswerTest = (parts: any[]) => {
         const answerTest: { [key: string]: { QuestionId: number, Answer: string, State: boolean } } = {};
-        parts.forEach(part => {
+        const answerTestPart9: { [key: string]: { QuestionId: number, Answer: string, State: boolean } } = {};
+    
+        parts.forEach((part, index) => {
             if (part) {
                 part.forEach((question: any) => {
-                    answerTest[question.questionId] = {
-                        QuestionId: question.questionId,
-                        Answer: '',
-                        State: false
-                    };
+                    if (index === 8) { // Check if this is part9 (index 8)
+                        answerTestPart9[question.questionId] = {
+                            QuestionId: question.questionId,
+                            Answer: '',
+                            State: false,
+                        };
+                    } else {
+                        answerTest[question.questionId] = {
+                            QuestionId: question.questionId,
+                            Answer: '',
+                            State: false,
+                        };
+                    }
                 });
             }
         });
+    
         sessionStorage.setItem('answerTest', JSON.stringify(answerTest));
+        sessionStorage.setItem('answerTestPart9', JSON.stringify(answerTestPart9));
     };
 
     const submitByCountDown = useCallback(async () => {
@@ -189,7 +203,7 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
         };
     }, []);
 
-    if (!audio || !part1 || !part2 || !part3 || !part4 || !part5 || !part6 || !part7||!part8) {
+    if (!audio || !part1 || !part2 || !part3 || !part4 || !part5 || !part6 || !part7||!part8|| !part9) {
         return (
             <>
                 <LoadingBody />
@@ -217,7 +231,9 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
             case 7:
                 return <Part7Component questionRefs={questionRefs} onAnswerChange={handleAnswerChange} />;
             case 8:
-            return <Part8Component questionRefs={questionRefs} onAnswerChange={handleAnswerChange} />;
+                return <Part8Component questionRefs={questionRefs} onAnswerChange={handleAnswerChange} />;
+            case 9:
+                return <Part9Component questionRefs={questionRefs} onAnswerChange={handleAnswerChange} />;
             default:
                 return <div>Select a part to view.</div>;
         }
@@ -265,8 +281,8 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
                                 Your browser does not support the audio element.
                             </audio>
                         )}
-                        <ul className="tag-search__list">
-                            {['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Part 6', 'Part 7','Part 8'].map((part, index) => (
+                        <ul className=" flex items-center flex-wrap w-full">
+                            {['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5', 'Part 6', 'Part 7','Part 8','Part 9'].map((part, index) => (
                                 <li key={part} className="tag-search__item">
                                     <button
                                         onClick={() => setSelectedPart(index + 1)}

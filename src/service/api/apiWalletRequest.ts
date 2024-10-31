@@ -12,6 +12,12 @@ import {
     allBankLinkStart,
     allBankLinkSuccess,
     allBankLinkFailed,
+    historyTransactionStart,
+    historyTransactionSuccess,
+    historyTransactionFailed,
+    removeWalletStart,
+    removeWalletSuccess,
+    removeWalletFailed,
 } from "@/service/reduxState/walletSlices"
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -133,7 +139,7 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
     };
     
 
-    export const Disbursement =async (wallet:any,amount:number,walletTypeName:string) => {
+    export const Disbursement =async (wallet:any,amount:number,dispatch:any) => {
       const idToast=toast.loading('Đang kiểm tra yêu cầu....', {
         position: "bottom-right",
         autoClose: 5000,
@@ -154,7 +160,7 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
           requestType: "disburseToWallet",
           orderId: await handleRandomReqID(requestId, wallet.cardNumber),
           amount: amount,
-          orderInfo: `Rút ${amountNotify} về ví ${walletTypeName}`,
+          orderInfo: `Rút ${amountNotify} về ví ${wallet.name}`,
           lang: "vi",
           extraData: "",
           walletId: wallet.walletId,
@@ -162,6 +168,7 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
         };
         const res= await request.post("/BankLink/Disbursement",data);
         if(res?.statusCode==200){
+          await RequestWalletOfUser(wallet.userId,dispatch)
           toast.update(idToast, {
             render:res.message,
             type: "success",
@@ -176,7 +183,7 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
             theme: "colored",
             transition: Bounce,
           });
-          toast.info(`Bạn đã rút ${amountNotify} về ví ${walletTypeName} thành công! Số dư khả dụng: ${await formatPrice(String(res.saveOrder.user.blance))} vnd`, {
+          toast.info(`Bạn đã rút ${amountNotify} về ví ${wallet.name} thành công! Số dư khả dụng: ${await formatPrice(String(res.saveOrder.user.blance))} vnd`, {
             isLoading: false,
             position: "bottom-right",
             autoClose: 5000,
@@ -290,7 +297,7 @@ export const RequestApiNotifySuccess = async (dataTracking:any,dispatch:any) => 
     }
 };
 
-export const linkBankAuthentication = async (data:any) => {
+export const linkBankAuthentication = async (data:any,dispatch:any) => {
   const idToast=toast.loading('Đang kiểm tra yêu cầu....', {
     position: "bottom-right",
     autoClose: 5000,
@@ -321,6 +328,8 @@ export const linkBankAuthentication = async (data:any) => {
       });
       const storedWalletData = localStorage.getItem('walletBank');
       if (storedWalletData) {
+        const walletBank = JSON.parse(storedWalletData);
+        await RequestWalletOfUser(walletBank.userId,dispatch);
         localStorage.removeItem('walletBank');
       }
       return true;
@@ -343,3 +352,78 @@ export const linkBankAuthentication = async (data:any) => {
     return false;
   }
 };
+
+export const historyTransactionWallet = async(userId:string,dispatch:any)=>{
+  dispatch(historyTransactionStart());
+  try{
+    const res = await request.get(`/BankLink/HistoryPayment/${userId}`);
+    const transactions = res.data.map((transaction: any) => ({
+      orderId: transaction.orderId,
+      userId: transaction.userId,
+      orderDate: transaction.orderDate,
+      totalAmount: transaction.totalAmount,
+      state: transaction.state,
+      createdAt: transaction.createdAt,
+      walletId: transaction.walletId,
+      paymentType: transaction.paymentType,
+      walletImage:transaction.walletImage
+    }));
+    dispatch(historyTransactionSuccess(transactions));
+  }
+  catch(err:any){
+    dispatch(historyTransactionFailed(err.response.data));
+  }
+}
+
+
+export const RemoveWallet = async (data:any,dispatch:any) =>{
+  dispatch(removeWalletStart());
+  const idToast=toast.loading('Đang kiểm tra yêu cầu....', {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+  });
+  try{
+    const res = await request.post(`/BankLink/RemoveWallet`,data);
+    if(res.statusCode===200){
+      toast.update(idToast, {
+        render:"Xoá thành công !",
+        type: "success",
+        isLoading: false,
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+      await RequestWalletOfUser(data.userId,dispatch);
+      dispatch(removeWalletSuccess(res));
+    }
+  }catch(error:any){
+    toast.update(idToast, {
+      render: "Xoá thất bại",
+      type: "error",
+      isLoading: false,
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+    dispatch(removeWalletFailed());
+  }
+}

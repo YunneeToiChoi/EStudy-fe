@@ -12,6 +12,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@firebasegen/default": "file:generated/javascript/default",
+    "@heroicons/react": "^2.1.5",
     "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.2",
