@@ -96,9 +96,17 @@ export const getCompleteExam = async (data: any, dispatch: any) => {
 export const submitPart9 = async (formData: FormData) => {
     try {
         const res = await request.post(`/Speaking/EvaluateQuestionBatch`, formData);
-        return res.status;
+        return res
     } catch (err: any) {
-        console.log("Error submitting part 9:", err);
+        return err?.response?.status;
+    }
+};
+
+export const submitPart9Question7 = async (formData: FormData) => {
+    try {
+        const res = await request.post(`Speaking/EvaluateQuestionFollowUp`, formData);
+        return res
+    } catch (err: any) {
         return err?.response?.status;
     }
 };
@@ -162,3 +170,4 @@ export const getUserExam = async (userId:any, dispatch: any) => {
         dispatch(getUserExamFailed(err.response?.data));
     }
 }
+

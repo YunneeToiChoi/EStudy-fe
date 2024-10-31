@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import Image from 'next/image';
-
+import { FaMicrophone, FaStop } from 'react-icons/fa'; // Import icons from Font Awesome
+import * as request from "@/lib/utils/request";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import LoadingContent from '@/app/components/partialView/loadingContent';
 interface SelectedAnswers {
     [key: string]: {
         QuestionId: string;
@@ -22,16 +24,19 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
         const storedAnswers = JSON.parse(sessionStorage.getItem('answerTestPart9') || '{}');
         return storedAnswers;
     });
-    
+    const part9Questions = part9.slice(0, 5);
+    const lastIndex = part9Questions.length;
+
     const [isRecording, setIsRecording] = useState<{ [key: string]: boolean }>({});
     const mediaRecorder = useRef<MediaRecorder | null>(null);
     const audioChunks = useRef<Blob[]>([]);
-
-    const handleRecordStart = async (questionId: string) => {
+    const [followUpQuestion, setFollowUpQuestion] = useState<string>('');
+    const [isLoadingFollowUp, setIsLoadingFollowUp] = useState<boolean>(false); // AI loading state
+    const handleRecordStart = async (questionId: any) => {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             mediaRecorder.current = new MediaRecorder(stream);
-            
+
             mediaRecorder.current.onstart = () => {
                 setIsRecording(prev => ({ ...prev, [questionId]: true }));
                 audioChunks.current = [];
@@ -41,23 +46,40 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
                 audioChunks.current.push(event.data);
             };
 
-            mediaRecorder.current.onstop = () => {
+            mediaRecorder.current.onstop = async () => {
                 setIsRecording(prev => ({ ...prev, [questionId]: false }));
                 const audioBlob = new Blob(audioChunks.current, { type: 'audio/mp3' });
                 const audioUrl = URL.createObjectURL(audioBlob);
 
-                // Save audio URL to state and sessionStorage for the specific question
-                setSelectedAnswers(prevAnswers => {
-                    const updatedAnswers = {
-                        ...prevAnswers,
-                        [questionId]: {
-                            ...prevAnswers[questionId],
-                            Answer: audioUrl
-                        },
+                // Only save to sessionStorage if questionId is not '7'
+                if (questionId === '7') {
+                    const followUpData = {
+                        AudioURL: audioUrl,
+                        followUpQuestion,
                     };
-                    sessionStorage.setItem('answerTestPart9', JSON.stringify(updatedAnswers));
-                    return updatedAnswers;
-                });
+                    sessionStorage.setItem('answerQuestion7', JSON.stringify(followUpData));
+                } else {
+                    // Save other answers in answerTestPart9
+                    setSelectedAnswers(prevAnswers => {
+                        const updatedAnswers = {
+                            ...prevAnswers,
+                            [questionId]: {
+                                ...prevAnswers[questionId],
+                                Answer: audioUrl
+                            },
+                        };
+                        sessionStorage.setItem('answerTestPart9', JSON.stringify(updatedAnswers));
+                        return updatedAnswers;
+                    });
+                }
+
+                // If last question, call follow-up logic
+                if (questionId === part9[lastIndex].questionId) {
+                    setIsLoadingFollowUp(true); // Set loading state
+                    const followUp = await sendAudioToEndpoint(audioBlob, questionId);
+                    setFollowUpQuestion(followUp?.aiResponse?.followUpQuestion);
+                    setIsLoadingFollowUp(false); // End loading state
+                }
                 onAnswerChange(questionId, audioUrl);
             };
 
@@ -71,6 +93,19 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
         }
     };
 
+    const sendAudioToEndpoint = async (audioBlob: Blob, questionId: string) => {
+        const formData = new FormData();
+        formData.append("audioFile", audioBlob, `audio_${questionId}.wav`);
+        formData.append("questionId", questionId);
+
+        try {
+            const response = await request.post(`/Speaking/EvaluateQuestionSix/${questionId}`, formData);
+            return response;
+        } catch (error) {
+            console.error('Error sending audio:', error);
+        }
+    };
+
     useEffect(() => {
         setSelectedAnswers(JSON.parse(sessionStorage.getItem('answerTestPart9') || '{}'));
     }, []);
@@ -79,8 +114,8 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
     if (part9.error) return <p>Error loading part 9.</p>;
 
     return (
-        <div>
-            {part9?.map((item: any) => (
+        <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
+            {part9Questions?.map((item: any) => (
                 <div
                     key={item.questionId}
                     ref={el => {
@@ -88,36 +123,76 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
                             questionRefs.current[item.questionId] = el;
                         }
                     }}
-                    className="question-item mt-11"
+                    className="question-item mt-6 p-4 bg-white px-7 shadow-sm py-11 rounded-2xl "
                 >
-                    <div className='flex items-center'>
-                        <div className='flex-1'>
-                            {item.questionImage && <Image width={400} height={400} quality={100} src={item.questionImage} alt={`Question ${item.number}`} />}
+                    <div className='w-full'>
+                        <div className="flex items-center justify-between gap-4 text-lg mt-4">
+                            <span className='aspect-square w-fit h-fit p-1 flex items-center justify-between bg-blue-200 text-black font-medium text-lg rounded-full'>{item.number}</span>
+                            <p className='ml-11 mr-auto'>{item.questionText}</p>
+                            <button
+                                onClick={() => isRecording[item.questionId] ? handleRecordStop(item.questionId) : handleRecordStart(item.questionId)}
+                                className={`flex items-center rounded-full p-5 ${isRecording[item.questionId] ? 'bg-red-600' : 'bg-primary-bg-color'} text-white transition-colors duration-200 hover:opacity-80`}
+                            >
+                                {isRecording[item.questionId] ? <FaStop /> : <FaMicrophone />}
+                            </button>
                         </div>
-                        <div className='w-full flex gap-4 mt-5'>
-                            <span className='aspect-square w-fit h-fit p-1 flex items-center justify-center bg-blue-200 text-black font-medium text-lg rounded-full'>{item.number}</span>
-
-                            <div className="flex flex-col flex-1 text-lg">
-                                <p>{item.questionText}</p>
-                                <div className='flex mt-5 gap-2 w-full items-center'>
-                                    <button
-                                        onClick={() => isRecording[item.questionId] ? handleRecordStop(item.questionId) : handleRecordStart(item.questionId)}
-                                        className={`p-3 ${isRecording[item.questionId] ? 'bg-red-500' : 'bg-green-500'} text-white rounded-md`}
-                                    >
-                                        {isRecording[item.questionId] ? 'Stop Recording' : 'Start Recording'}
-                                    </button>
-
-                                    {selectedAnswers[item.questionId]?.AudioURL && (
-                                        <audio controls src={selectedAnswers[item.questionId].AudioURL} className='ml-4'>
-                                            Your browser does not support the audio element.
-                                        </audio>
-                                    )}
-                                </div>
-                            </div>
+                        <div className='flex justify-center mt-4 gap-4 items-center'>
+                            {selectedAnswers[item.questionId]?.Answer && (
+                                <audio controls src={selectedAnswers[item.questionId].Answer} className='ml-4'>
+                                    Your browser does not support the audio element.
+                                </audio>
+                            )}
                         </div>
                     </div>
                 </div>
             ))}
+            {/* Follow-up question */}
+            <div
+                key={part9[lastIndex].questionId}
+                ref={el => {
+                    if (questionRefs.current) {
+                        questionRefs.current[part9[lastIndex].questionId] = el;
+                    }
+                }}
+                className="question-item mt-6 p-4 bg-white px-7 shadow-sm py-11 rounded-2xl "
+            >
+                <div className='w-full'>
+                    <span className='flex items-center gap-2 text-base text-primary-bg-color'><span>conversation</span><i className="fa-solid fa-comment text-2xl"></i></span>
+                    {!followUpQuestion && !isLoadingFollowUp && (
+                        <div className="flex items-center justify-between gap-4 text-lg mt-4">
+                            <div>
+                                <span className='aspect-square w-fit h-fit p-1 flex items-center justify-between bg-blue-200 text-black font-medium text-lg rounded-full'>{part9[lastIndex].number}</span>
+                            </div>
+                            <p className='ml-11 mr-auto'>{part9[lastIndex].questionText}</p>
+                            <button
+                                onClick={() => isRecording[part9[lastIndex].questionId] ? handleRecordStop(part9[lastIndex].questionId) : handleRecordStart(part9[lastIndex].questionId)}
+                                className={`flex items-center rounded-full p-5 ${isRecording[part9[lastIndex].questionId] ? 'bg-red-600' : 'bg-primary-bg-color'} text-white transition-colors duration-200 hover:opacity-80`}
+                            >
+                                {isRecording[part9[lastIndex].questionId] ? <FaStop /> : <FaMicrophone />}
+                            </button>
+                        </div>
+                    )}
+                    {isLoadingFollowUp && (
+                        <div className="mt-6 flex items-center">
+                          < LoadingContent></LoadingContent>
+                        </div>
+                    )}
+                    {followUpQuestion && (
+                        <div className="mt-6 flex items-center justify-between">
+                            <div>    
+                            <TextGenerateEffect className='font-normal text-base' words={followUpQuestion} />
+                           </div>
+                       
+                            <button
+                                onClick={() => isRecording['7'] ? handleRecordStop('7') : handleRecordStart('7')}
+                                className={`flex items-center rounded-full text-lg p-5 ${isRecording['7'] ? 'bg-red-600' : 'bg-primary-bg-color'} text-white transition-colors duration-200 hover:opacity-80`}
+                            >
+                                {isRecording['7'] ? <FaStop /> : <FaMicrophone />}
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
