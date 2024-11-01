@@ -91,7 +91,6 @@ export const getCompleteExam = async (data: any, dispatch: any) => {
         return err?.response?.status;
     }
 };
-
 // Hàm gửi Part 9 lên endpoint EvaluateQuestionBatch
 export const submitPart9 = async (formData: FormData) => {
     try {
