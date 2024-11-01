@@ -177,7 +177,7 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
                           < LoadingContent></LoadingContent>
                         </div>
                     )}
-                    {followUpQuestion && (
+                    {followUpQuestion && ( 
                         <div className="mt-6 flex items-center justify-between">
                             <div>    
                             <TextGenerateEffect className='font-normal text-base' words={followUpQuestion} />
