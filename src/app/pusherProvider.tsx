@@ -8,7 +8,7 @@ let isPusherSDKInitialized = false;
 declare global {
   interface Window {
     Pusher: any;
-  }
+  } 
 }
 
 // Tạo kiểu cho context
