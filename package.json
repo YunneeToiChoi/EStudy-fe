@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "engines": {
-  "node": "22.x",
-  "npm": "10.x" 
-},
+    "node": "22.x",
+    "npm": "10.x"
+  },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -37,7 +37,6 @@
     "@reduxjs/toolkit": "^2.2.4",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.8",
-    "canvas": "^2.11.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
