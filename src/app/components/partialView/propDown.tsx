@@ -132,7 +132,7 @@ import {
            </Link>
           <DropdownMenuItem>
             <LifeBuoy className="mr-2 h-4 w-4" />
-            <span>Hỗ trợ</span>
+            <Link href="https://huflitconfessions.com/?fbclid=IwY2xjawGYF4hleHRuA2FlbQIxMAABHYIOG1Qw3qSJnHeuCYV2PpsFUfUCV0oHUuOGSgE9HyxR2yF_sbjvYuXqbw_aem_wkKy61NwksX4o4_2xqvr0w">Hỗ trợ</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <WalletCards className="mr-2 h-4 w-4" />

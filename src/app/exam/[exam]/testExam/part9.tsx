@@ -4,6 +4,7 @@ import { FaMicrophone, FaStop } from 'react-icons/fa'; // Import icons from Font
 import * as request from "@/lib/utils/request";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import LoadingContent from '@/app/components/partialView/loadingContent';
+import Image from 'next/image';
 interface SelectedAnswers {
     [key: string]: {
         QuestionId: string;
@@ -51,7 +52,6 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
                 const audioBlob = new Blob(audioChunks.current, { type: 'audio/mp3' });
                 const audioUrl = URL.createObjectURL(audioBlob);
 
-                // Only save to sessionStorage if questionId is not '7'
                 if (questionId === '7') {
                     const followUpData = {
                         AudioURL: audioUrl,
@@ -126,6 +126,7 @@ const Part9 = ({ questionRefs, onAnswerChange }: Part9Props) => {
                     className="question-item mt-6 p-4 bg-white px-7 shadow-sm py-11 rounded-2xl "
                 >
                     <div className='w-full'>
+                    {item.questionImage && <Image className=' m-auto' width={400} height={400} quality={100} src={item.questionImage} alt={`Question ${item.number}`} />}
                         <div className="flex items-center justify-between gap-4 text-lg mt-4">
                             <span className='aspect-square w-fit h-fit p-1 flex items-center justify-between bg-blue-200 text-black font-medium text-lg rounded-full'>{item.number}</span>
                             <p className='ml-11 mr-auto'>{item.questionText}</p>

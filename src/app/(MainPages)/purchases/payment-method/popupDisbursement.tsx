@@ -38,8 +38,8 @@ export const DialogDisbursement: React.FC<DisbursementProps> = ({ wallet }) => {
   const handleSubmit = async () => {
     const numericAmount = amount ? parseInt(amount.replace(/\./g, '')) : 0;
 
-    if (numericAmount < 10000) {
-      setError("Please enter a valid amount greater than or same 10.000 VND");
+    if (numericAmount < 20000) {
+      setError("Please enter a valid amount greater than or same 20.000 VND");
       return;
     }
      const res= await Disbursement(wallet,numericAmount,dispatch)
