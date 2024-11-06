@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useCallback  } from 'react';
 import { Button } from "@/components/ui/buttonInfoPlan";
 import { useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
@@ -31,22 +31,20 @@ const ShowPlanDialog: React.FC<ShowPlanDialogProps> = ({ planId, planName, state
   const expirePlans = useSelector((state: any) => state.ThunkReducer.plan.checkExpirePlan?.data);
 
   // Đưa fetchData ra ngoài useEffect
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (user?.userId) {
-      const UserId = {
-        userId: user.userId
-      };
+      const UserId = { userId: user.userId };
       try {
         await checkExpirePlan(UserId, dispatch);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-  };
+  }, [user?.userId, dispatch]);
 
   useEffect(() => {
     fetchData();
-  }, [dispatch]);
+  }, [dispatch,fetchData]);
 
   const handleOrder = async () => {
     const dataOrder = {

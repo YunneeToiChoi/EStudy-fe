@@ -4,7 +4,7 @@ import { toast, Bounce } from 'react-toastify';
 import { getCommentPost } from '@/service/api/apiCommentRequest';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-
+import Image from 'next/image';
 interface CommentInputProps {
   ratingId: string;  
   isReply: boolean;      
@@ -124,10 +124,13 @@ const CommentInput: React.FC<CommentInputProps> = ({ ratingId, isReply, parentRe
 
   return (
     <div className='flex gap-4'>     
-      <img
+      <Image
         className="mr-2 w-11 h-11 rounded-full"
         src={user.userImage}
         alt={user.userId}
+        quality={100}
+        width={100}
+        height={100}
       />
       <div className='flex-1'>
         <div className="py-2 px-4 relative bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -166,7 +169,10 @@ const CommentInput: React.FC<CommentInputProps> = ({ ratingId, isReply, parentRe
           {previewUrls.map((url, index) => (
             <div key={index} className="relative w-24 shadow-xl cursor-pointer h-24">
               <PhotoView src={url}>
-                <img
+                <Image
+                  quality={100}
+                  height={100}
+                  width={100}
                   src={url}
                   alt={`Preview ${index}`}
                   className="w-full h-full object-cover rounded-lg"

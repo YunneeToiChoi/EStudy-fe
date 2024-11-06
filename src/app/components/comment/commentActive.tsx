@@ -7,7 +7,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import {getCommentPost} from '@/service/api/apiCommentRequest'
-
+import Image from 'next/image';
 interface CommentComponentProps {
   dataId: number;
   type: "Document" | "Course";
@@ -112,10 +112,13 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
     </div>
     <form className="mb-6 flex flex-col gap-4" onSubmit={handleSubmit}>
       <div className='flex items-center gap-1'>
-      <img
+      <Image
                   className="mr-2 w-11 h-11 rounded-full"
                   src={userInfo?.userImage}
                   alt={userInfo?.userId}
+                  quality={100}
+                  width={100}
+                  height={100}
         />
       <h1 className='text-lg text-primary-bg-color font-semibold'>{userInfo?.userName}</h1>
       </div>
@@ -167,10 +170,13 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ dataId,type }) => {
           {previewUrl.map((url, index) => (
             <div key={index} className="relative w-24 shadow-xl cursor-pointer h-24">
               <PhotoView src={url}>
-                <img
+                <Image
                   src={url}
                   alt={`Preview ${index}`}
                   className="w-full h-full object-cover rounded-lg"
+                  quality={100}
+                  width={100}
+                  height={100}
                 />
               </PhotoView>
               <button

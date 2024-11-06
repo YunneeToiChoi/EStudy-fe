@@ -12,17 +12,6 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const isActive = (path: string) => pathname === path;
   if (!user) {
-    toast.info('Hãy đăng nhập tài khoản !', {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
     router.push("/login");
   }
   return (

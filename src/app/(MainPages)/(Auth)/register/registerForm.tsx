@@ -40,7 +40,7 @@ export default function RegisterForm(){
       } else {
         console.error('Facebook SDK không được khởi tạo.');
       }
-    }, []);
+    }, [navigate,user]);
 
     const form = useForm<RegisterBodyType>({
       resolver: zodResolver(RegisterBody),

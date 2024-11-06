@@ -50,7 +50,7 @@ export default function LoginForm() {
     if (countdownEndTime && new Date().getTime() < Number(countdownEndTime)) {
       setShowCountdown(true);
     }
-  }, []);
+  }, [navigate,user]);
   const form = useForm<LoginBodyType>({
     resolver: zodResolver(LoginBody),
     defaultValues: {

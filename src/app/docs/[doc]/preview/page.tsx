@@ -46,7 +46,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
             const UserId = { userId: user?.userId };
             getUserDocuments(UserId, dispatch)
           }
-    }, [dispatch, idDocument]);
+    }, [dispatch, idDocument,user?.userId]);
 
     const isUserUploaded = listDocuments?.some(
         (doc: any) => doc.documentId === infoDetails?.documentId

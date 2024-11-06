@@ -12,7 +12,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import CommentInput from './commentReply';
 import { usePusher } from '@/app/pusherProvider';
-
+import Image from "next/image";
 interface ShowListCommentProps {
   dataId: number;
   type: "Document" | "Course";
@@ -114,7 +114,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
       <article key={rating.ratingId} className="px-6 pt-6 pb-2 text-base bg-white">
       <footer className="flex justify-between items-center mb-2">
         <div className="flex w-full items-center">
-          <img className="mr-2 w-11 h-11 rounded-full" src={rating.userImage} alt={rating.userId} />
+          <Image quality={100} width={100} height={100} className="mr-2 w-11 h-11 rounded-full" src={rating.userImage} alt={rating.userId} />
           <div className="flex w-full flex-col gap-1">
             <div className="flex items-center">
               <p className="pl-2 items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold max-w-60 whitespace-nowrap overflow-hidden truncate text-ellipsis">
@@ -138,7 +138,7 @@ const ShowListComment: React.FC<ShowListCommentProps> = ({ dataId, type }) => {
           {rating.ratingImageUrls.map((url:string, idx:any) => (
             <div key={idx} className="relative w-24 shadow-xl cursor-pointer h-24">
               <PhotoView src={url}>
-                <img src={url} alt={`Preview ${idx}`} className="w-full h-full object-cover rounded-lg" />
+                <Image quality={100} width={100} height={100} src={url} alt={`Preview ${idx}`} className="w-full h-full object-cover rounded-lg" />
               </PhotoView>
             </div>
           ))}
