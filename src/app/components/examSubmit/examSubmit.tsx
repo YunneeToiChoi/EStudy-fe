@@ -94,7 +94,7 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
 
             // Gọi hàm submitPart9Question7 để gửi dữ liệu
             const responseQuestion7 = await submitPart9Question7(question7FormData);
-            if (responseQuestion7 !== 200) {
+            if (!responseQuestion7) {
                 showErrorToast(idToast);
                 return;
             }
