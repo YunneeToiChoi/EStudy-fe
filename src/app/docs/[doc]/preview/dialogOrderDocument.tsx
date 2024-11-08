@@ -188,7 +188,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({
           > Mua ngay
           </AlertDialogAction>
         </div>
-      </AlertDialogContent>
+      </AlertDialogContent> 
     </AlertDialog>
   )
 }
