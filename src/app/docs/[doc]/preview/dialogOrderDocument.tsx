@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from 'next/navigation';
 import { useDispatch } from "react-redux";
 import { FaDownload, FaExpand } from 'react-icons/fa';
+import  addDotsToCurrency  from "@/lib/utils/currency";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -175,7 +176,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({
         <div className='px-6 flex justify-between gap-28 items-center'>
           <p className='text-black text-base font-semibold'>Tổng :</p>
           <div className='flex flex-col gap-3'>
-            <p className='text-black text-base font-semibold'>Thanh toán {documentPrice} đ</p>
+            <p className='text-black text-base font-semibold'>Thanh toán {addDotsToCurrency (documentPrice)} đ</p>
             <Image className='ml-auto' alt="momo" src={'https://paymentsdk.spotifycdn.com/svg/providers/momo.svg'} width={20} height={20} quality={100}></Image>
           </div>
         </div>
