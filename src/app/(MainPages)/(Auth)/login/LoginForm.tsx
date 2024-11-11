@@ -299,14 +299,13 @@ export default function LoginForm() {
             />
             {
               confirmPasswordVisible==true &&(
-                <a onClick={()=>handleForgotPassword(form.getValues)} 
+                <button onClick={()=>handleForgotPassword(form.getValues)} 
                 onKeyUp={()=>handleForgotPassword(form.getValues)}
                 role="button" 
-                tabIndex={0}
               className="text-black w-fit mt-2 px-2 hover:text-blue-700 transition duration-300 cursor-pointer font-base text-sm no-underline pb-4"
             >
               Forgot Password ?
-            </a>
+            </button>
               )
             }
             <button type='submit' className="w-40 m-auto bg-primary-bg-color text-white  text-lg font-medium my-6 hover:bg-primary-bg-color-hover transition duration-150 ease-in-out text-center  no-underline py-2 rounded-[6px] border-none">

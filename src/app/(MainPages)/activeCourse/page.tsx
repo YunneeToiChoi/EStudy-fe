@@ -1,5 +1,5 @@
 "use client"
-import  Link  from 'next/link';
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import {ActiveCodeCourse} from "@/service/api/apiOrderRequest"
 import { useForm } from 'react-hook-form';
@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function ActiveCourse()
 {
+  const navigate = useRouter();
   const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
   const form = useForm<ActiveCodeType>({
     resolver: zodResolver(ActiveCode),
@@ -60,6 +61,7 @@ export default function ActiveCourse()
           theme: "colored",
           transition: Bounce,
         });
+        navigate.push('/profile');
       }
       else{
         toast.update(idToast, {

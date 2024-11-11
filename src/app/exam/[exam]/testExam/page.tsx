@@ -41,6 +41,18 @@ const TestExam = ({ params }: { params: { exam: string } }) => {
     const [countdown, setCountdown] = useState<number>(7200);
     const questionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const [countdownComplete, setCountdownComplete] = useState<boolean>(false);
+    useEffect(() => {
+        const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+          e.preventDefault();
+          e.returnValue = "Are you sure you want to leave?"; // Thông báo sẽ hiển thị trên trình duyệt
+        };
+      
+        window.addEventListener("beforeunload", handleBeforeUnload);
+      
+        return () => {
+          window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+      }, []);
 
     useEffect(() => {
         if (!user) {
