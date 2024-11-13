@@ -70,6 +70,31 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
     const formData = await preparePart9FormData(part9Answers, userExamId, idToast);
     if (!formData) return; // Handle if there was an error in preparing data
 
+    if (part9AnswersQuestion7.AudioURL) {
+      try {
+          const audioBlob = await fetch(part9AnswersQuestion7.AudioURL).then(res => {
+              if (!res.ok) throw new Error('Failed to fetch audio file for question 7');
+              return res.blob();
+          });
+
+          // Tạo FormData mới cho câu hỏi 7
+          const question7FormData = new FormData();
+          question7FormData.append("audioFile", audioBlob, 'audio_question7.wav'); // Thêm audio file
+          question7FormData.append("followUpQuestion", part9AnswersQuestion7.followUpQuestion); // Thêm câu hỏi theo dõi
+          question7FormData.append("userExamId", userExamId); // Thêm userExamId nếu cần
+
+          // Gọi hàm submitPart9Question7 để gửi dữ liệu
+          const responseQuestion7 = await submitPart9Question7(question7FormData);
+          if (!responseQuestion7) {
+              showErrorToast(idToast);
+              return;
+          }
+      } catch (error) {
+          console.error('Error fetching audio for question 7:', error);
+          showErrorToast(idToast);
+          return;
+      }
+  }
     
 
     // Send request to submit Part 9 answers
@@ -77,32 +102,6 @@ const ExamDialog: React.FC<examDialogProps> = ({ examId }) => {
     if (!(responsePart9 && responsePart9.length > 0)) {
       showErrorToast(idToast);
       return;
-    }
-
-     if (part9AnswersQuestion7.AudioURL) {
-        try {
-            const audioBlob = await fetch(part9AnswersQuestion7.AudioURL).then(res => {
-                if (!res.ok) throw new Error('Failed to fetch audio file for question 7');
-                return res.blob();
-            });
-
-            // Tạo FormData mới cho câu hỏi 7
-            const question7FormData = new FormData();
-            question7FormData.append("audioFile", audioBlob, 'audio_question7.wav'); // Thêm audio file
-            question7FormData.append("followUpQuestion", part9AnswersQuestion7.followUpQuestion); // Thêm câu hỏi theo dõi
-            question7FormData.append("userExamId", userExamId); // Thêm userExamId nếu cần
-
-            // Gọi hàm submitPart9Question7 để gửi dữ liệu
-            const responseQuestion7 = await submitPart9Question7(question7FormData);
-            if (!responseQuestion7) {
-                showErrorToast(idToast);
-                return;
-            }
-        } catch (error) {
-            console.error('Error fetching audio for question 7:', error);
-            showErrorToast(idToast);
-            return;
-        }
     }
 
     // Clear session storage and notify success
