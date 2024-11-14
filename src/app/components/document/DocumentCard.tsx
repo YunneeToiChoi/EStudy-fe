@@ -51,7 +51,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ document }) => {
                 })}
               </p>
             </div>
-            {document?.isPublic ? (
+            {document?.isPublic || document.price < 0 ? (
               <p className=" p-2 rounded-xl bg-green-400 text-xs font-semibold text-white">
                Free
               </p>

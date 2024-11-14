@@ -9,8 +9,8 @@ import DocumentCard from "@/app/components/document/DocumentCard";
 export default function GetHisDocByUser() {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
-  const checkNoDocument = useSelector((state: any) => state.ThunkReducer.document.historyDoc?.data);
-  const listDocuments = useSelector((state: any) => state.ThunkReducer.document.historyDoc?.data?.userDoc);
+  const checkNoDocument = useSelector((state: any) => state.ThunkReducer.document.historyDoc?.data?.value?.documents);
+  const listDocuments = useSelector((state: any) => state.ThunkReducer.document.historyDoc?.data?.value?.documents);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
