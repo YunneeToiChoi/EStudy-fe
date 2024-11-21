@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import {ActiveCodeCourse} from "@/service/api/apiOrderRequest"
 import { useForm } from 'react-hook-form';
