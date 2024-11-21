@@ -65,7 +65,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({
     }
 
     // Kiểm tra nếu tài liệu công khai và không có giá
-    if (documentPublic || documentPrice==-1) {
+    if (documentPublic || documentPrice==-1 ||parent ) {
       handleDownload(); // Gọi hàm tải xuống file
     } else {
       // Nếu không phải tài liệu công khai và không có giá, mở dialog

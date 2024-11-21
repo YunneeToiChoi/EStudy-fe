@@ -11,6 +11,7 @@ import '@react-pdf-viewer/full-screen/lib/styles/index.css';
 import OrderDialog from "./dialogOrderDocument"
 import Link from 'next/link';
 import ShowListComment from '@/app/components/comment/commentShow';
+import { getHistoryDoc } from "@/service/api/apiDocumentRequest";
 import CommentComponent from '@/app/components/comment/commentActive';
 import ShowListCommentRep from '@/app/components/comment/commentList';
 import { getUserDocuments } from '@/service/api/apiDocumentRequest';
@@ -23,6 +24,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
     const user = useSelector((state: any) => state.persistedReducer.auth.getAllInfoUser?.data?.user);
     const infoDetails = useSelector((state: any) => state.ThunkReducer.document.previewDoc.data);
     const listDocuments = useSelector((state: any) => state.ThunkReducer.document.userDoc?.data?.userDoc);
+    const listHisDocuments = useSelector((state: any) => state.ThunkReducer.document.historyDoc?.data?.value?.documents);
     let fileUrl;
     if(infoDetails?.documentPublic===true){
         fileUrl = infoDetails?.fileUrl;
@@ -38,17 +40,26 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
         style: 'currency',
         currency: 'VND',
       }).format(infoDetails?.price);
-    useEffect(() => {
-        if (idDocument) {
-            previewDoc(idDocument, dispatch);
-        }
-        if (user?.userId) {
-            const UserId = { userId: user?.userId };
-            getUserDocuments(UserId, dispatch)
+    
+      useEffect(() => {
+        const fetchData = async () => {
+          if (idDocument) {
+            await previewDoc(idDocument, dispatch);
           }
-    }, [dispatch, idDocument,user?.userId]);
+          if (user?.userId) {
+            const UserId = { userId: user?.userId };
+            await getUserDocuments(UserId, dispatch);
+            await getHistoryDoc(UserId, dispatch);
+            console.log(listHisDocuments)
+          }
+        };
+      
+        fetchData(); // Gọi hàm async bên trong useEffect
+      }, [dispatch, idDocument, user?.userId]);
 
-    const isUserUploaded = listDocuments?.some(
+      const isUserUploaded = listDocuments?.some(
+        (doc: any) => doc.documentId === infoDetails?.documentId
+    ) || listHisDocuments?.some(
         (doc: any) => doc.documentId === infoDetails?.documentId
     );
 
@@ -67,7 +78,12 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
     const renderPage = (props: RenderPageProps) => {
         const { pageIndex } = props;
         const isDocumentPublic = infoDetails?.documentPublic;
-        const canViewAll = isDocumentPublic;
+        const docOfUser = listDocuments?.some(
+            (doc: any) => doc.documentId === infoDetails?.documentId
+        ) || listHisDocuments?.some(
+            (doc: any) => doc.documentId === infoDetails?.documentId
+        );
+        const canViewAll = isDocumentPublic ||docOfUser;
         const totalPages = props.doc.numPages; 
     
         let canViewPage = false;
@@ -108,7 +124,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                             Buy document to download
                         </p>
                     </div>
-                    <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic} documentUrl={infoDetails?.fileUrl} parent={false}></OrderDialog>
+                    <OrderDialog documentDes={infoDetails?.documentDescription} documentId={infoDetails?.documentId} documentName={infoDetails?.title} documentPrice={infoDetails?.price} documentPublic={infoDetails?.documentPublic} documentUrl={infoDetails?.fileUrl} parent={isUserUploaded}></OrderDialog>
                 </div>
             );
         }
@@ -251,7 +267,7 @@ const ViewPdf: React.FC<DetailDocsProps> = ({ params }) => {
                                         documentPrice={infoDetails?.price}
                                         documentPublic={infoDetails?.documentPublic}
                                         documentUrl={infoDetails?.fileUrl}
-                                        parent={true}
+                                        parent={isUserUploaded}
                                     />
                                     {totalPages && (
                                         <div className="text-center">
