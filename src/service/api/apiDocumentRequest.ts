@@ -132,7 +132,7 @@ export const downLoadDoc = async (data:any, dispatch: any) => {
 
 export const getPrivateDoc = async (orderId: any) => {
     try{
-         const res = await request.post("/UserDocumentAPI/GetDocumentId",orderId)
+         const res = await request.post("/UserDocumentAPI/GetDocumentId",{orderId:orderId})
          if(res.status==200){
             console.log(res)
             return res.documents;
