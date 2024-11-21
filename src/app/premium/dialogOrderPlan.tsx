@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
+import addDotsToCurrency from '@/lib/utils/currency';
 
 import { RequestApiOrderPlan } from "@/service/api/apiOrderRequest";
 import Image from 'next/image';
@@ -138,7 +138,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ planId, planName,planDuration
         <div className=' px-6 flex justify-between gap-28 items-center'>
           <p className='text-black text-base font-semibold'>Tổng :</p>
           <div className='flex flex-col gap-3'>
-               <p className='text-black text-base font-semibold'>Thanh toán {PlanPrice} đ cho {planDuration} ngày</p>
+               <p className='text-black text-base font-semibold'>Thanh toán {addDotsToCurrency(PlanPrice)} đ cho {planDuration} ngày</p>
                 <Image className='ml-auto' alt="momo" src={'https://paymentsdk.spotifycdn.com/svg/providers/momo.svg'} width={20} height={20} quality={100}></Image>
           </div>
        
