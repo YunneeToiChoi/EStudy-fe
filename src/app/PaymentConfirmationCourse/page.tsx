@@ -9,12 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 export default function SuccessOrderByMomo() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  const [isValidParams, setIsValidParams] = useState(false);
   const searchParams = useMemo(() => new URLSearchParams(window.location.search), []);
-  const partnerCode = searchParams.get('partnerCode');
+  const [isValidParams, setIsValidParams] = useState(false);
   const navigate = useRouter();
 
   useEffect(() => {
+    const partnerCode = searchParams.get('partnerCode');
     const checkParamsAndFetch = async () => {
       if (partnerCode && searchParams.get('orderId')) {
         setIsValidParams(true);
@@ -66,7 +66,7 @@ export default function SuccessOrderByMomo() {
     };
 
     checkParamsAndFetch();
-  }, [dispatch,partnerCode,searchParams,navigate]);
+  }, [dispatch,navigate]);
 
   if (isLoading) {
     return <LoadingEvent></LoadingEvent>;
