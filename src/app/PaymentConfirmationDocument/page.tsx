@@ -33,6 +33,7 @@ export default function SuccessOrderByMomo() {
           transition: Bounce,
         });
         const orderId = searchParams.get('orderId');
+        console.log(orderId)
         const resPdf= await getPrivateDoc(orderId);
         const { pdfUrl, Title} = resPdf;
         const link = document.createElement('a');

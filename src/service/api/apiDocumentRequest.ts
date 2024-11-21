@@ -134,6 +134,7 @@ export const getPrivateDoc = async (orderId: any) => {
     try{
          const res = await request.post("/UserDocumentAPI/GetDocumentId",orderId)
          if(res.status==200){
+            console.log(res)
             return res.documents;
          }
     }
