@@ -46,15 +46,21 @@ export default function GetAllExams() {
                             <div className='w-full flex items-center justify-between'>
                               <div className=' flex gap-2 items-center'>
                                 <i className="fa-regular fa-clock"></i>
-                                <span className=" text-sm text-slate-700 font-semibold">40 phút</span>
+                                <span className=" text-sm text-slate-700 font-semibold">
+                                  {exam.totalMinutes} phút
+                                </span>
                               </div>
                               <div className='flex gap-2 items-center'>
                                 <i className="fa-solid fa-user-pen"></i>
-                                <span className="text-sm text-slate-700 font-semibold">297723</span>
+                                <span className="text-sm text-slate-700 font-semibold">
+                                  {exam.totalUsersTest}
+                                </span>
                               </div>
                               <div className='flex gap-2 items-center'>
                                 <i className="fa-regular fa-comment"></i>
-                                <span className="text-sm text-slate-700 font-semibold">993</span>
+                                <span className="text-sm text-slate-700 font-semibold">
+                                  {exam.totalComments}
+                                </span>
                               </div>
                             </div>
                             <div>
